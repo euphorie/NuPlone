@@ -26,5 +26,14 @@
      name="nuplone-view"
      />
 
+   <browser:page
+     for="plone.dexterity.interfaces.IDexterityItem"
+     name="view"
+     layer=".interfaces.NuPloneSkin"
+     class="plone.dexterity.browser.view.DefaultView"
+     template="templates/dexterity.pt"
+     permission="zope2.View"
+     />
+
 </configure>
 

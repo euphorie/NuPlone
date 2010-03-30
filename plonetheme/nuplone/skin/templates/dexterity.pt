@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="nuplone"
+      metal:use-macro="context/@@layout/macros/layout">
+  <body>
+    <metal:content fill-slot="content">
+      <fieldset>
+      <legend i18n:domain="plone" i18n:translate="" tal:content="view/default_fieldset_label|view/label" >Default fieldset</legend>
+        <tal:widget repeat="widget view/widgets/values" replace="structure widget/render" />
+      </fieldset>
+
+      <tal:groupform condition="python:getattr(view, 'groups', None)">
+        <fieldset tal:repeat="group view/groups">
+          <legend i18n:domain="plone" i18n:translate="" tal:content="group/label">Group name</legend>
+          <tal:widget repeat="widget group/widgets/values">
+            <tal:render replace="structure widget/render" />
+          </tal:widget>
+        </fieldset>
+      </tal:groupform>
+    </metal:content>
+  </body>
+</html>
+
