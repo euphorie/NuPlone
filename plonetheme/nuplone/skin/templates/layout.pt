@@ -9,6 +9,7 @@
     <title> — </title>
   </head>
   <body>
+    <metal:block define-slot="content"/>
     <tal:block replace="structure tile:navigation"/>
   </body>
 </html>
