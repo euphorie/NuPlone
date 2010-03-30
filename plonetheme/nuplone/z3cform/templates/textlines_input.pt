@@ -1,0 +1,14 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      tal:omit-tag="">
+      <label><tal:span replace="view/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup> <textarea
+        tal:content="structure view/value"
+        tal:attributes="id view/id;
+                        name view/name; 
+                        class view/klass;
+                        disabled view/disabled;
+                        readonly view/readonly;
+                        cols view/cols;
+                        rows view/rows" /> <tal:error condition="view/error" replace="structure view/error/render|nothing"/></label>
+</html>
+

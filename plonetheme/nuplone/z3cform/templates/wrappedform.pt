@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="nuplone"
+      tal:omit-tag="">
+  <p tal:define="status view/status"
+     tal:condition="status"
+     tal:attributes="class python:'message error' if view.widgets.errors else 'message notice'"
+     tal:content="status" i18n:domain="plone" i18n:translate="">Form-global message</p>
+  <form class="concise"
+        tal:attributes="action request/getURL;
+                        enctype view/enctype;
+                        id view/id">
+    <fieldset>
+      <legend i18n:domain="plone" i18n:translate="" tal:content="view/default_fieldset_label|view/form_name" >Default fieldset</legend>
+      <tal:widget repeat="widget view/widgets/values" replace="structure widget/render" />
+    </fieldset>
+
+    <tal:groupform condition="python:getattr(view, 'groups', None)">
+      <fieldset tal:repeat="group view/groups">
+        <legend i18n:domain="plone" i18n:translate="" tal:content="group/label">Group name</legend>
+        <tal:widget repeat="widget group/widgets/values">
+          <tal:render replace="structure widget/render" />
+        </tal:widget>
+      </fieldset>
+    </tal:groupform>
+
+    <div class="buttonBar" tal:define="actions view/actions/values|nothing" tal:condition="actions">
+      <tal:action repeat="action actions" replace="structure action/render" />
+    </div>
+  </form>
+</html>

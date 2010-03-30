@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<layers>
+  <layer
+    name="NuPlone"
+    interface="plonetheme.nuplone.z3cform.interfaces.INuPloneFormLayer" />
+</layers>
+

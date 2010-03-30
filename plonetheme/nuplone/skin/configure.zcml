@@ -1,0 +1,30 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser">
+
+  <interface
+    interface=".interfaces.NuPloneSkin"
+    type="zope.publisher.interfaces.browser.IBrowserSkinType"
+    name="NuPlone"
+    />
+
+   <browser:defaultView
+     for="Products.CMFCore.interfaces.IContentish"
+     layer=".interfaces.NuPloneSkin"
+     name="nuplone-view"
+     />
+
+   <browser:defaultView
+     for="Products.CMFCore.interfaces.IFolderish"
+     layer=".interfaces.NuPloneSkin"
+     name="nuplone-view"
+     />
+
+   <browser:defaultView
+     for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
+     layer=".interfaces.NuPloneSkin"
+     name="nuplone-view"
+     />
+
+</configure>
+

@@ -1,0 +1,23 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:five="http://namespaces.zope.org/five"
+  xmlns:grok="http://namespaces.zope.org/grok"
+  xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+  i18n_domain="plone">
+
+  <genericsetup:registerProfile
+    name="default"
+    title="NuPlone [r]"
+    directory="profiles/default"
+    description="A new clean user interface for Plone"
+    provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+  <include package="five.grok" />
+  <include package=".skin" />
+  <include package=".z3cform" />
+
+  <include package=".tiles" />
+
+  <grok:grok package="." />
+
+</configure>

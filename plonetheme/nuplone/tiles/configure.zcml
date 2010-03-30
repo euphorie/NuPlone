@@ -1,0 +1,25 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:plone="http://namespaces.plone.org/plone"
+  xmlns:tales="http://namespaces.zope.org/tales">
+
+  <include package="plone.tiles" file="meta.zcml" />
+  <include package="plone.tiles" />
+
+  <!-- Zope 2.12 does not support tales:expressiontype, but we do the proper
+       thing and register it Zope2-style as an import side-effect. -->
+  <include package="zope.app.pagetemplate" file="meta.zcml" />
+  <tales:expressiontype
+    name="tile"
+    handler=".tales.TileExpression"
+    />
+
+  <plone:tile
+    name="navigation"
+    title="Navigation tree"
+    add_permission="cmf.ManagePortal"
+    class=".navigation.NavigationTile"
+    template="templates/navigation.pt"
+    permission="zope.Public"
+    />
+</configure>
