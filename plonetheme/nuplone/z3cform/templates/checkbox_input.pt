@@ -1,0 +1,16 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      tal:omit-tag=""
+      tal:define="item python:view.items[0]">
+  <label><tal:span replace="item/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup> <input type="checkbox"
+        tal:attributes="id view/id;
+                        name item/name; 
+                        value view/value;
+                        checked python:'checked' if item['checked'] else None;
+                        class view/klass;
+                        disabled view/disabled;
+                        readonly view/readonly;"
+                        /> <tal:error condition="view/error" replace="structure view/error/render|nothing"/></label>
+  <input type="hidden" value="1" tal:attributes="name string:${view/name}-empty-marker" />
+
+</html>

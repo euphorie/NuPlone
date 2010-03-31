@@ -16,6 +16,13 @@
 
   <z3c:widgetTemplate
     mode="input"
+    widget="z3c.form.interfaces.ISingleCheckBoxWidget"
+    layer=".interfaces.INuPloneFormLayer"
+    template="templates/checkbox_input.pt"
+    />
+
+  <z3c:widgetTemplate
+    mode="input"
     widget="z3c.form.interfaces.IPasswordWidget"
     layer=".interfaces.INuPloneFormLayer"
     template="templates/password_input.pt"
