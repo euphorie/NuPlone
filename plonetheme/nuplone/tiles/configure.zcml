@@ -22,4 +22,14 @@
     template="templates/navigation.pt"
     permission="zope.Public"
     />
+
+  <plone:tile
+    name="tabs"
+    title="Secion tabs"
+    add_permission="cmf.ManagePortal"
+    class=".tabs.TabsTile"
+    template="templates/tabs.pt"
+    permission="zope.Public"
+    />
+
 </configure>

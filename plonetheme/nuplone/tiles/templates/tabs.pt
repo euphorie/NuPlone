@@ -1,0 +1,16 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      tal:omit-tag="">
+  <ul id="tabs">
+    <li tal:repeat="tab view/tabs" tal:attributes="class tab/class"><a tal:attributes="href tab/url" tal:content="tab/title">Title</a></li>
+    <li id="home"><a href="#">Home</a></li>
+    <li id="search">
+      <form>
+        <fieldset>
+          <label for="searchField" class="superImpose">Search</label><input type="text" name="searchField" id="searchField" /><button type="submit">Submit</button>
+        </fieldset>
+      </form>
+    </li>
+  </ul>
+</div>

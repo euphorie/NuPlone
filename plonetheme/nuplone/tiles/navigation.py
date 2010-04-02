@@ -112,7 +112,7 @@ class CatalogNavTree(object):
 
 
 class NavigationTile(Tile):
-    def buildTree(self):
+    def update(self):
         portal_types=getToolByName(self.context, "portal_types")
         type_titles=dict([(fti.getId(), fti.Title()) for fti in portal_types.listTypeInfo()])
 
@@ -137,12 +137,12 @@ class NavigationTile(Tile):
                                      "current" if node["current"] else None])) or None
 
         if "brain" in tree.root:
-            return [tree.root]
+            self.tree=[tree.root]
         else:
-            return tree.root["children"]
+            self.tree=tree.root["children"]
 
 
     def __call__(self):
-        self.tree=self.buildTree()
+        self.update()
         return self.index()
 

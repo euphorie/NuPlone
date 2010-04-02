@@ -27,16 +27,7 @@
       </div>
       <tal:block replace="structure tile:navigation"/>
     </div>
-    <ul id="tabs">
-      <li id="home"><a href="#">Home</a></li>
-      <li id="search">
-        <form>
-          <fieldset>
-            <label for="searchField" class="superImpose">Search</label><input type="text" name="searchField" id="searchField" /><button type="submit">Submit</button>
-          </fieldset>
-        </form>
-      </li>
-    </ul>
+    <tal:block replace="structure tile:tabs"/>
     <script type="text/javascript" tal:attributes="src context/++resource++NuPlone.libraries/jquery-1.4.2.js"></script>
     <script type="text/javascript" tal:attributes="src context/++resource++NuPlone.libraries/jquery.tools.min.js"></script>
     <script type="text/javascript" tal:attributes="src string:${context/++resource++NuPlone.libraries/ui-1.8rc2}/jquery-ui-1.8rc2.custom.js"></script>
