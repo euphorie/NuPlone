@@ -4,7 +4,7 @@ from zope.component import getUtility
 from Acquisition import aq_inner
 from Acquisition import aq_parent
 from plone.tiles import Tile
-from plone.app.layout.navigation.root import getNavigationRoot
+from plonetheme.nuplone.utils import getNavigationRoot
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Products.CMFPlone.utils import typesToList
 from Products.CMFCore.utils import getToolByName
@@ -25,7 +25,7 @@ class CatalogNavTree(object):
 
         contextPath="/".join(context.getPhysicalPath())
         contextPathLen=len(contextPath)
-        navrootPath=getNavigationRoot(context)
+        navrootPath="/".join(getNavigationRoot(context).getPhysicalPath())
 
         query={}
         query["path"]=dict(query=contextPath,
