@@ -28,7 +28,7 @@ class TabsTile(Tile):
                  for brain in catalog.searchResults(query)
                  if not brain.exclude_from_nav]
         current=[(len(result["url"]), result["id"]) for result in results
-                 if result["url"].startswith(contextUrl)]
+                 if contextUrl.startswith(result["url"])]
         current.sort()
         if current:
             current=current[0][1]
