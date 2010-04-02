@@ -84,6 +84,13 @@
       layer=".interfaces.INuPloneFormLayer"
       template="templates/date_input.pt"
       />
+
+    <z3c:widgetTemplate
+      mode="input"
+      widget="collective.z3cform.datetimewidget.interfaces.IDatetimeWidget"
+      layer=".interfaces.INuPloneFormLayer"
+      template="templates/datetime_input.pt"
+      />
   </configure>
 
 </configure>
