@@ -6,10 +6,40 @@
       metal:define-macro="layout">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" tal:attributes="src context/++resource++NuPlone.libraries/css_browser_selector.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" tal:attributes="href string:${context/++resource++NuPlone.style/main}/base.css" />
+    <link rel="stylesheet" type="text/css" media="all" tal:attributes="href string:${context/++resource++NuPlone.style/euphorie}/base.css" />
+    <tal:iefixstart replace="structure string:&lt;!--[if lte IE 6]&gt;" />
+      <link rel="stylesheet" type="text/css" media="all" tal:attributes="href context/++resource++NuPlone.style/main/base-ie6.css" />
+    <tal:iefixend replace="structure string:&lt;![endif]--&gt;" />
+    <tal:iefixstart replace="structure string:&lt;!--[if IE 7]&gt;" />
+      <link rel="stylesheet" type="text/css" media="all" tal:attributes="href context/++resource++NuPlone.style/main/base-ie7.css" />
+    <tal:iefixend replace="structure string:&lt;![endif]--&gt;" />
+    <tal:iefixstart replace="structure string:&lt;!--[if IE 8]&gt;" />
+      <link rel="stylesheet" type="text/css" media="all" tal:attributes="href context/++resource++NuPlone.style/main/base-ie8.css" />
+    <tal:iefixend replace="structure string:&lt;![endif]--&gt;" />
     <title> — </title>
   </head>
   <body>
-    <metal:block define-slot="content"/>
-    <tal:block replace="structure tile:navigation"/>
+    <div id="content">
+      <div id="mainContent">
+        <metal:block define-slot="content"/>
+      </div>
+      <tal:block replace="structure tile:navigation"/>
+    </div>
+    <ul id="tabs">
+      <li id="home"><a href="#">Home</a></li>
+      <li id="search">
+        <form>
+          <fieldset>
+            <label for="searchField" class="superImpose">Search</label><input type="text" name="searchField" id="searchField" /><button type="submit">Submit</button>
+          </fieldset>
+        </form>
+      </li>
+    </ul>
+    <script type="text/javascript" tal:attributes="src context/++resource++NuPlone.libraries/jquery-1.4.2.js"></script>
+    <script type="text/javascript" tal:attributes="src context/++resource++NuPlone.libraries/jquery.tools.min.js"></script>
+    <script type="text/javascript" tal:attributes="src string:${context/++resource++NuPlone.libraries/ui-1.8rc2}/jquery-ui-1.8rc2.custom.js"></script>
+    <script type="text/javascript" tal:attributes="src context/++resource++NuPlone.behaviour/behaviour.js"></script>
   </body>
 </html>
