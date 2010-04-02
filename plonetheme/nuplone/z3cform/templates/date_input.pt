@@ -2,7 +2,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       tal:omit-tag="">
   <fieldset class="condensed">
-    <legend><tal:span replace="view/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup></legend>
+    <legend><tal:span replace="view/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup> <dfn class="infoPanel" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/></legend>
     <input type="hidden" value="1" tal:attributes="name string:${view/name}-empty-marker" />
 
     <ol class="date-eu">
