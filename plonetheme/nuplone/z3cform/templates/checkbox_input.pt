@@ -2,7 +2,9 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       tal:omit-tag=""
       tal:define="item python:view.items[0]">
-  <label><tal:span replace="item/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup> <input type="checkbox"
+  <label><tal:span replace="item/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup>
+    <dfn class="infoPanel" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/>
+      <input type="checkbox"
       tal:define="checked item/checked"
       tal:attributes="id view/id;
                       name item/name; 

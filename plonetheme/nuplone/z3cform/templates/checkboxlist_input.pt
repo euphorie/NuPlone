@@ -3,7 +3,8 @@
       tal:omit-tag=""
       tal:define="item python:view.items[0]">
   <fieldset class="comprehensive checkboxList">
-    <legend><tal:span replace="item/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup></legend>
+    <legend><tal:span replace="item/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup> <dfn class="infoPanel" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/> 
+    </legend>
     <label tal:repeat="item view/items"><input type="checkbox"
       tal:define="checked item/checked"
       tal:attributes="id view/id;

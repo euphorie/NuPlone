@@ -2,6 +2,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       tal:omit-tag="">
   <label><tal:span replace="view/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup>
+    <dfn class="infoPanel" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/>
     <select tal:attributes="id view/id;
                             name view/name;
                             class view/klass;
