@@ -1,6 +1,5 @@
 from plone.tiles import Tile
-from plone.app.layout.navigation.root import getNavigationRoot
-from plone.app.layout.navigation.root import getNavigationRootObject
+from plonetheme.nuplone.utils import getNavigationRoot
 from Products.CMFPlone.utils import typesToList
 from Products.CMFCore.utils import getToolByName
 from Acquisition import aq_inner
@@ -8,8 +7,11 @@ from Acquisition import aq_inner
 class TabsTile(Tile):
     def update(self):
         context=aq_inner(self.context)
-        navrootPath=getNavigationRoot(context)
-        navrootUrl=navrootPath
+        contextUrl=context.absolute_url()
+        navroot=getNavigationRoot(context)
+        navrootPath="/".join(navroot.getPhysicalPath())
+        portal_properties=getToolByName(self.context, "portal_properties")
+        use_view_types=portal_properties.site_properties.typesUseViewActionInListings
 
         query={}
         query["path"]=dict(query=navrootPath, depth=1)
@@ -19,10 +21,23 @@ class TabsTile(Tile):
         query["is_default_page"]=False
 
         catalog=getToolByName(context, "portal_catalog")
-        results=[brain for brain in catalog.searchResults(query)
+        results=[{"id" : brain.id,
+                  "title" : brain.Title,
+                  "url" : "%s/view" % brain.getURL() if brain.portal_type in use_view_types else brain.getURL(),
+                  "class" : None}
+                 for brain in catalog.searchResults(query)
                  if not brain.exclude_from_nav]
+        current=[(len(result["url"]), result["id"]) for result in results
+                 if result["url"].startswith(contextUrl)]
+        current.sort()
+        if current:
+            current=current[0][1]
+            for result in results:
+                if result["id"]==current:
+                    result["class"]="current"
+                    break
 
-        self.tabs=[]
+        self.tabs=results
 
 
     def __call__(self):
