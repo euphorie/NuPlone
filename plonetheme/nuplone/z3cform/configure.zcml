@@ -8,6 +8,8 @@
 
   <adapter factory=".templates.layout_factory" />
   <adapter factory=".templates.wrapped_form_factory" />
+  <adapter factory=".templates.form_factory" />
+
   <adapter
     factory=".templates.ErrorViewTemplate"
     for="z3c.form.interfaces.IErrorViewSnippet .interfaces.INuPloneFormLayer"
