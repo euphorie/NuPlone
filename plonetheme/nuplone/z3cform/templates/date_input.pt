@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       tal:omit-tag="">
-  <fieldset class="comprehensive date-eu">
+  <fieldset tal:attributes="class string:comprehensive date-eu ${view/@@dependencies}">
     <legend><tal:span replace="view/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup> <dfn class="infoPanel" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/></legend>
     <input type="hidden" value="1" tal:attributes="name string:${view/name}-empty-marker" />
     <label class="day">Day <input type="text" maxlength="2"

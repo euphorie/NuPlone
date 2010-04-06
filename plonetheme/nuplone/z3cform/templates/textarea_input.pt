@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       tal:omit-tag="">
-  <label><tal:span replace="view/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup>
+  <label tal:attributes="class view/@@dependencies"><tal:span replace="view/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup>
     <dfn class="infoPanel" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/> <textarea
         tal:content="view/value"
         tal:attributes="id view/id;
