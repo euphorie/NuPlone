@@ -22,7 +22,7 @@
       </fieldset>
 
       <tal:groupform condition="python:getattr(view, 'groups', None)">
-        <fieldset tal:repeat="group view/groups">
+        <fieldset tal:repeat="group view/groups" tal:attributes="class group/layout|nothing">
           <legend i18n:domain="plone" i18n:translate="" tal:content="group/label">Group name</legend>
           <tal:widget repeat="widget group/widgets/values">
             <tal:render replace="structure widget/render" />
