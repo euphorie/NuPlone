@@ -10,7 +10,7 @@
       tal:attributes="id view/id;
                       name item/name; 
                       value item/value;
-                      checked: python:'checked' if checked else None;
+                      checked python:'checked' if checked else None;
                       class view/klass;
                       disabled view/disabled;
                       readonly view/readonly;"
