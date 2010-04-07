@@ -25,6 +25,7 @@ class CatalogNavTree(object):
 
         contextPath="/".join(context.getPhysicalPath())
         contextPathLen=len(contextPath)
+        parentDepth=(contextPath.count("/")-1)
         navrootPath="/".join(getNavigationRoot(context).getPhysicalPath())
 
         query={}
@@ -48,7 +49,7 @@ class CatalogNavTree(object):
             if path==contextPath:
                 current=True
             elif contextPathLen>pathLen:
-                if contextPath.startswith(path+"/"):
+                if contextPath.startswith(path+"/") and path.count("/")==parentDepth:
                     currentParent=True
 
             node={"brain": brain,
