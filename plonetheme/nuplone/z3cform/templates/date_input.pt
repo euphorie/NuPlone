@@ -4,26 +4,28 @@
   <fieldset tal:attributes="class string:comprehensive date-eu ${view/@@dependencies}">
     <legend><tal:span replace="view/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup> <dfn class="infoPanel" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/></legend>
     <input type="hidden" value="1" tal:attributes="name string:${view/name}-empty-marker" />
-    <label class="day">Day <input type="text" maxlength="2"
+    <label class="day" tal:attributes="for string:${view/id}-day">Day</label>
+    <input type="text" maxlength="2"
         tal:attributes="id string:${view/id}-day;
                         name string:${view/name}-day;
                         value view/day;
                         disabled view/disabled;
-                        readonly view/readonly"/></label>
-    <label class="month">Month
-      <select tal:attributes="id string:${view/id}-month;
+                        readonly view/readonly"/>
+    <label class="month" tal:attributes="for string:${view/id}-month">Month</label>
+    <select tal:attributes="id string:${view/id}-month;
                               name string:${view/name}-month;
                               disabled view/disabled;
                               readonly view/readonly">
-        <option tal:repeat="month view/months"
-                tal:attributes="value month/value; selected python:'selected' if month['selected'] else None"
-                tal:content="month/name">Month</option>
-      </select></label>
-    <label class="year">Year <input type="text" maxlength="2"
+      <option tal:repeat="month view/months"
+              tal:attributes="value month/value; selected python:'selected' if month['selected'] else None"
+              tal:content="month/name">Month</option>
+    </select>
+    <label class="year" tal:attributes="for string:${view/id}-year">Year</label>
+    <input type="text" maxlength="2"
         tal:attributes="id string:${view/id}-year;
                         name string:${view/name}-year;
                         value view/year;
                         disabled view/disabled;
-                        readonly view/readonly"/></label>
+                        readonly view/readonly"/>
   </fieldset>
 </html>
