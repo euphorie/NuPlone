@@ -20,6 +20,7 @@
                 renumberElement(this, "name", index);
             });
             $button.before($fragment);
+            $button.siblings(":input:first").val(index+1);
 	});
     });
 })(jQuery);

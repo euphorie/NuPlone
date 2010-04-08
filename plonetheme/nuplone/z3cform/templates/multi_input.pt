@@ -3,6 +3,7 @@
       tal:omit-tag="">
   <fieldset tal:attributes="class string:concise multiWidget ${view/@@dependencies}">
     <legend><tal:span replace="view/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup> <dfn class="infoPanel" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/></legend>
+    <input type="hidden" tal:replace="structure view/counterMarker" />
     <tal:field repeat="widget view/widgets"
     ><tal:widget condition="python:widget.mode!='hidden'"
     ><tal:render replace="structure widget/render"/>
