@@ -100,6 +100,13 @@
     template="templates/object_input.pt"
     />
 
+  <z3c:widgetTemplate
+    mode="input"
+    widget="plone.app.z3cform.wysiwyg.widget.IWysiwygWidget"
+    layer=".interfaces.INuPloneFormLayer"
+    template="templates/wysiwyg_input.pt"
+    />
+
   <configure zcml:condition="installed collective.z3cform.datetimewidget">
     <z3c:widgetTemplate
       mode="input"
