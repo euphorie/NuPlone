@@ -87,6 +87,13 @@
     template="templates/multi_input.pt"
     />
 
+  <z3c:widgetTemplate
+    mode="input"
+    widget="z3c.form.interfaces.IObjectWidget"
+    layer=".interfaces.INuPloneFormLayer"
+    template="templates/object_input.pt"
+    />
+
   <configure zcml:condition="installed collective.z3cform.datetimewidget">
     <z3c:widgetTemplate
       mode="input"

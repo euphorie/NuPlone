@@ -1,0 +1,10 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      tal:omit-tag="">
+  <fieldset tal:attributes="class string:concise ${view/@@dependencies}">
+    <legend><tal:span replace="view/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup> <dfn class="infoPanel" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/></legend>
+      <tal:field repeat="widget view/subform/widgets/values" replace="structure widget/render"/>
+  </fieldset>
+</html>
+
+
