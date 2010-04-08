@@ -6,21 +6,35 @@
             $el.attr(attr, buf.replace(/[0-9]+/, i));
         }
     }
+
+    function renumber($fieldset) {
+        var $fieldsets = $fieldset.children("fieldset"),
+            $buttons = $fieldset.children("button.remove"),
+            i;
+        $counter = $(":input:first", $fieldset).val($fieldsets.length);
+
+        for (i=0; i<$fieldsets.length; i++) {
+            $("label, :input", $fieldsets[i]).each(function() {
+                renumberElement(this, "for", i);
+                renumberElement(this, "id", i);
+                renumberElement(this, "name", i);
+            });
+        }
+    }
  
     $(".multiWidget > button.add").live("click", function() {
 	var $button = $(this),
-	    url = $button.val(),
-            index = $button.siblings("fieldset").length,
-            $fragment;
+	    url = $button.val();
 	$.get(url, function(data, status) {
-            $fragment=$(data);
-            $("label, :input", $fragment).each(function() {
-                renumberElement(this, "for", index);
-                renumberElement(this, "id", index);
-                renumberElement(this, "name", index);
-            });
+            var $fragment=$(data);
             $button.before($fragment);
-            $button.siblings(":input:first").val(index+1);
+            renumber($button.parent());
 	});
+    });
+
+    $(".multiWidget > button.remove").live("click", function() {
+	var $button = $(this);
+        $button.add($button.prev()).remove();
+        renumber($button.parent());
     });
 })(jQuery);

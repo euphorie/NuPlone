@@ -7,9 +7,9 @@
     <tal:field repeat="widget view/widgets"
     ><tal:widget condition="python:widget.mode!='hidden'"
     ><tal:render replace="structure widget/render"/>
-    <button type="button">Remove</button></tal:widget>
+    <button type="button" class="remove jsOnly">Remove</button></tal:widget>
     </tal:field>
-    <button type="button" class="add" tal:attributes="value string:${view/form/action}/++widget++${view/field/__name__}/new-entry">Add new</button>
+    <button type="button" class="add jsOnly" tal:attributes="value string:${view/form/action}/++widget++${view/field/__name__}/new-entry">Add new</button>
   </fieldset>
 </html>
 
