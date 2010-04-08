@@ -15,6 +15,7 @@
     <form class="concise"
           tal:attributes="action request/getURL;
                           enctype view/enctype;
+                          method view/method;
                           id view/id">
       <fieldset>
         <legend i18n:domain="plone" i18n:translate="" tal:content="view/default_fieldset_label|view/form_name" >Default fieldset</legend>
