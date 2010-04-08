@@ -1,5 +1,6 @@
 <configure
   xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
   xmlns:z3c="http://namespaces.zope.org/z3c"
   xmlns:zcml="http://namespaces.zope.org/zcml">
 
@@ -10,6 +11,11 @@
   <adapter factory=".templates.layout_factory" />
   <adapter factory=".templates.wrapped_form_factory" />
   <adapter factory=".templates.form_factory" />
+
+  <browser:resource
+    name="NuPlone.z3cform.js"
+    file="templates/behaviour.js"
+    />
 
   <adapter
     factory=".templates.ErrorViewTemplate"
