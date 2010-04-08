@@ -32,9 +32,12 @@
 	});
     });
 
-    $(".multiWidget > button.remove").live("click", function() {
-	var $button = $(this);
-        $button.add($button.prev()).remove();
-        renumber($button.parent());
+    $(".multiWidget > fieldset > button.remove").live("click", function() {
+	var $button = $(this),
+	    $fieldset = $button.parent(),
+	    $root = $fieldset.parent();
+
+	$fieldset.remove();
+        renumber($root);
     });
 })(jQuery);
