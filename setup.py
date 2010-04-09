@@ -39,6 +39,8 @@ setup(name="NuPlone",
           "plone.i18n",
           "plone.autoform",
           "plone.supermodel",
+          "plone.formwidget.namedfile >1.0b4",
+          "plone.app.tinymce",
       ],
       entry_points="""
       """,

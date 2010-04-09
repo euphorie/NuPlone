@@ -6,6 +6,7 @@
 
   <include package="plone.z3cform" />
   <include package="plone.app.z3cform" />
+  <include package="plone.app.tinymce" />
 
   <adapter factory=".widget.ChoiceWidgetFactory" />
   <adapter factory=".templates.layout_factory" />
