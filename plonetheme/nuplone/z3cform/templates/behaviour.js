@@ -9,9 +9,8 @@
 
     function renumber($fieldset) {
         var $fieldsets = $fieldset.children("fieldset"),
-            $buttons = $fieldset.children("button.remove"),
             i;
-        $counter = $(":input:first", $fieldset).val($fieldsets.length);
+        $(":input:first", $fieldset).val($fieldsets.length);
 
         for (i=0; i<$fieldsets.length; i++) {
             $("label, :input", $fieldsets[i]).each(function() {
@@ -24,46 +23,70 @@
 
  
     $(".multiWidget > button.add").live("click", function() {
-	var $button = $(this),
-	    url = $button.val();
-	$.get(url, function(data, status) {
+        var $button = $(this),
+            url = $button.val();
+        $.get(url, function(data, status) {
             var $fragment=$(data);
             $button.before($fragment);
             renumber($button.parent());
-	});
+        });
     });
 
     $(".multiWidget > fieldset > button.remove").live("click", function() {
-	var $button = $(this),
-	    $fieldset = $button.parent(),
-	    $root = $fieldset.parent();
+        var $button = $(this),
+            $fieldset = $button.parent(),
+            $root = $fieldset.parent();
 
-	$fieldset.remove();
+        $fieldset.remove();
         renumber($root);
     });
 
 })(jQuery);
 
-// Putting this in $(document).ready gives lots of "tinyMCE is not defined" errors
 $(window).load(function() {
-    tinyMCE.init({mode: "none",
-		  theme: "dummy",
-		  fix_list_elements: true,
-		  entity_encoding: "raw",
-		  content_editable: true
-		 });
-    $("textarea.rich").each(function() {
-	var $textarea = $(this),
-	    id = $textarea.attr("id"),
-	    $div = $("<div/>");
-	    
-	$div
-	    .attr("id", id)
-	    .addClass("rich input")
-	    .data("z3cform.name", $textarea.attr("name"))
-	    .append($($textarea.val()));
-	$textarea.replaceWith($div);
+    function onTinyActivate(ed) {
+        var $controls = $("#tinyControls");
+        if (!$controls.length) {
+            var $wrapper = $("#frameWrapper");
+            if (!$wrapper.length) {
+                $wrapper=$("<p/>").attr("id", "frameWrapper").appendTo(document.body);
+            }
+            $("<object/>")
+                .attr("id", "tinyControls")
+                .attr("type", "text/html")
+                .attr("data", plone.portal_url+"/@@tiny-controls")
+                .css("position", "absolute")
+                .css("top", "0px")
+                .css("left", "0px")
+                .css("z-index", "100")
+                .appendTo($wrapper);
+        }
+    }
 
-	tinyMCE.execCommand("mceAddControl", false, id);
+    tinyMCE.init({mode: "none",
+                  theme: "dummy",
+                  plugins: "linefield",
+                  element_format: "xhtml",
+                  fix_list_elements: true,
+                  fix_table_elements: true,
+                  entity_encoding: "raw",
+                  content_editable: true,
+                  forced_root_block: null,
+                  on_activate: onTinyActivate
+                 });
+
+    $("textarea.rich").each(function() {
+        var $textarea = $(this),
+            id = $textarea.attr("id"),
+            $div = $("<div/>");
+            
+        $div
+            .attr("id", id)
+            .addClass("rich input")
+            .data("z3cform.name", $textarea.attr("name"))
+            .append($($textarea.val()));
+        $textarea.replaceWith($div);
+
+        tinyMCE.execCommand("mceAddControl", false, id);
     });
 });

@@ -10,18 +10,18 @@
     <div id="buttonBar">
       <div id="editorFunctions">
         <fieldset>
-          <button type="button" disabled="disabled" class="inline strong">B</button>
-          <button type="button" disabled="disabled" class="inline emphasised">I</button>
+          <button type="button" class="inline strong">B</button>
+          <button type="button" class="inline emphasised">I</button>
         </fieldset>
 
         <fieldset class="buttonGroup">
-          <button type="button" disabled="disabled" class="icon unorderedList">Unordered List</button>
-          <button type="button" disabled="disabled" class="icon orderedList">Ordered List</button>
+          <button type="button" class="icon unorderedList">Unordered List</button>
+          <button type="button" class="icon orderedList">Ordered List</button>
         </fieldset>
 
         <fieldset class="buttonGroup">
-          <button disabled="disabled" type="button" class="icon subscript">Subscript</button>
-          <button disabled="disabled" type="button" class="icon superscript">Superscript</button>
+          <button type="button" class="icon subscript">Subscript</button>
+          <button type="button" class="icon superscript">Superscript</button>
         </fieldset>
       </div>
     </div>
@@ -29,7 +29,7 @@
     <script type="text/javascript">
       function getTiny() {
           var topDoc = window.frameElement.ownerDocument,
-              topWindow = topDoc.defaultView!==undefined ? topdoc.defaultView : topdoc.parentWindow;
+              topWindow = topDoc.defaultView!==undefined ? topDoc.defaultView : topDoc.parentWindow;
           return topWindow.tinyMCE;
       }
 
