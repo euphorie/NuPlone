@@ -25,6 +25,7 @@
         </fieldset>
       </div>
     </div>
+    <script type="text/javascript" tal:attributes="src context/++resource++NuPlone.libraries/jquery-1.4.2.js"></script>
     <script type="text/javascript">
       function getTiny() {
           var topDoc = window.frameElement.ownerDocument,
