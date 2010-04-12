@@ -29,7 +29,7 @@ Autofocus
 When generating forms it is practical to automatically set the focus on
 the first input element. This can be done using an ``autofocus`` class.
 
-.. code-black:: html
+.. code-block:: html
 
    <form>
      <label>Email address
@@ -43,7 +43,7 @@ focus, so users can start the login process immediately. If multiple
 input elements have the ``autofocus`` class the first element without a
 value is focused. For example:
 
-.. code-black:: html
+.. code-block:: html
 
    <form>
      <label>Email address
