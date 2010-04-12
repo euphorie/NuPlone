@@ -4,7 +4,7 @@
       tal:omit-tag="">
   <label tal:attributes="class view/@@dependencies"><tal:span replace="view/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup>
     <dfn class="infoPanel" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/>
-      <img class="span-2 floatAfter" tal:condition="view/allow_nochange" tal:attributes="src view/download_url"/>
+      <img class="span-2 floatAfter" tal:condition="python:0 and view/allow_nochange" tal:attributes="src view/download_url"/>
     <input type="file"
         tal:attributes="id view/id;
                         name view/name; 

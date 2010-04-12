@@ -4,7 +4,7 @@
   <label tal:attributes="class view/@@dependencies"><tal:span replace="view/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup>
     <dfn class="infoPanel" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/> <textarea
         class="rich"
-        tal:content="view/value"
+        tal:content="structure view/value"
         tal:attributes="id view/id;
                         name view/name; 
                         disabled view/disabled;

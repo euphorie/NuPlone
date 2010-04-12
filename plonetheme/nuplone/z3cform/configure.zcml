@@ -18,6 +18,13 @@
     file="templates/behaviour.js"
     />
 
+  <configure package="Products.TinyMCE">
+    <browser:resourceDirectory
+      name="NuPlone.tinymce"
+      directory="skins/tinymce"
+      />
+  </configure>
+
   <adapter
     factory=".templates.ErrorViewTemplate"
     for="z3c.form.interfaces.IErrorViewSnippet .interfaces.INuPloneFormLayer"

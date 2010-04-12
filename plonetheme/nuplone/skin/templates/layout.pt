@@ -31,7 +31,7 @@
     <script type="text/javascript" tal:attributes="src context/++resource++NuPlone.libraries/jquery-1.4.2.js"></script>
     <script type="text/javascript" tal:attributes="src context/++resource++NuPlone.libraries/jquery.tools.min.js"></script>
     <script type="text/javascript" tal:attributes="src string:${context/++resource++NuPlone.libraries/ui-1.8rc2}/jquery-ui-1.8rc2.custom.js"></script>
-    <script type="text/javascript" tal:attributes="src context/++resource++plone.app.tinymce.javascripts.tiny_mce.js"></script>
+    <script type="text/javascript" src="http://www.2style4you.com/static61/public/libraries/tiny_mce/tiny_mce.js"></script>
     <script type="text/javascript" tal:attributes="src context/++resource++NuPlone.behaviour/behaviour.js"></script>
     <script type="text/javascript" tal:attributes="src context/++resource++NuPlone.z3cform.js"></script>
   </body>

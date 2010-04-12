@@ -21,6 +21,7 @@
             });
         }
     }
+
  
     $(".multiWidget > button.add").live("click", function() {
 	var $button = $(this),
@@ -40,4 +41,29 @@
 	$fieldset.remove();
         renumber($root);
     });
+
 })(jQuery);
+
+// Putting this in $(document).ready gives lots of "tinyMCE is not defined" errors
+$(window).load(function() {
+    tinyMCE.init({mode: "none",
+		  theme: "dummy",
+		  fix_list_elements: true,
+		  entity_encoding: "raw",
+		  content_editable: true
+		 });
+    $("textarea.rich").each(function() {
+	var $textarea = $(this),
+	    id = $textarea.attr("id"),
+	    $div = $("<div/>");
+	    
+	$div
+	    .attr("id", id)
+	    .addClass("rich input")
+	    .data("z3cform.name", $textarea.attr("name"))
+	    .append($($textarea.val()));
+	$textarea.replaceWith($div);
+
+	tinyMCE.execCommand("mceAddControl", false, id);
+    });
+});
