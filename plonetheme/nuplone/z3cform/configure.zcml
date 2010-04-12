@@ -6,7 +6,6 @@
 
   <include package="plone.z3cform" />
   <include package="plone.app.z3cform" />
-  <include package="plone.app.tinymce" />
 
   <adapter factory=".widget.ChoiceWidgetFactory" />
   <adapter factory=".templates.layout_factory" />
@@ -25,12 +24,10 @@
     file="templates/behaviour.js"
     />
 
-  <configure package="Products.TinyMCE">
-    <browser:resourceDirectory
-      name="NuPlone.tinymce"
-      directory="skins/tinymce"
-      />
-  </configure>
+  <browser:resourceDirectory
+    name="NuPlone.tinymce"
+    directory="tiny_mce"
+    />
 
   <adapter
     factory=".templates.ErrorViewTemplate"
