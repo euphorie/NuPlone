@@ -41,52 +41,69 @@
         renumber($root);
     });
 
+    $(window).load(function() {
+        function onTinyActivate(ed) {
+            var $controls = $("#tinyControls");
+            if (!$controls.length) {
+                var $wrapper = $("#frameWrapper");
+                if (!$wrapper.length) {
+                    $wrapper=$("<p/>").attr("id", "frameWrapper").appendTo(document.body);
+                }
+                $("<object/>")
+                    .attr("id", "tinyControls")
+                    .attr("type", "text/html")
+                    .attr("data", plone.portal_url+"/@@tiny-controls")
+                    .css("position", "absolute")
+                    .css("top", "0px")
+                    .css("left", "0px")
+                    .css("z-index", "100")
+                    .appendTo($wrapper);
+            }
+        }
+
+        tinyMCE.init({mode: "none",
+                      theme: "dummy",
+                      plugins: "linefield",
+                      element_format: "xhtml",
+                      fix_list_elements: true,
+                      fix_table_elements: true,
+                      entity_encoding: "raw",
+                      content_editable: true,
+                      forced_root_block: null,
+                      on_activate: onTinyActivate
+                     });
+
+        $("textarea.rich").each(function() {
+            var $textarea = $(this),
+                id = $textarea.attr("id"),
+                $div = $("<div/>");
+                
+            $div
+                .attr("id", id)
+                .addClass("rich input")
+                .data("z3cform.name", $textarea.attr("name"))
+                .append($($textarea.val()));
+            $textarea.replaceWith($div);
+
+            tinyMCE.execCommand("mceAddControl", false, id);
+        });
+    });
+
+    $("form").live("submit", function() {
+        $("div.rich.input", this).each(function() {
+            var $field = $(this),
+                id = $field.attr("id"),
+                value = tinyMCE.get(id).getContent(),
+                name = $field.name("z3cform.name");
+            if (name) {
+                $("<input/>")
+                    .attr("type", "hidden")
+                    .attr("name", name)
+                    .val(value)
+                    .insertBefore($field);
+            }
+        });
+        return true;
+    });
 })(jQuery);
 
-$(window).load(function() {
-    function onTinyActivate(ed) {
-        var $controls = $("#tinyControls");
-        if (!$controls.length) {
-            var $wrapper = $("#frameWrapper");
-            if (!$wrapper.length) {
-                $wrapper=$("<p/>").attr("id", "frameWrapper").appendTo(document.body);
-            }
-            $("<object/>")
-                .attr("id", "tinyControls")
-                .attr("type", "text/html")
-                .attr("data", plone.portal_url+"/@@tiny-controls")
-                .css("position", "absolute")
-                .css("top", "0px")
-                .css("left", "0px")
-                .css("z-index", "100")
-                .appendTo($wrapper);
-        }
-    }
-
-    tinyMCE.init({mode: "none",
-                  theme: "dummy",
-                  plugins: "linefield",
-                  element_format: "xhtml",
-                  fix_list_elements: true,
-                  fix_table_elements: true,
-                  entity_encoding: "raw",
-                  content_editable: true,
-                  forced_root_block: null,
-                  on_activate: onTinyActivate
-                 });
-
-    $("textarea.rich").each(function() {
-        var $textarea = $(this),
-            id = $textarea.attr("id"),
-            $div = $("<div/>");
-            
-        $div
-            .attr("id", id)
-            .addClass("rich input")
-            .data("z3cform.name", $textarea.attr("name"))
-            .append($($textarea.val()));
-        $textarea.replaceWith($div);
-
-        tinyMCE.execCommand("mceAddControl", false, id);
-    });
-});
