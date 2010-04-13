@@ -29,6 +29,7 @@ setup(name="NuPlone",
       install_requires=[
           "setuptools",
           "Plone >=4.0dev",
+          "Zope2 >=2.10.12.5dev",
           "five.grok",
           "zope.tales",
           "zope.app.pagetemplate",

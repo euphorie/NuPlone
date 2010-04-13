@@ -13,6 +13,7 @@
     provides="Products.GenericSetup.interfaces.EXTENSION" />
 
   <include package="five.grok" />
+  <!-- <include package="five.pt" /> -->
   <include package=".skin" />
   <include package=".z3cform" />
 
