@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:meta="http://xml.zope.org/namespaces/meta"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      i18n:domain="nuplone"
+      metal:use-macro="context/@@layout/macros/layout"
+      meta:interpolation="true">
+  <body>
+    <metal:content fill-slot="content">
+      <h1>Login</h1>
+
+      <p tal:condition="not:view/anonymous" class="notice message">
+        You are already logged in. Please logout first before trying to login again. 
+        </p><p tal:condition="view/failed" class="notice message">Invalid login.</p>
+
+      <form tal:condition="view/anonymous" class="concise" action="${view/action}" method="post">
+        <fieldset>
+          <legend>Credentials</legend>
+          <input type="hidden" name="came_from" value="${view/came_from}"/>
+          <input type="hidden" name="login_attempt" value="1"/>
+          <label>Login
+            <input name="__ac_name" type="text" value="${request/form/__ac_name|nothing}"/></label>
+          <label>Password
+            <input name="__ac_password" type="password"/></label>
+        </fieldset>
+
+        <div class="buttonBar">
+          <button type="submit">Login</button>
+        </div>
+      </form>
+    </metal:content>
+  </body>
+</html>
