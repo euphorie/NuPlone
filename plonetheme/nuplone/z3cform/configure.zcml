@@ -135,21 +135,28 @@
       />
   </configure>
 
-  <configure zcml:condition="installed plone.formwidget.namedfile">
-    <z3c:widgetTemplate
-      mode="input"
-      widget="plone.formwidget.namedfile.interfaces.INamedFileWidget"
-      layer=".interfaces.INuPloneFormLayer"
-      template="templates/namedfile_input.pt"
-      />
+  <adapter factory=".widget.NamedImageWidgetFactory" />
 
-    <z3c:widgetTemplate
-      mode="input"
-      widget="plone.formwidget.namedfile.interfaces.INamedImageWidget"
-      layer=".interfaces.INuPloneFormLayer"
-      template="templates/namedimage_input.pt"
-      />
-  </configure>
+  <class class=".widget.NicerNamedImageWidget">
+    <require
+        permission="zope.Public"
+        interface="z3c.form.interfaces.IFileWidget"
+        />
+  </class>
+
+  <z3c:widgetTemplate
+    mode="input"
+    widget="plone.formwidget.namedfile.interfaces.INamedFileWidget"
+    layer=".interfaces.INuPloneFormLayer"
+    template="templates/namedfile_input.pt"
+    />
+
+  <z3c:widgetTemplate
+    mode="input"
+    widget="plone.formwidget.namedfile.interfaces.INamedImageWidget"
+    layer=".interfaces.INuPloneFormLayer"
+    template="templates/namedimage_input.pt"
+    />
 
 </configure>
 

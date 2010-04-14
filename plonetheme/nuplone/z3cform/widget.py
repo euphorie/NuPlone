@@ -1,14 +1,21 @@
+from zope.component import getMultiAdapter
 from zope.component import adapter
 from zope.interface import implementer
 from five import grok
+from ZPublisher.HTTPRequest import FileUpload
 from zope.schema.interfaces import IChoice
 from plonetheme.nuplone.z3cform.interfaces import INuPloneFormLayer
 from plonetheme.nuplone.z3cform.utils import getVocabulary
 from z3c.form.interfaces import IFieldWidget
 from z3c.form.interfaces import IMultiWidget
+from z3c.form.interfaces import IDataManager
+from z3c.form.interfaces import NOVALUE
 from z3c.form.widget import FieldWidget
+from z3c.form.browser.file import FileWidget
 from z3c.form.browser.radio import RadioWidget
 from z3c.form.browser.select import SelectWidget
+from plone.namedfile.interfaces import INamedImageField
+from plone.formwidget.namedfile.widget import NamedImageWidget
 
 class SingleRadioWidget(RadioWidget):
     """Variant of the z3c.form radio widget which does not pretend a radio
@@ -46,4 +53,29 @@ class NewMultiWidgetEntry(grok.View):
     def render(self):
         widget = self.context.getWidget(0)
         return widget.render()
+
+
+
+class NicerNamedImageWidget(NamedImageWidget):
+    def extract(self, default=NOVALUE):
+        action = self.request.get("%s.action" % self.name, None)
+        if action == 'remove':
+            return None
+
+        value = FileWidget.extract(self, default)
+
+        if value is NOVALUE or \
+                (isinstance(value, FileUpload) and not value.filename):
+            dm=getMultiAdapter((self.context, self.field,), IDataManager)
+            return dm.get()
+
+        # Note that we allow the user to upload an empty file.
+        return value
+
+
+@adapter(INamedImageField, INuPloneFormLayer)
+@implementer(IFieldWidget)
+def NamedImageWidgetFactory(field, request):
+    return FieldWidget(field, NicerNamedImageWidget(request))
+
 
