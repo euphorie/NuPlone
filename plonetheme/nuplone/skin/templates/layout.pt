@@ -19,8 +19,6 @@
   <body>
     <div id="content">
       <div id="mainContent">
-        ${context/title}
-        ${python:1+4}
         <metal:block define-slot="content"/>
       </div>
       <tal:block replace="structure tile:navigation"/>
