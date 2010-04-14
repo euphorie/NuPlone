@@ -13,6 +13,10 @@
     name="tile"
     handler=".tales.TileExpression"
     />
+  <!-- Do the z3c.pt variant as well. -->
+  <utility
+    name="tile"
+    factory=".tales.TileTranslator"/>
 
   <plone:tile
     name="navigation"

@@ -28,10 +28,10 @@
       <tal:block replace="structure tile:navigation"/>
     </div>
     <tal:block replace="structure tile:tabs"/>
-    <tal:zptsucks replace="structure string:&lt;"/>script type="text/javascript"<tal:zptsucks replace="structure string:&gt;"/>
-      var plone = { portal_url : '<tal:var replace="string:${context/absolute_url}"/>',
+    <script type="text/javascript">
+      var plone = { portal_url : '${context/absolute_url}"/>',
           context_url : '<tal:var replace="string:${context/absolute_url}"/>' };
-    <tal:zptsucks replace="structure string:&lt;"/>/script<tal:zptsucks replace="structure string:&gt;"/>
+    </script>
     <script type="text/javascript" tal:attributes="src context/++resource++NuPlone.libraries/jquery-1.4.2.js"></script>
     <script type="text/javascript" tal:attributes="src context/++resource++NuPlone.libraries/jquery.tools.min.js"></script>
     <script type="text/javascript" tal:attributes="src string:${context/++resource++NuPlone.libraries/ui-1.8rc2}/jquery-ui-1.8rc2.custom.js"></script>
