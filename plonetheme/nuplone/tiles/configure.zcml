@@ -6,14 +6,6 @@
   <include package="plone.tiles" file="meta.zcml" />
   <include package="plone.tiles" />
 
-  <!-- Zope 2.12 does not support tales:expressiontype, but we do the proper
-       thing and register it Zope2-style as an import side-effect. -->
-  <include package="zope.app.pagetemplate" file="meta.zcml" />
-  <tales:expressiontype
-    name="tile"
-    handler=".tales.TileExpression"
-    />
-  <!-- Do the z3c.pt variant as well. -->
   <utility
     name="tile"
     factory=".tales.TileTranslator"/>
