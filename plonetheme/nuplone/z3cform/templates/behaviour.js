@@ -82,7 +82,7 @@
                 .attr("id", id)
                 .addClass("rich input")
                 .data("z3cform.name", $textarea.attr("name"))
-                .append($($textarea.val()));
+                .html($textarea.val());
             $textarea.replaceWith($div);
 
             tinyMCE.execCommand("mceAddControl", false, id);
@@ -94,7 +94,7 @@
             var $field = $(this),
                 id = $field.attr("id"),
                 value = tinyMCE.get(id).getContent(),
-                name = $field.name("z3cform.name");
+                name = $field.data("z3cform.name");
             if (name) {
                 $("<input/>")
                     .attr("type", "hidden")
