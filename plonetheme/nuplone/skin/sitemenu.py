@@ -1,13 +1,13 @@
 from zope.interface import Interface
 from five import grok
 from plonetheme.nuplone.skin.interfaces import NuPloneSkin
+from plonetheme.nuplone import utils
 
 grok.templatedir("templates")
 
-class Layout(grok.View):
+class Sitemenu(grok.View):
     grok.context(Interface)
-    grok.name("layout")
+    grok.name("sitemenu")
     grok.layer(NuPloneSkin)
-    grok.template("layout")
-
+    grok.template("sitemenu")
 

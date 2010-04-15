@@ -5,15 +5,16 @@
       xmlns:meta="http://xml.zope.org/namespaces/meta"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       meta:interpolation="true"
-      metal:define-macro="layout">
+      metal:define-macro="layout"
+      tal:define="tools context/@@tools">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="text/javascript" tal:attributes="src context/++resource++NuPlone.libraries/css_browser_selector.js"></script>
-    <link rel="stylesheet" type="text/css" media="all" tal:attributes="href string:${context/++resource++NuPlone.style/main}/base.css" />
-    <link rel="stylesheet" type="text/css" media="all" tal:attributes="href string:${context/++resource++NuPlone.style/euphorie}/base.css" />
-    <!-- [if lte IE6]> <link rel="stylesheet" type="text/css" media="all" href="${context/++resource++NuPlone.style/main/base-ie6.css}" /> <![endif]-->
-    <!--[if IE 7]> <link rel="stylesheet" type="text/css" media="all" href="${context/++resource++NuPlone.style/main/base-ie7.css}" /> <![endif]-->
-    <!--[if IE 8]> <link rel="stylesheet" type="text/css" media="all" tal:attributes="href context/++resource++NuPlone.style/main/base-ie8.css" /> <![endif]-->
+    <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.libraries/css_browser_selector.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" tal:attributes="href string:${tools/portal/++resource++NuPlone.style/main}/base.css" />
+    <link rel="stylesheet" type="text/css" media="all" tal:attributes="href string:${tools/portal/++resource++NuPlone.style/euphorie}/base.css" />
+    <!-- [if lte IE6]> <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.style/main/base-ie6.css}" /> <![endif]-->
+    <!--[if IE 7]> <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.style/main/base-ie7.css}" /> <![endif]-->
+    <!--[if IE 8]> <link rel="stylesheet" type="text/css" media="all" tal:attributes="href tools/portal/++resource++NuPlone.style/main/base-ie8.css" /> <![endif]-->
     <title> — </title>
   </head>
   <body>
@@ -24,15 +25,18 @@
       <tal:block replace="structure tile:navigation"/>
     </div>
     <tal:block replace="structure tile:tabs"/>
+    <p>
+      <object id="siteMenu" type="text/html" data="${string:${context/absolute_url}/@@sitemenu}"/>
+    </p>
     <script type="text/javascript">
-      var plone = { portal_url : '${context/absolute_url}}',
+      var plone = { portal_url : '${tools/portal/absolute_url}}',
                     context_url : '${context/absolute_url}' };
     </script>
-    <script type="text/javascript" tal:attributes="src context/++resource++NuPlone.libraries/jquery-1.4.2.js"></script>
-    <script type="text/javascript" tal:attributes="src context/++resource++NuPlone.libraries/jquery.tools.min.js"></script>
-    <script type="text/javascript" tal:attributes="src string:${context/++resource++NuPlone.libraries/ui-1.8rc2}/jquery-ui-1.8rc2.custom.js"></script>
-    <script type="text/javascript" tal:attributes="src string:${context/++resource++NuPlone.tinymce}/tiny_mce_src.js"></script>
-    <script type="text/javascript" tal:attributes="src context/++resource++NuPlone.behaviour/behaviour.js"></script>
-    <script type="text/javascript" tal:attributes="src context/++resource++NuPlone.z3cform.js"></script>
+    <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.libraries/jquery-1.4.2.js"></script>
+    <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.libraries/jquery.tools.min.js"></script>
+    <script type="text/javascript" tal:attributes="src string:${tools/portal/++resource++NuPlone.libraries/ui-1.8rc2}/jquery-ui-1.8rc2.custom.js"></script>
+    <script type="text/javascript" tal:attributes="src string:${tools/portal/++resource++NuPlone.tinymce}/tiny_mce_src.js"></script>
+    <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.behaviour/behaviour.js"></script>
+    <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.z3cform.js"></script>
   </body>
 </html>
