@@ -68,8 +68,8 @@
           </li>
         </ul>
       </li>
-      <li>
-        <a href="../spuitlansen-edit.html" target="top">Edit</a>
+      <li tal:condition="permission:Modify portal content">
+        <a href="${context/absolute_url}/@@edit" target="_parent">Edit</a>
       </li>
     </ul>
 
