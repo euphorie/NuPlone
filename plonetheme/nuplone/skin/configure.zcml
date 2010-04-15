@@ -8,6 +8,10 @@
     name="NuPlone"
     />
 
+  <utility
+    name="permission"
+    factory=".tales.PermissionTranslator"/>
+
    <browser:defaultView
      for="Products.CMFCore.interfaces.IContentish"
      layer=".interfaces.NuPloneSkin"
