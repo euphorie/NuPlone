@@ -12,6 +12,13 @@
     description="A new clean user interface for Plone"
     provides="Products.GenericSetup.interfaces.EXTENSION" />
 
+  <genericsetup:importStep
+    name="plonetheme.nuplone.various"
+    title="NuPlone[r] extra installation steps"
+    description=""
+    handler=".setuphandlers.setupVarious"
+    />
+
   <include package="five.grok" />
   <include package="cmf.pt" />
   <include package=".skin" />
