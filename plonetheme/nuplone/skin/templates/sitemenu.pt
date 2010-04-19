@@ -14,19 +14,22 @@
   </head>
   <body class="siteMenu">
     <ul class="menu" id="siteMenu">
-      <li id="user">
-        <a href="#">Cornelis</a>
+      <li id="user" tal:condition="tools/anonymous">
+        <a href="${tools/navroot_url}/@@login?came_from=${request/environ/HTTP_REFERER|context/absolute_url}">Login</a>
+      </li>
+      <li id="user" tal:condition="not:tools/anonymous">
+        <a href="${tools/navroot_url}/@@dashboard">${python:tools.user.getProperty('fullname', tools.user.getUserName())}</a>
         <ul>
           <li>
             <ul>
               <li>
-                <a href="#">Log out</a>
+                <a href="${tools/portal_url}/@@logout">Log out</a>
               </li>
               <li>
-                <a href="#">Preferences</a>
+                <a href="${tools/navroot_url}/@@plone_memberprefs_panel">Preferences</a>
               </li>
               <li>
-                <a href="#">Profile</a>
+                <a href="${tools/navroot_url}/@@dashboard">Profile</a>
               </li>
             </ul>
           </li>
@@ -49,7 +52,7 @@
                 </li>
               </ul>
             </li>
-            <li>Organise
+            <li tal:condition="python:view.can_copy or view.can_cut or view.can_paste or view.can_delete">Organise
               <ul>
                 <li tal:condition="view/can_copy">
                   <a href="#">Copy</a>

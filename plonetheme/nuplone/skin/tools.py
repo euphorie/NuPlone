@@ -1,4 +1,5 @@
 from Acquisition import aq_inner
+from AccessControl import getSecurityManager
 from zope.interface import Interface
 from five import grok
 from plonetheme.nuplone.skin.interfaces import NuPloneSkin
@@ -12,7 +13,12 @@ class Tools(grok.View):
     grok.layer(NuPloneSkin)
 
     def update(self):
+        self.user=getSecurityManager().getUser()
+        self.anonymous=self.user is None or self.user.getUserName()=="Anonymous User"
         self.portal=utils.getPortal(self.context)
+        self.portal_url=self.portal.absolute_url()
+        self.navroot=utils.getNavigationRoot(self.context)
+        self.navroot_url=self.navroot.absolute_url()
         self.context_url=aq_inner(self.context).absolute_url()
 
     def render(self):
