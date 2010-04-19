@@ -1,10 +1,12 @@
 <div xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:meta="http://xml.zope.org/namespaces/meta"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
+      meta:interpolation="true"
       tal:omit-tag="">
   <ul id="tabs">
-    <li tal:repeat="tab view/tabs" tal:attributes="class tab/class"><a tal:attributes="href tab/url" tal:content="tab/title">Title</a></li>
-    <li id="home"><a href="#">Home</a></li>
+    <li tal:repeat="tab view/tabs" class="${tab/class}"><a href="${tab/url}">${tab/title}</a></li>
+    <li id="home"><a href="${view/home_url}">Home</a></li>
     <li id="search">
       <form>
         <fieldset>

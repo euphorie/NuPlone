@@ -38,6 +38,7 @@ class TabsTile(Tile):
                     break
 
         self.tabs=results
+        self.home_url=navroot.absolute_url()
 
 
     def __call__(self):
