@@ -1,16 +1,13 @@
 import logging
 import re
-from AccessControl import getSecurityManager
 from chameleon.zpt.expressions import ExpressionTranslator
 from chameleon.zpt.interfaces import IExpressionTranslator
 from chameleon.core import types
 from zope.interface import implements
+from plonetheme.nuplone.utils import checkPermission
 
 log = logging.getLogger(__name__)
 
-
-def _checkPermission(context, permission):
-    return getSecurityManager().checkPermission(title, context)
 
 
 class PermissionTranslator(ExpressionTranslator):
@@ -26,7 +23,7 @@ class PermissionTranslator(ExpressionTranslator):
         if self.re_name.match(string) is None:
             raise SyntaxError(string)
         value=types.value("%s(context, '%s')" % (self.symbol, string))
-        value.symbol_mapping[self.symbol]=_checkPermission
+        value.symbol_mapping[self.symbol]=checkPermission
         return value
 
 

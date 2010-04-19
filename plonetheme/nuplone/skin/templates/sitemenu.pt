@@ -10,6 +10,7 @@
     <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.libraries/css_browser_selector.js"></script>
     <link rel="stylesheet" type="text/css" media="all" tal:attributes="href string:${tools/portal/++resource++NuPlone.style/main}/base.css" />
     <title>Site menu</title>
+    <base target="_parent"/>
   </head>
   <body class="siteMenu">
     <ul class="menu" id="siteMenu">
@@ -31,46 +32,45 @@
           </li>
         </ul>
       </li>
-      <li>
-        <a href="#">Actions</a>
-        <ul>
-          <li>Add new
-            <ul>
-              <li>
-                <a href="#">Page</a>
-              </li>
-              <li>
-                <a href="#">Folder</a>
-              </li>
-              <li>
-                <a href="#">Media object</a>
-              </li>
-            </ul>
-          </li>
-          <li>Organise
-            <ul>
-              <li>
-                <a href="#">Copy</a>
-              </li>
-              <li>
-                <a href="#">Cut</a>
-              </li>
-              <li>
-                <a href="#">Paste</a>
-              </li>
-              <li>
-                <a href="#">Delete</a>
-              </li>
-              <li>
-                <a href="#">Properties</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li tal:condition="permission:Modify portal content">
-        <a href="${context/absolute_url}/@@edit" target="_parent">Edit</a>
-      </li>
+      <tal:block condition="python:view.view_type=='view'">
+        <li>
+          <a href="#">Actions</a>
+          <ul>
+            <li>Add new
+              <ul>
+                <li>
+                  <a href="#">Page</a>
+                </li>
+                <li>
+                  <a href="#">Folder</a>
+                </li>
+                <li>
+                  <a href="#">Media object</a>
+                </li>
+              </ul>
+            </li>
+            <li>Organise
+              <ul>
+                <li tal:condition="view/can_copy">
+                  <a href="#">Copy</a>
+                </li>
+                <li tal:condition="view/can_cut">
+                  <a href="${tools/context_url}/object_cut">Cut</a>
+                </li>
+                <li tal:condition="view/can_paste">
+                  <a href="${tools/context_url}/object_paste">Paste</a>
+                </li>
+                <li tal:condition="view/can_delete">
+                  <a href="${tools/context_url}/delete_confirmation">Delete</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li tal:condition="permission:Modify portal content">
+          <a href="${context/absolute_url}/@@edit">Edit</a>
+        </li>
+      </tal:block>
     </ul>
 
   <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.libraries/jquery-1.4.2.js"></script>
