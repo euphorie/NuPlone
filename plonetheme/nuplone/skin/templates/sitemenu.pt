@@ -38,17 +38,11 @@
       <tal:block condition="python:view.view_type=='view'">
         <li>
           <a href="#">Actions</a>
-          <ul>
-            <li>Add new
+          <ul tal:define="factories view/factories">
+            <li tal:condition="python:factories">Add new
               <ul>
-                <li>
-                  <a href="#">Page</a>
-                </li>
-                <li>
-                  <a href="#">Folder</a>
-                </li>
-                <li>
-                  <a href="#">Media object</a>
+                <li tal:repeat="factory factories">
+                  <a href="${factory/url}">${factory/title}</a>
                 </li>
               </ul>
             </li>
