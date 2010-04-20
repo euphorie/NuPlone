@@ -42,7 +42,7 @@
             <li tal:condition="python:factories">Add new
               <ul>
                 <li tal:repeat="factory factories">
-                  <a href="${factory/url}">${factory/title}</a>
+                  <a href="${factory/url}" title="${factory/description}" >${factory/title}</a>
                 </li>
               </ul>
             </li>

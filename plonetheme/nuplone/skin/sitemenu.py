@@ -14,7 +14,7 @@ from OFS.interfaces import ICopySource
 
 grok.templatedir("templates")
 
-FactoryInfo = collections.namedtuple("FactoryInfo", "id title url")
+FactoryInfo = collections.namedtuple("FactoryInfo", "id title description url")
 
 class Sitemenu(grok.View):
     grok.context(Interface)
@@ -47,7 +47,10 @@ class Sitemenu(grok.View):
         tt=getToolByName(context, "portal_types")
         ec=tt._getExprContext(context)
         actions=[ActionInfo(fti, ec) for fti in ftis]
-        actions=[FactoryInfo(action.get("id"), action.get("title") or action.get("id"), action["url"])
+        actions=[FactoryInfo(action.get("id"),
+                             action.get("title") or action.get("id"), 
+                             action.get("description") or None,
+                             action["url"])
                  for action in actions]
         actions.sort(key=lambda x: x.title)
         return actions
