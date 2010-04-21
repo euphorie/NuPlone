@@ -49,12 +49,13 @@ class CatalogNavTree(object):
             if path==contextPath:
                 current=True
             elif contextPathLen>pathLen:
-                if contextPath.startswith(path+"/") and path.count("/")==parentDepth:
-                    currentParent=True
+                parent=contextPath.startswith(path+"/")
+                currentParent=parent and path.count("/")==parentDepth
 
             node={"brain": brain,
                   "current" : current,
                   "currentParent" : currentParent,
+                  "parent": parent,
                   "children" : [] }
             parentNode=cache.get(parentPath, None)
             if parentNode is None:
@@ -91,7 +92,7 @@ class CatalogNavTree(object):
         * purge: remove the node and all its children from the tree
         * prune: remove all children of this node from the tree
 
-        In addition you can also make modify the datastructures directly
+        In addition you may also modify the datastructures directly
         during iteration.
         """
         queue=collections.deque([self.root])
@@ -113,6 +114,9 @@ class CatalogNavTree(object):
 
 
 class NavigationTile(Tile):
+    def buildTree(self):
+        return CatalogNavTree(self.context, self.request)
+
     def update(self):
         portal_types=getToolByName(self.context, "portal_types")
         type_titles=dict([(fti.getId(), fti.Title()) for fti in portal_types.listTypeInfo()])
@@ -120,7 +124,7 @@ class NavigationTile(Tile):
         portal_properties=getToolByName(self.context, "portal_properties")
         use_view_types=portal_properties.site_properties.typesUseViewActionInListings
         normalize=getUtility(IIDNormalizer).normalize
-        tree=CatalogNavTree(self.context, self.request)
+        tree=self.buildTree()
 
         for node in tree:
             brain=node.get("brain", None)
