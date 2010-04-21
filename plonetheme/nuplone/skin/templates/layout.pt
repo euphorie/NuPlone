@@ -28,6 +28,7 @@
     <p>
       <object id="siteMenu" type="text/html" data="${string:${context/absolute_url}/@@sitemenu}?view_type=${tools/view_type}"></object>
     </p>
+    <metal:block define-slot="actions"/>
     <script type="text/javascript">
       var plone = { portal_url : '${tools/portal/absolute_url}}',
                     context_url : '${context/absolute_url}' };
