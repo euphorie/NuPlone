@@ -56,17 +56,17 @@ class CatalogNavTree(object):
             path=brain.getPath()
             pathLen=len(path)
             parentPath=path.rsplit("/", 1)[0]
-            current=currentParent=False
+            ancestor=current=currentParent=False
             if path==contextPath:
                 current=True
             elif contextPathLen>pathLen:
-                parent=contextPath.startswith(path+"/")
-                currentParent=parent and path.count("/")==parentDepth
+                ancestor=contextPath.startswith(path+"/")
+                currentParent=ancestor and path.count("/")==parentDepth
 
             node={"brain": brain,
                   "current" : current,
                   "currentParent" : currentParent,
-                  "parent": parent,
+                  "ancestor": ancestor,
                   "children" : [] }
             parentNode=cache.get(parentPath, None)
             if parentNode is None:
