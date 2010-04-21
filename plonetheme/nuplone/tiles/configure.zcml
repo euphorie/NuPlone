@@ -6,6 +6,9 @@
   <include package="plone.tiles" file="meta.zcml" />
   <include package="plone.tiles" />
 
+  <adapter
+    factory=".navigation.TreeFactory" />
+
   <utility
     name="tile"
     factory=".tales.TileTranslator"/>

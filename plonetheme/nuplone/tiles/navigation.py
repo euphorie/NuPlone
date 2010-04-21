@@ -1,6 +1,10 @@
 import collections
+from zope.component import queryMultiAdapter
 from zope.component import getMultiAdapter
 from zope.component import getUtility
+from zope.component import adapts
+from zope.interface import Interface
+from zope.interface import implements
 from Acquisition import aq_inner
 from Acquisition import aq_parent
 from plone.tiles import Tile
@@ -8,6 +12,13 @@ from plonetheme.nuplone.utils import getNavigationRoot
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Products.CMFPlone.utils import typesToList
 from Products.CMFCore.utils import getToolByName
+
+
+class INavtreeFactory(Interface):
+    """Marker interface for catalog builder functions."""
+
+    def __call__(context, request):
+        """Return a CatalogNavTree instance."""
 
 
 class CatalogNavTree(object):
@@ -19,8 +30,8 @@ class CatalogNavTree(object):
 
         # If we are at a default page use the folder as context for the navtree
         container=aq_parent(context)
-        isp=getMultiAdapter((container, request), name="default_page")
-        if isp.isDefaultPage(context):
+        isp=queryMultiAdapter((container, request), name="default_page", default=None)
+        if isp is not None and isp.isDefaultPage(context):
             context=container
 
         contextPath="/".join(context.getPhysicalPath())
@@ -81,11 +92,14 @@ class CatalogNavTree(object):
         >>> tree=CatalogNavTree(context, request)
         >>> g=tree.iter()
         >>> value=g.next()
-        >>> while True:
-        ...    if value.portal_type=="Collection":
-        ...        value=g.send("prune")
-        ...    else:
-        ...        value=g.next()
+        >>> try:
+        ...     while True:
+        ...        if value.portal_type=="Collection":
+        ...            value=g.send("prune")
+        ...        else:
+        ...            value=g.next()
+        ... except StopIteration:
+        ...     pass
 
         The supported commands are:
 
@@ -113,9 +127,19 @@ class CatalogNavTree(object):
 
 
 
-class NavigationTile(Tile):
-    def buildTree(self):
+class TreeFactory(object):
+    implements(INavtreeFactory)
+    adapts(Interface, Interface)
+
+    def __init__(self, context, request):
+        self.context=context
+        self.request=request
+
+    def __call__(self):
         return CatalogNavTree(self.context, self.request)
+
+
+class NavigationTile(Tile):
 
     def update(self):
         portal_types=getToolByName(self.context, "portal_types")
@@ -124,9 +148,10 @@ class NavigationTile(Tile):
         portal_properties=getToolByName(self.context, "portal_properties")
         use_view_types=portal_properties.site_properties.typesUseViewActionInListings
         normalize=getUtility(IIDNormalizer).normalize
-        tree=self.buildTree()
+        treefactory=getMultiAdapter((self.context, self.request), INavtreeFactory)
+        tree=treefactory()
 
-        for node in tree:
+        for node in tree.iter():
             brain=node.get("brain", None)
             if brain is None:
                 continue
