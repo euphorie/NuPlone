@@ -14,6 +14,8 @@ class SimpleLiteral(unicode):
     def __html__(self):
         return unicode(self)
 
+
+
 def _lookup_tile(context, request, name):
     tile=queryMultiAdapter((context, request), Interface, name=name)
     if tile is None:
@@ -22,6 +24,8 @@ def _lookup_tile(context, request, name):
         return u""
 
     return SimpleLiteral(tile())
+
+
 
 class TileTranslator(ExpressionTranslator):
     implements(IExpressionTranslator)
