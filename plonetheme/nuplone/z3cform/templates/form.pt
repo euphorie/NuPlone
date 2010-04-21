@@ -18,7 +18,7 @@
                           method view/method;
                           id view/id">
       <fieldset>
-        <legend i18n:domain="plone" i18n:translate="" tal:content="view/default_fieldset_label|view/form_name" >Default fieldset</legend>
+        <legend i18n:domain="plone" i18n:translate="" tal:content="view/default_fieldset_label|view/label">Default fieldset</legend>
         <tal:widget repeat="widget view/widgets/values" replace="structure widget/render" />
       </fieldset>
 
