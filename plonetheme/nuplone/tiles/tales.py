@@ -31,7 +31,7 @@ class TileTranslator(ExpressionTranslator):
     implements(IExpressionTranslator)
 
     symbol = "_lookup_tile"
-    re_name = re.compile(r"^[a-z]+$")
+    re_name = re.compile(r"^[a-zA-Z0-9_.-]+$")
 
     def translate(self, string, escape=None):
         if not string:
