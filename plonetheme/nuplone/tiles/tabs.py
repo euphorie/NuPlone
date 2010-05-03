@@ -5,10 +5,13 @@ from Products.CMFCore.utils import getToolByName
 from Acquisition import aq_inner
 
 class TabsTile(Tile):
+    def getRoot(self):
+        return getNavigationRoot(aq_inner(self.context))
+
     def update(self):
         context=aq_inner(self.context)
         contextUrl=context.absolute_url()
-        navroot=getNavigationRoot(context)
+        navroot=self.getRoot()
         navrootPath="/".join(navroot.getPhysicalPath())
         portal_properties=getToolByName(self.context, "portal_properties")
         use_view_types=portal_properties.site_properties.typesUseViewActionInListings
