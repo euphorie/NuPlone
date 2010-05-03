@@ -4,7 +4,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:meta="http://xml.zope.org/namespaces/meta"
       meta:interpolation="true"
-      tal:define="tools context/@@tools">
+      tal:define="tools context/@@tools; factories view/factories">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.libraries/css_browser_selector.js"></script>
@@ -35,10 +35,10 @@
           </li>
         </ul>
       </li>
-      <tal:block condition="python:view.view_type=='view'">
+      <tal:block condition="python:view.view_type=='view' and (factories or view.can_copy or view.can_cut or view.can_paste or view.can_delete)">
         <li>
           <a href="#">Actions</a>
-          <ul tal:define="factories view/factories">
+          <ul tal:define="factories factories">
             <li tal:condition="python:factories">Add new
               <ul>
                 <li tal:repeat="factory factories">
