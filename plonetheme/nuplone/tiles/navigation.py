@@ -53,8 +53,6 @@ class CatalogNavTree(object):
         cache={}
         cache[navrootPath]={"isCurrent": False, "isCurrentParent": True, "children": []}
         for brain in results:
-            if brain.exclude_from_nav:
-                continue
             path=brain.getPath()
             pathLen=len(path)
             parentPath=path.rsplit("/", 1)[0]
@@ -64,6 +62,9 @@ class CatalogNavTree(object):
             elif contextPathLen>pathLen:
                 ancestor=contextPath.startswith(path+"/")
                 currentParent=ancestor and path.count("/")==parentDepth
+
+            if brain.exclude_from_nav and not currentParent:
+                continue
 
             node={"brain": brain,
                   "current" : current,
