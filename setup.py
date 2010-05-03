@@ -29,7 +29,7 @@ setup(name="NuPlone",
       install_requires=[
           "setuptools",
           "Plone >=4.0dev",
-          "Zope2 >=2.10.12.5dev",
+          "Zope2 >=2.12.5",
           "cmf.pt",
           "five.pt >= 0.9",
           "five.grok",
