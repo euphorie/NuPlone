@@ -6,7 +6,8 @@ from Acquisition import aq_inner
 
 class TabsTile(Tile):
     def getRoot(self):
-        return getNavigationRoot(aq_inner(self.context))
+        return getNavigationRoot(self.context)
+
 
     def update(self):
         context=aq_inner(self.context)
