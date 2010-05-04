@@ -32,3 +32,8 @@ class GroupTile(AppConfigTile):
             tile=getTile(context, request, result.group("name"))
             self.tiles.append(tile)
 
+
+    def __call__(self):
+        self.update()
+        return self.index()
+
