@@ -43,6 +43,7 @@ setup(name="NuPlone",
           "plone.supermodel",
           "plone.formwidget.namedfile >1.0b4",
           "plone.app.tinymce",
+          "z3c.appconfig",
       ],
       entry_points="""
       """,
