@@ -5,5 +5,5 @@
       meta:interpolation="true"
       tal:condition="view/tiles"
       tal:omit-tag="">
-  <tal:tile repeat="tile view/tiles" replace="tile"/>
+  <tal:tile repeat="tile view/tiles" replace="structure tile"/>
 </div>
