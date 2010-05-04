@@ -36,17 +36,8 @@ class AppConfigTileDataManager(object):
 
 def getTile(context, request, name):
     appconfig=getUtility(IAppConfig)
-    config=appconfig.get("tile:%s" % name)
-    if not config:
-        log.warn("Detected reference to non-existing tile '%s' for context %r",
-                 name, context)
-        return None
-
-    type=config.get("type")
-    if not type:
-        log.warn("Tile '%s' has no type configured.", name)
-        return None
-
+    config=appconfig.get("tile:%s" % name, {})
+    type=config.get("type", name)
     tile=queryMultiAdapter((context, request), Interface, name=type)
     if tile is None:
         log.warn("Detected reference to non-existing tile '%s' for context %r",
