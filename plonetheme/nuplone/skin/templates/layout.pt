@@ -22,13 +22,13 @@
       <div id="mainContent">
         <metal:block define-slot="content"/>
       </div>
-      <tal:block replace="structure tile:navigation"/>
+      <tal:block replace="tile:navigation"/>
     </div>
-    <tal:block replace="structure tile:tabs"/>
+    <tal:block replace="tile:tabs"/>
     <p>
       <object id="siteMenu" type="text/html" data="${string:${context/absolute_url}/@@sitemenu}?view_type=${tools/view_type}"></object>
     </p>
-    <metal:block define-slot="actions"/>
+    <tal:block replace="tile:actions"/>
     <script type="text/javascript">
       var plone = { portal_url : '${tools/portal/absolute_url}}',
                     context_url : '${context/absolute_url}' };
