@@ -28,7 +28,7 @@ class AppConfigTileDataManager(object):
 
     def get(self):
         appconfig=getUtility(IAppConfig)
-        return appconfig.get("tile:%s" % self.id, {})
+        return appconfig.get("tile:%s" % self.tile.id, {})
 
     def set(self, data):
         raise NotImplementedError
