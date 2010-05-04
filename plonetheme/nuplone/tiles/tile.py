@@ -44,7 +44,8 @@ def getTile(context, request, name):
                  name, context)
         return None
 
-    tile.id=name
+    if IAppConfigTile.providedBy(tile):
+        tile.id=name
 
     return tile
 
