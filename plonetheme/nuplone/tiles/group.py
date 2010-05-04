@@ -12,6 +12,7 @@ class GroupTile(AppConfigTile):
 
     def update(self):
         self.tiles=[]
+        self.tag=self.data.get("wrapper", "tal:block")
         tiles=self.data.get("tiles", "").strip().splitlines()
         context=aq_inner(self.context)
         request=self.request
@@ -35,5 +36,20 @@ class GroupTile(AppConfigTile):
 
     def __call__(self):
         self.update()
-        return self.index()
+        if not self.tiles:
+            return u""
+        result=self.index()
+        config=self.data
+        wrapper=config.get("wrapper")
+        if wrapper:
+            prefix=[u"<%s" % wrapper]
+            if config.get("id"):
+                prefix.append(u' id="%s"' % config["id"])
+            if config.get("class"):
+                prefix.append(u' class="%s"' % config["class"])
+            prefix.append(u">")
+            prefix=u"".join(prefix)
+            postfix=u"</%s>" % wrapper
+            result=u"%s%s%s" % (prefix, result, postfix)
+        return result
 
