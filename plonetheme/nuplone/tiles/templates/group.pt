@@ -3,7 +3,6 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       meta:interpolation="true"
-      tal:condition="view/tiles"
       tal:omit-tag="">
   <tal:tile repeat="tile view/tiles" replace="structure tile"/>
 </div>
