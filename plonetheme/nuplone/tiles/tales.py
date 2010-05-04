@@ -1,28 +1,19 @@
 import logging
 import re
-from zope.interface import Interface
-from zope.component import queryMultiAdapter
 from chameleon.zpt.expressions import ExpressionTranslator
 from chameleon.zpt.interfaces import IExpressionTranslator
 from chameleon.core import types
 from zope.interface import implements
+from plonetheme.nuplone.tiles.tile import getTile
+from plonetheme.nuplone.utils import SimpleLiteral
 
 log = logging.getLogger(__name__)
 
 
-class SimpleLiteral(unicode):
-    def __html__(self):
-        return unicode(self)
-
-
-
 def _lookup_tile(context, request, name):
-    tile=queryMultiAdapter((context, request), Interface, name=name)
+    tile=getTile(context, request, name)
     if tile is None:
-        log.warn("Detected reference to non-existing tile '%s' for context %r",
-                 name, context)
         return u""
-
     return SimpleLiteral(tile())
 
 

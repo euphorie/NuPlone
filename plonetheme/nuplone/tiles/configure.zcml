@@ -5,6 +5,7 @@
 
   <include package="plone.tiles" file="meta.zcml" />
   <include package="plone.tiles" />
+  <include package="z3c.appconfig" file="meta.zcml" />
 
   <adapter
     factory=".navigation.TreeFactory" />
@@ -12,6 +13,26 @@
   <utility
     name="tile"
     factory=".tales.TileTranslator"/>
+
+  <adapter
+    factory=".tile.AppConfigTileDataManager" />
+
+  <plone:tile
+    name="group"
+    title="Tile group"
+    add_permission="cmf.ManagePortal"
+    class=".group.GroupTile"
+    template="templates/group.pt"
+    permission="zope.Public"
+    />
+
+  <plone:tile
+    name="static"
+    title="Static content tile"
+    add_permission="cmf.ManagePortal"
+    class=".static.StaticTile"
+    permission="zope.Public"
+    />
 
   <plone:tile
     name="navigation"

@@ -1,0 +1,9 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:meta="http://xml.zope.org/namespaces/meta"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      meta:interpolation="true"
+      tal:condition="view/tiles"
+      tal:omit-tag="">
+  <tal:tile repeat="tile view/tiles" replace="tile"/>
+</div>

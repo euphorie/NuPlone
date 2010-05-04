@@ -20,3 +20,36 @@ def getNavigationRoot(context):
 def checkPermission(context, permission):
     return getSecurityManager().checkPermission(permission, context)
 
+
+def viewType(context, request):
+    """Determine what type of view the user is looking at. This returns
+    one of three options: ``view`` for normal object views, ``edit``
+    for edit forms, and ``other`` for all other types."""
+# XXX How to check for add views?
+
+    for url in [ "ACTUAL_URL", "VIRTUAL_URL", "URL" ]:
+        current_url=request.get(url)
+        if current_url is not None:
+            break
+    else:
+        return "view"
+
+    if current_url.endswith("/"):
+        current_url=current_url[:-1]
+
+    if current_url.endswith("@@edit"):
+        return "edit"
+
+    if current_url==aq_inner(context).absolute_url():
+        return "view"
+
+    return "other"
+
+
+
+class SimpleLiteral(unicode):
+    def __html__(self):
+        return unicode(self)
+
+
+
