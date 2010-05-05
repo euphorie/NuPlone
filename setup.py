@@ -44,6 +44,7 @@ setup(name="NuPlone",
           "plone.formwidget.namedfile >1.0b4",
           "plone.app.tinymce",
           "z3c.appconfig",
+          "p01.widget.password",
       ],
       entry_points="""
       """,
