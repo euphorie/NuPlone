@@ -7,7 +7,7 @@ from plonetheme.nuplone.utils import viewType
 _compiles = {}
 
 class GroupTile(AppConfigTile):
-    TILE_EXPR = re.compile("(?P<name>\S+)\s*(?:\[(?P<condition>[^]]*)\])?")
+    TILE_EXPR = re.compile("(?P<name>\S+)\s*(?:\[(?P<condition>.*)\])?")
     tiles = []
 
     def update(self):
