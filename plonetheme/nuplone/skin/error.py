@@ -1,5 +1,7 @@
 import logging
+from Acquisition import aq_base
 from Acquisition import aq_inner
+from Acquisition import aq_chain
 from Acquisition import aq_parent
 from five import grok
 from plonetheme.nuplone.skin.interfaces import NuPloneSkin
@@ -19,8 +21,11 @@ class Error(grok.View):
 
     def update(self):
         self.exception=aq_inner(self.context)
-        self.context=aq_parent(self)
-        log.exception("Error at %r", self.context)
+        self.context=context=aq_parent(self)
+        try:
+            log.exception("Error at %s", repr(context))
+        except zExceptions.Unauthorized:
+            pass
 
 
 class NotFound(Error):
@@ -31,4 +36,20 @@ class NotFound(Error):
 class Unauthorized(Error):
     grok.context(zExceptions.Unauthorized)
     grok.template("error_unauthorized")
+
+    def authenticate(self):
+        """Try to authenticate the user manually, since ZPublisher dropped the
+        user whenn it failed to validate access."""
+        for parent in aq_chain(aq_inner(self.context)):
+            if hasattr(aq_base(parent), "acl_users"):
+                uf=parent.acl_users
+                try:
+                    return uf.validate(self.request, None, roles=["Anonymous"])
+                except zExceptions.Unauthorized:
+                    pass
+
+
+    def update(self):
+        super(Unauthorized, self).update()
+        self.authenticate()
 
