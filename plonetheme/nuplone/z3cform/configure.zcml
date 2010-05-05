@@ -159,6 +159,12 @@
     template="templates/namedimage_input.pt"
     />
 
+  <adapter
+    factory="p01.widget.password.PasswordConfirmationFieldWidget"
+    for="zope.schema.interfaces.IPassword
+         .interfaces.INuPloneFormLayer"
+    />
+
   <z3c:widgetTemplate
     mode="input"
     widget="p01.widget.password.interfaces.IPasswordConfirmationWidget"
