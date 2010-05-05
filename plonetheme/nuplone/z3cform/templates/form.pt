@@ -20,7 +20,7 @@
       <fieldset>
         <legend i18n:domain="plone" i18n:translate=""
           tal:define="legend view/default_fieldset_label|view/label"
-          tal:condition=legend" tal:content="legend">Default fieldset</legend>
+          tal:condition="legend" tal:content="legend">Default fieldset</legend>
         <tal:widget repeat="widget view/widgets/values" replace="structure widget/render" />
       </fieldset>
 
