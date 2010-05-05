@@ -35,7 +35,7 @@
     />
 
   <plone:tile
-    name="navigation"
+    name="navtree"
     title="Navigation tree"
     add_permission="cmf.ManagePortal"
     class=".navigation.NavigationTile"
