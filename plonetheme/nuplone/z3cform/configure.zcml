@@ -20,6 +20,13 @@
     template="templates/toolbar.pt"
     />
 
+  <browser:page
+    name="edit-link"
+    for="*"
+    permission="cmf.ModifyPortalContent"
+    template="templates/editlink.pt"
+    />
+
   <browser:resource
     name="NuPlone.z3cform.js"
     file="templates/behaviour.js"

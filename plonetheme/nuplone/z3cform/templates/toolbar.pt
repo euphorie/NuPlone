@@ -1,7 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:tal="http://xml.zope.org/namespaces/tal">
+      xmlns:meta="http://xml.zope.org/namespaces/meta"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      meta:interpolation="true"
+      tal:define="tools context/@@tools">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" media="all" href="http://www.2style4you.com/static61/public/cms/presentation/drawer/style/base.css"/>
@@ -23,10 +26,16 @@
           <button type="button" class="icon subscript">Subscript</button>
           <button type="button" class="icon superscript">Superscript</button>
         </fieldset>
+
+        <button type="button" class="icon link" title="Hyperlink">Hyperlink</button>
       </div>
     </div>
-    <script type="text/javascript" tal:attributes="src context/++resource++NuPlone.libraries/jquery-1.4.2.js"></script>
+    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery-1.4.2.js"></script>
     <script type="text/javascript">
+      var plone = { portal_url : '${tools/portal/absolute_url}',
+                    context_url : '${context/absolute_url}' };
+    </script>
+    <script type="text/javascript" meta:interpolation="false">
       function getTiny() {
           var topDoc = window.frameElement.ownerDocument,
               topWindow = topDoc.defaultView!==undefined ? topDoc.defaultView : topDoc.parentWindow;
@@ -47,6 +56,13 @@
           getTiny().execCommand("Subscript"); return false; });
       $("#editorFunctions .superscript").live("click", function() {
           getTiny().execCommand("Superscript"); return false; });
+
+      $("#editorFunctions .link").live("click", function() {
+          var topDoc = window.frameElement.ownerDocument,
+              $linkFrame = $("#linkFrame", topDoc);
+
+          $linkFrame.get(0).contentWindow.show();
+      });
     </script>
   </body>
 </html>

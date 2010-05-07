@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n" 
+      xmlns:meta="http://xml.zope.org/namespaces/meta"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      meta:interpolation="true"
+      i18n:domain="nuplone"
+      tal:define="tools context/@@tools">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" media="all" href="http://www.2style4you.com/static61/public/cms/presentation/drawer/style/base.css"/>
+  </head>
+  <body id="links" class="dropSheet">
+    <h1>Place a Link</h1>
+
+    <div id="external" class="formSection">
+      <form action="${request/getURL}" method="${view/method}" enctype="${view/enctype}">
+        <fieldset class="concise">
+          <tal:widget replace="structure view/widgets/URL/render" />
+          <tal:widget replace="structure view/widgets/title/render" />
+          <tal:widget replace="structure view/widgets/new_window/render" />
+        </fieldset>
+        <div class="buttonBar">
+          <button name="form.buttons.save" class="save" type="button">Save changes</button>
+          <button name="form.buttons.cancel" class="cancel" type="button">Cancel</button>
+        </div>
+      </form>
+    </div>
+    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery-1.4.2.js"></script>
+    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery.form.js"></script>
+    <script type="text/javascript" meta:interpolation="false">
+// <![CDATA[
+    function reset() {
+        $("input[type=text]").val(null);
+        $("input[type=checkbox]").attr("checked", "checked");
+        $("em.message.warning").remove();
+    }
+
+    function hide() {
+        var topDoc = window.frameElement.ownerDocument;
+        $("#linkFrame", topDoc).hide();
+    }
+
+
+    function show(el) {
+        var topDoc = window.frameElement.ownerDocument;
+
+        if (el===undefined) {
+            reset();
+        } else {
+            var topWindow = topDoc.defaultView!==undefined ? topDoc.defaultView : topDoc.parentWindow,
+                $link = $(el),
+                link = $link.attr("href"),
+                title = $link.attr("title"),
+                newwindow = $link.attr("target")==="_blank";
+            
+            topWindow.getSelection().selectAllChildren(el);
+            $("input[name=form.widgets.new_window:list]").get(0).checked = $link.attr("target")==="_blank";
+            $("input[name=form.widgets.URL]").val($link.attr("href"));
+            $("input[name=form.widgets.title]").val($link.attr("title"));
+        }
+
+        $("#linkFrame", topDoc).show();
+    }
+        
+
+    // http://www.quirksmode.org/dom/range_intro.html
+    function getRangeObject(selectionObject) {
+        if (selectionObject.getRangeAt)
+            return selectionObject.getRangeAt(0);
+        else { // Safari!
+            var range = document.createRange();
+            range.setStart(selectionObject.anchorNode,selectionObject.anchorOffset);
+            range.setEnd(selectionObject.focusNode,selectionObject.focusOffset);
+            return range;
+        }
+    }
+
+    function InsertURL(url, title, newwindow) {
+        var topDoc = window.frameElement.ownerDocument,
+            topWindow = topDoc.defaultView!==undefined ? topDoc.defaultView : topDoc.parentWindow,
+            selection = topWindow.getSelection(),
+            range = getRangeObject(selection),
+            link = $("<a/>").attr("href", url);
+
+        if (newwindow) {
+            link.attr("target", "_blank");
+        }
+
+        if (range.collapsed) {
+            link.text(title);
+            range.insertNode(link.get(0));
+        } else {
+            if (selection.anchorNode.nodeType===Node.ELEMENT_NODE &&
+                      selection.anchorNode.tagName.toLowerCase()==="a") {
+                link.text(range.toString());
+                try {
+                    range.startContainer.parentNode.insertBefore(link.get(0), range.StartContainer);
+                    $(range.startContainer).remove();
+                } catch (ex) {
+                    alert(ex);
+                }
+            } else {
+                try {
+                    range.surroundContents(link.get(0));
+                } catch(err) {
+                    /* Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=520001 */
+                    link=link.get(0);
+                    link.appendChild(range.extractContents());
+                    range.insertNode(link);
+                    range.selectNode(link);
+                }
+            }
+        }
+    }
+
+
+    $("button.cancel").live("click", hide);
+
+    $("button.save").live("click", function() {
+        var form = this.form,
+            link = form["form.widgets.URL"].value,
+            title = form["form.widgets.title"].value,
+            newwindow = form["form.widgets.new_window:list"].checked;
+        if (link.indexOf(":")===-1 && link[0]!=="/") {
+            link="http://"+link;
+        }
+        InsertURL(link, title, newwindow);
+        hide();
+    });
+// ]]>
+    </script>
+  </body>
+</html>

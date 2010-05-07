@@ -42,21 +42,52 @@
     });
 
     $(window).load(function() {
-        function onTinyActivate(ed) {
-            var $controls = $("#tinyControls");
-            if (!$controls.length) {
-                var $wrapper = $("#frameWrapper");
-                if (!$wrapper.length) {
-                    $wrapper=$("<p/>").attr("id", "frameWrapper").appendTo(document.body);
+        function onTinySetup(ed) {
+            ed.onDblClick.add(function(ed, e) {
+                if (e.target.nodeName.toLowerCase()=="a") {
+                    $("#linkFrame").get(0).contentWindow.show(e.target);
                 }
+            });
+        }
+
+        function onTinyActivate(ed) {
+            var $wrapper = $("#frameWrapper"),
+                $controls;
+
+            if (!$wrapper.length) {
+                $wrapper=$("<p/>").attr("id", "frameWrapper").appendTo(document.body);
+            }
+
+            $controls = $("#tinyControls");
+            if (!$controls.length) {
                 $("<object/>")
                     .attr("id", "tinyControls")
                     .attr("type", "text/html")
-                    .attr("data", plone.portal_url+"/@@tiny-controls")
+                    .attr("data", plone.context_url+"/@@tiny-controls")
                     .css("position", "absolute")
                     .css("top", "0px")
                     .css("left", "0px")
-                    .css("z-index", "100")
+                    .css("z-index", "1100")
+                    .appendTo($wrapper);
+            }
+
+            $controls = $("#linkFrame");
+            if (!$controls.length) {
+                $("<iframe/>")
+                    .attr("id", "linkFrame")
+                    .attr("src", plone.context_url+"/@@edit-link")
+                    .attr("frameborder", "0")
+                    .css("z-index", "1100")
+                    .css("height", "250px")
+                    .css("width", "510px")
+                    .css("margin-left", "-255px")
+                    .css("left", "50%")
+                    .css("position", "absolute")
+                    .css("top", "50px")
+                    .css("-webkit-box-shadow", "0 0 15px rgba(0,0,0,0.5)")
+                    .css("-moz-box-shadow", "0 0 15px rgba(0,0,0,0.5)")
+                    .css("box-shadow", "0 0 15px rgba(0,0,0,0.5)")
+                    .css("display", "none")
                     .appendTo($wrapper);
             }
         }
@@ -70,7 +101,8 @@
                       entity_encoding: "raw",
                       content_editable: true,
                       forced_root_block: null,
-                      on_activate: onTinyActivate
+                      on_activate: onTinyActivate,
+                      setup: onTinySetup
                      });
 
         $("textarea.rich").each(function() {
