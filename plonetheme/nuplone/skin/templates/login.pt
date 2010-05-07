@@ -9,8 +9,8 @@
       metal:use-macro="context/@@layout/macros/layout"
       meta:interpolation="true">
   <body>
+    <h1 metal:fill-slot="title">Login</h1>
     <metal:content fill-slot="content">
-      <h1>Login</h1>
 
       <p tal:condition="not:view/anonymous" class="notice message">
         You are already logged in. Please logout first before trying to login again. 

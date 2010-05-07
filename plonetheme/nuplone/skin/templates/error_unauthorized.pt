@@ -10,9 +10,11 @@
       tal:define="tools context/@@tools"
       metal:use-macro="context/@@layout/macros/layout">
   <body>
-    <metal:content fill-slot="content">
+    <metal:title fill-slot="title">
       <h1 tal:condition="tools/anonymous">Login</h1><h1 tal:condition="not:tools/anonymous">Unauthorized</h1>
+    </metal:title>
 
+    <metal:content fill-slot="content">
       <p class="message notice" tal:condition="not:tools/anonymous">
         I am afraid you are not authorised to do this.
       </p>

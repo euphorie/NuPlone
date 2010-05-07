@@ -20,6 +20,8 @@
   <body>
     <div id="content">
       <div id="mainContent">
+        <metal:block define-slot="title"/>
+        <tal:block replace="tile:statusmessages"/>
         <metal:block define-slot="content"/>
       </div>
       <tal:block replace="tile:navigation"/>

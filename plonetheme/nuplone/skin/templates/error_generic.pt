@@ -7,9 +7,9 @@
       i18n:domain="nuplone"
       metal:use-macro="context/@@layout/macros/layout">
   <body>
-    <metal:content fill-slot="content">
-      <h1>Oops</h1>
+    <h1 metal:fill-slot="title">Oops</h1>
 
+    <metal:content fill-slot="content">
       <p>Something went wrong while trying to serve your request.</p>
     </metal:content>
   </body>
