@@ -52,4 +52,12 @@
     permission="zope.Public"
     />
 
+  <plone:tile
+    name="statusmessages"
+    title="Status messages"
+    add_permission="cmf.ManagePortal"
+    class=".messages.StatusmessagesTile"
+    template="templates/messages.pt"
+    permission="zope.Public"
+    />
 </configure>
