@@ -26,10 +26,7 @@
                 <a href="${tools/portal_url}/@@logout">Log out</a>
               </li>
               <li>
-                <a href="${tools/navroot_url}/@@plone_memberprefs_panel">Preferences</a>
-              </li>
-              <li>
-                <a href="${tools/navroot_url}/@@dashboard">Profile</a>
+                <a href="${tools/settings_url">Settings</a>
               </li>
             </ul>
           </li>

@@ -22,6 +22,10 @@ class Sitemenu(grok.View):
     grok.layer(NuPloneSkin)
     grok.template("sitemenu")
 
+    @property
+    def settings_url(self):
+        return "%s/@@settings" % self.navroot_url
+
     def update(self):
         self.view_type=self.request.get("view_type", "view")
 
