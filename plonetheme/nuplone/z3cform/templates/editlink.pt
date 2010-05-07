@@ -82,31 +82,31 @@
             topWindow = topDoc.defaultView!==undefined ? topDoc.defaultView : topDoc.parentWindow,
             selection = topWindow.getSelection(),
             range = getRangeObject(selection),
-            link = $("<a/>").attr("href", url);
+            $link = $("<a/>").attr("href", url).attr("title", title ? title : null),
+            link = $link.get(0);
 
         if (newwindow) {
-            link.attr("target", "_blank");
+            $link.attr("target", "_blank");
         }
 
         if (range.collapsed) {
-            link.text(title);
-            range.insertNode(link.get(0));
+            $link.text(title);
+            range.insertNode(link);
         } else {
             if (selection.anchorNode.nodeType===Node.ELEMENT_NODE &&
                       selection.anchorNode.tagName.toLowerCase()==="a") {
-                link.text(range.toString());
+                link.innerHTML=selection.anchorNode.innerHTML;
                 try {
-                    range.startContainer.parentNode.insertBefore(link.get(0), range.StartContainer);
+                    range.startContainer.parentNode.insertBefore(link, range.startContainer);
                     $(range.startContainer).remove();
                 } catch (ex) {
                     alert(ex);
                 }
             } else {
                 try {
-                    range.surroundContents(link.get(0));
+                    range.surroundContents(link);
                 } catch(err) {
                     /* Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=520001 */
-                    link=link.get(0);
                     link.appendChild(range.extractContents());
                     range.insertNode(link);
                     range.selectNode(link);
