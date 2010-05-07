@@ -83,7 +83,7 @@
                     .css("margin-left", "-255px")
                     .css("left", "50%")
                     .css("position", "absolute")
-                    .css("top", "50px")
+                    .css("top", "70px")
                     .css("-webkit-box-shadow", "0 0 15px rgba(0,0,0,0.5)")
                     .css("-moz-box-shadow", "0 0 15px rgba(0,0,0,0.5)")
                     .css("box-shadow", "0 0 15px rgba(0,0,0,0.5)")
