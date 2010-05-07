@@ -32,7 +32,7 @@
     </p>
     <tal:block replace="tile:actions"/>
     <script type="text/javascript">
-      var plone = { portal_url : '${tools/portal/absolute_url}}',
+      var plone = { portal_url : '${tools/portal/absolute_url}',
                     context_url : '${context/absolute_url}' };
     </script>
     <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.libraries/jquery-1.4.2.js"></script>
