@@ -92,29 +92,42 @@
         if (range.collapsed) {
             $link.text(title);
             range.insertNode(link);
+        } else if (selection.anchorNode.nodeType===Node.ELEMENT_NODE &&
+                  selection.anchorNode.tagName.toLowerCase()==="a") {
+            var oldlink = selection.anchorNode;
+
+            link.innerHTML=oldlink.innerHTML;
+            try {
+                oldlink.parentNode.insertBefore(link, oldlink);
+                $(oldlink).remove();
+            } catch (ex) {
+                alert(ex);
+            }
+        } else if (selection.anchorNode.nodeType===Node.TEXT_NODE &&
+                  selection.anchorNode.parentNode.nodeType===Node.ELEMENT_NODE &&
+                  selection.anchorNode.parentNode.tagName.toLowerCase()==="a") {
+            // Safari bug: selection.selectAllChildren should include the top node
+            // as well, but instead only its children are added.
+            var oldlink = selection.anchorNode.parentNode;
+
+            link.innerHTML=oldlink.innerHTML;
+            try {
+                oldlink.parentNode.insertBefore(link, oldlink);
+                $(oldlink).remove();
+            } catch (ex) {
+                alert(ex);
+            }
         } else {
-            if (selection.anchorNode.nodeType===Node.ELEMENT_NODE &&
-                      selection.anchorNode.tagName.toLowerCase()==="a") {
-                link.innerHTML=selection.anchorNode.innerHTML;
-                try {
-                    range.startContainer.parentNode.insertBefore(link, range.startContainer);
-                    $(range.startContainer).remove();
-                } catch (ex) {
-                    alert(ex);
-                }
-            } else {
-                try {
-                    range.surroundContents(link);
-                } catch(err) {
-                    /* Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=520001 */
-                    link.appendChild(range.extractContents());
-                    range.insertNode(link);
-                    range.selectNode(link);
-                }
+            try {
+                range.surroundContents(link);
+            } catch(err) {
+                /* Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=520001 */
+                link.appendChild(range.extractContents());
+                range.insertNode(link);
+                range.selectNode(link);
             }
         }
     }
-
 
     $("button.cancel").live("click", hide);
 
