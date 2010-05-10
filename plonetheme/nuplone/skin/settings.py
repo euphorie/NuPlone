@@ -7,7 +7,6 @@ from plone.directives import form
 from plonetheme.nuplone import MessageFactory as _
 from z3c.form.interfaces import IDataManager
 from z3c.form.interfaces import NO_VALUE
-from z3c.form.button import buttonAndHandler
 from Products.PluggableAuthService.interfaces.authservice import IPropertiedUser
 from Products.CMFCore.interfaces import ISiteRoot
 from Products.CMFCore.utils import getToolByName
