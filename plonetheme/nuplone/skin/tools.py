@@ -4,6 +4,7 @@ from zope.interface import Interface
 from five import grok
 from plonetheme.nuplone.skin.interfaces import NuPloneSkin
 from plonetheme.nuplone import utils
+from z3c.form.form import Form
 
 class Tools(grok.View):
     """Basic view to expose utilties to templates."""
@@ -25,6 +26,9 @@ class Tools(grok.View):
         """Little trick to make it easier to access this via from a TALES
         expression."""
         return self
+
+    def is_form(self):
+        return isinstance(self.request["PUBLISHED"], Form)
 
     def view_type(self):
         return utils.viewType(self.context, self.request)

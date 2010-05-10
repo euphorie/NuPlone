@@ -17,7 +17,7 @@
     <!--[if IE 8]> <link rel="stylesheet" type="text/css" media="all" tal:attributes="href tools/portal/++resource++NuPlone.style/main/base-ie8.css" /> <![endif]-->
     <title> — </title>
   </head>
-  <body>
+  <body class="${python:'edit' if tools.is_form() else None}">
     <div id="content">
       <div id="mainContent">
         <metal:block define-slot="title"/>
