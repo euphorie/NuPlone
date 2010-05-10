@@ -42,14 +42,6 @@
     });
 
     $(window).load(function() {
-        function onTinySetup(ed) {
-            ed.onDblClick.add(function(ed, e) {
-                if (e.target.nodeName.toLowerCase()=="a") {
-                    $("#linkFrame").get(0).contentWindow.show(e.target);
-                }
-            });
-        }
-
         function onTinyActivate(ed) {
             var $wrapper = $("#frameWrapper"),
                 $controls;
@@ -58,17 +50,26 @@
                 $wrapper=$("<p/>").attr("id", "frameWrapper").appendTo(document.body);
             }
 
+            function triggerActive() {
+                try {
+                    $("#tinyControls").get(0).contentWindow.activate(ed);
+                } catch(e) {
+                }
+            }
+
             $controls = $("#tinyControls");
             if (!$controls.length) {
-                $("<object/>")
+                $("<iframe/>")
                     .attr("id", "tinyControls")
-                    .attr("type", "text/html")
-                    .attr("data", plone.context_url+"/@@tiny-controls")
+                    .attr("src", plone.context_url+"/@@tiny-controls")
                     .css("position", "absolute")
                     .css("top", "0px")
                     .css("left", "0px")
                     .css("z-index", "1100")
-                    .appendTo($wrapper);
+                    .appendTo($wrapper)
+                    .load(triggerActive);
+            } else {
+                triggerActive();
             }
 
             $controls = $("#linkFrame");
@@ -92,6 +93,29 @@
             }
         }
 
+	function onTinyDeactivate(ed) {
+            try {
+                $("#tinyControls").get(0).contentWindow.deactivate(ed);
+            } catch(e) {
+            }
+	}
+
+        function onTinySetup(ed) {
+            ed.onDblClick.add(function(ed, e) {
+                if (e.target.nodeName.toLowerCase()=="a") {
+                    $("#linkFrame").get(0).contentWindow.show(e.target);
+                }
+            });
+
+	    ed.onActivate.add(onTinyActivate);
+	    ed.onDeactivate.add(onTinyDeactivate);
+        }
+
+        $(":input").live("focus", function() {
+                tinymce.EditorManager._setActive(null);
+                onTinyDeactivate();
+        });
+
         tinyMCE.init({mode: "none",
                       theme: "dummy",
                       plugins: "linefield",
@@ -101,7 +125,6 @@
                       entity_encoding: "raw",
                       content_editable: true,
                       forced_root_block: null,
-                      on_activate: onTinyActivate,
                       setup: onTinySetup
                      });
 

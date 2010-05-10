@@ -42,6 +42,14 @@
           return topWindow.tinyMCE;
       }
 
+      function activate(ed) {
+          $("button").show();
+      }
+
+      function deactivate(ed) {
+          $("button").hide();
+      }
+
       $("#editorFunctions .strong").live("click", function() {
           getTiny().execCommand("Bold"); return false; });
       $("#editorFunctions .emphasised").live("click", function() {
