@@ -27,8 +27,5 @@ class Tools(grok.View):
         expression."""
         return self
 
-    def is_form(self):
-        return isinstance(self.request["PUBLISHED"], Form)
-
     def view_type(self):
         return utils.viewType(self.context, self.request)

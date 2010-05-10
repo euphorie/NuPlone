@@ -21,7 +21,7 @@
         }
     }
 
- 
+
     $(".multiWidget > button.add").live("click", function() {
         var $button = $(this),
             url = $button.val();
@@ -70,6 +70,10 @@
                     .load(triggerActive);
             } else {
                 triggerActive();
+            }
+
+            if (!$("body").hasClass("edit")) {
+                $("body").addClass("edit");
             }
 
             $controls = $("#linkFrame");
@@ -132,7 +136,7 @@
             var $textarea = $(this),
                 id = $textarea.attr("id"),
                 $div = $("<div/>");
-                
+
             $div
                 .attr("id", id)
                 .addClass("rich input")
