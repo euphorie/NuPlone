@@ -18,7 +18,7 @@
         <a href="${tools/navroot_url}/@@login?came_from=${request/environ/HTTP_REFERER|context/absolute_url}">Login</a>
       </li>
       <li id="user" tal:condition="not:tools/anonymous">
-        <a href="${tools/navroot_url}/@@dashboard">${python:tools.user.getProperty('fullname', tools.user.getUserName())}</a>
+        <a href="${tools/navroot_url}/@@dashboard">${python:tools.user.getProperty('fullname', '') or tools.user.getUserName()}</a>
         <ul>
           <li>
             <ul>
