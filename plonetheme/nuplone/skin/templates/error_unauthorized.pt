@@ -38,6 +38,8 @@
             <button type="submit">Login</button>
           </div>
         </form>
+
+        <p>No account? Please <a href="${tools/portal_url}/@@contact">request an account</a>.</p>
       </tal:block>
 
     </metal:content>
