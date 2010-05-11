@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: NuPlone 1.0\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
 "POT-Creation-Date: 2010-05-11 11:17+0200\n"
-"PO-Revision-Date: 2010-05-11 11:21+0200\n"
+"PO-Revision-Date: 2010-05-11 13:05+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: nl <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -20,57 +20,59 @@ msgstr ""
 #. Default: Your name
 #: plonetheme/nuplone/skin/contact.py:22
 msgid "label_your_name"
-msgstr ""
+msgstr "Uw naam"
 
 #. Default: Email address
 #: plonetheme/nuplone/skin/contact.py:26 plonetheme/nuplone/skin/settings.py:20
 msgid "label_email"
-msgstr ""
+msgstr "E-mail adres"
 
 #. Default: Subject
 #: plonetheme/nuplone/skin/contact.py:30
 msgid "label_subject"
-msgstr ""
+msgstr "Onderwerp"
 
 #. Default: Your message
 #: plonetheme/nuplone/skin/contact.py:34
 msgid "label_contact_text"
-msgstr ""
+msgstr "Bericht"
 
 #. Default: Contact
 #: plonetheme/nuplone/skin/contact.py:66
 msgid "header_contact"
-msgstr ""
+msgstr "Contact formulier"
 
 #. Default: Send
 #: plonetheme/nuplone/skin/contact.py:69
 msgid "button_send"
-msgstr ""
+msgstr "Versturen"
 
 #. Default: Contact request: ${subject}
 #: plonetheme/nuplone/skin/contact.py:76
 msgid "contact_mail_subject"
-msgstr ""
+msgstr "Contact verzoek: ${subject}"
 
 #. Default: An error occured while your contact request. Please try again
 #. later.
 #: plonetheme/nuplone/skin/contact.py:90 plonetheme/nuplone/skin/contact.py:94
 msgid "error_contactmail"
-msgstr ""
+msgstr "Er is iets mis gegaan bij het versturen van uw bericht. Probeer het later nog een keer."
 
 #: plonetheme/nuplone/skin/contact.py:97
 msgid "Message sent"
-msgstr ""
+msgstr "Bericht verstuurd."
 
 #. Default: Full name
 #: plonetheme/nuplone/skin/settings.py:16
 msgid "label_fullname"
-msgstr ""
+msgstr "Naam"
 
 #. Default: Password
 #: plonetheme/nuplone/skin/settings.py:24
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:33
+#: plonetheme/nuplone/skin/templates/login.pt:26
 msgid "label_password"
-msgstr ""
+msgstr "Wachtwoord"
 
 #: plonetheme/nuplone/skin/templates/dexterity.pt:16
 #: plonetheme/nuplone/z3cform/templates/form.pt:32
@@ -83,6 +85,208 @@ msgstr ""
 #: plonetheme/nuplone/z3cform/templates/wrappedform.pt:17
 msgid "Default fieldset"
 msgstr ""
+
+#. Default: Something went wrong while trying to serve your request.
+#: plonetheme/nuplone/skin/templates/error_generic.pt:13
+msgid "message_error_generic"
+msgstr "Er is iets mis gegaan bij het afhandelen van uw verzoek."
+
+#. Default: Oops
+#: plonetheme/nuplone/skin/templates/error_generic.pt:10
+msgid "header_error_generic"
+msgstr "Oeps"
+
+#. Default: The object you were looking for does not exist on this server.
+#. Please
+#. check your spelling, or use the site search to find the item.
+#: plonetheme/nuplone/skin/templates/error_notfound.pt:13
+msgid "message_error_notfound"
+msgstr "De pagina die u probeert te te bekijken bestaat helaas niet. Controleer de URL, of gebruik de zoek optie om de juiste pagina te vinden."
+
+#. Default: Not found
+#: plonetheme/nuplone/skin/templates/error_notfound.pt:10
+msgid "header_error_notfound"
+msgstr "Niet gevonden"
+
+#. Default: No account? Please ${request_account}.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
+#: plonetheme/nuplone/skin/templates/login.pt:35
+msgid "message_no_account"
+msgstr "Geen account? ${request_account}."
+
+#. Default: request an account
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
+#: plonetheme/nuplone/skin/templates/login.pt:35
+msgid "message_no_account_request_account"
+msgstr "Vraag dan een account aan"
+
+#. Default: Login
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:38
+#: plonetheme/nuplone/skin/templates/login.pt:31
+msgid "button_login"
+msgstr "Login"
+
+#. Default: Login
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:31
+#: plonetheme/nuplone/skin/templates/login.pt:24
+msgid "label_login"
+msgstr "Login"
+
+#. Default: Credentials
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:29
+#: plonetheme/nuplone/skin/templates/login.pt:21
+msgid "legend_credentials"
+msgstr "Inloggegevens"
+
+#. Default: You need to be logged in to access this page.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:23
+msgid "message_error_not_logged_in"
+msgstr "Om deze pagina te bekijken moet je ingelogd zijn."
+
+#. Default: I am afraid you are not authorised to do this.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:18
+msgid "message_error_unauthorized"
+msgstr "U mag deze pagina niet bekijken."
+
+#. Default: Unauthorized
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
+msgid "header_error_unauthorized"
+msgstr "Niet toegestaan"
+
+#. Default: Login
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
+msgid "header_login"
+msgstr "Login"
+
+#. Default: Invalid login.
+#: plonetheme/nuplone/skin/templates/login.pt:17
+msgid "message_invalid_login"
+msgstr "Ongeldige login"
+
+#. Default: You are already logged in. Please logout first before trying to
+#. login
+#. again.
+#: plonetheme/nuplone/skin/templates/login.pt:15
+msgid "message_already_logged_in"
+msgstr "U bent reeds ingelogd."
+
+#. Default: Edit
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:65
+msgid "menu_edit"
+msgstr "Bewerk"
+
+#. Default: Delete
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:58
+msgid "menu_delete"
+msgstr "Verwijder"
+
+#. Default: Paste
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:55
+msgid "menu_paste"
+msgstr "Plak"
+
+#. Default: Cut
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:52
+msgid "menu_cut"
+msgstr "Knop"
+
+#. Default: Copy
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:49
+msgid "menu_copy"
+msgstr "Kopieër"
+
+#. Default: Add new
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:39
+msgid "menu_add_new"
+msgstr "Voeg toe"
+
+#. Default: Actions
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:37
+msgid "menu_actions"
+msgstr "Acties"
+
+#. Default: Settings
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:29
+msgid "menu_settings"
+msgstr "Instellingen"
+
+#. Default: Log out
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:26
+msgid "menu_logout"
+msgstr "Log uit"
+
+#. Default: Login
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:18
+msgid "menu_login"
+msgstr "Log in"
+
+#. Default: Site menu
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:12
+msgid "title_site_menu"
+msgstr "Site menu"
+
+#. Default: Submit
+#: plonetheme/nuplone/tiles/templates/tabs.pt:13
+msgid "button_submit"
+msgstr "Zoek"
+
+#. Default: Search
+#: plonetheme/nuplone/tiles/templates/tabs.pt:13
+msgid "menu_search"
+msgstr "Zoeken"
+
+#. Default: Home
+#: plonetheme/nuplone/tiles/templates/tabs.pt:9
+msgid "menu_home"
+msgstr "Thuis"
+
+#. Default: URL
+#: plonetheme/nuplone/z3cform/wysiwyg.py:11
+msgid "label_url"
+msgstr "URL"
+
+#. Default: Title
+#: plonetheme/nuplone/z3cform/wysiwyg.py:15
+msgid "label_title"
+msgstr "Titel"
+
+#. Default: Open link in new window
+#: plonetheme/nuplone/z3cform/wysiwyg.py:19
+msgid "label_new_window"
+msgstr "Open link in nieuw venster"
+
+#. Default: Year
+#: plonetheme/nuplone/z3cform/templates/date_input.pt:23
+#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:23
+msgid "label_year"
+msgstr "Jaar"
+
+#. Default: Month
+#: plonetheme/nuplone/z3cform/templates/date_input.pt:14
+#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:14
+msgid "label_month"
+msgstr "Maand"
+
+#. Default: Day
+#: plonetheme/nuplone/z3cform/templates/date_input.pt:7
+#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:7
+msgid "label_day"
+msgstr "Dag"
+
+#. Default: Cancel
+#: plonetheme/nuplone/z3cform/templates/editlink.pt:26
+msgid "button_cancel"
+msgstr "Annuleren"
+
+#. Default: Save changes
+#: plonetheme/nuplone/z3cform/templates/editlink.pt:25
+msgid "button_save_changes"
+msgstr "Bewaar"
+
+#. Default: Place a Link
+#: plonetheme/nuplone/z3cform/templates/editlink.pt:15
+msgid "header_place_link"
+msgstr "Plaats een link"
 
 #: plonetheme/nuplone/z3cform/templates/form.pt:14
 #: plonetheme/nuplone/z3cform/templates/wrappedform.pt:7

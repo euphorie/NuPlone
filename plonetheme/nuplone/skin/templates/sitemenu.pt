@@ -9,13 +9,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.libraries/css_browser_selector.js"></script>
     <link rel="stylesheet" type="text/css" media="all" tal:attributes="href string:${tools/portal/++resource++NuPlone.style/main}/base.css" />
-    <title>Site menu</title>
+    <title i18n:translate="title_site_menu">Site menu</title>
     <base target="_parent"/>
   </head>
   <body class="siteMenu">
     <ul class="menu" id="siteMenu">
       <li id="user" tal:condition="tools/anonymous">
-        <a href="${tools/navroot_url}/@@login?came_from=${request/environ/HTTP_REFERER|context/absolute_url}">Login</a>
+        <a href="${tools/navroot_url}/@@login?came_from=${request/environ/HTTP_REFERER|context/absolute_url}" i18n:translate="menu_login">Login</a>
       </li>
       <li id="user" tal:condition="not:tools/anonymous">
         <a href="${tools/navroot_url}/@@dashboard">${python:tools.user.getProperty('fullname', '') or tools.user.getUserName()}</a>
@@ -23,10 +23,10 @@
           <li>
             <ul>
               <li>
-                <a href="${tools/portal_url}/@@logout">Log out</a>
+                <a href="${tools/portal_url}/@@logout" i18n:translate="menu_logout">Log out</a>
               </li>
               <li>
-                <a href="${view/settings_url}">Settings</a>
+                <a href="${view/settings_url}" i18n:translate="menu_settings">Settings</a>
               </li>
             </ul>
           </li>
@@ -34,9 +34,9 @@
       </li>
       <tal:block condition="python:view.view_type=='view' and (factories or view.can_copy or view.can_cut or view.can_paste or view.can_delete)">
         <li>
-          <a href="#">Actions</a>
+          <a href="#" i18n:translate="menu_actions">Actions</a>
           <ul tal:define="factories factories">
-            <li tal:condition="python:factories">Add new
+            <li tal:condition="python:factories"><tal:span i18n:translate="menu_add_new">Add new</tal:span>
               <ul>
                 <li tal:repeat="factory factories">
                   <a href="${factory/url}" title="${factory/description}" >${factory/title}</a>
@@ -46,23 +46,23 @@
             <li tal:condition="python:view.can_copy or view.can_cut or view.can_paste or view.can_delete">Organise
               <ul>
                 <li tal:condition="view/can_copy">
-                  <a href="#">Copy</a>
+                  <a href="#" i18n:translate="menu_copy">Copy</a>
                 </li>
                 <li tal:condition="view/can_cut">
-                  <a href="${tools/context_url}/object_cut">Cut</a>
+                  <a href="${tools/context_url}/object_cut" i18n:translate="menu_cut">Cut</a>
                 </li>
                 <li tal:condition="view/can_paste">
-                  <a href="${tools/context_url}/object_paste">Paste</a>
+                  <a href="${tools/context_url}/object_paste" i18n:translate="menu_paste">Paste</a>
                 </li>
                 <li tal:condition="view/can_delete">
-                  <a href="${tools/context_url}/delete_confirmation">Delete</a>
+                  <a href="${tools/context_url}/delete_confirmation" i18n:translate="menu_delete">Delete</a>
                 </li>
               </ul>
             </li>
           </ul>
         </li>
         <li tal:condition="permission:Modify portal content">
-          <a href="${context/absolute_url}/@@edit">Edit</a>
+          <a href="${context/absolute_url}/@@edit" i18n:translate="menu_edit">Edit</a>
         </li>
       </tal:block>
     </ul>

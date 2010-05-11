@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NuPlone 1.0\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
-"POT-Creation-Date: 2010-05-11 11:21+0200\n"
+"POT-Creation-Date: 2010-05-11 13:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,6 +68,8 @@ msgstr ""
 
 #. Default: Password
 #: plonetheme/nuplone/skin/settings.py:24
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:33
+#: plonetheme/nuplone/skin/templates/login.pt:26
 msgid "label_password"
 msgstr ""
 
@@ -81,6 +83,206 @@ msgstr ""
 #: plonetheme/nuplone/z3cform/templates/form.pt:24
 #: plonetheme/nuplone/z3cform/templates/wrappedform.pt:17
 msgid "Default fieldset"
+msgstr ""
+
+#. Default: Something went wrong while trying to serve your request.
+#: plonetheme/nuplone/skin/templates/error_generic.pt:13
+msgid "message_error_generic"
+msgstr ""
+
+#. Default: Oops
+#: plonetheme/nuplone/skin/templates/error_generic.pt:10
+msgid "header_error_generic"
+msgstr ""
+
+#. Default: The object you were looking for does not exist on this server. Please
+#. check your spelling, or use the site search to find the item.
+#: plonetheme/nuplone/skin/templates/error_notfound.pt:13
+msgid "message_error_notfound"
+msgstr ""
+
+#. Default: Not found
+#: plonetheme/nuplone/skin/templates/error_notfound.pt:10
+msgid "header_error_notfound"
+msgstr ""
+
+#. Default: No account? Please ${request_account}.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
+#: plonetheme/nuplone/skin/templates/login.pt:35
+msgid "message_no_account"
+msgstr ""
+
+#. Default: request an account
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
+#: plonetheme/nuplone/skin/templates/login.pt:35
+msgid "message_no_account_request_account"
+msgstr ""
+
+#. Default: Login
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:38
+#: plonetheme/nuplone/skin/templates/login.pt:31
+msgid "button_login"
+msgstr ""
+
+#. Default: Login
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:31
+#: plonetheme/nuplone/skin/templates/login.pt:24
+msgid "label_login"
+msgstr ""
+
+#. Default: Credentials
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:29
+#: plonetheme/nuplone/skin/templates/login.pt:21
+msgid "legend_credentials"
+msgstr ""
+
+#. Default: You need to be logged in to access this page.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:23
+msgid "message_error_not_logged_in"
+msgstr ""
+
+#. Default: I am afraid you are not authorised to do this.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:18
+msgid "message_error_unauthorized"
+msgstr ""
+
+#. Default: Unauthorized
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
+msgid "header_error_unauthorized"
+msgstr ""
+
+#. Default: Login
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
+msgid "header_login"
+msgstr ""
+
+#. Default: Invalid login.
+#: plonetheme/nuplone/skin/templates/login.pt:17
+msgid "message_invalid_login"
+msgstr ""
+
+#. Default: You are already logged in. Please logout first before trying to login
+#. again.
+#: plonetheme/nuplone/skin/templates/login.pt:15
+msgid "message_already_logged_in"
+msgstr ""
+
+#. Default: Edit
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:65
+msgid "menu_edit"
+msgstr ""
+
+#. Default: Delete
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:58
+msgid "menu_delete"
+msgstr ""
+
+#. Default: Paste
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:55
+msgid "menu_paste"
+msgstr ""
+
+#. Default: Cut
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:52
+msgid "menu_cut"
+msgstr ""
+
+#. Default: Copy
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:49
+msgid "menu_copy"
+msgstr ""
+
+#. Default: Add new
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:39
+msgid "menu_add_new"
+msgstr ""
+
+#. Default: Actions
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:37
+msgid "menu_actions"
+msgstr ""
+
+#. Default: Settings
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:29
+msgid "menu_settings"
+msgstr ""
+
+#. Default: Log out
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:26
+msgid "menu_logout"
+msgstr ""
+
+#. Default: Login
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:18
+msgid "menu_login"
+msgstr ""
+
+#. Default: Site menu
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:12
+msgid "title_site_menu"
+msgstr ""
+
+#. Default: Submit
+#: plonetheme/nuplone/tiles/templates/tabs.pt:13
+msgid "button_submit"
+msgstr ""
+
+#. Default: Search
+#: plonetheme/nuplone/tiles/templates/tabs.pt:13
+msgid "menu_search"
+msgstr ""
+
+#. Default: Home
+#: plonetheme/nuplone/tiles/templates/tabs.pt:9
+msgid "menu_home"
+msgstr ""
+
+#. Default: URL
+#: plonetheme/nuplone/z3cform/wysiwyg.py:11
+msgid "label_url"
+msgstr ""
+
+#. Default: Title
+#: plonetheme/nuplone/z3cform/wysiwyg.py:15
+msgid "label_title"
+msgstr ""
+
+#. Default: Open link in new window
+#: plonetheme/nuplone/z3cform/wysiwyg.py:19
+msgid "label_new_window"
+msgstr ""
+
+#. Default: Year
+#: plonetheme/nuplone/z3cform/templates/date_input.pt:23
+#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:23
+msgid "label_year"
+msgstr ""
+
+#. Default: Month
+#: plonetheme/nuplone/z3cform/templates/date_input.pt:14
+#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:14
+msgid "label_month"
+msgstr ""
+
+#. Default: Day
+#: plonetheme/nuplone/z3cform/templates/date_input.pt:7
+#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:7
+msgid "label_day"
+msgstr ""
+
+#. Default: Cancel
+#: plonetheme/nuplone/z3cform/templates/editlink.pt:26
+msgid "button_cancel"
+msgstr ""
+
+#. Default: Save changes
+#: plonetheme/nuplone/z3cform/templates/editlink.pt:25
+msgid "button_save_changes"
+msgstr ""
+
+#. Default: Place a Link
+#: plonetheme/nuplone/z3cform/templates/editlink.pt:15
+msgid "header_place_link"
 msgstr ""
 
 #: plonetheme/nuplone/z3cform/templates/form.pt:14

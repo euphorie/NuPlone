@@ -11,35 +11,35 @@
       metal:use-macro="context/@@layout/macros/layout">
   <body>
     <metal:title fill-slot="title">
-      <h1 tal:condition="tools/anonymous">Login</h1><h1 tal:condition="not:tools/anonymous">Unauthorized</h1>
+      <h1 tal:condition="tools/anonymous" i18n:translate="header_login">Login</h1><h1 tal:condition="not:tools/anonymous" i18n:translate="header_error_unauthorized">Unauthorized</h1>
     </metal:title>
 
     <metal:content fill-slot="content">
-      <p class="message notice" tal:condition="not:tools/anonymous">
+      <p class="message notice" tal:condition="not:tools/anonymous" i18n:translate="message_error_unauthorized">
         I am afraid you are not authorised to do this.
       </p>
 
       <tal:block condition="tools/anonymous">
-        <p class="message notice">
+        <p class="message notice" i18n:translate="message_error_not_logged_in">
           You need to be logged in to access this page.
         </p>
 
         <form class="concise" action="${tools/portal_url}/@@login" method="post">
           <fieldset>
-            <legend>Credentials</legend>
+            <legend i18n:translate="legend_credentials">Credentials</legend>
             <input type="hidden" name="login_attempt" value="1"/>
-            <label>Login
+            <label><tal:span i18n:translate="label_login">Login</tal:span>
               <input name="__ac_name" type="text"/></label>
-            <label>Password
+            <label><tal:span i18n:translate="label_password">Password</tal:span>
               <input name="__ac_password" type="password"/></label>
           </fieldset>
 
           <div class="buttonBar">
-            <button type="submit">Login</button>
+            <button type="submit" i18n:translate="button_login">Login</button>
           </div>
         </form>
 
-        <p>No account? Please <a href="${tools/portal_url}/@@contact">request an account</a>.</p>
+        <p i18n:translate="message_no_account">No account? Please <a href="${tools/portal_url}/@@contact" i18n:name="request_account" i18n:translate="message_no_account_request_account">request an account</a>.</p>
       </tal:block>
 
     </metal:content>

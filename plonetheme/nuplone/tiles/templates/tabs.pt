@@ -6,11 +6,11 @@
       tal:omit-tag="">
   <ul id="tabs">
     <li tal:repeat="tab view/tabs" class="${tab/class}"><a href="${tab/url}">${tab/title}</a></li>
-    <li id="home"><a href="${view/home_url}">Home</a></li>
+    <li id="home"><a href="${view/home_url}" i18n:translate="menu_home">Home</a></li>
     <li id="search">
       <form>
         <fieldset>
-          <label for="searchField" class="superImpose">Search</label><input type="text" name="searchField" id="searchField" /><button type="submit">Submit</button>
+          <label for="searchField" class="superImpose" i18n:translate="menu_search">Search</label><input type="text" name="searchField" id="searchField" /><button type="submit" i18n:translate="button_submit">Submit</button>
         </fieldset>
       </form>
     </li>

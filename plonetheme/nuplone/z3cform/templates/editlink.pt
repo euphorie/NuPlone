@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.z3cform.style}/base.css"/>
   </head>
   <body id="links" class="dropSheet">
-    <h1>Place a Link</h1>
+    <h1 i18n:translate="header_place_link">Place a Link</h1>
 
     <div id="external" class="formSection">
       <form action="${request/getURL}" method="${view/method}" enctype="${view/enctype}">
@@ -22,8 +22,8 @@
           <tal:widget replace="structure view/widgets/new_window/render" />
         </fieldset>
         <div class="buttonBar">
-          <button name="form.buttons.save" class="save" type="button">Save changes</button>
-          <button name="form.buttons.cancel" class="cancel" type="button">Cancel</button>
+          <button name="form.buttons.save" class="save" type="button" i18n:translate="button_save_changes">Save changes</button>
+          <button name="form.buttons.cancel" class="cancel" type="button" i18n:translate="button_cancel">Cancel</button>
         </div>
       </form>
     </div>

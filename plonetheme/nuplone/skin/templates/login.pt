@@ -12,27 +12,27 @@
     <h1 metal:fill-slot="title">Login</h1>
     <metal:content fill-slot="content">
 
-      <p tal:condition="not:view/anonymous" class="notice message">
+      <p tal:condition="not:view/anonymous" class="notice message" i18n:translate="message_already_logged_in">
         You are already logged in. Please logout first before trying to login again. 
-        </p><p tal:condition="view/failed" class="notice message">Invalid login.</p>
+        </p><p tal:condition="view/failed" class="notice message" i18n:translate="message_invalid_login">Invalid login.</p>
 
       <form tal:condition="view/anonymous" class="concise" action="${view/action}" method="post">
         <fieldset>
-          <legend>Credentials</legend>
+          <legend i18n:translate="legend_credentials">Credentials</legend>
           <input type="hidden" name="came_from" value="${view/came_from}"/>
           <input type="hidden" name="login_attempt" value="1"/>
-          <label>Login
+          <label><tal:span i18n:translate="label_login">Login</tal:span>
             <input name="__ac_name" type="text" value="${request/form/__ac_name|nothing}"/></label>
-          <label>Password
+          <label><tal:span i18n:translate="label_password">Password</tal:span>
             <input name="__ac_password" type="password"/></label>
         </fieldset>
 
         <div class="buttonBar">
-          <button type="submit">Login</button>
+          <button type="submit" i18n:translate="button_login">Login</button>
         </div>
       </form>
 
-      <p>No account? Please <a href="${tools/portal_url}/@@contact">request an account</a>.</p>
+      <p i18n:translate="message_no_account">No account? Please <a href="${tools/portal_url}/@@contact" i18n:name="request_account" i18n:translate="message_no_account_request_account">request an account</a>.</p>
     </metal:content>
   </body>
 </html>
