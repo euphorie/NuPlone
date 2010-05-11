@@ -24,6 +24,11 @@ setup(name="NuPlone",
       license="GPL",
       packages=find_packages(exclude=["ez_setup"]),
       namespace_packages=["plonetheme"],
+      paster_plugins=["Babel"],
+      message_extractors = {"plonetheme": [
+            ("**.py",    "chameleon_python", None),
+            ("**.pt"  ,  "chameleon_xml", None),
+            ]},
       include_package_data=True,
       zip_safe=False,
       install_requires=[

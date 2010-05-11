@@ -1,0 +1,90 @@
+# Translations template for NuPlone.
+# Copyright (C) 2010 Wichert Akkerman, Simplon
+# This file is distributed under the same license as the NuPlone project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: NuPlone 1.0\n"
+"Report-Msgid-Bugs-To: wichert@wiggy.net\n"
+"POT-Creation-Date: 2010-05-11 11:21+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 0.9.5\n"
+
+#. Default: Your name
+#: plonetheme/nuplone/skin/contact.py:22
+msgid "label_your_name"
+msgstr ""
+
+#. Default: Email address
+#: plonetheme/nuplone/skin/contact.py:26 plonetheme/nuplone/skin/settings.py:20
+msgid "label_email"
+msgstr ""
+
+#. Default: Subject
+#: plonetheme/nuplone/skin/contact.py:30
+msgid "label_subject"
+msgstr ""
+
+#. Default: Your message
+#: plonetheme/nuplone/skin/contact.py:34
+msgid "label_contact_text"
+msgstr ""
+
+#. Default: Contact
+#: plonetheme/nuplone/skin/contact.py:66
+msgid "header_contact"
+msgstr ""
+
+#. Default: Send
+#: plonetheme/nuplone/skin/contact.py:69
+msgid "button_send"
+msgstr ""
+
+#. Default: Contact request: ${subject}
+#: plonetheme/nuplone/skin/contact.py:76
+msgid "contact_mail_subject"
+msgstr ""
+
+#. Default: An error occured while your contact request. Please try again later.
+#: plonetheme/nuplone/skin/contact.py:90 plonetheme/nuplone/skin/contact.py:94
+msgid "error_contactmail"
+msgstr ""
+
+#: plonetheme/nuplone/skin/contact.py:97
+msgid "Message sent"
+msgstr ""
+
+#. Default: Full name
+#: plonetheme/nuplone/skin/settings.py:16
+msgid "label_fullname"
+msgstr ""
+
+#. Default: Password
+#: plonetheme/nuplone/skin/settings.py:24
+msgid "label_password"
+msgstr ""
+
+#: plonetheme/nuplone/skin/templates/dexterity.pt:16
+#: plonetheme/nuplone/z3cform/templates/form.pt:32
+#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:25
+msgid "Group name"
+msgstr ""
+
+#: plonetheme/nuplone/skin/templates/dexterity.pt:10
+#: plonetheme/nuplone/z3cform/templates/form.pt:24
+#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:17
+msgid "Default fieldset"
+msgstr ""
+
+#: plonetheme/nuplone/z3cform/templates/form.pt:14
+#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:7
+msgid "Form-global message"
+msgstr ""
+
