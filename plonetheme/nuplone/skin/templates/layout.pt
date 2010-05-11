@@ -27,7 +27,7 @@
       <tal:block replace="tile:navigation"/>
     </div>
     <tal:block replace="tile:tabs"/>
-    <p>
+    <p id="frameWrapper">
       <object id="siteMenu" type="text/html" data="${string:${context/absolute_url}/@@sitemenu}?view_type=${tools/view_type}"></object>
     </p>
     <tal:block replace="tile:actions"/>
