@@ -29,13 +29,13 @@ class Tools(grok.View):
     def view_type(self):
         return utils.viewType(self.context, self.request)
 
-    def formatDate(self, date, length=None):
+    def formatDate(self, date, length="long"):
         return self.request.locale.dates.getFormatter("date", length).format(date)
 
     def formatTime(self, time, length=None):
         return self.request.locale.dates.getFormatter("time", length).format(time)
 
-    def formatDatetime(self, timestamp, length=None):
+    def formatDatetime(self, timestamp, length="long"):
         return self.request.locale.dates.getFormatter("dateTime", length).format(timestamp)
 
     def formatDecimal(self, value, length=None):
