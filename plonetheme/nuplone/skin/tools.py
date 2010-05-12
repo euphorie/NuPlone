@@ -30,17 +30,17 @@ class Tools(grok.View):
         return utils.viewType(self.context, self.request)
 
     def formatDate(self, date, length=None):
-        return self.request._locale.dates.getFormatter("date", length).format(date)
+        return self.request.locale.dates.getFormatter("date", length).format(date)
 
     def formatTime(self, time, length=None):
-        return self.request._locale.dates.getFormatter("time", length).format(time)
+        return self.request.locale.dates.getFormatter("time", length).format(time)
 
     def formatDatetime(self, timestamp, length=None):
-        return self.request._locale.dates.getFormatter("datetime", length).format(timestamp)
+        return self.request.locale.dates.getFormatter("dateTime", length).format(timestamp)
 
     def formatDecimal(self, value, length=None):
-        return self.request._locale.numbers.getFormatter("decimal", length).format(value)
+        return self.request.locale.numbers.getFormatter("decimal", length).format(value)
 
     def formatPercentage(self, value, length=None):
-        return self.request._locale.numbers.getFormatter("percent", length).format(value)
+        return self.request.locale.numbers.getFormatter("percent", length).format(value)
 
