@@ -4,6 +4,7 @@ from zope.interface import Interface
 from five import grok
 from plonetheme.nuplone.skin.interfaces import NuPloneSkin
 from plonetheme.nuplone import utils
+from plonetheme.nuplone import MessageFactory as _
 
 class Tools(grok.View):
     """Basic view to expose utilties to templates."""
@@ -36,6 +37,10 @@ class Tools(grok.View):
         return self.request.locale.dates.getFormatter("time", length).format(time)
 
     def formatDatetime(self, timestamp, length="long"):
+        if length=="long":
+            return _("format_datetime", default="${date} at ${time}",
+                    mapping=dict(date=self.formatDate(timestamp, "long"),
+                                 time=self.formatTime(timestamp, "short")))
         return self.request.locale.dates.getFormatter("dateTime", length).format(timestamp)
 
     def formatDecimal(self, value, length=None):
