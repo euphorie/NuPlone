@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NuPlone 1.0\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
-"POT-Creation-Date: 2010-05-11 13:04+0200\n"
+"POT-Creation-Date: 2010-05-12 14:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -168,57 +168,62 @@ msgid "message_already_logged_in"
 msgstr ""
 
 #. Default: Edit
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:65
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:67
 msgid "menu_edit"
 msgstr ""
 
 #. Default: Delete
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:58
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:60
 msgid "menu_delete"
 msgstr ""
 
 #. Default: Paste
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:55
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:57
 msgid "menu_paste"
 msgstr ""
 
 #. Default: Cut
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:52
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:54
 msgid "menu_cut"
 msgstr ""
 
 #. Default: Copy
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:49
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:51
 msgid "menu_copy"
 msgstr ""
 
+#. Default: Organise
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:48
+msgid "menu_organise"
+msgstr ""
+
 #. Default: Add new
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:39
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:41
 msgid "menu_add_new"
 msgstr ""
 
 #. Default: Actions
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:37
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:39
 msgid "menu_actions"
 msgstr ""
 
 #. Default: Settings
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:29
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:31
 msgid "menu_settings"
 msgstr ""
 
 #. Default: Log out
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:26
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:28
 msgid "menu_logout"
 msgstr ""
 
 #. Default: Login
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:18
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:20
 msgid "menu_login"
 msgstr ""
 
 #. Default: Site menu
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:12
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:14
 msgid "title_site_menu"
 msgstr ""
 

@@ -1,9 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:meta="http://xml.zope.org/namespaces/meta"
       meta:interpolation="true"
+      i18n:domain="nuplone"
       tal:define="tools context/@@tools; factories view/factories">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -43,7 +45,7 @@
                 </li>
               </ul>
             </li>
-            <li tal:condition="python:view.can_copy or view.can_cut or view.can_paste or view.can_delete">Organise
+            <li tal:condition="python:view.can_copy or view.can_cut or view.can_paste or view.can_delete"><tal:span i18n:translate="menu_organise">Organise</tal:span>
               <ul>
                 <li tal:condition="view/can_copy">
                   <a href="#" i18n:translate="menu_copy">Copy</a>
