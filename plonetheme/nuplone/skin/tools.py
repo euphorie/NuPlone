@@ -28,3 +28,13 @@ class Tools(grok.View):
 
     def view_type(self):
         return utils.viewType(self.context, self.request)
+
+    def formatDate(self, date):
+        return self.request._locale.dates.getFormatter("date").format(date)
+
+    def formatTime(self, time):
+        return self.request._locale.dates.getFormatter("time").format(time)
+
+    def formatDatetime(self, timestamp):
+        return self.request._locale.dates.getFormatter("datetime").format(timestamp)
+
