@@ -18,6 +18,15 @@
     factory=".tile.AppConfigTileDataManager" />
 
   <plone:tile
+    name="analytics"
+    title="Google Analytics"
+    add_permission="cmf.ManagePortal"
+    class=".analytics.AnalyticsTile"
+    template="templates/analytics.pt"
+    permission="zope.Public"
+    />
+
+  <plone:tile
     name="group"
     title="Tile group"
     add_permission="cmf.ManagePortal"
