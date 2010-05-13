@@ -13,20 +13,22 @@ from plone.supermodel.interfaces import FIELDSETS_KEY
 from plone.supermodel.utils import mergedTaggedValueList
 import plone.z3cform.fieldsets.interfaces
 
-Dependency = collections.namedtuple("Dependency", "name field op value")
+Dependency = collections.namedtuple("Dependency", "name field op value action")
 DEPENDENCY_KEY = "plonetheme.nuplone.z3cform.dependency"
 LAYOUT_KEY = "plonetheme.nuplone.z3cform.layout"
 
 class depends(martian.Directive):
-    """Directive used to declara a dependency on other field values."""
+    """Directive used to declare a dependency on other field values."""
     scope = martian.CLASS
     store = FormMetadataListStorage()
     key = DEPENDENCY_KEY
 
-    def factory(self, field, name, op="on", value=None):
+    def factory(self, field, name, op="on", value=None, action="show"):
         if op not in [ "on", "off", "==", "!=" ]:
             raise ValueError("Invalid operand given")
-        return [Dependency(field, name, op, value)]
+        if action not in [ "show", "enable" ]:
+            raise ValueError("Invalid action given")
+        return [Dependency(field, name, op, value, action)]
 
 
 class FormSchemaGrokker(martian.InstanceGrokker):
@@ -117,6 +119,8 @@ class WidgetDependencyView(grok.MultiAdapter):
                 classes.append("dependsOn-%s-equals-%s" % (name, dependency.value))
             elif dependency.op=="!=":
                 classes.append("dependsOn-%s-notEquals-%s" % (name, dependency.value))
+
+            classes.append("dependsAction-%s" % dependency.action)
 
         return " ".join(classes) if classes else None
 
