@@ -31,6 +31,7 @@
       <object id="siteMenu" type="text/html" data="${string:${context/absolute_url}/@@sitemenu}?view_type=${tools/view_type}"></object>
     </p>
     <tal:block replace="tile:actions"/>
+    <tal:block replace="tile:footer"/>
     <script type="text/javascript">
       var plone = { portal_url : '${tools/portal/absolute_url}',
                     context_url : '${context/absolute_url}' };
