@@ -120,8 +120,8 @@ The rules are:
 
 
 
-Dynamically hiding/showing elements
-===================================
+Dynamically hiding/showing or enabling/disabling elements
+=========================================================
 
 In forms it is often useful to show or hide parts of a form depending on how
 form elements. This can be accomplished by specifying dependency information
@@ -157,6 +157,16 @@ check the value of an input field. The supported options are:
 
 ``notEquals``-*value*
     Test if an inputs value is not equal to *value*.
+
+If multiple ``dependsOn`` classes are specified all of them have to be true.
+You can change this behaviour using ``dependsType-or`` class: if this class
+is present only one of the requirements has to be met.
+
+Normally ``dependsOn`` manages visibility for objects. You can also use
+dependencies to enable or disable items. To do this add the
+``dependsAction-enable`` class.
+
+
 
 
 Inserting or replacing content
