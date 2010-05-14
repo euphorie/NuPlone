@@ -51,7 +51,7 @@ class CatalogNavTree(object):
         catalog=getToolByName(context, "portal_catalog")
         results=catalog.searchResults(query)
         cache={}
-        cache[navrootPath]={"isCurrent": False, "isCurrentParent": True, "children": []}
+        cache[navrootPath]={"current": False, "currentParent": True, "children": []}
         for brain in results:
             path=brain.getPath()
             pathLen=len(path)
@@ -67,20 +67,22 @@ class CatalogNavTree(object):
                 continue
 
             node={"brain": brain,
+                  "path" : path,
                   "current" : current,
                   "currentParent" : currentParent,
-                  "ancestor": ancestor,
-                  "children" : [] }
+                  "ancestor": ancestor }
             parentNode=cache.get(parentPath, None)
             if parentNode is None:
-                node["parent"]=cache[parentPath]=dict(children=[node])
+                cache[parentPath]=dict(children=[node])
             else:
-                node["parent"]=parentNode["children"].append(node)
+                parentNode["children"].append(node)
 
             oldNode=cache.get(path, None)
             if oldNode is not None:
-                node["children"]=oldNode["children"]
-            cache[path]=node
+                oldNode.update(node)
+            else:
+                node["children"]=[]
+                cache[path]=node
 
         self.tree=cache
         self.root=cache[navrootPath]
