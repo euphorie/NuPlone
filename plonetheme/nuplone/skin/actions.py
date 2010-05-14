@@ -1,3 +1,4 @@
+from zope.interface import Interface
 from Acquisition import aq_inner
 from Acquisition import aq_parent
 import zExceptions
@@ -6,9 +7,13 @@ from OFS.interfaces import ICopySource
 from OFS.interfaces import ICopyContainer
 from OFS.CopySupport import CopyError
 from five import grok
+from zope.component import getMultiAdapter
 from Products.statusmessages.interfaces import IStatusMessage
 from plonetheme.nuplone.skin.interfaces import NuPloneSkin
 from plonetheme.nuplone import MessageFactory as _
+from plonetheme.nuplone.utils import checkPermission
+
+grok.templatedir("templates")
 
 
 class Copy(grok.View):
@@ -74,4 +79,42 @@ class Paste(grok.View):
             flash(_("message_paste_generic", default=u"No valid date found in the clipboard."), "error")
 
         self.request.response.redirect(context.absolute_url())
+
+
+class Delete(grok.View):
+    grok.context(Interface)
+    grok.name("delete")
+    grok.template("delete")
+
+    def verify(self):
+        authenticator=getMultiAdapter((self.context, self.request), name=u"authenticator")
+        if not authenticator.verify():
+            raise zExceptions.Unauthorized
+        return True
+
+
+    def post(self):
+        action=self.request.form.get("action", "cancel")
+        context=aq_inner(self.context)
+        flash=IStatusMessage(self.request).addStatusMessage
+
+        if action=="cancel":
+            flash(_("message_delete_cancel", default=u"Deletion cancelled"), "notice")
+            self.request.response.redirect(context.absolute_url())
+        elif action=="delete" and self.verify():
+            container=aq_parent(context)
+            container.manage_delObjects(context.getId())
+            flash(_("message_delete_success", default=u"Object removed"), "success")
+            self.request.response.redirect(container.absolute_url())
+
+
+    def update(self):
+        super(Delete, self).update()
+        context=aq_inner(self.context)
+        container=aq_parent(context)
+        if not checkPermission(container, "Delete objects"):
+            raise zExceptions.Unauthorized
+
+        if self.request.method=="POST":
+            self.post()
 

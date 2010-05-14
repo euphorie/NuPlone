@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:meta="http://xml.zope.org/namespaces/meta"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      i18n:domain="nuplone"
+      metal:use-macro="context/@@layout/macros/layout"
+      meta:interpolation="true">
+  <body>
+    <h1 metal:fill-slot="title" i18n:translate="title_delete">Delete "<tal:span i18n:name="title">${context/title}</tal:span>"</h1>
+    <metal:content fill-slot="content">
+      <form class="concise" action="${request/getURL}" method="post">
+        <fieldset>
+          <span tal:replace="structure context/@@authenticator/authenticator"/>
+        </fieldset>
+
+        <p i18n:translate="delete_confirm">Are you sure you want to delete this object?</p>
+
+        <div class="buttonBar">
+          <button type="submit" name="action" value="delete" i18n:translate="button_delete">Delete</button>
+          <button type="submit" name="action" value="cancel" class="cancel" i18n:translate="button_cancel">Cancel</button>
+        </div>
+      </form>
+    </metal:content>
+  </body>
+</html>
