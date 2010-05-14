@@ -65,23 +65,28 @@ class CatalogNavTree(object):
             if brain.exclude_from_nav and not currentParent:
                 continue
 
+            oldNode=cache.get(path, None)
             node={"brain": brain,
                   "path" : path,
                   "current" : current,
                   "currentParent" : currentParent,
                   "ancestor": ancestor }
-            parentNode=cache.get(parentPath, None)
-            if parentNode is None:
-                cache[parentPath]=dict(children=[node])
-            else:
-                parentNode["children"].append(node)
 
             oldNode=cache.get(path, None)
             if oldNode is not None:
                 oldNode.update(node)
+                node=oldNode
             else:
                 node["children"]=[]
                 cache[path]=node
+
+            parentNode=cache.get(parentPath, None)
+            if parentNode is None:
+                parentNode=cache[parentPath]=dict(children=[node])
+            else:
+                parentNode["children"].append(node)
+            node["parent"]=parentNode
+
 
         self.tree=cache
         self.root=cache[navrootPath]
