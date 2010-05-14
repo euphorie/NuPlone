@@ -76,7 +76,6 @@ class UserPasswordDataManager(grok.MultiAdapter):
         return default
 
     def set(self, value):
-        pas=self.user._getPAS()
         mt=getToolByName(self.user, "portal_membership")
         mt.setPassword(value)
 
