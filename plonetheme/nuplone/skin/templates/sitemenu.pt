@@ -48,16 +48,16 @@
             <li tal:condition="python:view.can_copy or view.can_cut or view.can_paste or view.can_delete"><tal:span i18n:translate="menu_organise">Organise</tal:span>
               <ul>
                 <li tal:condition="view/can_copy">
-                  <a href="#" i18n:translate="menu_copy">Copy</a>
+                  <a href="${tools/context_url}/@@copy" i18n:translate="menu_copy">Copy</a>
                 </li>
                 <li tal:condition="view/can_cut">
-                  <a href="${tools/context_url}/object_cut" i18n:translate="menu_cut">Cut</a>
+                  <a href="${tools/context_url}/@@cut" i18n:translate="menu_cut">Cut</a>
                 </li>
                 <li tal:condition="view/can_paste">
-                  <a href="${tools/context_url}/object_paste" i18n:translate="menu_paste">Paste</a>
+                  <a href="${tools/context_url}/@@paste" i18n:translate="menu_paste">Paste</a>
                 </li>
                 <li tal:condition="view/can_delete">
-                  <a href="${tools/context_url}/delete_confirmation" i18n:translate="menu_delete">Delete</a>
+                  <a href="${tools/context_url}/@@delete" i18n:translate="menu_delete">Delete</a>
                 </li>
               </ul>
             </li>
