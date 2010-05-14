@@ -46,7 +46,6 @@ class CatalogNavTree(object):
         query["portal_type"]=typesToList(context)
         query["sort_on"]="getObjPositionInParent"
         query["sort_order"]="asc"
-        query["is_default_page"]=False
 
         catalog=getToolByName(context, "portal_catalog")
         results=catalog.searchResults(query)
