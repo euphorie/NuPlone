@@ -21,6 +21,12 @@ def checkPermission(context, permission):
     return getSecurityManager().checkPermission(permission, context)
 
 
+def isAnonymous(user=None):
+    if user is None:
+        user=getSecurityManager().getUser()
+    return user is None or user.getUserName()=="Anonymous User"
+
+
 def viewType(context, request):
     """Determine what type of view the user is looking at. This returns
     one of three options: ``view`` for normal object views, ``edit``
