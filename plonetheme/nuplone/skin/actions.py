@@ -86,10 +86,10 @@ class Delete(grok.View):
     grok.name("delete")
     grok.template("delete")
 
-    def verify(self):
-        authenticator=getMultiAdapter((self.context, self.request), name=u"authenticator")
-        if not authenticator.verify():
+    def verify(self, container, context):
+        if not checkPermission(container, "Delete objects"):
             raise zExceptions.Unauthorized
+
         return True
 
 
@@ -101,7 +101,11 @@ class Delete(grok.View):
         if action=="cancel":
             flash(_("message_delete_cancel", default=u"Deletion cancelled"), "notice")
             self.request.response.redirect(context.absolute_url())
-        elif action=="delete" and self.verify():
+        elif action=="delete":
+            authenticator=getMultiAdapter((self.context, self.request), name=u"authenticator")
+            if not authenticator.verify():
+                raise zExceptions.Unauthorized
+
             container=aq_parent(context)
             container.manage_delObjects(context.getId())
             flash(_("message_delete_success", default=u"Object removed"), "success")
@@ -109,12 +113,13 @@ class Delete(grok.View):
 
 
     def update(self):
-        super(Delete, self).update()
         context=aq_inner(self.context)
         container=aq_parent(context)
-        if not checkPermission(container, "Delete objects"):
-            raise zExceptions.Unauthorized
 
+        if not self.verify(container, context):
+            return
+
+        super(Delete, self).update()
         if self.request.method=="POST":
             self.post()
 
