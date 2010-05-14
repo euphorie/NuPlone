@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: NuPlone 1.0\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
 "POT-Creation-Date: 2010-05-11 11:17+0200\n"
-"PO-Revision-Date: 2010-05-12 14:41+0200\n"
+"PO-Revision-Date: 2010-05-14 12:29+0200\n"
 "Last-Translator: Wichert Akkerman <wichert@wiggy.net>\n"
 "Language-Team: nl <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -16,6 +16,41 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.5\n"
+
+#. Default: Copied
+#: plonetheme/nuplone/skin/actions.py:28
+msgid "message_copy_sucess"
+msgstr "Kopie gemaakt"
+
+#. Default: Cut.
+#: plonetheme/nuplone/skin/actions.py:46
+msgid "message_cut_success"
+msgstr "Geplakt"
+
+#. Default: It is not possible to move this object.
+#: plonetheme/nuplone/skin/actions.py:48
+msgid "message_cut_invalid"
+msgstr "Het is niet mogelijk om dit object te veprlaatsen."
+
+#. Default: Pasted
+#: plonetheme/nuplone/skin/actions.py:66
+msgid "message_paste_succes"
+msgstr "Geplakt"
+
+#. Default: You can not paste the copied data here.
+#: plonetheme/nuplone/skin/actions.py:70
+msgid "message_paste_valueerror"
+msgstr "Het is niet toegestaan om de gekopiëerde objecten hier te plakken."
+
+#. Default: You can not allowed to paste here.
+#: plonetheme/nuplone/skin/actions.py:72
+msgid "message_paste_unauthorized"
+msgstr "Het is niet mogelijk om hier te plakken."
+
+#. Default: No valid date found in the clipboard.
+#: plonetheme/nuplone/skin/actions.py:74
+msgid "message_paste_generic"
+msgstr "Er staan niks klaar op het klembord."
 
 #. Default: Your name
 #: plonetheme/nuplone/skin/contact.py:22
@@ -64,6 +99,23 @@ msgstr ""
 msgid "Message sent"
 msgstr "Bericht verstuurd."
 
+#. Default: You have been logged in.
+#: plonetheme/nuplone/skin/login.py:48
+#| msgid "message_already_logged_in"
+msgid "message_logged_in"
+msgstr "U bent ingelogd."
+
+#. Default: You have been logged out.
+#: plonetheme/nuplone/skin/login.py:68
+msgid "message_logged_out"
+msgstr "U bent uitgelogd."
+
+#. Default: You were already logged out.
+#: plonetheme/nuplone/skin/login.py:70
+#| msgid "message_already_logged_in"
+msgid "message_already_logged_out"
+msgstr "U was reeds uitgelogd."
+
 #. Default: Full name
 #: plonetheme/nuplone/skin/settings.py:16
 msgid "label_fullname"
@@ -75,6 +127,11 @@ msgstr "Naam"
 #: plonetheme/nuplone/skin/templates/login.pt:26
 msgid "label_password"
 msgstr "Wachtwoord"
+
+#. Default: ${date} at ${time}
+#: plonetheme/nuplone/skin/tools.py:41
+msgid "format_datetime"
+msgstr "${date} om ${time}"
 
 #: plonetheme/nuplone/skin/templates/dexterity.pt:16
 #: plonetheme/nuplone/z3cform/templates/form.pt:32
@@ -201,7 +258,6 @@ msgstr "Kopieër"
 
 #. Default: Organise
 #: plonetheme/nuplone/skin/templates/sitemenu.pt:48
-#| msgid "menu_paste"
 msgid "menu_organise"
 msgstr "Organiseer"
 

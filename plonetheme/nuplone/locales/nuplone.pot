@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NuPlone 1.0\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
-"POT-Creation-Date: 2010-05-12 14:41+0200\n"
+"POT-Creation-Date: 2010-05-14 12:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,41 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.5\n"
+
+#. Default: Copied
+#: plonetheme/nuplone/skin/actions.py:28
+msgid "message_copy_sucess"
+msgstr ""
+
+#. Default: Cut.
+#: plonetheme/nuplone/skin/actions.py:46
+msgid "message_cut_success"
+msgstr ""
+
+#. Default: It is not possible to move this object.
+#: plonetheme/nuplone/skin/actions.py:48
+msgid "message_cut_invalid"
+msgstr ""
+
+#. Default: Pasted
+#: plonetheme/nuplone/skin/actions.py:66
+msgid "message_paste_succes"
+msgstr ""
+
+#. Default: You can not paste the copied data here.
+#: plonetheme/nuplone/skin/actions.py:70
+msgid "message_paste_valueerror"
+msgstr ""
+
+#. Default: You can not allowed to paste here.
+#: plonetheme/nuplone/skin/actions.py:72
+msgid "message_paste_unauthorized"
+msgstr ""
+
+#. Default: No valid date found in the clipboard.
+#: plonetheme/nuplone/skin/actions.py:74
+msgid "message_paste_generic"
+msgstr ""
 
 #. Default: Your name
 #: plonetheme/nuplone/skin/contact.py:22
@@ -61,6 +96,21 @@ msgstr ""
 msgid "Message sent"
 msgstr ""
 
+#. Default: You have been logged in.
+#: plonetheme/nuplone/skin/login.py:48
+msgid "message_logged_in"
+msgstr ""
+
+#. Default: You have been logged out.
+#: plonetheme/nuplone/skin/login.py:68
+msgid "message_logged_out"
+msgstr ""
+
+#. Default: You were already logged out.
+#: plonetheme/nuplone/skin/login.py:70
+msgid "message_already_logged_out"
+msgstr ""
+
 #. Default: Full name
 #: plonetheme/nuplone/skin/settings.py:16
 msgid "label_fullname"
@@ -71,6 +121,11 @@ msgstr ""
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:33
 #: plonetheme/nuplone/skin/templates/login.pt:26
 msgid "label_password"
+msgstr ""
+
+#. Default: ${date} at ${time}
+#: plonetheme/nuplone/skin/tools.py:41
+msgid "format_datetime"
 msgstr ""
 
 #: plonetheme/nuplone/skin/templates/dexterity.pt:16
