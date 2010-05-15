@@ -3,8 +3,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       meta:interpolation="true"
       tal:omit-tag="">
-  <fieldset>
-    <legend class="${view/@@dependencies}">${view/label}<sup tal:condition="view/required" class="required">*</sup></legend> <dfn class="infoPanel" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/>
+    <label class="${view/@@dependencies}">${view/label}<sup tal:condition="view/required" class="required">*</sup> <dfn class="infoPanel" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/>
       <textarea
         tal:content="view/value"
         tal:attributes="id view/id;
@@ -14,6 +13,6 @@
                         readonly view/readonly;
                         cols view/cols;
                         rows view/rows" /> <tal:error condition="view/error" replace="structure view/error/render|nothing"/>
-  </fieldset>
+  </label>
 </html>
 
