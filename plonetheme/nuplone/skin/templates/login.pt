@@ -21,9 +21,9 @@
           <input type="hidden" name="came_from" value="${view/came_from}"/>
           <input type="hidden" name="login_attempt" value="1"/>
           <label><tal:span i18n:translate="label_login">Login</tal:span>
-            <input name="__ac_name" type="text" value="${request/form/__ac_name|nothing}"/></label>
+            <input class="autofocus" name="__ac_name" type="text" value="${request/form/__ac_name|nothing}"/></label>
           <label><tal:span i18n:translate="label_password">Password</tal:span>
-            <input name="__ac_password" type="password"/></label>
+            <input class="autofocus" name="__ac_password" type="password"/></label>
         </fieldset>
 
         <div class="buttonBar">
