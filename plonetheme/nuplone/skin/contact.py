@@ -14,25 +14,34 @@ from Products.CMFCore.interfaces import ISiteRoot
 from Products.CMFCore.utils import getToolByName
 from Products.statusmessages.interfaces import IStatusMessage
 from z3c.form.button import buttonAndHandler
+from plonetheme.nuplone.z3cform.form import FieldWidgetFactory
 
 log = logging.getLogger(__name__)
+
+TextSpan7 = FieldWidgetFactory("z3c.form.browser.text.TextFieldWidget", klass="span-7")
+TextLines4Rows = FieldWidgetFactory("z3c.form.browser.textlines.TextLinesFieldWidget", rows=4)
+
 
 class IContact(form.Schema):
     name = schema.TextLine(
             title=_(u"label_your_name", default="Your name"),
             required=True)
+    form.widget(name="plonetheme.nuplone.skin.contact.TextSpan7")
 
     email = schema.ASCIILine(
             title=_("label_email", default="Email address"),
             required=True)
+    form.widget(email="plonetheme.nuplone.skin.contact.TextSpan7")
 
     subject = schema.TextLine(
             title=_(u"label_subject", default=u"Subject"),
             required=True)
+    form.widget(subject="plonetheme.nuplone.skin.contact.TextSpan7")
 
     message = schema.Text(
             title=_("label_contact_text", default="Your message"),
             required=True)
+    form.widget(message="plonetheme.nuplone.skin.contact.TextLines4Rows")
 
 
 def createEmailTo(sender_name, sender_email, recipient_name, recipient_email,
