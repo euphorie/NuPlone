@@ -30,6 +30,12 @@
      name="nuplone-view"
      />
 
+   <browser:defaultView
+     for="plone.dexterity.interfaces.IDexterityContent"
+     layer=".interfaces.NuPloneSkin"
+     name="nuplone-view"
+     />
+
    <browser:resourceDirectory
      name="NuPlone.style"
      directory="templates/style"
