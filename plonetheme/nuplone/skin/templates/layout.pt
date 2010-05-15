@@ -21,6 +21,7 @@
     <div id="content">
       <div id="mainContent">
         <metal:block define-slot="title"/>
+        <metal:block define-slot="buttonbar"/>
         <tal:block replace="tile:statusmessages"/>
         <metal:block define-slot="content"/>
       </div>
