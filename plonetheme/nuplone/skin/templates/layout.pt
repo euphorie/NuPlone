@@ -43,6 +43,7 @@
     <script type="text/javascript" tal:attributes="src string:${tools/portal/++resource++NuPlone.tinymce}/tiny_mce_src.js"></script>
     <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.behaviour/behaviour.js"></script>
     <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.z3cform.js"></script>
+    <tal:block replace="tile:scripts"/>
     <metal:block define-slot="scripts"/>
   </body>
 </html>
