@@ -49,3 +49,11 @@ class Tools(grok.View):
     def formatPercentage(self, value, length=None):
         return self.request.locale.numbers.getFormatter("percent", length).format(value)
 
+    def countryName(self, code):
+        return self.request.locale.displayNames.territories.get(code.upper())
+
+    def languageName(self, code, default=None):
+        code=code.lower()
+        names=self.request.locale.displayNames.languages
+        return names.get(code, default)
+
