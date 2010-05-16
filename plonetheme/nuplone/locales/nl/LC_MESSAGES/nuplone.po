@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: NuPlone 1.0\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
 "POT-Creation-Date: 2010-05-11 11:17+0200\n"
-"PO-Revision-Date: 2010-05-14 12:29+0200\n"
+"PO-Revision-Date: 2010-05-16 14:33+0200\n"
 "Last-Translator: Wichert Akkerman <wichert@wiggy.net>\n"
 "Language-Team: nl <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -18,90 +18,109 @@ msgstr ""
 "Generated-By: Babel 0.9.5\n"
 
 #. Default: Copied
-#: plonetheme/nuplone/skin/actions.py:28
+#: plonetheme/nuplone/skin/actions.py:33
 msgid "message_copy_sucess"
 msgstr "Kopie gemaakt"
 
 #. Default: Cut.
-#: plonetheme/nuplone/skin/actions.py:46
+#: plonetheme/nuplone/skin/actions.py:51
 msgid "message_cut_success"
 msgstr "Geplakt"
 
 #. Default: It is not possible to move this object.
-#: plonetheme/nuplone/skin/actions.py:48
+#: plonetheme/nuplone/skin/actions.py:53
 msgid "message_cut_invalid"
 msgstr "Het is niet mogelijk om dit object te veprlaatsen."
 
 #. Default: Pasted
-#: plonetheme/nuplone/skin/actions.py:66
+#: plonetheme/nuplone/skin/actions.py:71
 msgid "message_paste_succes"
 msgstr "Geplakt"
 
 #. Default: You can not paste the copied data here.
-#: plonetheme/nuplone/skin/actions.py:70
+#: plonetheme/nuplone/skin/actions.py:75
 msgid "message_paste_valueerror"
 msgstr "Het is niet toegestaan om de gekopiëerde objecten hier te plakken."
 
 #. Default: You can not allowed to paste here.
-#: plonetheme/nuplone/skin/actions.py:72
+#: plonetheme/nuplone/skin/actions.py:77
 msgid "message_paste_unauthorized"
 msgstr "Het is niet mogelijk om hier te plakken."
 
 #. Default: No valid date found in the clipboard.
-#: plonetheme/nuplone/skin/actions.py:74
+#: plonetheme/nuplone/skin/actions.py:79
 msgid "message_paste_generic"
 msgstr "Er staan niks klaar op het klembord."
 
+#. Default: Deletion cancelled
+#: plonetheme/nuplone/skin/actions.py:102
+msgid "message_delete_cancel"
+msgstr "Verwijderen geaunnuleerd"
+
+#. Default: Object removed
+#: plonetheme/nuplone/skin/actions.py:111
+msgid "message_delete_success"
+msgstr "Object verwijderd"
+
 #. Default: Your name
-#: plonetheme/nuplone/skin/contact.py:22
+#: plonetheme/nuplone/skin/contact.py:27
 msgid "label_your_name"
 msgstr "Uw naam"
 
 #. Default: Email address
-#: plonetheme/nuplone/skin/contact.py:26 plonetheme/nuplone/skin/settings.py:20
+#: plonetheme/nuplone/skin/contact.py:32 plonetheme/nuplone/skin/settings.py:20
 msgid "label_email"
 msgstr "E-mail adres"
 
 #. Default: Subject
-#: plonetheme/nuplone/skin/contact.py:30
+#: plonetheme/nuplone/skin/contact.py:37
 msgid "label_subject"
 msgstr "Onderwerp"
 
 #. Default: Your message
-#: plonetheme/nuplone/skin/contact.py:34
+#: plonetheme/nuplone/skin/contact.py:42
 msgid "label_contact_text"
 msgstr "Bericht"
 
 #. Default: Contact
-#: plonetheme/nuplone/skin/contact.py:66
+#: plonetheme/nuplone/skin/contact.py:75
 msgid "header_contact"
 msgstr "Contact formulier"
 
 #. Default: Send
-#: plonetheme/nuplone/skin/contact.py:69
+#: plonetheme/nuplone/skin/contact.py:78
 msgid "button_send"
 msgstr "Versturen"
 
 #. Default: Contact request: ${subject}
-#: plonetheme/nuplone/skin/contact.py:76
+#: plonetheme/nuplone/skin/contact.py:85
 msgid "contact_mail_subject"
 msgstr "Contact verzoek: ${subject}"
 
 #. Default: An error occured while your contact request. Please try again
 #. later.
-#: plonetheme/nuplone/skin/contact.py:90 plonetheme/nuplone/skin/contact.py:94
+#: plonetheme/nuplone/skin/contact.py:99 plonetheme/nuplone/skin/contact.py:103
 msgid "error_contactmail"
 msgstr ""
 "Er is iets mis gegaan bij het versturen van uw bericht. Probeer het later"
 " nog een keer."
 
-#: plonetheme/nuplone/skin/contact.py:97
+#: plonetheme/nuplone/skin/contact.py:106
 msgid "Message sent"
 msgstr "Bericht verstuurd."
 
+#. Default: Language updated
+#: plonetheme/nuplone/skin/language.py:17
+msgid "message_switch_language"
+msgstr "Nieuwe taal ingesteld"
+
+#. Default: Failed to switch language
+#: plonetheme/nuplone/skin/language.py:19
+msgid "message_switch_language_error"
+msgstr "Het is niet gelukt om van taal te wisselen."
+
 #. Default: You have been logged in.
 #: plonetheme/nuplone/skin/login.py:48
-#| msgid "message_already_logged_in"
 msgid "message_logged_in"
 msgstr "U bent ingelogd."
 
@@ -112,7 +131,6 @@ msgstr "U bent uitgelogd."
 
 #. Default: You were already logged out.
 #: plonetheme/nuplone/skin/login.py:70
-#| msgid "message_already_logged_in"
 msgid "message_already_logged_out"
 msgstr "U was reeds uitgelogd."
 
@@ -124,7 +142,7 @@ msgstr "Naam"
 #. Default: Password
 #: plonetheme/nuplone/skin/settings.py:24
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:33
-#: plonetheme/nuplone/skin/templates/login.pt:26
+#: plonetheme/nuplone/skin/templates/login.pt:25
 msgid "label_password"
 msgstr "Wachtwoord"
 
@@ -132,6 +150,27 @@ msgstr "Wachtwoord"
 #: plonetheme/nuplone/skin/tools.py:41
 msgid "format_datetime"
 msgstr "${date} om ${time}"
+
+#. Default: Cancel
+#: plonetheme/nuplone/skin/templates/delete.pt:23
+#: plonetheme/nuplone/z3cform/templates/editlink.pt:26
+msgid "button_cancel"
+msgstr "Annuleren"
+
+#. Default: Delete
+#: plonetheme/nuplone/skin/templates/delete.pt:22
+msgid "button_delete"
+msgstr "Verwijder"
+
+#. Default: Are you sure you want to delete this object?
+#: plonetheme/nuplone/skin/templates/delete.pt:19
+msgid "delete_confirm"
+msgstr "Weet u zeker dat u dit object wil verwijderen?"
+
+#. Default: Delete "${title}"
+#: plonetheme/nuplone/skin/templates/delete.pt:12
+msgid "title_delete"
+msgstr "Verwijder \"${title}\""
 
 #: plonetheme/nuplone/skin/templates/dexterity.pt:16
 #: plonetheme/nuplone/z3cform/templates/form.pt:32
@@ -171,31 +210,31 @@ msgstr "Niet gevonden"
 
 #. Default: No account? Please ${request_account}.
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
-#: plonetheme/nuplone/skin/templates/login.pt:35
+#: plonetheme/nuplone/skin/templates/login.pt:34
 msgid "message_no_account"
 msgstr "Geen account? ${request_account}."
 
 #. Default: request an account
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
-#: plonetheme/nuplone/skin/templates/login.pt:35
+#: plonetheme/nuplone/skin/templates/login.pt:34
 msgid "message_no_account_request_account"
 msgstr "Vraag dan een account aan"
 
 #. Default: Login
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:38
-#: plonetheme/nuplone/skin/templates/login.pt:31
+#: plonetheme/nuplone/skin/templates/login.pt:30
 msgid "button_login"
 msgstr "Login"
 
 #. Default: Login
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:31
-#: plonetheme/nuplone/skin/templates/login.pt:24
+#: plonetheme/nuplone/skin/templates/login.pt:23
 msgid "label_login"
 msgstr "Login"
 
 #. Default: Credentials
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:29
-#: plonetheme/nuplone/skin/templates/login.pt:21
+#: plonetheme/nuplone/skin/templates/login.pt:20
 msgid "legend_credentials"
 msgstr "Inloggegevens"
 
@@ -220,16 +259,21 @@ msgid "header_login"
 msgstr "Login"
 
 #. Default: Invalid login.
-#: plonetheme/nuplone/skin/templates/login.pt:17
+#: plonetheme/nuplone/skin/templates/login.pt:16
 msgid "message_invalid_login"
 msgstr "Ongeldige login"
 
 #. Default: You are already logged in. Please logout first before trying to
 #. login
 #. again.
-#: plonetheme/nuplone/skin/templates/login.pt:15
+#: plonetheme/nuplone/skin/templates/login.pt:14
 msgid "message_already_logged_in"
 msgstr "U bent reeds ingelogd."
+
+#. Default: Login
+#: plonetheme/nuplone/skin/templates/login.pt:12
+msgid "title_login"
+msgstr "Login"
 
 #. Default: Edit
 #: plonetheme/nuplone/skin/templates/sitemenu.pt:67
@@ -291,6 +335,11 @@ msgstr "Log in"
 msgid "title_site_menu"
 msgstr "Site menu"
 
+#. Default: Languages
+#: plonetheme/nuplone/tiles/templates/language.pt:8
+msgid "portlet_languages"
+msgstr "Talen"
+
 #. Default: Submit
 #: plonetheme/nuplone/tiles/templates/tabs.pt:13
 msgid "button_submit"
@@ -338,11 +387,6 @@ msgstr "Maand"
 #: plonetheme/nuplone/z3cform/templates/datetime_input.pt:7
 msgid "label_day"
 msgstr "Dag"
-
-#. Default: Cancel
-#: plonetheme/nuplone/z3cform/templates/editlink.pt:26
-msgid "button_cancel"
-msgstr "Annuleren"
 
 #. Default: Save changes
 #: plonetheme/nuplone/z3cform/templates/editlink.pt:25
