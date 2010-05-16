@@ -1,0 +1,12 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:meta="http://xml.zope.org/namespaces/meta"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      meta:interpolation="true"
+      tal:condition="view/languages"
+      class="portlet" id="portletLanguage">
+  <h3 i18n:translate="portlet_languages">Languages</h3>
+  <div class="portletContent" tal:define="context_url context/absolute_url; current_language view/current_language">
+    <p><tal:lang repeat="language view/languages"><a href="${context_url}/@@switch-language?language=${language/code}" class="${python:'current' if language['code']==current_language else None}">${language/native|language/name}</a><tal:span condition="not:repeat/language/end"> | </tal:span></tal:lang></p>
+  </div>
+</div>

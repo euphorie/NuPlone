@@ -36,6 +36,15 @@
     />
 
   <plone:tile
+    name="language"
+    title="Language selector"
+    add_permission="cmf.ManagePortal"
+    class=".language.LanguageTile"
+    template="templates/language.pt"
+    permission="zope.Public"
+    />
+
+  <plone:tile
     name="static"
     title="Static content tile"
     add_permission="cmf.ManagePortal"
