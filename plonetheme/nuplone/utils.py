@@ -1,3 +1,4 @@
+import collections
 import logging
 from Acquisition import aq_inner
 from Acquisition import aq_chain
@@ -5,6 +6,7 @@ from AccessControl import getSecurityManager
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.CMFCore.utils import getToolByName
+from Products.CMFCore.ActionInformation import ActionInfo
 
 log = logging.getLogger(__name__)
 
@@ -100,4 +102,24 @@ def setLanguage(request, context, lang=None):
 
     return True
 
+
+FactoryInfo = collections.namedtuple("FactoryInfo", "id title description url")
+
+def getFactoriesInContext(context):
+    """Return a list of all factories available to the current user at
+    the given location."""
+    context=aq_inner(context)
+    ftis=context.allowedContentTypes()
+    if not ftis:
+        return []
+
+    tt=getToolByName(context, "portal_types")
+    ec=tt._getExprContext(context)
+    actions=[ActionInfo(fti, ec) for fti in ftis]
+    actions=[FactoryInfo(action.get("id"),
+                         action.get("title") or action.get("id"), 
+                         action.get("description") or None,
+                         action["url"])
+             for action in actions]
+    return actions
 
