@@ -28,9 +28,11 @@ class Error(grok.View):
             pass
 
 
+
 class NotFound(Error):
     grok.context(zExceptions.NotFound)
     grok.template("error_notfound")
+
 
 
 class Unauthorized(Error):
