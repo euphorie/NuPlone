@@ -22,11 +22,11 @@ class WhoAmI(grok.View):
 
     def render(self):
         user=getSecurityManager().getUser()
-        self.request.response.setHeader("Content-Type", "text/plain")
         output=[]
-        output.append("User id: %s" % user.getUserId())
+        output.append("User id: %s" % user.getId())
         output.append("Login  : %s" % user.getUserName())
         output.append("Roles  : %s" % " ".join(user.getRoles()))
         output.append("Local R: %s" % " ".join(user.getRolesInContext(aq_inner(self.context))))
 
+        self.request.response.setHeader("Content-Type", "text/plain")
         return "\n".join(output)
