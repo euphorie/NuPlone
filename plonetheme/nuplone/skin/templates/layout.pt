@@ -39,7 +39,7 @@
     </script>
     <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.libraries/jquery-1.4.2.js"></script>
     <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.libraries/jquery.tools.min.js"></script>
-    <script type="text/javascript" tal:attributes="src string:${tools/portal/++resource++NuPlone.libraries/ui-1.8rc2}/jquery-ui-1.8rc2.custom.js"></script>
+    <script type="text/javascript" tal:attributes="src string:${tools/portal/++resource++NuPlone.libraries}/ui-1.8/minified/jquery-ui.min.js"></script>
     <script type="text/javascript" tal:attributes="src string:${tools/portal/++resource++NuPlone.tinymce}/tiny_mce_src.js"></script>
     <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.behaviour/behaviour.js"></script>
     <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.z3cform.js"></script>
