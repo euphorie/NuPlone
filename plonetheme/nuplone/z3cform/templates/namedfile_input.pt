@@ -10,8 +10,6 @@
                         name view/name; 
                         class view/klass;
                         disabled view/disabled;
-                        readonly view/readonly;
-                        size view/size;
-                        maxlength view/maxlength"/> <tal:error condition="view/error" replace="structure view/error/render|nothing"/></label>
+                        readonly view/readonly; "/> <tal:error condition="view/error" replace="structure view/error/render|nothing"/></label>
 </html>
 
