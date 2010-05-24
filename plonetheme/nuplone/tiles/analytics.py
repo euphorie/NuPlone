@@ -1,3 +1,4 @@
+from AccessControl import getSecurityManager
 from plonetheme.nuplone.tiles.tile import AppConfigTile
 from plonetheme.nuplone.utils import SimpleLiteral
 
@@ -8,4 +9,7 @@ class AnalyticsTile(AppConfigTile):
             return None
 
         self.domain=self.data.get("domain", None)
+
+        user=getSecurityManager().getUser()
+        self.login=user.getUserName()
         return SimpleLiteral(self.index())
