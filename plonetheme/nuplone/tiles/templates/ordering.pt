@@ -1,0 +1,18 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:meta="http://xml.zope.org/namespaces/meta"
+     xmlns:tal="http://xml.zope.org/namespaces/tal"
+     meta:interpolation="false"
+     tal:omit-tag="">
+  <script type="text/javascript">
+//  <![CDATA[
+$(document).ready(function() {
+    $(".sortable").sortable({containment: "parent" });
+});
+$(".sortable").live("sortstop", function(e, ui) {
+    var order = $.map($(".sortable > *"), function(e) { return e.id;} );
+    $.post(plone.context_url+"/@@update-order", {order: order});
+});
+// ]]>
+  </script>
+</div>
+
