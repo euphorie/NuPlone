@@ -52,6 +52,8 @@ class Cut(grok.View):
         except CopyError:
             flash(_("message_cut_invalid", default=u"It is not possible to move this object."), "error")
 
+        self.request.response.redirect(context.absolute_url())
+
 
 
 class Paste(grok.View):
