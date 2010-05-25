@@ -25,7 +25,7 @@ msgstr "Kopie gemaakt"
 #. Default: Cut.
 #: plonetheme/nuplone/skin/actions.py:51
 msgid "message_cut_success"
-msgstr "Geplakt"
+msgstr "Geknipt"
 
 #. Default: It is not possible to move this object.
 #: plonetheme/nuplone/skin/actions.py:53
