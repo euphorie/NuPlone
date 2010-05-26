@@ -48,7 +48,7 @@
     name="ordering"
     title="Easy ordering support for folders"
     add_permission="cmf.ManagePortal"
-    class=".ordering.OrderiingTile"
+    class=".ordering.OrderingTile"
     template="templates/ordering.pt"
     permission="cmf.ModifyPortalContent"
     />
