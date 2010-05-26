@@ -27,7 +27,7 @@ class GroupTile(AppConfigTile):
                 if compiled is None:
                     compiled=_compiles[condition]=compile(condition, "<string>", "eval")
                 if globals is None:
-                    globals=dict(context=context, request=request, view_type=viewType(context,request))
+                    globals=dict(context=context, request=request, view_type=viewType(context, request))
                 if not eval(compiled, globals):
                     continue
             tile=getTile(context, request, result.group("name"))

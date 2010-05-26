@@ -1,5 +1,6 @@
 from plone.tiles import Tile
 from Products.CMFCore.utils import getToolByName
+from plonetheme.nuplone.utils import viewType
 
 class LanguageTile(Tile):
     def update(self):
@@ -10,7 +11,10 @@ class LanguageTile(Tile):
         self.languages=languages
         self.current_language=lt.getPreferredLanguage()
 
-
     def __call__(self):
+        view_type=viewType(self.context, self.request)
+        if view_type in ["add", "edit"]:
+            return None
+
         self.update()
         return self.index()
