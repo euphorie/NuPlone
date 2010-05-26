@@ -7,6 +7,8 @@ from plone.app.layout.navigation.interfaces import INavigationRoot
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.ActionInformation import ActionInfo
+from z3c.form.interfaces import IAddForm
+from z3c.form.interfaces import IEditForm
 
 log = logging.getLogger(__name__)
 
@@ -36,9 +38,16 @@ def isAnonymous(user=None):
 
 def viewType(context, request):
     """Determine what type of view the user is looking at. This returns
-    one of three options: ``view`` for normal object views, ``edit``
-    for edit forms, and ``other`` for all other types."""
-# XXX How to check for add views?
+    one of three options: ``view`` for normal object views, ``add``
+    for add forms, ``edit`` for edit forms, and ``other`` for all other
+    types."""
+
+    view=request.other.get("PUBLISHED")
+    if view is not None:
+        if IAddForm.providedBy(view):
+            return "add"
+        if IEditForm.providedBy(view):
+            return "edit"
 
     for url in [ "ACTUAL_URL", "VIRTUAL_URL", "URL" ]:
         current_url=request.get(url)
@@ -52,6 +61,8 @@ def viewType(context, request):
 
     if current_url.endswith("@@edit"):
         return "edit"
+    elif "/++add++" in current_url:
+        return "add"
 
     if current_url==aq_inner(context).absolute_url():
         return "view"
