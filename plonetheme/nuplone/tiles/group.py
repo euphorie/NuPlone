@@ -37,10 +37,10 @@ class GroupTile(AppConfigTile):
     def __call__(self):
         self.update()
         if not self.tiles:
-            return None
+            return u""
         result=self.index()
         if not result.strip():
-            return None
+            return u""
         config=self.data
         wrapper=config.get("wrapper")
         if wrapper:
