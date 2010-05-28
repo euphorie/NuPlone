@@ -36,9 +36,13 @@ class Login(grok.View):
         else:
             self.came_from=self.request.environ.get("HTTP_REFERER")
         if self.came_from:
-            put=getToolByName(self.context, "portal_url")
-            if not put.isURLInPortal(self.came_from):
+            if ":" not in self.came_from:
+                # Mostly for mechanize/testbrowser which starts with a bogus 'localhost' as referer.
                 self.came_from=None
+            else:
+                put=getToolByName(self.context, "portal_url")
+                if not put.isURLInPortal(self.came_from):
+                    self.came_from=None
 
         self.anonymous=isAnonymous(user)
         self.action="%s/@@login" % aq_inner(self.context).absolute_url()

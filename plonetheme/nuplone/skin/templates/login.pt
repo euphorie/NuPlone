@@ -15,7 +15,7 @@
         You are already logged in. Please logout first before trying to login again. 
         </p><p tal:condition="view/failed" class="notice message" i18n:translate="message_invalid_login">Invalid login.</p>
 
-      <form tal:condition="view/anonymous" class="concise" action="${view/action}" method="post">
+      <form tal:condition="view/anonymous" class="concise" action="${view/action}" method="post" id="loginForm">
         <fieldset>
           <legend i18n:translate="legend_credentials">Credentials</legend>
           <input type="hidden" name="came_from" value="${view/came_from}"/>
