@@ -3,8 +3,9 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       meta:interpolation="true"
       tal:omit-tag="">
-  <fieldset>
+  <fieldset class="richInput">
     <legend class="${view/@@dependencies}">${view/label}<sup tal:condition="view/required" class="required">*</sup></legend> <dfn class="infoPanel" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/>
+    <label for="${view/id}" class="superImpose" i18n:translate="">Please enter text here</label>
     <textarea
         class="rich"
         tal:attributes="id view/id;
@@ -12,7 +13,7 @@
                         disabled view/disabled;
                         readonly view/readonly;
                         cols view/cols;
-                        rows view/rows"><p tal:condition="not:view/value">Please enter text here</p><tal:content condition="view/value" replace="structure view/value"/></textarea> <tal:error condition="view/error" replace="structure view/error/render|nothing"/>
+                        rows view/rows"><tal:content condition="view/value" replace="structure view/value"/></textarea> <tal:error condition="view/error" replace="structure view/error/render|nothing"/>
   </fieldset>
 </html>
 

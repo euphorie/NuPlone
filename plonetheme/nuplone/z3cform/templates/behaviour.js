@@ -146,6 +146,34 @@
 
             tinyMCE.execCommand("mceAddControl", false, id);
         });
+
+        $(".rich:not(:input)").each(function() {
+            var $el = $(this),
+                $component = $el.closest(".richInput");
+
+            if (!$component.length) {
+                return;
+            }
+
+            function update() {
+                if (mapal.hasContent($el)) {
+                    $component.removeClass("empty");
+                } else {
+                    $component.addClass("empty");
+                }
+            }
+
+            update();
+
+            $el.bind("focus", function() {
+                    $component.data("mapal.timer.rich", setInterval(update, 100));
+                })
+                .bind("blur", function() {
+                    update();
+                    clearInterval($component.data("mapal.timer.rich"));
+                });
+        });
+
     });
 
     $("form").live("submit", function() {
