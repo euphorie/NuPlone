@@ -66,7 +66,7 @@ class NicerNamedImageWidget(NamedImageWidget):
 
         if value is NOVALUE or \
                 (isinstance(value, FileUpload) and not value.filename):
-            if self.form.ignoreContext:
+            if self.ignoreContext:
                 return default
 
             dm=getMultiAdapter((self.context, self.field,), IDataManager)
