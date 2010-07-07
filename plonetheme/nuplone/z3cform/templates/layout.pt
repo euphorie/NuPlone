@@ -2,12 +2,14 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:meta="http://xml.zope.org/namespaces/meta"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
+      meta:interpolation="true"
       i18n:domain="nuplone"
       metal:use-macro="context/@@layout/macros/layout">
    <metal:content fill-slot="content">
-      <h1 tal:content="view/label">Form label</h1>
-      <tal:form replace="structure view/contents" />
+     <metal:title fill-slot="title">${view/label}</metal:title>
+     <tal:form replace="structure view/contents" />
    </metal:content>
 </html>

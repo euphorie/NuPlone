@@ -9,17 +9,13 @@
       meta:interpolation="true"
       metal:use-macro="context/@@layout/macros/layout">
 
-  <h1 metal:fill-slot="title">${view/label}</h1>
+  <metal:title fill-slot="title">${view/label}</metal:title>
   <metal:content fill-slot="content">
     <p tal:define="status view/status"
        tal:condition="status"
-       tal:attributes="class python:'message error' if view.widgets.errors else 'message notice'"
+       class="message ${python:'error' if view.widgets.errors else 'notice'}"
        tal:content="status" i18n:domain="plone" i18n:translate="">Form-global message</p>
-    <form class="concise"
-          tal:attributes="action request/getURL;
-                          enctype view/enctype;
-                          method view/method;
-                          id view/id">
+    <form class="concise" action="${request/getURL}" enctype="${view/enctype}" method="${view/method}" id="${view/id}">
       <fieldset>
         <legend i18n:domain="plone" i18n:translate=""
           tal:define="legend view/default_fieldset_label|view/label"
@@ -28,7 +24,7 @@
       </fieldset>
 
       <tal:groupform condition="python:getattr(view, 'groups', None)">
-        <fieldset tal:repeat="group view/groups" tal:attributes="class group/layout|nothing">
+        <fieldset tal:repeat="group view/groups" class="${group/layout|nothing}">
           <legend i18n:domain="plone" i18n:translate="" tal:define="legend group/label" tal:condition="legend" tal:content="legend">Group name</legend>
           <p class="discrete" tal:define="description group/description" tal:condition="description" tal:content="description">Group name</p>
           <tal:widget repeat="widget group/widgets/values">
