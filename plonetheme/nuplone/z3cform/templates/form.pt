@@ -9,7 +9,7 @@
       meta:interpolation="true"
       metal:use-macro="context/@@layout/macros/layout">
 
-  <metal:title fill-slot="title">${view/label} XXX-form-title</metal:title>
+  <metal:title fill-slot="title">${view/label}</metal:title>
   <metal:content fill-slot="content">
     <p tal:define="status view/status"
        tal:condition="status"
