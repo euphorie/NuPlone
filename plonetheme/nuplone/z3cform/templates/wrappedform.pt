@@ -1,29 +1,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:meta="http://xml.zope.org/namespaces/meta"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      meta:interpolation="true"
       i18n:domain="nuplone"
       tal:omit-tag="">
   <p tal:define="status view/status"
      tal:condition="status"
      tal:attributes="class python:'message error' if view.widgets.errors else 'message notice'"
-     tal:content="status" i18n:domain="plone" i18n:translate="">Form-global message</p>
+     i18n:domain="plone" i18n:translate="">${status}</p>
   <form class="concise"
         tal:attributes="action request/getURL;
                         enctype view/enctype;
                         method view/method;
                         id view/id">
     <fieldset>
-      <legend i18n:domain="plone" i18n:translate=""
-        tal:define="legend view/default_fieldset_label|view/label"
-        tal:condition="legend" tal:content="legend">Default fieldset</legend>
+      <legend i18n:domain="plone" i18n:translate="" tal:define="legend view/default_fieldset_label|nothing" tal:condition="legend">${legend}</legend>
       <tal:widget repeat="widget view/widgets/values" replace="structure widget/render" />
     </fieldset>
 
     <tal:groupform condition="python:getattr(view, 'groups', None)">
       <fieldset tal:repeat="group view/groups" tal:attributes="class group/layout|nothing">
-        <legend i18n:domain="plone" i18n:translate="" tal:define="legend group/label" tal:condition="legend" tal:content="legend">Group name</legend>
-        <p class="discrete" tal:define="description group/description" tal:condition="description" tal:content="description">Group name</p>
+        <legend i18n:domain="plone" i18n:translate="" tal:define="legend group/label" tal:condition="legend">${legend}</legend>
+        <p class="discrete" tal:define="description group/description" tal:condition="description">${description}</p>
         <tal:widget repeat="widget group/widgets/values">
           <tal:render replace="structure widget/render" />
         </tal:widget>
