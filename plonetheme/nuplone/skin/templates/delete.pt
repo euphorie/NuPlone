@@ -9,7 +9,7 @@
       metal:use-macro="context/@@layout/macros/layout"
       meta:interpolation="true">
   <body>
-    <h1 metal:fill-slot="title" i18n:translate="title_delete">Delete "<tal:span i18n:name="title">${context/title}</tal:span>"</h1>
+    <metal:title metal:fill-slot="title" i18n:translate="title_delete">Delete "<tal:span i18n:name="title">${context/title}</tal:span>"</tal:metitle>
     <metal:content fill-slot="content">
       <form class="concise" action="${request/getURL}" method="post">
         <fieldset>

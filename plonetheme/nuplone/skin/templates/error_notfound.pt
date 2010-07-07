@@ -7,7 +7,7 @@
       i18n:domain="nuplone"
       metal:use-macro="context/@@layout/macros/layout">
   <body>
-    <h1 metal:fill-slot="title" i18n:translate="header_error_notfound">Not found</h1>
+    <metal:title metal:fill-slot="title" i18n:translate="header_error_notfound">Not found</metal:title>
 
     <metal:content fill-slot="content">
       <p i18n:translate="message_error_notfound">The object you were looking for does not exist on this server. Please check your spelling, or use the site search to find the item.</p>

@@ -9,18 +9,18 @@
       tal:define="tools context/@@tools">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.libraries/css_browser_selector.js"></script>
-    <link rel="stylesheet" type="text/css" media="all" tal:attributes="href string:${tools/portal/++resource++NuPlone.style/main}/base.css" />
-    <link rel="stylesheet" type="text/css" media="all" tal:attributes="href string:${tools/portal/++resource++NuPlone.style/euphorie}/base.css" />
-    <!-- [if lte IE6]> <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.style/main/base-ie6.css}" /> <![endif]-->
-    <!--[if IE 7]> <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.style/main/base-ie7.css}" /> <![endif]-->
-    <!--[if IE 8]> <link rel="stylesheet" type="text/css" media="all" tal:attributes="href tools/portal/++resource++NuPlone.style/main/base-ie8.css" /> <![endif]-->
-    <title> — </title>
+    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries/css_browser_selector.js}"></script>
+    <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.style/main}/base.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.style}/euphorie/base.css" />
+    <!-- [if lte IE6]> <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.style}/main/base-ie6.css" /> <![endif]-->
+    <!--[if IE 7]> <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.style}/main/base-ie7.css}" /> <![endif]-->
+    <!--[if IE 8]> <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.style}/main/base-ie8.css" /> <![endif]-->
+    <title><metal:title define-slot="title">Page Title</metal:title> — ${tools/site_title}</title>
   </head>
   <body>
     <div id="content">
       <div id="mainContent">
-        <metal:block define-slot="title"/>
+        <metal:pagetitle define-slot="pagetitle"><h1><metal:slot define-slot="title"/></h1></metal:pagetitle>
         <metal:block define-slot="buttonbar"/>
         <tal:block replace="tile:statusmessages"/>
         <metal:block define-slot="content"/>
@@ -37,12 +37,12 @@
       var plone = { portal_url : '${tools/portal/absolute_url}',
                     context_url : '${context/absolute_url}' };
     </script>
-    <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.libraries/jquery-1.4.2.js"></script>
-    <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.libraries/jquery.tools.min.js"></script>
-    <script type="text/javascript" tal:attributes="src string:${tools/portal/++resource++NuPlone.libraries}/ui-1.8/minified/jquery-ui.min.js"></script>
-    <script type="text/javascript" tal:attributes="src string:${tools/portal/++resource++NuPlone.tinymce}/tiny_mce_src.js"></script>
-    <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.behaviour/behaviour.js"></script>
-    <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.z3cform.js"></script>
+    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery-1.4.2.js"></script>
+    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery.tools.min.js"></script>
+    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/ui-1.8/minified/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.tinymce}/tiny_mce_src.js"></script>
+    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.behaviour}/behaviour.js"></script>
+    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.z3cform.js}"></script>
     <tal:block replace="tile:scripts"/>
     <metal:block define-slot="scripts"/>
   </body>

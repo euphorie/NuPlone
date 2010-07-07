@@ -11,7 +11,7 @@
       metal:use-macro="context/@@layout/macros/layout">
   <body>
     <metal:title fill-slot="title">
-      <h1 tal:condition="tools/anonymous" i18n:translate="header_login">Login</h1><h1 tal:condition="not:tools/anonymous" i18n:translate="header_error_unauthorized">Unauthorized</h1>
+      <tal:title tal:condition="tools/anonymous" i18n:translate="header_login">Login</tal:title><tal:title tal:condition="not:tools/anonymous" i18n:translate="header_error_unauthorized">Unauthorized</tal:title>
     </metal:title>
 
     <metal:content fill-slot="content">
