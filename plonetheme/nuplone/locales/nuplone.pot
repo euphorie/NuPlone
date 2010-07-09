@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NuPlone 1.0\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
-"POT-Creation-Date: 2010-05-16 14:33+0200\n"
+"POT-Creation-Date: 2010-07-09 11:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,32 +33,32 @@ msgid "message_cut_invalid"
 msgstr ""
 
 #. Default: Pasted
-#: plonetheme/nuplone/skin/actions.py:71
+#: plonetheme/nuplone/skin/actions.py:73
 msgid "message_paste_succes"
 msgstr ""
 
 #. Default: You can not paste the copied data here.
-#: plonetheme/nuplone/skin/actions.py:75
+#: plonetheme/nuplone/skin/actions.py:77
 msgid "message_paste_valueerror"
 msgstr ""
 
 #. Default: You can not allowed to paste here.
-#: plonetheme/nuplone/skin/actions.py:77
+#: plonetheme/nuplone/skin/actions.py:79
 msgid "message_paste_unauthorized"
 msgstr ""
 
 #. Default: No valid date found in the clipboard.
-#: plonetheme/nuplone/skin/actions.py:79
+#: plonetheme/nuplone/skin/actions.py:81
 msgid "message_paste_generic"
 msgstr ""
 
 #. Default: Deletion cancelled
-#: plonetheme/nuplone/skin/actions.py:102
+#: plonetheme/nuplone/skin/actions.py:104
 msgid "message_delete_cancel"
 msgstr ""
 
 #. Default: Object removed
-#: plonetheme/nuplone/skin/actions.py:111
+#: plonetheme/nuplone/skin/actions.py:113
 msgid "message_delete_success"
 msgstr ""
 
@@ -107,27 +107,27 @@ msgid "Message sent"
 msgstr ""
 
 #. Default: Language updated
-#: plonetheme/nuplone/skin/language.py:17
+#: plonetheme/nuplone/skin/language.py:18
 msgid "message_switch_language"
 msgstr ""
 
 #. Default: Failed to switch language
-#: plonetheme/nuplone/skin/language.py:19
+#: plonetheme/nuplone/skin/language.py:20
 msgid "message_switch_language_error"
 msgstr ""
 
 #. Default: You have been logged in.
-#: plonetheme/nuplone/skin/login.py:48
+#: plonetheme/nuplone/skin/login.py:52
 msgid "message_logged_in"
 msgstr ""
 
 #. Default: You have been logged out.
-#: plonetheme/nuplone/skin/login.py:68
+#: plonetheme/nuplone/skin/login.py:72
 msgid "message_logged_out"
 msgstr ""
 
 #. Default: You were already logged out.
-#: plonetheme/nuplone/skin/login.py:70
+#: plonetheme/nuplone/skin/login.py:74
 msgid "message_already_logged_out"
 msgstr ""
 
@@ -170,14 +170,10 @@ msgid "title_delete"
 msgstr ""
 
 #: plonetheme/nuplone/skin/templates/dexterity.pt:16
-#: plonetheme/nuplone/z3cform/templates/form.pt:32
-#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:25
 msgid "Group name"
 msgstr ""
 
 #: plonetheme/nuplone/skin/templates/dexterity.pt:10
-#: plonetheme/nuplone/z3cform/templates/form.pt:24
-#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:17
 msgid "Default fieldset"
 msgstr ""
 
@@ -329,22 +325,22 @@ msgid "title_site_menu"
 msgstr ""
 
 #. Default: Languages
-#: plonetheme/nuplone/tiles/templates/language.pt:8
+#: plonetheme/nuplone/tiles/templates/language.pt:10
 msgid "portlet_languages"
 msgstr ""
 
 #. Default: Submit
-#: plonetheme/nuplone/tiles/templates/tabs.pt:13
+#: plonetheme/nuplone/tiles/templates/tabs.pt:14
 msgid "button_submit"
 msgstr ""
 
 #. Default: Search
-#: plonetheme/nuplone/tiles/templates/tabs.pt:13
+#: plonetheme/nuplone/tiles/templates/tabs.pt:14
 msgid "menu_search"
 msgstr ""
 
 #. Default: Home
-#: plonetheme/nuplone/tiles/templates/tabs.pt:9
+#: plonetheme/nuplone/tiles/templates/tabs.pt:10
 msgid "menu_home"
 msgstr ""
 
@@ -391,8 +387,22 @@ msgstr ""
 msgid "header_place_link"
 msgstr ""
 
+#: plonetheme/nuplone/z3cform/templates/form.pt:26
+#: plonetheme/nuplone/z3cform/templates/form.pt:20
+#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:21
+#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:15
+msgid "${legend}"
+msgstr ""
+
 #: plonetheme/nuplone/z3cform/templates/form.pt:14
-#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:7
 msgid "Form-global message"
+msgstr ""
+
+#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:9
+msgid "${status}"
+msgstr ""
+
+#: plonetheme/nuplone/z3cform/templates/wysiwyg_input.pt:8
+msgid "Please enter text here"
 msgstr ""
 
