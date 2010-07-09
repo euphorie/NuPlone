@@ -14,10 +14,9 @@
     <p tal:define="status view/status"
        tal:condition="status"
        class="message ${python:'error' if view.widgets.errors else 'notice'}"
-       tal:content="status" i18n:domain="plone" i18n:translate="">Form-global message</p>
+       tal:content="status" i18n:domain="plone">Form-global message</p>
     <form class="concise" action="${request/getURL}" enctype="${view/enctype}" method="${view/method}" id="${view/id}">
       <fieldset>
-        <legend i18n:domain="plone" i18n:translate="" tal:define="legend view/default_fieldset_label|nothing" tal:condition="legend">${legend}</legend>
         <tal:widget repeat="widget view/widgets/values" replace="structure widget/render" />
       </fieldset>
 
