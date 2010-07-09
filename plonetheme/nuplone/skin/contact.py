@@ -96,11 +96,11 @@ class ContactForm(form.SchemaForm):
             mh.send(email)
         except MailHostError, e:
             log.error("MailHost error sending contact form for %s: %s", data["email"], e)
-            flash(_(u"error_contactmail", u"An error occured while your contact request. Please try again later."), "error")
+            flash(_(u"error_contactmail", u"An error occured while processing your contact request. Please try again later."), "error")
             return
         except socket.error, e:
             log.error("Socket error sending contact form for s: %s", data["email"], e[1])
-            flash(_(u"error_contactmail", u"An error occured while your contact request. Please try again later."), "error")
+            flash(_(u"error_contactmail", u"An error occured while processing your contact request. Please try again later."), "error")
             return
 
         flash(_(u"Message sent"), "success")

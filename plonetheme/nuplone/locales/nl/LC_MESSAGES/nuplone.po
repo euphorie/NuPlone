@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: NuPlone 1.0\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
 "POT-Creation-Date: 2010-05-11 11:17+0200\n"
-"PO-Revision-Date: 2010-07-09 11:56+0200\n"
+"PO-Revision-Date: 2010-07-09 13:12+0200\n"
 "Last-Translator: Wichert Akkerman <wichert@wiggy.net>\n"
 "Language-Team: nl <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -42,12 +42,12 @@ msgstr "Geplakt"
 msgid "message_paste_valueerror"
 msgstr "Het is niet toegestaan om de gekopiëerde objecten hier te plakken."
 
-#. Default: You can not allowed to paste here.
+#. Default: You are not allowed to paste here.
 #: plonetheme/nuplone/skin/actions.py:79
 msgid "message_paste_unauthorized"
 msgstr "Het is niet mogelijk om hier te plakken."
 
-#. Default: No valid date found in the clipboard.
+#. Default: No valid data found in the clipboard.
 #: plonetheme/nuplone/skin/actions.py:81
 msgid "message_paste_generic"
 msgstr "Er staan niks klaar op het klembord."
@@ -97,8 +97,8 @@ msgstr "Versturen"
 msgid "contact_mail_subject"
 msgstr "Contact verzoek: ${subject}"
 
-#. Default: An error occured while your contact request. Please try again
-#. later.
+#. Default: An error occured while processing your contact request. Please try
+#. again later.
 #: plonetheme/nuplone/skin/contact.py:99 plonetheme/nuplone/skin/contact.py:103
 msgid "error_contactmail"
 msgstr ""
