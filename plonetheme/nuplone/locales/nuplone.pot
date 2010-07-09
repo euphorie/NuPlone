@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NuPlone 1.0\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
-"POT-Creation-Date: 2010-07-09 13:15+0200\n"
+"POT-Creation-Date: 2010-07-09 14:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -147,6 +147,10 @@ msgstr ""
 #. Default: ${date} at ${time}
 #: plonetheme/nuplone/skin/tools.py:41
 msgid "format_datetime"
+msgstr ""
+
+#: plonetheme/nuplone/skin/templates/delete.pt:11
+msgid "blabla"
 msgstr ""
 
 #. Default: Cancel
@@ -360,21 +364,40 @@ msgstr ""
 msgid "label_new_window"
 msgstr ""
 
+#: plonetheme/nuplone/z3cform/templates/checkbox_input.pt:8
+#: plonetheme/nuplone/z3cform/templates/checkboxlist_input.pt:8
+#: plonetheme/nuplone/z3cform/templates/date_input.pt:7
+#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:7
+#: plonetheme/nuplone/z3cform/templates/multi_input.pt:7
+#: plonetheme/nuplone/z3cform/templates/namedfile_input.pt:8
+#: plonetheme/nuplone/z3cform/templates/namedimage_input.pt:8
+#: plonetheme/nuplone/z3cform/templates/object_input.pt:7
+#: plonetheme/nuplone/z3cform/templates/password_input.pt:7
+#: plonetheme/nuplone/z3cform/templates/passwordconfirm_input.pt:7
+#: plonetheme/nuplone/z3cform/templates/radio_input.pt:7
+#: plonetheme/nuplone/z3cform/templates/select_input.pt:7
+#: plonetheme/nuplone/z3cform/templates/text_input.pt:7
+#: plonetheme/nuplone/z3cform/templates/textarea_input.pt:8
+#: plonetheme/nuplone/z3cform/templates/textlines_input.pt:7
+#: plonetheme/nuplone/z3cform/templates/wysiwyg_input.pt:9
+msgid "Information"
+msgstr ""
+
 #. Default: Year
-#: plonetheme/nuplone/z3cform/templates/date_input.pt:23
-#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:23
+#: plonetheme/nuplone/z3cform/templates/date_input.pt:25
+#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:25
 msgid "label_year"
 msgstr ""
 
 #. Default: Month
-#: plonetheme/nuplone/z3cform/templates/date_input.pt:14
-#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:14
+#: plonetheme/nuplone/z3cform/templates/date_input.pt:16
+#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:16
 msgid "label_month"
 msgstr ""
 
 #. Default: Day
-#: plonetheme/nuplone/z3cform/templates/date_input.pt:7
-#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:7
+#: plonetheme/nuplone/z3cform/templates/date_input.pt:9
+#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:9
 msgid "label_day"
 msgstr ""
 
@@ -403,7 +426,7 @@ msgstr ""
 msgid "${status}"
 msgstr ""
 
-#: plonetheme/nuplone/z3cform/templates/wysiwyg_input.pt:8
+#: plonetheme/nuplone/z3cform/templates/wysiwyg_input.pt:10
 msgid "Please enter text here"
 msgstr ""
 

@@ -1,9 +1,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:meta="http://xml.zope.org/namespaces/meta"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="nuplone"
       meta:interpolation="true"
       tal:omit-tag="">
-    <label class="${view/@@dependencies}">${view/label}<sup tal:condition="view/required" class="required">*</sup> <dfn class="infoPanel" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/>
+    <label class="${view/@@dependencies}">${view/label}<sup tal:condition="view/required" class="required">*</sup> <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/>
       <textarea
         tal:content="view/value"
         tal:attributes="id view/id;

@@ -1,9 +1,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="nuplone"
       tal:omit-tag=""
       tal:define="item python:view.items[0]">
   <fieldset tal:attributes="class string:comprehensive checkboxList ${view/@@dependencies}">
-    <legend><tal:span replace="item/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup></legend> <dfn class="infoPanel" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/> 
+    <legend><tal:span replace="item/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup></legend> <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/> 
 
     <label tal:repeat="item view/items"><input type="checkbox"
       tal:define="checked item/checked"

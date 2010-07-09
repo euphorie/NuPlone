@@ -8,7 +8,7 @@
       i18n:domain="nuplone"
       metal:use-macro="context/@@layout/macros/layout"
       meta:interpolation="true">
-  <body>
+  <body title="blabla" i18n:attributes="title">
     <metal:title metal:fill-slot="title" i18n:translate="title_delete">Delete "<tal:span i18n:name="title">${context/title}</tal:span>"</metal:title>
     <metal:content fill-slot="content">
       <form class="concise" action="${request/getURL}" method="post">
