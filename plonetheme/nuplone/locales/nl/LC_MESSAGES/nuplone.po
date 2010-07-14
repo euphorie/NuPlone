@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: NuPlone 1.0\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
 "POT-Creation-Date: 2010-05-11 11:17+0200\n"
-"PO-Revision-Date: 2010-07-09 14:31+0200\n"
+"PO-Revision-Date: 2010-07-14 18:24+0200\n"
 "Last-Translator: Wichert Akkerman <wichert@wiggy.net>\n"
 "Language-Team: nl <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -151,12 +151,6 @@ msgstr "Wachtwoord"
 msgid "format_datetime"
 msgstr "${date} om ${time}"
 
-#: plonetheme/nuplone/skin/templates/delete.pt:11
-#, fuzzy
-#| msgid "label_day"
-msgid "blabla"
-msgstr "Dag"
-
 #. Default: Cancel
 #: plonetheme/nuplone/skin/templates/delete.pt:23
 #: plonetheme/nuplone/z3cform/templates/editlink.pt:26
@@ -259,6 +253,10 @@ msgstr "Niet toegestaan"
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
 msgid "header_login"
 msgstr "Login"
+
+#: plonetheme/nuplone/skin/templates/layout.pt:16
+msgid "Change order of items by dragging the handle"
+msgstr "U kunt items verplaatsen door ze te verslepen"
 
 #. Default: Invalid login.
 #: plonetheme/nuplone/skin/templates/login.pt:16
@@ -419,15 +417,9 @@ msgstr "Bewaar"
 msgid "header_place_link"
 msgstr "Plaats een link"
 
-#: plonetheme/nuplone/z3cform/templates/form.pt:26
-#: plonetheme/nuplone/z3cform/templates/form.pt:20
-#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:21
-#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:15
+#: plonetheme/nuplone/z3cform/templates/form.pt:25
+#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:20
 msgid "${legend}"
-msgstr ""
-
-#: plonetheme/nuplone/z3cform/templates/form.pt:14
-msgid "Form-global message"
 msgstr ""
 
 #: plonetheme/nuplone/z3cform/templates/wrappedform.pt:9

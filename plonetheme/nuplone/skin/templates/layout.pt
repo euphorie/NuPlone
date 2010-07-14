@@ -11,6 +11,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries/css_browser_selector.js}"></script>
     <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.style/main}/base.css" />
+    <style type="text/css" media="all">
+      ol.sortable:after {
+          content: "<tal:span i18n:translate="">Change order of items by dragging the handle</tal:span>";
+       }
+    </style>
     <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.style}/euphorie/base.css" />
     <!-- [if lte IE6]> <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.style}/main/base-ie6.css" /> <![endif]-->
     <!--[if IE 7]> <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.style}/main/base-ie7.css" /> <![endif]-->

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NuPlone 1.0\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
-"POT-Creation-Date: 2010-07-09 14:26+0200\n"
+"POT-Creation-Date: 2010-07-14 18:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -149,10 +149,6 @@ msgstr ""
 msgid "format_datetime"
 msgstr ""
 
-#: plonetheme/nuplone/skin/templates/delete.pt:11
-msgid "blabla"
-msgstr ""
-
 #. Default: Cancel
 #: plonetheme/nuplone/skin/templates/delete.pt:23
 #: plonetheme/nuplone/z3cform/templates/editlink.pt:26
@@ -251,6 +247,10 @@ msgstr ""
 #. Default: Login
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
 msgid "header_login"
+msgstr ""
+
+#: plonetheme/nuplone/skin/templates/layout.pt:16
+msgid "Change order of items by dragging the handle"
 msgstr ""
 
 #. Default: Invalid login.
@@ -411,15 +411,9 @@ msgstr ""
 msgid "header_place_link"
 msgstr ""
 
-#: plonetheme/nuplone/z3cform/templates/form.pt:26
-#: plonetheme/nuplone/z3cform/templates/form.pt:20
-#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:21
-#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:15
+#: plonetheme/nuplone/z3cform/templates/form.pt:25
+#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:20
 msgid "${legend}"
-msgstr ""
-
-#: plonetheme/nuplone/z3cform/templates/form.pt:14
-msgid "Form-global message"
 msgstr ""
 
 #: plonetheme/nuplone/z3cform/templates/wrappedform.pt:9
