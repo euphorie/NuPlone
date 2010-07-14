@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.style/main}/base.css" />
     <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.style}/euphorie/base.css" />
     <!-- [if lte IE6]> <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.style}/main/base-ie6.css" /> <![endif]-->
-    <!--[if IE 7]> <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.style}/main/base-ie7.css}" /> <![endif]-->
+    <!--[if IE 7]> <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.style}/main/base-ie7.css" /> <![endif]-->
     <!--[if IE 8]> <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.style}/main/base-ie8.css" /> <![endif]-->
     <title><metal:title define-slot="title">Page Title</metal:title> — ${tools/portal/title}</title>
   </head>
