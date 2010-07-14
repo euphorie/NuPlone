@@ -1,14 +1,9 @@
-import logging
 import re
 from chameleon.zpt.expressions import ExpressionTranslator
 from chameleon.zpt.interfaces import IExpressionTranslator
 from chameleon.core import types
 from zope.interface import implements
 from plonetheme.nuplone.utils import checkPermission
-
-log = logging.getLogger(__name__)
-
-
 
 class PermissionTranslator(ExpressionTranslator):
     implements(IExpressionTranslator)
