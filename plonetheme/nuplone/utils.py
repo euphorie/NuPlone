@@ -1,5 +1,8 @@
 import collections
 import logging
+from email.MIMEText import MIMEText
+from email.Header import Header
+import email.utils as emailutils
 from Acquisition import aq_inner
 from Acquisition import aq_chain
 from AccessControl import getSecurityManager
@@ -133,4 +136,32 @@ def getFactoriesInContext(context):
                          action["url"])
              for action in actions]
     return actions
+
+
+def createEmailTo(sender_name, sender_email, recipient_name, recipient_email,
+                  subject, body, format="plain"):
+    """Create an :obj:`email.MIMEText.MIMEtext` instance for an email. This
+    method will take care of adding addings a date header and message ID
+    to the email, as well as quoting of non-ASCII content.
+    """
+    if isinstance(body, unicode):
+        mail=MIMEText(body.encode("utf-8"), format, "utf-8")
+    else:
+        mail=MIMEText(body, format)
+
+    if sender_name:
+        mail["From"]=emailutils.formataddr((sender_name, sender_email))
+    else:
+        mail["From"]=sender_email
+    if recipient_name:
+        mail["To"]=emailutils.formataddr((recipient_name, recipient_email))
+    else:
+        mail["To"]=recipient_email
+    mail["Subject"]=Header(subject.encode("utf-8"), "utf-8")
+    mail["Message-Id"]=emailutils.make_msgid()
+    mail["Date"]=emailutils.formatdate(localtime=True)
+    mail.set_param("charset", "utf-8")
+
+    return mail
+
 

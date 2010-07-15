@@ -1,8 +1,5 @@
 import logging
 import socket
-from email.MIMEText import MIMEText
-from email.Header import Header
-import email.utils as emailutils
 from Acquisition import aq_inner
 from zope import schema
 from five import grok
@@ -15,6 +12,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.statusmessages.interfaces import IStatusMessage
 from z3c.form.button import buttonAndHandler
 from plonetheme.nuplone.z3cform.form import FieldWidgetFactory
+from plonetheme.nuplone.utils import createEmailTo
 
 log = logging.getLogger(__name__)
 
@@ -43,26 +41,6 @@ class IContact(form.Schema):
             required=True)
     form.widget(message="plonetheme.nuplone.skin.contact.TextLines4Rows")
 
-
-def createEmailTo(sender_name, sender_email, recipient_name, recipient_email,
-                  subject, body, format="plain"):
-    """Create an :obj:`email.MIMEText.MIMEtext` instance for an email. This
-    method will take care of adding addings a date header and message ID
-    to the email, as well as quoting of non-ASCII content.
-    """
-    if isinstance(body, unicode):
-        mail=MIMEText(body.encode("utf-8"), format, "utf-8")
-    else:
-        mail=MIMEText(body, format)
-
-    mail["From"]=emailutils.formataddr((sender_name, sender_email))
-    mail["To"]=emailutils.formataddr((recipient_name, recipient_email))
-    mail["Subject"]=Header(subject.encode("utf-8"), "utf-8")
-    mail["Message-Id"]=emailutils.make_msgid()
-    mail["Date"]=emailutils.formatdate(localtime=True)
-    mail.set_param("charset", "utf-8")
-
-    return mail
 
 
 class ContactForm(form.SchemaForm):
@@ -99,7 +77,7 @@ class ContactForm(form.SchemaForm):
             flash(_(u"error_contactmail", u"An error occured while processing your contact request. Please try again later."), "error")
             return
         except socket.error, e:
-            log.error("Socket error sending contact form for s: %s", data["email"], e[1])
+            log.error("Socket error sending contact form for %s: %s", data["email"], e[1])
             flash(_(u"error_contactmail", u"An error occured while processing your contact request. Please try again later."), "error")
             return
 
