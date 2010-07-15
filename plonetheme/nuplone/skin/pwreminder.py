@@ -49,7 +49,7 @@ class RequestPasswordForm(form.SchemaForm):
     schema = IRequestPasswordReset
     label = _(u"header_password_reset_request", default="Reset password")
     default_fieldset_label = None
-    description = _(u"intro_password_reset",
+    description = _(u"intro_password_reset_request",
             default=u"For security reasons, we store your password encrypted, "
                     u"and cannot mail it to you. If you would like to reset "
                     u"your password, fill out the form below and we will send "

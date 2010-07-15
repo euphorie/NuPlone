@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: NuPlone 1.0\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
 "POT-Creation-Date: 2010-05-11 11:17+0200\n"
-"PO-Revision-Date: 2010-07-15 18:51+0200\n"
+"PO-Revision-Date: 2010-07-15 19:08+0200\n"
 "Last-Translator: Wichert Akkerman <wichert@wiggy.net>\n"
 "Language-Team: nl <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -155,8 +155,7 @@ msgstr "Wachtwoord"
 
 #. Default: Reset password
 #: plonetheme/nuplone/skin/pwreminder.py:50
-#: plonetheme/nuplone/skin/pwreminder.py:125
-msgid "header_password_reset"
+msgid "header_password_reset_request"
 msgstr "Reset wachtwoord"
 
 #. Default: For security reasons, we store your password encrypted, and cannot
@@ -167,10 +166,10 @@ msgstr "Reset wachtwoord"
 #. start
 #. the process of resetting your password.
 #: plonetheme/nuplone/skin/pwreminder.py:52
-msgid "into_password_reset"
+msgid "intro_password_reset_request"
 msgstr ""
-"Om veiligheidsredenen is uw wachtwoord versleuteld opgeslagen en kan "
-"niet toegezonden worden. Als u uw wachtwoord wilt wijzigen kunt u dit "
+"Om veiligheidsredenen is uw wachtwoord versleuteld opgeslagen en kan niet"
+" toegezonden worden. Als u uw wachtwoord wilt wijzigen kunt u dit "
 "formulier invullen. U krijgt dan een e-mail met instructies voor het "
 "resetten van uw wachtwoord toegezonden."
 
@@ -193,12 +192,20 @@ msgstr "Reset wachtwoord voor ${site}"
 #. sent.
 #: plonetheme/nuplone/skin/pwreminder.py:109
 msgid "info_pwrest_mail_sent"
-msgstr "Er is een e-mail met instructies voor het resetten van uw wachtwoord verstuurd."
+msgstr ""
+"Er is een e-mail met instructies voor het resetten van uw wachtwoord "
+"verstuurd."
+
+#. Default: Reset password
+#: plonetheme/nuplone/skin/pwreminder.py:125
+msgid "header_password_reset"
+msgstr "Reset wachtwoord"
 
 #. Default: Please fill out the form below to set your password.
 #: plonetheme/nuplone/skin/pwreminder.py:126
 msgid "intro_password_reset"
-msgstr "Door dit formulier in te vullen kunt u uw wachtwoord wijzigen."
+msgstr ""
+"Vul onderstaand formulier in om uw wachtwoord te laten wijzigen."
 
 #. Default: Change
 #: plonetheme/nuplone/skin/pwreminder.py:144
@@ -325,7 +332,9 @@ msgstr "U kunt items verplaatsen door ze te verslepen"
 #. ${reset_password}
 #: plonetheme/nuplone/skin/templates/login.pt:16
 msgid "message_invalid_login"
-msgstr "Ongeldige login. Als uw uw wachtwoord bent vergeten kunt u ${reset_password}"
+msgstr ""
+"Ongeldige login. Als uw uw wachtwoord bent vergeten kunt u "
+"${reset_password}"
 
 #. Default: request a password reset.
 #: plonetheme/nuplone/skin/templates/login.pt:17
@@ -348,21 +357,27 @@ msgstr "Login"
 #. it.
 #: plonetheme/nuplone/skin/templates/pwreset-email.pt:16
 msgid "automated_email"
-msgstr "Deze e-mail is automatisch gegenereerd. U kunt niet op deze e-mail reageren."
+msgstr ""
+"Deze e-mail is automatisch gegenereerd. U kunt niet op deze e-mail "
+"reageren."
 
 #. Default: If you did not request a password reset or have found your password
 #. please ignore this email. Your password will not be changed.
 #: plonetheme/nuplone/skin/templates/pwreset-email.pt:13
 msgid "password_reset_epilogue"
-msgstr "Indien u geen wachtwoord reset heeft aangevraagd of uw wachtwoord weer heeft gevonden "
-"kunt u deze e-mail negeren. U wachtwoord zal dan niet gewijzigd worden."
+msgstr ""
+"Indien u geen wachtwoord reset heeft aangevraagd of uw wachtwoord weer "
+"heeft gevonden \"\n"
+"\"kunt u deze e-mail negeren. U wachtwoord zal dan niet gewijzigd worden."
 
 #. Default: a password reset for the account '${login}' has been requested. To
 #. reset your password please visit this URL:
 #: plonetheme/nuplone/skin/templates/pwreset-email.pt:8
 msgid "password_reset_intro"
-msgstr "Er is een wachtwoord reset voor de account '${login'} aangevraagd. U kunt uw "
-"wachtwoord wijzigen via onderstaande URL:"
+msgstr ""
+"Er is een wachtwoord reset voor de account '${login'} aangevraagd. U kunt"
+" uw \"\n"
+"\"wachtwoord wijzigen via onderstaande URL:"
 
 #. Default: Dear user,
 #: plonetheme/nuplone/skin/templates/pwreset-email.pt:6
