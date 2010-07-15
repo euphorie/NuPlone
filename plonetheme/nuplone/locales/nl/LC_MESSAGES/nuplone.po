@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: NuPlone 1.0\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
 "POT-Creation-Date: 2010-05-11 11:17+0200\n"
-"PO-Revision-Date: 2010-07-14 18:24+0200\n"
+"PO-Revision-Date: 2010-07-15 17:06+0200\n"
 "Last-Translator: Wichert Akkerman <wichert@wiggy.net>\n"
 "Language-Team: nl <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -89,6 +89,7 @@ msgstr "Contact formulier"
 
 #. Default: Send
 #: plonetheme/nuplone/skin/contact.py:78
+#: plonetheme/nuplone/skin/pwreminder.py:38
 msgid "button_send"
 msgstr "Versturen"
 
@@ -133,6 +134,37 @@ msgstr "U bent uitgelogd."
 #: plonetheme/nuplone/skin/login.py:74
 msgid "message_already_logged_out"
 msgstr "U was reeds uitgelogd."
+
+#. Default: Login
+#: plonetheme/nuplone/skin/pwreminder.py:17
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:31
+#: plonetheme/nuplone/skin/templates/login.pt:23
+msgid "label_login"
+msgstr "Login"
+
+#. Default: Reset password
+#: plonetheme/nuplone/skin/pwreminder.py:28
+#, fuzzy
+#| msgid "label_password"
+msgid "header_password_reset"
+msgstr "Wachtwoord"
+
+#. Default: For security reasons, we store your password encrypted, and cannot
+#. mail
+#. it to you. If you would like to reset your password, fill out the form below
+#. and
+#. we will send you an email at the address you gave when you registered to
+#. start
+#. the process of resetting your password.
+#: plonetheme/nuplone/skin/pwreminder.py:30
+msgid "into_password_reset"
+msgstr ""
+
+#. Default: An email with instructions for resetting your password has been
+#. sent.
+#: plonetheme/nuplone/skin/pwreminder.py:53
+msgid "info_pwrest_mail_sent"
+msgstr ""
 
 #. Default: Full name
 #: plonetheme/nuplone/skin/settings.py:16
@@ -222,12 +254,6 @@ msgstr "Vraag dan een account aan"
 msgid "button_login"
 msgstr "Login"
 
-#. Default: Login
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:31
-#: plonetheme/nuplone/skin/templates/login.pt:23
-msgid "label_login"
-msgstr "Login"
-
 #. Default: Credentials
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:29
 #: plonetheme/nuplone/skin/templates/login.pt:20
@@ -254,7 +280,7 @@ msgstr "Niet toegestaan"
 msgid "header_login"
 msgstr "Login"
 
-#: plonetheme/nuplone/skin/templates/layout.pt:16
+#: plonetheme/nuplone/skin/templates/layout.pt:18
 msgid "Change order of items by dragging the handle"
 msgstr "U kunt items verplaatsen door ze te verslepen"
 
@@ -417,10 +443,14 @@ msgstr "Bewaar"
 msgid "header_place_link"
 msgstr "Plaats een link"
 
-#: plonetheme/nuplone/z3cform/templates/form.pt:25
-#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:20
+#: plonetheme/nuplone/z3cform/templates/form.pt:27
+#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:21
 msgid "${legend}"
 msgstr ""
+
+#: plonetheme/nuplone/z3cform/templates/passwordconfirm_input.pt:16
+msgid "Confirm password"
+msgstr "Bevestig wachtwoord"
 
 #: plonetheme/nuplone/z3cform/templates/wrappedform.pt:9
 msgid "${status}"

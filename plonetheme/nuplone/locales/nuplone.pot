@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NuPlone 1.0\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
-"POT-Creation-Date: 2010-07-14 18:24+0200\n"
+"POT-Creation-Date: 2010-07-15 17:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -88,7 +88,7 @@ msgid "header_contact"
 msgstr ""
 
 #. Default: Send
-#: plonetheme/nuplone/skin/contact.py:78
+#: plonetheme/nuplone/skin/contact.py:78 plonetheme/nuplone/skin/pwreminder.py:38
 msgid "button_send"
 msgstr ""
 
@@ -130,6 +130,31 @@ msgstr ""
 #. Default: You were already logged out.
 #: plonetheme/nuplone/skin/login.py:74
 msgid "message_already_logged_out"
+msgstr ""
+
+#. Default: Login
+#: plonetheme/nuplone/skin/pwreminder.py:17
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:31
+#: plonetheme/nuplone/skin/templates/login.pt:23
+msgid "label_login"
+msgstr ""
+
+#. Default: Reset password
+#: plonetheme/nuplone/skin/pwreminder.py:28
+msgid "header_password_reset"
+msgstr ""
+
+#. Default: For security reasons, we store your password encrypted, and cannot mail
+#. it to you. If you would like to reset your password, fill out the form below and
+#. we will send you an email at the address you gave when you registered to start
+#. the process of resetting your password.
+#: plonetheme/nuplone/skin/pwreminder.py:30
+msgid "into_password_reset"
+msgstr ""
+
+#. Default: An email with instructions for resetting your password has been sent.
+#: plonetheme/nuplone/skin/pwreminder.py:53
+msgid "info_pwrest_mail_sent"
 msgstr ""
 
 #. Default: Full name
@@ -217,12 +242,6 @@ msgstr ""
 msgid "button_login"
 msgstr ""
 
-#. Default: Login
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:31
-#: plonetheme/nuplone/skin/templates/login.pt:23
-msgid "label_login"
-msgstr ""
-
 #. Default: Credentials
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:29
 #: plonetheme/nuplone/skin/templates/login.pt:20
@@ -249,7 +268,7 @@ msgstr ""
 msgid "header_login"
 msgstr ""
 
-#: plonetheme/nuplone/skin/templates/layout.pt:16
+#: plonetheme/nuplone/skin/templates/layout.pt:18
 msgid "Change order of items by dragging the handle"
 msgstr ""
 
@@ -411,9 +430,13 @@ msgstr ""
 msgid "header_place_link"
 msgstr ""
 
-#: plonetheme/nuplone/z3cform/templates/form.pt:25
-#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:20
+#: plonetheme/nuplone/z3cform/templates/form.pt:27
+#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:21
 msgid "${legend}"
+msgstr ""
+
+#: plonetheme/nuplone/z3cform/templates/passwordconfirm_input.pt:16
+msgid "Confirm password"
 msgstr ""
 
 #: plonetheme/nuplone/z3cform/templates/wrappedform.pt:9
