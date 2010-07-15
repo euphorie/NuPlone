@@ -15,7 +15,7 @@
        tal:condition="status"
        class="message ${python:'error' if view.widgets.errors else 'notice'}"
        tal:content="status" i18n:domain="plone">Form-global message</p>
-    <p class="discrete" tal:condition="view/description">${view/description}</p>
+    <p class="discrete" tal:condition="python:getattr(view, 'description', None)">${view/description}</p>
 
     <form class="concise" action="${request/getURL}" enctype="${view/enctype}" method="${view/method}" id="${view/id}">
       <fieldset>

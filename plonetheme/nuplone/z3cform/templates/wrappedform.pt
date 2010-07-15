@@ -10,7 +10,7 @@
      tal:condition="status"
      class="message ${python:'error' if view.widgets.errors else 'notice'}"
      i18n:domain="plone" i18n:translate="">${status}</p>
-  <p class="discrete" tal:condition="view/description">${view/description}</p>
+    <p class="discrete" tal:condition="python:getattr(view, 'description', None)">${view/description}</p>
   <form class="concise" action="${request/getURL}" enctype="${view/enctype}" method="${view/method}" id="${view/id}">
     <fieldset>
       <tal:widget repeat="widget view/widgets/values" replace="structure widget/render" />
