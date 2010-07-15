@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NuPlone 1.0\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
-"POT-Creation-Date: 2010-07-15 18:51+0200\n"
+"POT-Creation-Date: 2010-07-15 19:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -151,16 +151,17 @@ msgstr ""
 
 #. Default: Reset password
 #: plonetheme/nuplone/skin/pwreminder.py:50
-#: plonetheme/nuplone/skin/pwreminder.py:125
-msgid "header_password_reset"
+msgid "header_password_reset_request"
 msgstr ""
 
 #. Default: For security reasons, we store your password encrypted, and cannot mail
 #. it to you. If you would like to reset your password, fill out the form below and
 #. we will send you an email at the address you gave when you registered to start
 #. the process of resetting your password.
+#. Default: Please fill out the form below to set your password.
 #: plonetheme/nuplone/skin/pwreminder.py:52
-msgid "into_password_reset"
+#: plonetheme/nuplone/skin/pwreminder.py:126
+msgid "intro_password_reset"
 msgstr ""
 
 #. Default: Unknown username.
@@ -183,9 +184,9 @@ msgstr ""
 msgid "info_pwrest_mail_sent"
 msgstr ""
 
-#. Default: Please fill out the form below to set your password.
-#: plonetheme/nuplone/skin/pwreminder.py:126
-msgid "intro_password_reset"
+#. Default: Reset password
+#: plonetheme/nuplone/skin/pwreminder.py:125
+msgid "header_password_reset"
 msgstr ""
 
 #. Default: Change

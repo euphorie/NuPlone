@@ -169,16 +169,20 @@ msgstr "Reset wachtwoord"
 #: plonetheme/nuplone/skin/pwreminder.py:52
 msgid "into_password_reset"
 msgstr ""
+"Om veiligheidsredenen is uw wachtwoord versleuteld opgeslagen en kan "
+"niet toegezonden worden. Als u uw wachtwoord wilt wijzigen kunt u dit "
+"formulier invullen. U krijgt dan een e-mail met instructies voor het "
+"resetten van uw wachtwoord toegezonden."
 
 #. Default: Unknown username.
 #: plonetheme/nuplone/skin/pwreminder.py:73
 msgid "error_pwreset_unknown_user"
-msgstr ""
+msgstr "Deze gebruikersnaam is niet bekend"
 
 #. Default: No known email address for this user.
 #: plonetheme/nuplone/skin/pwreminder.py:79
 msgid "error_pwreset_no_email"
-msgstr ""
+msgstr "Deze gebruiker heeft geen e-mail adres opgegeven."
 
 #. Default: Password reset for ${site}
 #: plonetheme/nuplone/skin/pwreminder.py:88
