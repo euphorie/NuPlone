@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NuPlone 1.0\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
-"POT-Creation-Date: 2010-07-15 17:06+0200\n"
+"POT-Creation-Date: 2010-07-15 18:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,47 +63,49 @@ msgid "message_delete_success"
 msgstr ""
 
 #. Default: Your name
-#: plonetheme/nuplone/skin/contact.py:27
+#: plonetheme/nuplone/skin/contact.py:25
 msgid "label_your_name"
 msgstr ""
 
 #. Default: Email address
-#: plonetheme/nuplone/skin/contact.py:32 plonetheme/nuplone/skin/settings.py:20
+#: plonetheme/nuplone/skin/contact.py:30 plonetheme/nuplone/skin/settings.py:20
 msgid "label_email"
 msgstr ""
 
 #. Default: Subject
-#: plonetheme/nuplone/skin/contact.py:37
+#: plonetheme/nuplone/skin/contact.py:35
 msgid "label_subject"
 msgstr ""
 
 #. Default: Your message
-#: plonetheme/nuplone/skin/contact.py:42
+#: plonetheme/nuplone/skin/contact.py:40
 msgid "label_contact_text"
 msgstr ""
 
 #. Default: Contact
-#: plonetheme/nuplone/skin/contact.py:75
+#: plonetheme/nuplone/skin/contact.py:53
 msgid "header_contact"
 msgstr ""
 
 #. Default: Send
-#: plonetheme/nuplone/skin/contact.py:78 plonetheme/nuplone/skin/pwreminder.py:38
+#: plonetheme/nuplone/skin/contact.py:56 plonetheme/nuplone/skin/pwreminder.py:60
 msgid "button_send"
 msgstr ""
 
 #. Default: Contact request: ${subject}
-#: plonetheme/nuplone/skin/contact.py:85
+#: plonetheme/nuplone/skin/contact.py:63
 msgid "contact_mail_subject"
 msgstr ""
 
 #. Default: An error occured while processing your contact request. Please try
 #. again later.
-#: plonetheme/nuplone/skin/contact.py:99 plonetheme/nuplone/skin/contact.py:103
+#: plonetheme/nuplone/skin/contact.py:77 plonetheme/nuplone/skin/contact.py:81
+#: plonetheme/nuplone/skin/pwreminder.py:102
+#: plonetheme/nuplone/skin/pwreminder.py:106
 msgid "error_contactmail"
 msgstr ""
 
-#: plonetheme/nuplone/skin/contact.py:106
+#: plonetheme/nuplone/skin/contact.py:84
 msgid "Message sent"
 msgstr ""
 
@@ -133,14 +135,23 @@ msgid "message_already_logged_out"
 msgstr ""
 
 #. Default: Login
-#: plonetheme/nuplone/skin/pwreminder.py:17
+#: plonetheme/nuplone/skin/pwreminder.py:25
+#: plonetheme/nuplone/skin/pwreminder.py:32
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:31
-#: plonetheme/nuplone/skin/templates/login.pt:23
+#: plonetheme/nuplone/skin/templates/login.pt:25
 msgid "label_login"
 msgstr ""
 
+#. Default: Password
+#: plonetheme/nuplone/skin/pwreminder.py:36 plonetheme/nuplone/skin/settings.py:24
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:33
+#: plonetheme/nuplone/skin/templates/login.pt:27
+msgid "label_password"
+msgstr ""
+
 #. Default: Reset password
-#: plonetheme/nuplone/skin/pwreminder.py:28
+#: plonetheme/nuplone/skin/pwreminder.py:50
+#: plonetheme/nuplone/skin/pwreminder.py:125
 msgid "header_password_reset"
 msgstr ""
 
@@ -148,25 +159,48 @@ msgstr ""
 #. it to you. If you would like to reset your password, fill out the form below and
 #. we will send you an email at the address you gave when you registered to start
 #. the process of resetting your password.
-#: plonetheme/nuplone/skin/pwreminder.py:30
+#: plonetheme/nuplone/skin/pwreminder.py:52
 msgid "into_password_reset"
 msgstr ""
 
+#. Default: Unknown username.
+#: plonetheme/nuplone/skin/pwreminder.py:73
+msgid "error_pwreset_unknown_user"
+msgstr ""
+
+#. Default: No known email address for this user.
+#: plonetheme/nuplone/skin/pwreminder.py:79
+msgid "error_pwreset_no_email"
+msgstr ""
+
+#. Default: Password reset for ${site}
+#: plonetheme/nuplone/skin/pwreminder.py:88
+msgid "password_reset_subject"
+msgstr ""
+
 #. Default: An email with instructions for resetting your password has been sent.
-#: plonetheme/nuplone/skin/pwreminder.py:53
+#: plonetheme/nuplone/skin/pwreminder.py:109
 msgid "info_pwrest_mail_sent"
+msgstr ""
+
+#. Default: Please fill out the form below to set your password.
+#: plonetheme/nuplone/skin/pwreminder.py:126
+msgid "intro_password_reset"
+msgstr ""
+
+#. Default: Change
+#: plonetheme/nuplone/skin/pwreminder.py:144
+msgid "button_change"
+msgstr ""
+
+#. Default: Your password has been reset.
+#: plonetheme/nuplone/skin/pwreminder.py:157
+msgid "password_reset"
 msgstr ""
 
 #. Default: Full name
 #: plonetheme/nuplone/skin/settings.py:16
 msgid "label_fullname"
-msgstr ""
-
-#. Default: Password
-#: plonetheme/nuplone/skin/settings.py:24
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:33
-#: plonetheme/nuplone/skin/templates/login.pt:25
-msgid "label_password"
 msgstr ""
 
 #. Default: ${date} at ${time}
@@ -226,25 +260,25 @@ msgstr ""
 
 #. Default: No account? Please ${request_account}.
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
-#: plonetheme/nuplone/skin/templates/login.pt:34
+#: plonetheme/nuplone/skin/templates/login.pt:36
 msgid "message_no_account"
 msgstr ""
 
 #. Default: request an account
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
-#: plonetheme/nuplone/skin/templates/login.pt:34
+#: plonetheme/nuplone/skin/templates/login.pt:36
 msgid "message_no_account_request_account"
 msgstr ""
 
 #. Default: Login
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:38
-#: plonetheme/nuplone/skin/templates/login.pt:30
+#: plonetheme/nuplone/skin/templates/login.pt:32
 msgid "button_login"
 msgstr ""
 
 #. Default: Credentials
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:29
-#: plonetheme/nuplone/skin/templates/login.pt:20
+#: plonetheme/nuplone/skin/templates/login.pt:22
 msgid "legend_credentials"
 msgstr ""
 
@@ -272,9 +306,14 @@ msgstr ""
 msgid "Change order of items by dragging the handle"
 msgstr ""
 
-#. Default: Invalid login.
+#. Default: Invalid login. If you forgot your password you can ${reset_password}
 #: plonetheme/nuplone/skin/templates/login.pt:16
 msgid "message_invalid_login"
+msgstr ""
+
+#. Default: request a password reset.
+#: plonetheme/nuplone/skin/templates/login.pt:17
+msgid "message_invalid_login_reset_password"
 msgstr ""
 
 #. Default: You are already logged in. Please logout first before trying to login
@@ -286,6 +325,28 @@ msgstr ""
 #. Default: Login
 #: plonetheme/nuplone/skin/templates/login.pt:12
 msgid "title_login"
+msgstr ""
+
+#. Default: Please note that this is an automated email. You can not reply to it.
+#: plonetheme/nuplone/skin/templates/pwreset-email.pt:16
+msgid "automated_email"
+msgstr ""
+
+#. Default: If you did not request a password reset or have found your password
+#. please ignore this email. Your password will not be changed.
+#: plonetheme/nuplone/skin/templates/pwreset-email.pt:13
+msgid "password_reset_epilogue"
+msgstr ""
+
+#. Default: a password reset for the account '${login}' has been requested. To
+#. reset your password please visit this URL:
+#: plonetheme/nuplone/skin/templates/pwreset-email.pt:8
+msgid "password_reset_intro"
+msgstr ""
+
+#. Default: Dear user,
+#: plonetheme/nuplone/skin/templates/pwreset-email.pt:6
+msgid "reminder_email_header"
 msgstr ""
 
 #. Default: Edit
