@@ -57,3 +57,6 @@ class Tools(grok.View):
         names=self.request.locale.displayNames.languages
         return names.get(code, default)
 
+    def checkPermission(self, permission):
+        return utils.checkPermission(self.context, permission)
+
