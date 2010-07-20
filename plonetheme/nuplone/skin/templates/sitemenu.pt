@@ -77,8 +77,16 @@ var sitemenu = {
     timer: null,
 
     getIframeElement: function() {
-        var contentDoc = window.frameElement.ownerDocument,
-            $iframe = $("#siteMenu", contentDoc);
+        var parentWindow, contentDoc, $iframe;
+
+        parentWindow = window.frameElement;
+        if (parentWindow==null) {
+            // Most likely IE
+            contentDoc = window.parent.document;
+        } else {
+            contentDoc = parentWindow.ownerDocument;
+        }
+        $iframe = $("#siteMenu", contentDoc);
         return $iframe;
     },
 
