@@ -36,7 +36,7 @@
     </div>
     <tal:block replace="tile:tabs"/>
     <p id="frameWrapper">
-      <object id="siteMenu" type="text/html" data="${string:${context/absolute_url}/@@sitemenu}?view_type=${tools/view_type}"></object>
+      <iframe id="siteMenu" src="${string:${context/absolute_url}/@@sitemenu}?view_type=${tools/view_type}"></iframe>
     </p>
     <tal:block replace="tile:actions"/>
     <tal:block replace="tile:footer"/>
