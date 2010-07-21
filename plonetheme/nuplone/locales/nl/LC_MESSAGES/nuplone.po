@@ -367,17 +367,15 @@ msgstr ""
 msgid "password_reset_epilogue"
 msgstr ""
 "Indien u geen wachtwoord reset heeft aangevraagd of uw wachtwoord weer "
-"heeft gevonden \"\n"
-"\"kunt u deze e-mail negeren. U wachtwoord zal dan niet gewijzigd worden."
+"heeft gevonden \nkunt u deze e-mail negeren. U wachtwoord zal dan niet gewijzigd worden."
 
 #. Default: a password reset for the account '${login}' has been requested. To
 #. reset your password please visit this URL:
 #: plonetheme/nuplone/skin/templates/pwreset-email.pt:8
 msgid "password_reset_intro"
 msgstr ""
-"Er is een wachtwoord reset voor de account '${login'} aangevraagd. U kunt"
-" uw \"\n"
-"\"wachtwoord wijzigen via onderstaande URL:"
+"Er is een wachtwoord reset voor de account '${login}' aangevraagd. U kunt"
+" uw \nwachtwoord wijzigen via onderstaande URL:"
 
 #. Default: Dear user,
 #: plonetheme/nuplone/skin/templates/pwreset-email.pt:6
