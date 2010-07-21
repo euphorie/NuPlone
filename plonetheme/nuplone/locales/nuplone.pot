@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NuPlone 1.0\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
-"POT-Creation-Date: 2010-07-15 19:08+0200\n"
+"POT-Creation-Date: 2010-07-21 11:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -262,6 +262,21 @@ msgstr ""
 msgid "header_error_notfound"
 msgstr ""
 
+#. Default: If you forgot your password you can ${reset_password}
+#. Default: If you forgot your password you can ${reset_password}.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
+#: plonetheme/nuplone/skin/templates/login.pt:37
+msgid "message_reset_password"
+msgstr ""
+
+#. Default: request a password reset.
+#. Default: request a password reset
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
+#: plonetheme/nuplone/skin/templates/login.pt:37
+#: plonetheme/nuplone/skin/templates/login.pt:17
+msgid "reset_password"
+msgstr ""
+
 #. Default: No account? Please ${request_account}.
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
 #: plonetheme/nuplone/skin/templates/login.pt:36
@@ -310,14 +325,9 @@ msgstr ""
 msgid "Change order of items by dragging the handle"
 msgstr ""
 
-#. Default: Invalid login. If you forgot your password you can ${reset_password}
+#. Default: Invalid login. If you forgot your password you can ${reset_password}.
 #: plonetheme/nuplone/skin/templates/login.pt:16
 msgid "message_invalid_login"
-msgstr ""
-
-#. Default: request a password reset.
-#: plonetheme/nuplone/skin/templates/login.pt:17
-msgid "message_invalid_login_reset_password"
 msgstr ""
 
 #. Default: You are already logged in. Please logout first before trying to login

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: NuPlone 1.0\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
 "POT-Creation-Date: 2010-05-11 11:17+0200\n"
-"PO-Revision-Date: 2010-07-15 19:08+0200\n"
+"PO-Revision-Date: 2010-07-21 11:36+0200\n"
 "Last-Translator: Wichert Akkerman <wichert@wiggy.net>\n"
 "Language-Team: nl <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -204,8 +204,7 @@ msgstr "Reset wachtwoord"
 #. Default: Please fill out the form below to set your password.
 #: plonetheme/nuplone/skin/pwreminder.py:126
 msgid "intro_password_reset"
-msgstr ""
-"Vul onderstaand formulier in om uw wachtwoord te laten wijzigen."
+msgstr "Vul onderstaand formulier in om uw wachtwoord te laten wijzigen."
 
 #. Default: Change
 #: plonetheme/nuplone/skin/pwreminder.py:144
@@ -280,6 +279,21 @@ msgstr ""
 msgid "header_error_notfound"
 msgstr "Niet gevonden"
 
+#. Default: If you forgot your password you can ${reset_password}
+#. Default: If you forgot your password you can ${reset_password}.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
+#: plonetheme/nuplone/skin/templates/login.pt:37
+msgid "message_reset_password"
+msgstr "Indien u uw wachtwoord bent vergeten kunt u ${reset_password}."
+
+#. Default: request a password reset.
+#. Default: request a password reset
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
+#: plonetheme/nuplone/skin/templates/login.pt:37
+#: plonetheme/nuplone/skin/templates/login.pt:17
+msgid "reset_password"
+msgstr "een wachtwoord reset aanvragen"
+
 #. Default: No account? Please ${request_account}.
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
 #: plonetheme/nuplone/skin/templates/login.pt:36
@@ -329,17 +343,12 @@ msgid "Change order of items by dragging the handle"
 msgstr "U kunt items verplaatsen door ze te verslepen"
 
 #. Default: Invalid login. If you forgot your password you can
-#. ${reset_password}
+#. ${reset_password}.
 #: plonetheme/nuplone/skin/templates/login.pt:16
 msgid "message_invalid_login"
 msgstr ""
 "Ongeldige login. Als uw uw wachtwoord bent vergeten kunt u "
-"${reset_password}"
-
-#. Default: request a password reset.
-#: plonetheme/nuplone/skin/templates/login.pt:17
-msgid "message_invalid_login_reset_password"
-msgstr "een wachtwoord reset aanvragen."
+"${reset_password}."
 
 #. Default: You are already logged in. Please logout first before trying to
 #. login
@@ -367,7 +376,8 @@ msgstr ""
 msgid "password_reset_epilogue"
 msgstr ""
 "Indien u geen wachtwoord reset heeft aangevraagd of uw wachtwoord weer "
-"heeft gevonden \nkunt u deze e-mail negeren. U wachtwoord zal dan niet gewijzigd worden."
+"heeft gevonden \n"
+"kunt u deze e-mail negeren. U wachtwoord zal dan niet gewijzigd worden."
 
 #. Default: a password reset for the account '${login}' has been requested. To
 #. reset your password please visit this URL:
@@ -375,7 +385,8 @@ msgstr ""
 msgid "password_reset_intro"
 msgstr ""
 "Er is een wachtwoord reset voor de account '${login}' aangevraagd. U kunt"
-" uw \nwachtwoord wijzigen via onderstaande URL:"
+" uw \n"
+"wachtwoord wijzigen via onderstaande URL:"
 
 #. Default: Dear user,
 #: plonetheme/nuplone/skin/templates/pwreset-email.pt:6
