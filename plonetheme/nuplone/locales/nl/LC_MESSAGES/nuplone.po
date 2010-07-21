@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: NuPlone 1.0\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
 "POT-Creation-Date: 2010-05-11 11:17+0200\n"
-"PO-Revision-Date: 2010-07-21 11:36+0200\n"
+"PO-Revision-Date: 2010-07-21 18:11+0200\n"
 "Last-Translator: Wichert Akkerman <wichert@wiggy.net>\n"
 "Language-Team: nl <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -494,7 +494,7 @@ msgstr "Open de link in een nieuw venster"
 #: plonetheme/nuplone/z3cform/templates/datetime_input.pt:7
 #: plonetheme/nuplone/z3cform/templates/multi_input.pt:7
 #: plonetheme/nuplone/z3cform/templates/namedfile_input.pt:8
-#: plonetheme/nuplone/z3cform/templates/namedimage_input.pt:8
+#: plonetheme/nuplone/z3cform/templates/namedimage_input.pt:10
 #: plonetheme/nuplone/z3cform/templates/object_input.pt:7
 #: plonetheme/nuplone/z3cform/templates/password_input.pt:7
 #: plonetheme/nuplone/z3cform/templates/passwordconfirm_input.pt:7
@@ -539,6 +539,10 @@ msgstr "Plaats een link"
 #: plonetheme/nuplone/z3cform/templates/wrappedform.pt:21
 msgid "${legend}"
 msgstr ""
+
+#: plonetheme/nuplone/z3cform/templates/namedimage_input.pt:14
+msgid "Remove image"
+msgstr "Verwijder afbeelding"
 
 #: plonetheme/nuplone/z3cform/templates/passwordconfirm_input.pt:16
 msgid "Confirm password"
