@@ -1,13 +1,14 @@
 <div xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:meta="http://xml.zope.org/namespaces/meta"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       meta:interpolation="true"
       tal:omit-tag=""
-      tal:define="tools context/@@tools">
+      tal:define="tools nocall:context/@@tools">
   <ul id="tabs">
     <li tal:repeat="tab view/tabs" class="${tab/class}"><a href="${tab/url}">${tab/title}</a></li>
-    <li id="home"><a href="${view/home_url}" i18n:translate="menu_home">Home</a></li>
+    <li id="home"><a href="${view/home_url}">${tools/site_title}</a></li>
     <li id="search">
       <form method="get" action="${tools/navroot_url}/@@search">
         <fieldset>

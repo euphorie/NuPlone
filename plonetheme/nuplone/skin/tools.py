@@ -1,7 +1,9 @@
 from Acquisition import aq_inner
 from AccessControl import getSecurityManager
 from zope.interface import Interface
+from zope.component import queryUtility
 from five import grok
+from z3c.appconfig.interfaces import IAppConfig
 from plonetheme.nuplone.skin.interfaces import NuPloneSkin
 from plonetheme.nuplone import utils
 from plonetheme.nuplone import MessageFactory as _
@@ -13,7 +15,12 @@ class Tools(grok.View):
     grok.name("tools")
     grok.layer(NuPloneSkin)
 
-    def update(self):
+    # Workaround for grok weirdness: it puts a __getitem__ on a view which
+    # assumes there is a template variable
+    template = None
+
+    def __init__(self, *a):
+        super(Tools, self).__init__(*a)
         self.user=getSecurityManager().getUser()
         self.anonymous=self.user is None or self.user.getUserName()=="Anonymous User"
         self.portal=utils.getPortal(self.context)
@@ -27,8 +34,21 @@ class Tools(grok.View):
         expression."""
         return self
 
+    @utils.reify
+    def appConfig(self):
+        return queryUtility(IAppConfig) or {}
+
     def view_type(self):
         return utils.viewType(self.context, self.request)
+
+    @utils.reify
+    def site_title(self):
+        config=self.appConfig
+        title=config.get("site", {}).get("title")
+        if title:
+            return title
+        else:
+            return _("default_site_title", default=u"Plone")
 
     def formatDate(self, date, length="long"):
         return self.request.locale.dates.getFormatter("date", length).format(date)

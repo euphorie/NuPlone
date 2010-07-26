@@ -1,8 +1,8 @@
+from Acquisition import aq_inner
 from plone.tiles import Tile
 from plonetheme.nuplone.utils import getNavigationRoot
 from Products.CMFPlone.utils import typesToList
 from Products.CMFCore.utils import getToolByName
-from Acquisition import aq_inner
 
 class TabsTile(Tile):
     def getRoot(self):
