@@ -42,6 +42,8 @@
     });
 
     $(window).load(function() {
+        var $rich_fields = $("textarea.rich");
+
         function onTinyActivate(ed) {
             var $wrapper = $("#frameWrapper"),
                 $controls;
@@ -116,23 +118,28 @@
         }
 
         $(":input").live("focus", function() {
+            try {
                 tinymce.EditorManager._setActive(null);
                 onTinyDeactivate();
+            } catch (e) {
+            }
         });
 
-        tinyMCE.init({mode: "none",
-                      theme: "dummy",
-                      plugins: "linefield",
-                      element_format: "xhtml",
-                      fix_list_elements: true,
-                      fix_table_elements: true,
-                      entity_encoding: "raw",
-                      content_editable: true,
-                      forced_root_block: null,
-                      setup: onTinySetup
-                     });
+	if ($rich_fields.length) {
+	    tinyMCE.init({mode: "none",
+			  theme: "dummy",
+			  plugins: "linefield",
+			  element_format: "xhtml",
+			  fix_list_elements: true,
+			  fix_table_elements: true,
+			  entity_encoding: "raw",
+			  content_editable: true,
+			  forced_root_block: null,
+			  setup: onTinySetup
+			 });
+	}
 
-        $("textarea.rich").each(function() {
+        $rich_fields.each(function() {
             var $textarea = $(this),
                 id = $textarea.attr("id"),
                 $div = $("<div/>");
