@@ -219,7 +219,7 @@ var z3cform = {
 };
 
 
-z3cform.init()
+z3cform.init();
 $(window).load(function() {
     z3cform.initContent(document);
 });
