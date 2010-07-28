@@ -1,35 +1,41 @@
 /**
- * $Id: Event.js 965 2008-11-27 17:23:31Z spocke $
+ * EventUtils.js
  *
- * @author Moxiecode
- * @copyright Copyright © 2004-2006, Moxiecode Systems AB, All rights reserved.
+ * Copyright 2009, Moxiecode Systems AB
+ * Released under LGPL License.
+ *
+ * License: http://tinymce.moxiecode.com/license
+ * Contributing: http://tinymce.moxiecode.com/contributing
  */
 
-(function() {
+(function(tinymce) {
 	// Shorten names
 	var each = tinymce.each, DOM = tinymce.DOM, isIE = tinymce.isIE, isWebKit = tinymce.isWebKit, Event;
 
-	/**#@+
-	 * @class This class handles DOM events in a cross platform fasion it also keeps track of element
+	/**
+	 * This class handles DOM events in a cross platform fasion it also keeps track of element
 	 * and handler references to be able to clean elements to reduce IE memory leaks.
-	 * @static
-	 * @member tinymce.dom.Event
+	 *
+	 * @class tinymce.dom.EventUtils
 	 */
-	tinymce.create('static tinymce.dom.Event', {
-		inits : [],
-		events : [],
-
-		/**#@+
-		 * @method
+	tinymce.create('tinymce.dom.EventUtils', {
+		/**
+		 * Constructs a new EventUtils instance.
+		 *
+		 * @constructor
+		 * @method EventUtils
 		 */
-
-		// #if !jquery
+		EventUtils : function() {
+			this.inits = [];
+			this.events = [];
+		},
 
 		/**
 		 * Adds an event handler to the specified object.
 		 *
+		 * @method add
 		 * @param {Element/Document/Window/Array/String} o Object or element id string to add event handler to or an array of elements/ids/documents.
-		 * @param {String} n Name of event handler to add for example: click.
+		 * @param {String/Array} n Name of event handler to add for example: click.
 		 * @param {function} f Function to execute when the event occurs.
 		 * @param {Object} s Optional scope to execute the function in.
 		 * @return {function} Function callback handler the same as the one passed in.
@@ -37,8 +43,18 @@
 		add : function(o, n, f, s) {
 			var cb, t = this, el = t.events, r;
 
+			if (n instanceof Array) {
+				r = [];
+
+				each(n, function(n) {
+					r.push(t.add(o, n, f, s));
+				});
+
+				return r;
+			}
+
 			// Handle array
-			if (o && o instanceof Array) {
+			if (o && o.hasOwnProperty && o instanceof Array) {
 				r = [];
 
 				each(o, function(o) {
@@ -56,11 +72,20 @@
 
 			// Setup event callback
 			cb = function(e) {
+				// Is all events disabled
+				if (t.disabled)
+					return;
+
 				e = e || window.event;
 
-				// Patch in target in IE it's W3C valid
-				if (e && !e.target && isIE)
-					e.target = e.srcElement;
+				// Patch in target, preventDefault and stopPropagation in IE it's W3C valid
+				if (e && isIE) {
+					if (!e.target)
+						e.target = e.srcElement;
+
+					// Patch in preventDefault, stopPropagation methods for W3C compatibility
+					tinymce.extend(e, t._stoppers);
+				}
 
 				if (!s)
 					return f(e);
@@ -99,6 +124,7 @@
 		/**
 		 * Removes the specified event handler by name and function from a element or collection of elements.
 		 *
+		 * @method remove
 		 * @param {String/Element/Array} o Element ID string or HTML element or an array of elements or ids to remove handler from.
 		 * @param {String} n Event handler name like for example: "click"
 		 * @param {function} f Function to remove.
@@ -108,7 +134,7 @@
 			var t = this, a = t.events, s = false, r;
 
 			// Handle array
-			if (o && o instanceof Array) {
+			if (o && o.hasOwnProperty && o instanceof Array) {
 				r = [];
 
 				each(o, function(o) {
@@ -136,6 +162,7 @@
 		/**
 		 * Clears all events of a specific object.
 		 *
+		 * @method clear
 		 * @param {Object} o DOM element or object to remove all events from.
 		 */
 		clear : function(o) {
@@ -156,27 +183,28 @@
 			}
 		},
 
-		// #endif
-
 		/**
 		 * Cancels an event for both bubbeling and the default browser behavior.
 		 *
+		 * @method cancel
 		 * @param {Event} e Event object to cancel.
-		 * @return {bool} Always false.
+		 * @return {Boolean} Always false.
 		 */
 		cancel : function(e) {
 			if (!e)
 				return false;
 
 			this.stop(e);
+
 			return this.prevent(e);
 		},
 
 		/**
 		 * Stops propogation/bubbeling of an event.
 		 *
+		 * @method stop
 		 * @param {Event} e Event to cancel bubbeling on.
-		 * @return {bool} Always false.
+		 * @return {Boolean} Always false.
 		 */
 		stop : function(e) {
 			if (e.stopPropagation)
@@ -190,8 +218,9 @@
 		/**
 		 * Prevent default browser behvaior of an event.
 		 *
+		 * @method prevent
 		 * @param {Event} e Event to prevent default browser behvaior of an event.
-		 * @return {bool} Always false.
+		 * @return {Boolean} Always false.
 		 */
 		prevent : function(e) {
 			if (e.preventDefault)
@@ -202,8 +231,13 @@
 			return false;
 		},
 
-		_unload : function() {
-			var t = Event;
+		/**
+		 * Destroys the instance.
+		 *
+		 * @method destroy
+		 */
+		destroy : function() {
+			var t = this;
 
 			each(t.events, function(e, i) {
 				t._remove(e.obj, e.name, e.cfunc);
@@ -238,62 +272,92 @@
 			}
 		},
 
-		_pageInit : function() {
-			var e = Event;
+		_pageInit : function(win) {
+			var t = this;
 
-			// Safari on Mac fires this twice
-			if (e.domLoaded)
+			// Keep it from running more than once
+			if (t.domLoaded)
 				return;
 
-			e._remove(window, 'DOMContentLoaded', e._pageInit);
-			e.domLoaded = true;
+			t.domLoaded = true;
 
-			each(e.inits, function(c) {
+			each(t.inits, function(c) {
 				c();
 			});
 
-			e.inits = [];
+			t.inits = [];
 		},
 
-		_wait : function() {
-			var t;
+		_wait : function(win) {
+			var t = this, doc = win.document;
 
 			// No need since the document is already loaded
-			if (window.tinyMCE_GZ && tinyMCE_GZ.loaded) {
-				Event.domLoaded = 1;
+			if (win.tinyMCE_GZ && tinyMCE_GZ.loaded) {
+				t.domLoaded = 1;
 				return;
 			}
 
-			if (isIE && document.location.protocol != 'https:') {
-				// Fake DOMContentLoaded on IE
-				document.write('<script id=__ie_onload defer src=\'javascript:""\';><\/script>');
-				DOM.get("__ie_onload").onreadystatechange = function() {
-					if (this.readyState == "complete") {
-						Event._pageInit();
-						DOM.get("__ie_onload").onreadystatechange = null; // Prevent leak
+			// Use IE method
+			if (doc.attachEvent) {
+				doc.attachEvent("onreadystatechange", function() {
+					if (doc.readyState === "complete") {
+						doc.detachEvent("onreadystatechange", arguments.callee);
+						t._pageInit(win);
 					}
-				};
-			} else {
-				Event._add(window, 'DOMContentLoaded', Event._pageInit, Event);
+				});
 
-				if (isIE || isWebKit) {
-					t = setInterval(function() {
-						if (/loaded|complete/.test(document.readyState)) {
-							clearInterval(t);
-							Event._pageInit();
+				if (doc.documentElement.doScroll && win == win.top) {
+					(function() {
+						if (t.domLoaded)
+							return;
+
+						try {
+							// If IE is used, use the trick by Diego Perini
+							// http://javascript.nwbox.com/IEContentLoaded/
+							doc.documentElement.doScroll("left");
+						} catch (ex) {
+							setTimeout(arguments.callee, 0);
+							return;
 						}
-					}, 10);
+
+						t._pageInit(win);
+					})();
 				}
+			} else if (doc.addEventListener) {
+				t._add(win, 'DOMContentLoaded', function() {
+					t._pageInit(win);
+				});
+			}
+
+			t._add(win, 'load', function() {
+				t._pageInit(win);
+			});
+		},
+
+		_stoppers : {
+			preventDefault :  function() {
+				this.returnValue = false;
+			},
+
+			stopPropagation : function() {
+				this.cancelBubble = true;
 			}
 		}
-
-		/**#@-*/
 	});
 
-	// Shorten name
-	Event = tinymce.dom.Event;
+	/**
+	 * Instance of EventUtils for the current document.
+	 *
+	 * @property Event
+	 * @member tinymce.dom
+	 * @type tinymce.dom.EventUtils
+	 */
+	Event = tinymce.dom.Event = new tinymce.dom.EventUtils();
 
 	// Dispatch DOM content loaded event for IE and Safari
-	Event._wait();
-	tinymce.addUnload(Event._unload);
-})();
+	Event._wait(window);
+
+	tinymce.addUnload(function() {
+		Event.destroy();
+	});
+})(tinymce);
