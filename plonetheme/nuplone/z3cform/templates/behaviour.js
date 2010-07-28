@@ -146,7 +146,7 @@ var z3cform = {
                       entity_encoding: "raw",
                       content_editable: true,
                       forced_root_block: null,
-                      setup: onTinySetup
+                      setup: z3cform.onTinySetup
                      });
 
         // Make sure to deactivate tiny when a non-tiny field gets the
@@ -210,11 +210,11 @@ var z3cform = {
     },
 
     initContent: function(root) {
-        initialiseRichTextEditor(root);
+        z3cform.initialiseRichTextEditor(root);
     },
 
     init: function() {
-         z3cform.initialiseMultiwidget();
+        z3cform.initialiseMultiwidget();
     }
 };
 
