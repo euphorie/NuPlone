@@ -1229,19 +1229,38 @@
 			if (!s.gecko_spellcheck)
 				t.getDoc().body.spellcheck = 0;
 
-			// Setup objects
+			/**
+			 * DOM instance for the editor.
+			 *
+			 * @property dom
+			 * @type tinymce.dom.DOMUtils
+			 */
 			t.dom = new tinymce.dom.DOMUtils(t.getDoc(), {
 				keep_values : true,
 				url_converter : t.convertURL,
 				url_converter_scope : t,
 				hex_colors : s.force_hex_style_colors,
 				class_filter : s.class_filter,
-				root_element : t.id,
-				fix_ie_paragraphs : 1,
 				update_styles : 1,
+				fix_ie_paragraphs : 1,
+				root_element : t.id,
 				valid_styles : s.valid_styles
 			});
 
+			/**
+			 * Schema instance, enables you to validate elements and it's children.
+			 *
+			 * @property schema
+			 * @type tinymce.dom.Schema
+			 */
+			t.schema = new tinymce.dom.Schema();
+
+			/**
+			 * DOM serializer for the editor.
+			 *
+			 * @property serializer
+			 * @type tinymce.dom.Serializer
+			 */
 			t.serializer = new tinymce.dom.Serializer({
 				entity_encoding : s.entity_encoding,
 				entities : s.entities,
@@ -1255,9 +1274,15 @@
 				font_size_classes  : s.font_size_classes,
 				apply_source_formatting : s.apply_source_formatting,
 				dom : t.dom,
-				schema : schema
+				schema : t.schema
 			});
 
+			/**
+			 * Selection instance for the editor.
+			 *
+			 * @property selection
+			 * @type tinymce.dom.Selection
+			 */
 			t.selection = new tinymce.dom.Selection(t.dom, t.getWin(), t.serializer);
 			t.forceBlocks = new tinymce.ForceBlocks(t, {
 				forced_root_block : s.forced_root_block
