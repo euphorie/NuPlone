@@ -26,9 +26,9 @@ Markup transformations
 In addition to configuring behaviour a few changes are also made to the DOM
 to improve support for older browsers.
 
-Currently only one transformation is done: since not all browsers can style
-``legend`` tags they are are automatically converted to ``<p
-class="question>``, which all browsers do support.
+Currently only one transformation is done: since very few browsers can fully
+style ``legend`` tags they are are automatically converted to ``<p
+class="question>``, which all browsers do handle correctly.
 
 
 API reference
