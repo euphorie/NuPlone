@@ -19,7 +19,7 @@ one of the standard pizzas. The markup for that will look something like this:
    <fieldset class="concise">
      <legend>Select your pizza</legend>
      <label><input type="radio" name="type" value="hawaii"/> Hawaii</label>
-     <label><input type="radio" name="type" value="4cheese"/> Quatro formaggi</label>
+     <label><input type="radio" name="type" value="4cheese"/> Quattro formaggi</label>
      <label><input type="radio" name="type" value="custom"/> Make my own pizza</label>
      <fieldset class="comprehensive checkList dependsOn-type-equals-custom">
        <legend>Select your toppings</legend>
@@ -49,4 +49,5 @@ Contents
   :maxdepth: 2
 
   markup
+  javascript
 
