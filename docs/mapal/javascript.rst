@@ -68,17 +68,17 @@ API reference
       mapal.registerWidthClass("wide", 1110, null);
 
 
-.. js:function: mapal.renumber(container[, selector])
+.. js:function:: mapal.renumber(container[, selector])
 
    :param jQuery-instance Parent of all nodes to be renumbered
-   :param string selector: CSS selector for nodes to renumber. Defaults to `fieldset,tr,dd`
+   :param string selector: CSS selector for nodes to renumber. Defaults to ``fieldset,tr,dd``
 
    When adding or removing new elements to it may be necessary to adjust the
-   number used in `for`, `id` and `name` attributes to prevent conflicts. This
-   is a very common requirement for forms where items can be a added to or
-   removed form a list. The `renumber` function find all elements matching
-   the given selector, and make sure the `for`, `id` and `name` attributes used
-   inside them use the same index number.
+   number used in ``for``, ``id`` and ``name`` attributes to prevent conflicts.
+   This is a very common requirement for forms where items can be a added to or
+   removed form a list. The ``renumber`` function find all elements matching
+   the given selector, and make sure the ``for``, ``id`` and ``name``
+   attributes used inside them use the same index number.
 
    For example suppose a you added a new fieldset to a form and the DOM now
    looks like this:
@@ -96,9 +96,9 @@ API reference
         </fieldset>
       </form>
 
-    There are now duplicate ids in the DOM as well as multiple input elements
-    with the same name. If you now call `mapal.renumber($("#library"))` it
-    will update the DOM to look like this:
+   There are now duplicate ids in the DOM as well as multiple input elements
+   with the same name. If you now call ``mapal.renumber($("#library"))`` it
+   will update the DOM to look like this:
 
    .. code-block:: html
 
@@ -114,7 +114,7 @@ API reference
       </form>
 
 
-.. js:function: mapal.hasContent(node)
+.. js:function:: mapal.hasContent(node)
 
    :param jQuery-instance node: node to check
 
