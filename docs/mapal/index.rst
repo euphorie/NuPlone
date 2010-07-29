@@ -5,7 +5,7 @@ Markup patterns
 What is a markup pattern?
 =========================
 
-NuPlone[r] makes extensive use os markup patterns. Markup patterns are methods
+NuPlone[r] makes extensive use of markup patterns. Markup patterns are methods
 to associate *behaviour* with *markup*, without having to write page-specific
 javascript. 
 
