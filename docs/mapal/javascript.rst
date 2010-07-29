@@ -49,6 +49,7 @@ API reference
    for the new elements. This function is automatically called for the
    document when the markup pattern library is first loaded.
 
+
 .. js:function:: mapal.registerWidthClass(class, minimum, maximum)
 
    :param string class: CSS class to register
@@ -65,8 +66,9 @@ API reference
       mapal.registerWidthClass("narrow", 0, 780);
       mapal.registerWidthClass("medium", 0, 1109);
       mapal.registerWidthClass("wide", 1110, null);
-      
-.. js:function: mapal.renumber(container[, selector]) 
+
+
+.. js:function: mapal.renumber(container[, selector])
 
    :param jQuery-instance Parent of all nodes to be renumbered
    :param string selector: CSS selector for nodes to renumber. Defaults to `fieldset,tr,dd`
@@ -82,7 +84,7 @@ API reference
    looks like this:
 
    .. code-block:: html
-   
+
       <form id="library">
         <fieldset>
           <label id="titleField1">Title <input name="title.1"/> </label>
@@ -99,7 +101,7 @@ API reference
     will update the DOM to look like this:
 
    .. code-block:: html
-   
+
       <form id="library">
         <fieldset>
           <label id="titleField1">Title <input name="title.1"/> </label>
@@ -110,6 +112,7 @@ API reference
           <label id="authorField2">Author <input name="title.2"/> </label>
         </fieldset>
       </form>
+
 
 .. js:function: mapal.hasContent(node)
 
