@@ -38,7 +38,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General substitutions.
-project = 'plone.scale'
+project = 'NuPlone [r]'
 copyright = '2010 Cornelis Kolbach and Wichert Akkerman'
 
 # The default replacements for |version| and |release|, also used in various

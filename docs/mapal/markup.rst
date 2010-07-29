@@ -1,9 +1,10 @@
 ===============
-Markup patterns
+Pattern library
 ===============
 
-Markup patterns are methods to associate *behaviour* with *markup*, without
-having to write page-specific javascript. 
+The markup pattern library supports many different patterns. This chapter
+documents all currently supported patterns.
+
 
 Hiding elements for javascript-disabled browsers
 ================================================
@@ -214,6 +215,5 @@ the form action URL has a fragment that will be used to extract part of the
 response. If the form action URL has no fragment the same fragment as used to
 initially open the panel will be used. For all other HTTP status codes the
 panel will be closed and no further action is taken.
-
 
 
