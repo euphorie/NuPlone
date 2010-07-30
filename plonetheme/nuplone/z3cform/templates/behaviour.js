@@ -43,58 +43,15 @@ var z3cform = {
     },
 
     onTinyActivate: function(ed) {
-        var $wrapper = $("#frameWrapper"),
-            $controls;
-
-        if (!$wrapper.length) {
-            $wrapper=$("<p/>").attr("id", "frameWrapper").appendTo(document.body);
-        }
-
-        function triggerActive() {
-            try {
-                $("#tinyControls").get(0).contentWindow.activate(ed);
-            } catch(e) {
-            }
-        }
-
-        $controls = $("#tinyControls");
-        if (!$controls.length) {
-            $("<iframe/>")
-                .attr("id", "tinyControls")
-                .attr("src", plone.context_url+"/@@tiny-controls")
-                .css("position", "absolute")
-                .css("top", "0px")
-                .css("left", "0px")
-                .css("z-index", "1100")
-                .appendTo($wrapper)
-                .load(triggerActive);
-        } else {
-            triggerActive();
+        try {
+            $("#tinyControls").get(0).contentWindow.activate(ed);
+        } catch(e) {
         }
 
         if (!$("body").hasClass("edit")) {
             $("body").addClass("edit");
         }
 
-        $controls = $("#linkFrame");
-        if (!$controls.length) {
-            $("<iframe/>")
-                .attr("id", "linkFrame")
-                .attr("src", plone.context_url+"/@@edit-link")
-                .attr("frameborder", "0")
-                .css("z-index", "1100")
-                .css("height", "250px")
-                .css("width", "510px")
-                .css("margin-left", "-255px")
-                .css("left", "50%")
-                .css("position", "absolute")
-                .css("top", "70px")
-                .css("-webkit-box-shadow", "0 0 15px rgba(0,0,0,0.5)")
-                .css("-moz-box-shadow", "0 0 15px rgba(0,0,0,0.5)")
-                .css("box-shadow", "0 0 15px rgba(0,0,0,0.5)")
-                .css("display", "none")
-                .appendTo($wrapper);
-        }
     },
 
     onTinyDeactivate: function(ed) {
@@ -132,10 +89,51 @@ var z3cform = {
         return true;
     },
 
+    loadEditorIframes: function() {
+        var $wrapper = $("#frameWrapper");
+
+        if (!$wrapper.length) {
+            $wrapper=$("<p/>").attr("id", "frameWrapper").appendTo(document.body);
+        }
+
+        if (!$("#tinyControls").length) {
+            $("<iframe/>")
+                .attr("id", "tinyControls")
+                .attr("src", plone.context_url+"/@@tiny-controls")
+                .css("position", "absolute")
+                .css("top", "0px")
+                .css("left", "0px")
+                .css("z-index", "1100")
+                .appendTo($wrapper)
+                .load(z3cform.onTinyDeactivate);
+	}
+
+        if (!$("#linkFrame").length) {
+            $("<iframe/>")
+                .attr("id", "linkFrame")
+                .attr("src", plone.context_url+"/@@edit-link")
+                .attr("frameborder", "0")
+                .css("z-index", "1100")
+                .css("height", "250px")
+                .css("width", "510px")
+                .css("margin-left", "-255px")
+                .css("left", "50%")
+                .css("position", "absolute")
+                .css("top", "70px")
+                .css("-webkit-box-shadow", "0 0 15px rgba(0,0,0,0.5)")
+                .css("-moz-box-shadow", "0 0 15px rgba(0,0,0,0.5)")
+                .css("box-shadow", "0 0 15px rgba(0,0,0,0.5)")
+                .css("display", "none")
+                .appendTo($wrapper);
+        }
+    },
+
     initialiseRichTextEditor: function(root) {
         if ($("textarea.rich", root).length===0) {
             return;
         }
+
+        z3cform.loadEditorIframes();
 
         tinyMCE.init({mode: "none",
                       theme: "dummy",
@@ -155,7 +153,7 @@ var z3cform = {
         $(":input", root).focus(function() {
             try {
                 tinymce.EditorManager._setActive(null);
-                onTinyDeactivate();
+                z3cform.onTinyDeactivate();
             } catch (e) {
             }
         });
@@ -173,6 +171,7 @@ var z3cform = {
                 .data("z3cform.name", $textarea.attr("name"))
                 .html($textarea.val());
             $textarea.replaceWith($div);
+	    mapal.initContent($div.parent());
 
             tinyMCE.execCommand("mceAddControl", false, id);
         });
@@ -223,4 +222,7 @@ z3cform.init();
 $(window).load(function() {
     z3cform.initContent(document);
 });
+
+
+/*jslint browser: true, onevar: true, undef: true, regexp: true */
 
