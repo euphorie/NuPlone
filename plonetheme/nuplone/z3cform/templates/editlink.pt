@@ -82,8 +82,10 @@
             topWindow = topDoc.defaultView!==undefined ? topDoc.defaultView : topDoc.parentWindow,
             selection = topWindow.getSelection(),
             range = getRangeObject(selection),
-            $link = $("<a/>").attr("href", url).attr("title", title ? title : null),
-            link = $link.get(0);
+            link = topDoc.createElement("a"),
+            $link = $(link).attr("href", url).attr("title", title ? title : null),
+            link = $link.get(0),
+            oldlink;
 
         if (newwindow) {
             $link.attr("target", "_blank");
@@ -94,7 +96,7 @@
             range.insertNode(link);
         } else if (selection.anchorNode.nodeType===Node.ELEMENT_NODE &&
                   selection.anchorNode.tagName.toLowerCase()==="a") {
-            var oldlink = selection.anchorNode;
+            oldlink = selection.anchorNode;
 
             link.innerHTML=oldlink.innerHTML;
             try {
@@ -108,7 +110,7 @@
                   selection.anchorNode.parentNode.tagName.toLowerCase()==="a") {
             // Safari bug: selection.selectAllChildren should include the top node
             // as well, but instead only its children are added.
-            var oldlink = selection.anchorNode.parentNode;
+            oldlink = selection.anchorNode.parentNode;
 
             link.innerHTML=oldlink.innerHTML;
             try {
