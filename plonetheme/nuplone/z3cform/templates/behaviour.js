@@ -104,9 +104,8 @@ var z3cform = {
                 .css("top", "0px")
                 .css("left", "0px")
                 .css("z-index", "1100")
-                .appendTo($wrapper)
-                .load(z3cform.onTinyDeactivate);
-	}
+                .appendTo($wrapper);
+        }
 
         if (!$("#linkFrame").length) {
             $("<iframe/>")
@@ -125,6 +124,15 @@ var z3cform = {
                 .css("box-shadow", "0 0 15px rgba(0,0,0,0.5)")
                 .css("display", "none")
                 .appendTo($wrapper);
+        }
+    },
+
+    // Helper method to deactivate all tiny editors.
+    deactivateTiny: function() {
+        try {
+            tinymce.EditorManager._setActive(null);
+            z3cform.onTinyDeactivate();
+        } catch (e) {
         }
     },
 
@@ -150,13 +158,12 @@ var z3cform = {
         // Make sure to deactivate tiny when a non-tiny field gets the
         // focus. This will automatically disable the relevant actions
         // in the toolbar.
-        $(":input", root).focus(function() {
-            try {
-                tinymce.EditorManager._setActive(null);
-                z3cform.onTinyDeactivate();
-            } catch (e) {
-            }
-        });
+        $(":input", root).focus(z3cform.deactivateTiny);
+
+        // Deactivate tiny editors after they are added. This guarantees
+        // that we receive the correct activate event when the editor gets
+        // the focus.
+        tinymce.onAddEditor.add(z3cform.deactivateTiny);
 
         // Replace rich textareas with a div, and activate a tinyMCE editor
         // for them.
@@ -171,7 +178,7 @@ var z3cform = {
                 .data("z3cform.name", $textarea.attr("name"))
                 .html($textarea.val());
             $textarea.replaceWith($div);
-	    mapal.initContent($div.parent());
+            mapal.initContent($div.parent());
 
             tinyMCE.execCommand("mceAddControl", false, id);
         });
