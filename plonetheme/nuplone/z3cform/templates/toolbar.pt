@@ -29,7 +29,10 @@
           <button type="button" class="icon superscript">Superscript</button>
         </fieldset>
 
-        <button type="button" class="icon link" title="Hyperlink">Hyperlink</button>
+        <fieldset class="buttonGroup">
+          <button type="button" class="icon link" title="Hyperlink">Hyperlink</button>
+          <button type="button" class="icon unlink" title="Unlink">Unlink</button>
+        </fieldset>
       </div>
     </div>
     <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery-1.4.2.js"></script>
@@ -72,6 +75,12 @@
               $linkFrame = $("#linkFrame", topDoc);
 
           $linkFrame.get(0).contentWindow.show();
+      });
+      $("#editorFunctions .unlink").live("click", function() {
+          var topDoc = window.frameElement.ownerDocument,
+              $linkFrame = $("#linkFrame", topDoc);
+
+          $linkFrame.get(0).contentWindow.removeLink();
       });
     </script>
   </body>
