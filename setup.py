@@ -51,6 +51,9 @@ setup(name="NuPlone",
           "p01.widget.password",
           "Products.statusmessages",
       ],
-      entry_points="""
-      """,
+      extras_require = {
+          "tests": [ "plone.testing",
+                     "plone.app.testing",
+                   ],
+      },
       )
