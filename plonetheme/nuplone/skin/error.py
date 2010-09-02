@@ -4,6 +4,7 @@ from Acquisition import aq_inner
 from Acquisition import aq_chain
 from Acquisition import aq_parent
 from five import grok
+from zope.browser.interfaces import IBrowserView
 from plonetheme.nuplone.skin.interfaces import NuPloneSkin
 import zExceptions
 
@@ -22,6 +23,9 @@ class Error(grok.View):
     def update(self):
         self.exception=aq_inner(self.context)
         self.context=context=aq_parent(self)
+        if IBrowserView.providedBy(context):
+            # NotFound errors can have extra aq wrapping
+            self.context=context=aq_parent(context)
         try:
             log.exception("Error at %s", repr(context))
         except zExceptions.Unauthorized:
