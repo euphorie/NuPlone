@@ -4,6 +4,10 @@ Changelog
 1.0 - Unreleased
 ----------------
 
+* Update error page handler to deal with double acquisition wrapping which
+  can happen on certain NotFound errors in Zope 2.12.
+  [wichert]
+
 * Add `plone.app.testing <http://pypi.python.org/pypi/plone.app.testing>`_
   based test fixture.
   [wichert]
