@@ -4,6 +4,12 @@ Changelog
 1.0 - Unreleased
 ----------------
 
+* ...
+
+
+1.0a2 - September 9, 2010
+-------------------------
+
 * Update error page handler to deal with double acquisition wrapping which
   can happen on certain NotFound errors in Zope 2.12.
   [wichert]
