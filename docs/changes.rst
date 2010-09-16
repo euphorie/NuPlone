@@ -4,7 +4,10 @@ Changelog
 1.0 - Unreleased
 ----------------
 
-* ...
+* Move ``dfn`` elements for tooltips outside ``label`` elements to make sure
+  we can handle click events for them. Otherwise browsers pretend the click
+  was targeted to the input element inside the label.
+  [cornae, wichert]
 
 
 1.0a2 - September 9, 2010
