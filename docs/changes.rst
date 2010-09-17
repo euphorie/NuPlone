@@ -4,6 +4,10 @@ Changelog
 1.0 - Unreleased
 ----------------
 
+* Make the email address and name of the contact person where emails are send
+  to configurable via appconfig.
+  [wichert]
+
 * Move ``dfn`` elements for tooltips outside ``label`` elements to make sure
   we can handle click events for them. Otherwise browsers pretend the click
   was targeted to the input element inside the label.

@@ -4,6 +4,7 @@ from Acquisition import aq_inner
 from zope import schema
 from five import grok
 from zope.i18n import translate
+from zope.component import queryUtility
 from plone.directives import form
 from plonetheme.nuplone import MessageFactory as _
 from Products.MailHost.MailHost import MailHostError
@@ -11,6 +12,7 @@ from Products.CMFCore.interfaces import ISiteRoot
 from Products.CMFCore.utils import getToolByName
 from Products.statusmessages.interfaces import IStatusMessage
 from z3c.form.button import buttonAndHandler
+from z3c.appconfig.interfaces import IAppConfig
 from plonetheme.nuplone.z3cform.form import FieldWidgetFactory
 from plonetheme.nuplone.utils import createEmailTo
 
@@ -60,12 +62,15 @@ class ContactForm(form.SchemaForm):
             self.status = self.formErrorsMessage
             return
 
+        appconfig = queryUtility(IAppConfig) or {}
+        siteconfig = appconfig.get("site", {})
+
         subject=_(u"contact_mail_subject", default=u"Contact request: ${subject}", mapping=data)
         subject=translate(subject, context=self.request)
 
         email=createEmailTo(data["name"], data["email"],
-                            self.context.email_from_name,
-                            self.context.email_from_address,
+                            siteconfig.get("contact.name", self.context.email_from_name),
+                            siteconfig.get("contact.email", self.context.email_from_address),
                             subject,
                             data["message"])
         mh=getToolByName(self.context, "MailHost")
