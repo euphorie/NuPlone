@@ -39,7 +39,9 @@
     </div>
     <tal:block replace="tile:tabs"/>
     <p id="frameWrapper">
-      <iframe id="siteMenu" src="${string:${context/absolute_url}/@@sitemenu}?view_type=${tools/view_type}"></iframe>
+      <object id="siteMenu" type="text/html" data="${string:${context/absolute_url}/@@sitemenu}?view_type=${tools/view_type}">
+        <p>Can not open site menu.</p>
+      </object>
     </p>
     <tal:block replace="tile:actions"/>
     <tal:block replace="tile:footer"/>
