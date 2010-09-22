@@ -4,6 +4,10 @@ Changelog
 1.0 - Unreleased
 ----------------
 
+* Modify site menu to generate the contents of the actions menu in code. This
+  makes it easier to extend the menu using a derived class.
+  [wichert]
+
 * Make the email address and name of the contact person where emails are send
   to configurable via appconfig.
   [wichert]

@@ -34,31 +34,13 @@
           </li>
         </ul>
       </li>
-      <tal:block condition="python:view.view_type=='view' and (factories or view.can_copy or view.can_cut or view.can_paste or view.can_delete)">
-        <li>
-          <a href="#" i18n:translate="menu_actions">Actions</a>
-          <ul tal:define="factories factories">
-            <li tal:condition="python:factories"><tal:span i18n:translate="menu_add_new">Add new</tal:span>
+      <tal:block condition="python:view.view_type=='view' and view.actions">
+        <li tal:define="menu view/actions">
+          <a href="${menu/url|string:#}">${menu/title}</a>
+          <ul>
+            <li tal:repeat="submenu menu/children">${submenu/title}
               <ul>
-                <li tal:repeat="factory factories">
-                  <a href="${factory/url}" title="${factory/description}" >${factory/title}</a>
-                </li>
-              </ul>
-            </li>
-            <li tal:condition="python:view.can_copy or view.can_cut or view.can_paste or view.can_delete"><tal:span i18n:translate="menu_organise">Organise</tal:span>
-              <ul>
-                <li tal:condition="view/can_copy">
-                  <a href="${tools/context_url}/@@copy" i18n:translate="menu_copy">Copy</a>
-                </li>
-                <li tal:condition="view/can_cut">
-                  <a href="${tools/context_url}/@@cut" i18n:translate="menu_cut">Cut</a>
-                </li>
-                <li tal:condition="view/can_paste">
-                  <a href="${tools/context_url}/@@paste" i18n:translate="menu_paste">Paste</a>
-                </li>
-                <li tal:condition="view/can_delete">
-                  <a href="${tools/context_url}/@@delete" i18n:translate="menu_delete">Delete</a>
-                </li>
+                <li tal:repeat="entry submenu/children"><a href="${entry/url}" title="${entry/description|nothing}">${entry/title}</a></li>
               </ul>
             </li>
           </ul>
