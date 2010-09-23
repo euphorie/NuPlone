@@ -4,6 +4,12 @@ Changelog
 1.0 - Unreleased
 ----------------
 
+* ...
+
+
+1.0b1 - September 23, 2010
+--------------------------
+
 * Modify site menu to generate the contents of the actions menu in code. This
   makes it easier to extend the menu using a derived class.
   [wichert]
