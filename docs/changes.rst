@@ -1,10 +1,11 @@
 Changelog
 =========
 
-1.0 - Unreleased
-----------------
+1.0b2 - September 29, 2010
+--------------------------
 
-* ...
+* Form CSS improvements.
+  [cornae]
 
 
 1.0b1 - September 23, 2010
