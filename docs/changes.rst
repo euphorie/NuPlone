@@ -4,7 +4,9 @@ Changelog
 1.0 - Unreleased
 ----------------
 
-* ...
+* Update form field dependency checker to deal with z3c.form's madness of
+  always using :list for checkbox field names.
+  [wichert]
 
 
 1.0b2 - September 29, 2010

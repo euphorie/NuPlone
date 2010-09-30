@@ -5,6 +5,7 @@ from zope.interface import Interface
 from zope.publisher.interfaces.browser import IBrowserView
 from z3c.form.interfaces import IGroup
 from z3c.form.interfaces import IWidget
+from z3c.form.browser.checkbox import CheckBoxWidget
 from plone.autoform.form import AutoExtensibleForm
 from plone.directives.form.schema import FormMetadataListStorage
 from plone.directives.form.schema import Schema
@@ -112,7 +113,10 @@ class WidgetDependencyView(grok.MultiAdapter):
         classes=[]
         widgets=self.widget.__parent__
         for dependency in dependencies:
-            name=widgets[dependency.field].name
+            widget=widgets[dependency.field]
+            name=widget.name
+            if isinstance(widget, CheckBoxWidget):
+                name="%s:list" % name
             if dependency.op in [ "on", "off"]:
                 classes.append("dependsOn-%s-%s" % (name, dependency.op))
             elif dependency.op=="==":
