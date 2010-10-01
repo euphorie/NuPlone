@@ -1,19 +1,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:meta="http://xml.zope.org/namespaces/meta"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="nuplone"
-      meta:interpolation="true"
       tal:omit-tag="">
-  <label class="${view/@@dependencies}">${view/label} <sup tal:condition="view/required" class="required">*</sup>
-    <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description">${description}</dfn>
+  <label tal:attributes="class view/@@dependencies"><tal:span replace="view/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup>
+    <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/>
     <input type="text"
-           id="${view/id}"
-           name="${view/name}"
-           class="${view/klass}"
-           disabled="${view/disabled}"
-           readonly="${view/readonly}"
-           size="${view/size}"
-           maxlength="${view/maxlength}"/> <tal:error condition="view/error" replace="structure view/error/render|nothing"/></label>
+        tal:attributes="id view/id;
+                        name view/name; 
+                        value view/value;
+                        class view/klass;
+                        disabled view/disabled;
+                        readonly view/readonly;
+                        size view/size;
+                        maxlength view/maxlength"/> <tal:error condition="view/error" replace="structure view/error/render|nothing"/></label>
 </html>
 
