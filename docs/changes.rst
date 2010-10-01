@@ -4,6 +4,9 @@ Changelog
 1.0 - Unreleased
 ----------------
 
+* Correct font reference for IE6 and IE7.
+  [wichert]
+
 * Update form field dependency checker to deal with z3c.form's madness of
   always using :list for checkbox field names.
   [wichert]
