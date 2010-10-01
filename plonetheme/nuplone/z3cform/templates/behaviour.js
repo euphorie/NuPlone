@@ -145,7 +145,6 @@ var z3cform = {
 
         tinyMCE.init({mode: "none",
                       theme: "dummy",
-                      plugins: "linefield",
                       element_format: "xhtml",
                       fix_list_elements: true,
                       fix_table_elements: true,
