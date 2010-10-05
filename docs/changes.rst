@@ -4,6 +4,12 @@ Changelog
 1.0 - Unreleased
 ----------------
 
+* ...
+
+
+1.0b3 - October 5, 2010
+-----------------------
+
 * Correct font reference for IE6 and IE7.
   [wichert]
 
