@@ -7,6 +7,12 @@ Changelog
 * ...
 
 
+1.0b4 - October 6, 2010
+-----------------------
+
+* Update IE8 styling.
+  [cornae]
+
 1.0b3 - October 5, 2010
 -----------------------
 
