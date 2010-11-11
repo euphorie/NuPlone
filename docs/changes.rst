@@ -4,7 +4,8 @@ Changelog
 1.0 - Unreleased
 ----------------
 
-* ...
+* Update to jQuery 1.4.3 and jQuery UI 1.8.6.
+  [wichert]
 
 
 1.0b4 - October 6, 2010
