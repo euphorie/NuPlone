@@ -4,6 +4,9 @@ Changelog
 1.0 - Unreleased
 ----------------
 
+* Refactor positioning of form tooltips.
+  [wichert]
+
 * Update to jQuery 1.4.3 and jQuery UI 1.8.6.
   [wichert]
 
