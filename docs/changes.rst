@@ -4,6 +4,9 @@ Changelog
 1.0 - Unreleased
 ----------------
 
+* Fix transparent background for sitemenu in IE7.
+  [wichert]
+
 * Refactor positioning of form tooltips.
   [wichert]
 
