@@ -214,21 +214,8 @@ var z3cform = {
         $("form", root).bind("submit.z3cform", z3cform.onFormSubmit);
     },
 
-    correctTooltips: function(root) {
-        var $tooltip, $label;
-        $("label dfn", root).each(function() {
-             $tooltip = $(this);
-             $label = $tooltip.closest("label");
-
-             $tooltip
-                 .remove()
-                 .insertAfter($label);
-        });
-    },
-
     initContent: function(root) {
         z3cform.initialiseRichTextEditor(root);
-	z3cform.correctTooltips(root);
     },
 
     init: function() {
