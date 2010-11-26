@@ -4,6 +4,10 @@ Changelog
 1.0 - Unreleased
 ----------------
 
+* Do not load the TinyMCE linesfield plugin. It is not needed, and it triggered
+  a symlink handling bug in setuptools/distutils.
+  [wichert]
+
 * Fix transparent background for sitemenu in IE7.
   [wichert]
 
