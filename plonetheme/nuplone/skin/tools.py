@@ -51,12 +51,16 @@ class Tools(grok.View):
             return _("default_site_title", default=u"Plone")
 
     def formatDate(self, date, length="long"):
+        if date.year<1900:
+            return _("date_to_early", default=u"<pre-1900-date>")
         return self.request.locale.dates.getFormatter("date", length).format(date)
 
     def formatTime(self, time, length=None):
         return self.request.locale.dates.getFormatter("time", length).format(time)
 
     def formatDatetime(self, timestamp, length="long"):
+        if timestamp.year<1900:
+            return _("date_to_early", default=u"<pre-1900-date>")
         if length=="long":
             return _("format_datetime", default="${date} at ${time}",
                     mapping=dict(date=self.formatDate(timestamp, "long"),

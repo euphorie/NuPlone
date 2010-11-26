@@ -4,6 +4,10 @@ Changelog
 1.0 - Unreleased
 ----------------
 
+* zope.i18n is not capable of rendering pre-1900 dates. To prevent site errors
+  detect this and return an textual error instead. 
+  [wichert]
+
 * Do not load the TinyMCE linesfield plugin. It is not needed, and it triggered
   a symlink handling bug in setuptools/distutils.
   [wichert]
