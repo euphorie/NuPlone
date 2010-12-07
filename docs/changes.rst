@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.0 - Unreleased
-----------------
+1.0rc1 - December 7, 2010
+-------------------------
 
 * zope.i18n is not capable of rendering pre-1900 dates. To prevent site errors
   detect this and return an textual error instead. 
