@@ -4,7 +4,9 @@ Changelog
 1.0 - Unreleased
 ----------------
 
-* ...
+* Expose date/time format methods from the Tools view directly as well
+  for use in python code.
+  [wichert]
 
 
 1.0rc1 - December 7, 2010

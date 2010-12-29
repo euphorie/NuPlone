@@ -12,6 +12,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.ActionInformation import ActionInfo
 from z3c.form.interfaces import IAddForm
 from z3c.form.interfaces import IEditForm
+from plonetheme.nuplone import MessageFactory as _
 
 log = logging.getLogger(__name__)
 
@@ -178,4 +179,30 @@ class reify(object):
         val = self.wrapped(inst)
         setattr(inst, self.wrapped.__name__, val)
         return val
+
+
+def formatDate(request, date, length="long"):
+    """Wrapper aound the zope.i18n date formatter which does not abort on
+    pre-1900 dates.
+    """
+    if date.year<1900:
+        return _("date_to_early", default=u"<pre-1900-date>")
+    return request.locale.dates.getFormatter("date", length).format(date)
+
+
+def formatTime(request, time, length=None):
+    return request.locale.dates.getFormatter("time", length).format(time)
+
+
+def formatDatetime(request, timestamp, length="long"):
+    """Wrapper aound the zope.i18n datetime formatter which does not abort on
+    pre-1900 dates.
+    """
+    if timestamp.year<1900:
+        return _("date_to_early", default=u"<pre-1900-date>")
+    if length=="long":
+        return _("format_datetime", default="${date} at ${time}",
+                mapping=dict(date=formatDate(request, timestamp, "long"),
+                             time=formatTime(request, timestamp, "short")))
+    return request.locale.dates.getFormatter("dateTime", length).format(timestamp)
 
