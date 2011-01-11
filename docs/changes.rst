@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.0 - Unreleased
-----------------
+1.0rc2 - Janary 11, 2010
+------------------------
 
 * Fix TinyMCE: making text bold or italic works again.
   [wichert]
