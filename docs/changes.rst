@@ -4,6 +4,9 @@ Changelog
 1.0 - Unreleased
 ----------------
 
+* Fix TinyMCE: making text bold or italic works again.
+  [wichert]
+
 * Expose date/time format methods from the Tools view directly as well
   for use in python code.
   [wichert]
