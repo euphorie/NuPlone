@@ -9942,6 +9942,73 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 
 			t.selection = new tinymce.dom.Selection(t.dom, t.getWin(), t.serializer);
 
+			t.formatter = new tinymce.Formatter(this);
+
+			// Register default formats
+			t.formatter.register({
+				alignleft : [
+					{selector : 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li', styles : {textAlign : 'left'}},
+					{selector : 'img,table', styles : {'float' : 'left'}}
+				],
+
+				aligncenter : [
+					{selector : 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li', styles : {textAlign : 'center'}},
+					{selector : 'img', styles : {display : 'block', marginLeft : 'auto', marginRight : 'auto'}},
+					{selector : 'table', styles : {marginLeft : 'auto', marginRight : 'auto'}}
+				],
+
+				alignright : [
+					{selector : 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li', styles : {textAlign : 'right'}},
+					{selector : 'img,table', styles : {'float' : 'right'}}
+				],
+
+				alignfull : [
+					{selector : 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li', styles : {textAlign : 'justify'}}
+				],
+
+				bold : [
+					{inline : 'strong'},
+					{inline : 'span', styles : {fontWeight : 'bold'}},
+					{inline : 'b'}
+				],
+
+				italic : [
+					{inline : 'em'},
+					{inline : 'span', styles : {fontStyle : 'italic'}},
+					{inline : 'i'}
+				],
+
+				underline : [
+					{inline : 'span', styles : {textDecoration : 'underline'}, exact : true},
+					{inline : 'u'}
+				],
+
+				strikethrough : [
+					{inline : 'span', styles : {textDecoration : 'line-through'}, exact : true},
+					{inline : 'u'}
+				],
+
+				forecolor : {inline : 'span', styles : {color : '%value'}},
+				hilitecolor : {inline : 'span', styles : {backgroundColor : '%value'}},
+				fontname : {inline : 'span', styles : {fontFamily : '%value'}},
+				fontsize : {inline : 'span', styles : {fontSize : '%value'}},
+				fontsize_class : {inline : 'span', attributes : {'class' : '%value'}},
+				blockquote : {block : 'blockquote', wrapper : 1, remove : 'all'},
+
+				removeformat : [
+					{selector : 'b,strong,em,i,font,u,strike', remove : 'all', split : true, expand : false, block_expand : true, deep : true},
+					{selector : 'span', attributes : ['style', 'class'], remove : 'empty', split : true, expand : false, deep : true},
+					{selector : '*', attributes : ['style', 'class'], split : false, expand : false, deep : true}
+				]
+			});
+
+			// Register default block formats
+			each('p h1 h2 h3 h4 h5 h6 div address pre div code dt dd samp'.split(/\s/), function(name) {
+				t.formatter.register(name, {block : name, remove : 'all'});
+			});
+
+			// Register user defined formats
+			t.formatter.register(t.settings.formats);
 			t.undoManager = new tinymce.UndoManager(t);
 
 			// Pass through
