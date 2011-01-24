@@ -4,6 +4,10 @@ Changelog
 1.0 - Unreleased
 ----------------
 
+* Add javascript workaround for bad handling if ``<button>`` elements in
+  Internet Explorer versions before 8.
+  [wichert]
+
 * Do form-related markup transforms earlier so positioning of tooltips
   from global transforms works correctly.
   [wichert]
