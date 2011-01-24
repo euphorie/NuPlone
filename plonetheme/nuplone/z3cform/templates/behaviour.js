@@ -136,6 +136,24 @@ var z3cform = {
         }
     },
 
+    doTransforms: function(root) {
+        // Replace rich textareas with a div, and activate a tinyMCE editor
+        // for them.
+        $("textarea.rich", root).each(function() {
+            var $textarea = $(this),
+                id = $textarea.attr("id"),
+                $div = $("<div/>");
+
+            $div
+                .attr("id", id)
+                .addClass("rich input")
+                .data("z3cform.name", $textarea.attr("name"))
+                .html($textarea.val());
+            $textarea.replaceWith($div);
+            mapal.initContent($div.parent());
+        });
+    },
+
     initialiseRichTextEditor: function(root) {
         if ($("textarea.rich", root).length===0) {
             return;
@@ -166,20 +184,8 @@ var z3cform = {
 
         // Replace rich textareas with a div, and activate a tinyMCE editor
         // for them.
-        $("textarea.rich", root).each(function() {
-            var $textarea = $(this),
-                id = $textarea.attr("id"),
-                $div = $("<div/>");
-
-            $div
-                .attr("id", id)
-                .addClass("rich input")
-                .data("z3cform.name", $textarea.attr("name"))
-                .html($textarea.val());
-            $textarea.replaceWith($div);
-            mapal.initContent($div.parent());
-
-            tinyMCE.execCommand("mceAddControl", false, id);
+        $("div.rich.input", root).each(function() {
+            tinyMCE.execCommand("mceAddControl", false, this.id);
         });
 
         // Check for focus and existing content to determine visibility
@@ -215,7 +221,10 @@ var z3cform = {
     },
 
     initContent: function(root) {
-        z3cform.initialiseRichTextEditor(root);
+        z3cform.doTransforms();
+        $(window).load(function() {
+            z3cform.initialiseRichTextEditor(root);
+        });
     },
 
     init: function() {
@@ -225,10 +234,9 @@ var z3cform = {
 
 
 z3cform.init();
-$(window).load(function() {
-    z3cform.initContent(document);
+$(document).ready(function() {
+    z3cform.initContent();
 });
-
 
 /*jslint browser: true, onevar: true, undef: true, regexp: true */
 
