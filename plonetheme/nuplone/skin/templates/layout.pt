@@ -53,8 +53,8 @@
     <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery.tools.min.js"></script>
     <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/ui-1.8/minified/jquery-ui.min.js"></script>
     <script type="text/javascript" src="${tools/portal/++resource++NuPlone.tinymce}/tiny_mce_src.js"></script>
-    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.behaviour}/behaviour.js"></script>
     <script type="text/javascript" src="${tools/portal/++resource++NuPlone.z3cform.js}"></script>
+    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.behaviour}/behaviour.js"></script>
     <tal:block replace="tile:scripts"/>
     <metal:block define-slot="scripts"/>
   </body>
