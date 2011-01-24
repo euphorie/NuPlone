@@ -4,7 +4,9 @@ Changelog
 1.0 - Unreleased
 ----------------
 
-* ...
+* Do form-related markup transforms earlier so positioning of tooltips
+  from global transforms works correctly.
+  [wichert]
 
 
 1.0rc2 - Janary 11, 2010
