@@ -83,6 +83,7 @@ class Paste(grok.View):
         self.request.response.redirect(context.absolute_url())
 
 
+
 class Delete(grok.View):
     grok.context(Interface)
     grok.name("delete")
