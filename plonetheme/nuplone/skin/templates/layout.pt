@@ -49,7 +49,7 @@
       var plone = { portal_url : '${tools/portal/absolute_url}',
                     context_url : '${context/absolute_url}' };
     </script>
-    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery-1.4.3.min.js"></script>
+    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery-1.4.4.min.js"></script>
     <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery.tools.min.js"></script>
     <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/ui-1.8/minified/jquery-ui.min.js"></script>
     <script type="text/javascript" src="${tools/portal/++resource++NuPlone.tinymce}/tiny_mce_src.js"></script>

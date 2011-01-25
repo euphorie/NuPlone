@@ -4,6 +4,9 @@ Changelog
 1.0 - Unreleased
 ----------------
 
+* Upgrade to jQuery 1.4.4 and jQuery UI 1.8.9.
+  [wichert]
+
 * Add javascript workaround for bad handling if ``<button>`` elements in
   Internet Explorer versions before 8.
   [wichert]
