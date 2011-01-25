@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.0 - Unreleased
-----------------
+1.0rc3 - January 25, 2011
+-------------------------
 
 * Upgrade to jQuery 1.4.4 and jQuery UI 1.8.9.
   [wichert]
@@ -16,7 +16,7 @@ Changelog
   [wichert]
 
 
-1.0rc2 - Janary 11, 2010
+1.0rc2 - Janary 11, 2011
 ------------------------
 
 * Fix TinyMCE: making text bold or italic works again.
