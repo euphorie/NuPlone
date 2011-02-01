@@ -146,7 +146,8 @@ var z3cform = {
 
             $div
                 .attr("id", id)
-                .addClass("rich input")
+                .addClass("rich")
+		.addClass("input")
                 .data("z3cform.name", $textarea.attr("name"))
                 .html($textarea.val());
             $textarea.replaceWith($div);
@@ -155,7 +156,7 @@ var z3cform = {
     },
 
     initialiseRichTextEditor: function(root) {
-        if ($("textarea.rich", root).length===0) {
+        if ($("div.rich.input", root).length===0) {
             return;
         }
 
@@ -190,7 +191,7 @@ var z3cform = {
 
         // Check for focus and existing content to determine visibility
         // of any superimposed labels
-        $(".rich:not(:input)", root).each(function() {
+        $(".rich.input:not(:input)", root).each(function() {
             var $el = $(this),
                 $component = $el.closest(".richInput");
 
