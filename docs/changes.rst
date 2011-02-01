@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.0rc4 - Unreleased
-----------------
+1.0rc4 - Febuary 1, 2011
+------------------------
 
 * Paper brown bag: fix initialisation of rich text editor in forms. This
   broke in 1.0rc3 as a part of the tooltip changes.
