@@ -36,7 +36,7 @@
       </li>
       <tal:block condition="python:view.view_type=='view' and view.actions">
         <li tal:define="menu view/actions">
-          <a href="${menu/url|string:#}">${menu/title}</a>
+          <a class="contextActions" href="${menu/url|string:#}">${menu/title}</a>
           <ul>
             <li tal:repeat="submenu menu/children">${submenu/title}
               <ul>
@@ -53,6 +53,11 @@
 
   <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.libraries/jquery-1.4.2.js"></script>
   <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.behaviour/behaviour.js"></script>
+  <script tal:define="menu view/actions; url menu/url|nothing" tal:condition="not: url" type="text/javascript" meta:interpolation="false">
+        $("a.contextActions").click(function(event) {
+                event.preventDefault();
+        })
+  </script>
   <script type="text/javascript" meta:interpolation="false">
 var sitemenu = {
     // Timer to control hiding of the sitemenu in the main document
