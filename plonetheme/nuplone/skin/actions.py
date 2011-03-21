@@ -110,7 +110,7 @@ class Delete(grok.View):
                 raise zExceptions.Unauthorized
 
             container=aq_parent(context)
-            container.manage_delObjects(context.getId())
+            container.manage_delObjects([context.getId()])
             flash(_("message_delete_success", default=u"Object removed"), "success")
             self.request.response.redirect(container.absolute_url())
 
