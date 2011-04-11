@@ -4,5 +4,8 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       meta:interpolation="true"
       tal:omit-tag="">
-  <p tal:repeat="message view/messages" class="message ${message/type}">${message/message}</p>
+
+    <tal:loop repeat="message view/messages">
+        <p class="message ${message/type}" tal:content="structure string:${message/message}"></p>
+    </tal:loop>
 </div>
