@@ -24,13 +24,17 @@
     handler=".setuphandlers.setupVarious"
     />
 
+  <adapter
+      for="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
+      provides="Products.statusmessages.interfaces.IStatusMessage"
+      factory=".adapter.StatusMessage"
+      />
+
   <include package="five.grok" />
   <include package="cmf.pt" />
   <include package=".skin" />
   <include package=".z3cform" />
-
   <include package=".tiles" />
-
   <grok:grok package="." />
 
 </configure>
