@@ -4,6 +4,9 @@ Changelog
 1.0rc5 - Unreleased
 ----------------
 
+* Enable the iframe workaround for IE 9 as well.
+  [wichert]
+
 * Bugfix. Prevent clicking on the "Actions" site menu action if it doesn't have
   a URL to go to. 
   [jcbrand]
