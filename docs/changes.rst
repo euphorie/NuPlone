@@ -7,6 +7,9 @@ Changelog
 * Enable the iframe workaround for IE 9 as well.
   [wichert]
 
+* Add support for status messages containing markup.
+  [jcbrand]
+
 * Bugfix. Prevent clicking on the "Actions" site menu action if it doesn't have
   a URL to go to. 
   [jcbrand]
