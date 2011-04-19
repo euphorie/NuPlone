@@ -4,6 +4,11 @@ Changelog
 1.0rc5 - Unreleased
 ----------------
 
+* Do not put a <p> element in an <object>; IE9 will move it outside the object
+  element, thus resulting in leftovers even when using the object->iframe
+  conversion.
+  [wichert]
+
 * Enable the iframe workaround for IE 9 as well.
   [wichert]
 

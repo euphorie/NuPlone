@@ -40,7 +40,7 @@
     <tal:block replace="tile:tabs"/>
     <p id="frameWrapper">
       <object id="siteMenu" type="text/html" data="${string:${context/absolute_url}/@@sitemenu}?view_type=${tools/view_type}">
-        <p>Can not open site menu.</p>
+        <tal:span i18n:translate="">Can not open site menu.</tal:span>
       </object>
     </p>
     <tal:block replace="tile:actions"/>
