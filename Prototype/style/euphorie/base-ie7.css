@@ -1,0 +1,16 @@
+@font-face {
+	font-family: "Abadi MT Condensed Light";
+    font-style:  normal;
+    font-weight: normal;
+    src: url(fonts/ABADIMT0.eot);
+}
+
+/* @group Version list */
+
+#portletVersioning ul.surveyVersions li a.floatAfter {
+	margin-top: -18px;
+}
+
+
+
+/* @end */

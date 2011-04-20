@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" media="all" href="../style/form/base.css"/>
+  </head>
+  <body id="editBar">
+    <div id="buttonBar">
+      <div id="editorFunctions">
+        <fieldset>
+          <button type="button" class="inline strong">B</button>
+          <button type="button" class="inline emphasised">I</button>
+        </fieldset>
+
+        <fieldset class="buttonGroup">
+          <button type="button" class="icon unorderedList">Unordered List</button>
+          <button type="button" class="icon orderedList">Ordered List</button>
+        </fieldset>
+
+        <fieldset class="buttonGroup">
+          <button type="button" class="icon subscript">Subscript</button>
+          <button type="button" class="icon superscript">Superscript</button>
+        </fieldset>
+ 
+        <fieldset class="buttonGroup">      
+          <button type="button" class="icon link" title="Hyperlink">Hyperlink</button>
+          <button type="button" class="icon unlink" disabled="disabled" title="Hyperlink">Unlink</button>
+        </fieldset>
+        
+      </div>
+    </div>
+    <script type="text/javascript" src="../libraries/jquery-1.4.3.js"></script>
+    <script type="text/javascript">
+      function getTiny() {
+          var topDoc = window.frameElement.ownerDocument,
+              topWindow = topDoc.defaultView!==undefined ? topDoc.defaultView : topDoc.parentWindow;
+          return topWindow.tinyMCE;
+      }
+
+      function activate(ed) {
+          $("button").show();
+      }
+
+      function deactivate(ed) {
+          $("button").hide();
+      }
+
+      $("#editorFunctions .strong").live("click", function() {
+          getTiny().execCommand("Bold"); return false; });
+      $("#editorFunctions .emphasised").live("click", function() {
+          getTiny().execCommand("italic"); return false; });
+
+      $("#editorFunctions .unorderedList").live("click", function() {
+          getTiny().execCommand("InsertUnorderedList"); return false; });
+      $("#editorFunctions .orderedList").live("click", function() {
+          getTiny().execCommand("InsertOrderedList"); return false; });
+
+      $("#editorFunctions .subscript").live("click", function() {
+          getTiny().execCommand("Subscript"); return false; });
+      $("#editorFunctions .superscript").live("click", function() {
+          getTiny().execCommand("Superscript"); return false; });
+
+      $("#editorFunctions .link").live("click", function() {
+          var topDoc = window.frameElement.ownerDocument,
+              $linkFrame = $("#linkFrame", topDoc);
+
+          $linkFrame.get(0).contentWindow.show();
+      });
+    </script>
+  </body>
+</html>
+

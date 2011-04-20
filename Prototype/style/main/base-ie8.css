@@ -1,0 +1,32 @@
+#tabs #search form input {
+	height: 19px;
+}
+
+#tabs #search form label {
+	top: 16px;
+	left: 16px;
+}
+
+input[type="text"],input[type="password"] {
+	height: 17px;
+}
+
+.medium #portlets:before {
+	margin-left: -45px;
+	margin-top: 20px;
+	content: "◀";
+	font-size: 32px;
+}
+
+.medium #portlets:hover:before {
+	content: "▶";
+	font-size: 32px;
+	margin-left: -45px;
+	margin-top: 20px;
+}
+
+#workflowState p.currentState {
+	writing-mode: tb-rl;
+	margin-right: -28px;
+	margin-top: -22px;
+}

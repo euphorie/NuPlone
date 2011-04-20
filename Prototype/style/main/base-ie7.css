@@ -1,0 +1,190 @@
+/* @group Workflowstate */
+
+#workflowState {
+	background-color: white;
+}
+
+#workflowState p.currentState {
+	margin-right: 63px;
+	height: 300px;
+	margin-top: -154px;
+}
+
+#workflowState {
+	border-top: 1px solid silver;
+	border-bottom: 1px solid silver;
+}
+
+/* @end */
+
+/* @group Grid list */
+
+dl.grid {
+	width: 100%;
+}
+
+dl.grid dt {
+	display: block;
+}
+
+dl.grid dd {
+	float: none;
+}
+
+/* @end */
+
+/* @group Separators */
+
+hr.clear {
+	color: white;
+}
+
+
+
+/* @end */
+
+/* @group Forms */
+
+input[type="text"],input[type="password"] {
+	height: 18px;
+	margin-top: -1px;
+}
+
+input[type="file"]  {
+	height: 19px;
+	border: 1px solid #dedede;
+}
+
+select {
+	height: 20px;
+	border-width: 1px;
+	font-size: 12px;
+}
+
+fieldset.radioList {
+	line-height: 20px;
+}
+
+fieldset.radioList label {
+}
+
+.radioList label input {
+	float: left;
+	margin: -2px 5px 0 -18px !important;
+}
+
+/* @group Fieldset concise */
+
+fieldset.concise {
+}
+
+fieldset.concise label,
+form.concise label {
+	width: 35%;
+	clear: left;
+}
+
+form.concise fieldset label *,
+fieldset.concise label *,
+form.concise fieldset label *,
+fieldset.concise label * {
+	left: 35%;
+	margin-top: -20px;
+}
+
+form.concise fieldset label dfn.infoPanel,
+fieldset.concise label dfn.infoPanel,
+form.concise fieldset label dfn.infoPanel,
+fieldset.concise label dfn.infoPanel {
+	margin-top: 2px;
+}
+
+
+
+/* @end */
+
+/* @group Fieldset concise */
+
+fieldset.concise .comprehensive label,
+form.concise .comprehensive label {
+	width: auto;
+	clear: none;
+}
+
+
+
+/* @end */
+
+
+
+/* @end */
+
+h1
+ {
+	zoom: 1;
+}
+
+/* @group Search */
+
+#tabs #search {
+	margin-top: 29px;
+}
+
+
+
+/* @end */
+
+/* @group Buttons */
+
+button {
+	width: auto !important;	
+	padding-left:0!important;
+	padding-right:0!important;
+}
+
+a.button,
+button,
+.accordion .header,
+input[type="submit"],
+input[type="button"],
+.accordion dt {
+	padding-top: 2px;
+	padding-bottom: 2px;
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#FFFFFF', EndColorStr='#C4C4C4');
+}
+
+a.button.micro,
+button.micro,
+button.sublime.small:hover,
+a.button.sublime.small:hover,
+.portlet p.buttonBar.top button {
+	padding-top: 0;
+	padding-bottom: 0;
+	height: 16px;
+}
+
+a.icon.button,
+em.icon.button {
+	padding-top: 16px !important;
+	height: 0;
+	filter: none;
+}
+
+/* @end */
+
+/* @group Info Panel*/
+
+dfn.infoPanel.open span.title {
+	padding: 32px 10px 3px 61px;
+	margin: -55px -35px 0 -132px;
+} 
+/* @end */
+
+/* @group Site menu */
+
+object#siteMenu {
+	display: none;
+}
+
+/* @end */
+

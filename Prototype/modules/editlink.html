@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" media="all" href="../style/form/base.css"/>
+  </head>
+  <body id="links" class="dropSheet">
+    <h1>Place a Link</h1>
+
+    <div id="external" class="formSection">
+      <form action="${request/getURL}" method="${view/method}" enctype="${view/enctype}">
+        <fieldset class="concise">
+          <label>URL <sup class="required">*</sup>
+            <input type="text" class="text-widget required uri-field" value="" name="form.widgets.URL" id="form-widgets-URL"> </label>
+          <label>Title 
+            <input type="text" class="text-widget textline-field" value="" name="form.widgets.title" id="form-widgets-title"> </label>
+          <label>Open link in new window <sup class="required">*</sup>
+            <input type="checkbox" class="single-checkbox-widget required bool-field" checked="checked" value="selected" name="form.widgets.new_window:list" id="form-widgets-new_window"> </label>
+        </fieldset>
+        <div class="buttonBar">
+          <button name="form.buttons.save" class="save" type="button">Save changes</button>
+          <button name="form.buttons.cancel" class="cancel" type="button">Cancel</button>
+        </div>
+      </form>
+    </div>
+    <script type="text/javascript" src="../libraries/jquery-1.4.3.js"></script>
+    <script type="text/javascript" src="../libraries/jquery.form.js"></script>
+    <script type="text/javascript">
+// <![CDATA[
+    function reset() {
+        $("input[type=text]").val(null);
+        $("input[type=checkbox]").attr("checked", "checked");
+        $("em.message.warning").remove();
+    }
+
+    function hide() {
+        var topDoc = window.frameElement.ownerDocument;
+        $("#linkFrame", topDoc).hide();
+    }
+
+
+    function show(el) {
+        var topDoc = window.frameElement.ownerDocument;
+
+        if (el===undefined) {
+            reset();
+        } else {
+            var topWindow = topDoc.defaultView!==undefined ? topDoc.defaultView : topDoc.parentWindow,
+                $link = $(el),
+                link = $link.attr("href"),
+                title = $link.attr("title"),
+                newwindow = $link.attr("target")==="_blank";
+            
+            topWindow.getSelection().selectAllChildren(el);
+            $("input[name=form.widgets.new_window:list]").get(0).checked = $link.attr("target")==="_blank";
+            $("input[name=form.widgets.URL]").val($link.attr("href"));
+            $("input[name=form.widgets.title]").val($link.attr("title"));
+        }
+
+        $("#linkFrame", topDoc).show();
+    }
+        
+
+    // http://www.quirksmode.org/dom/range_intro.html
+    function getRangeObject(selectionObject) {
+        if (selectionObject.getRangeAt)
+            return selectionObject.getRangeAt(0);
+        else { // Safari!
+            var range = document.createRange();
+            range.setStart(selectionObject.anchorNode,selectionObject.anchorOffset);
+            range.setEnd(selectionObject.focusNode,selectionObject.focusOffset);
+            return range;
+        }
+    }
+
+    function InsertURL(url, title, newwindow) {
+        var topDoc = window.frameElement.ownerDocument,
+            topWindow = topDoc.defaultView!==undefined ? topDoc.defaultView : topDoc.parentWindow,
+            selection = topWindow.getSelection(),
+            range = getRangeObject(selection),
+            $link = $("<a/>").attr("href", url).attr("title", title ? title : null),
+            link = $link.get(0);
+
+        if (newwindow) {
+            $link.attr("target", "_blank");
+        }
+
+        if (range.collapsed) {
+            $link.text(title);
+            range.insertNode(link);
+        } else if (selection.anchorNode.nodeType===Node.ELEMENT_NODE &&
+                  selection.anchorNode.tagName.toLowerCase()==="a") {
+            var oldlink = selection.anchorNode;
+
+            link.innerHTML=oldlink.innerHTML;
+            try {
+                oldlink.parentNode.insertBefore(link, oldlink);
+                $(oldlink).remove();
+            } catch (ex) {
+                alert(ex);
+            }
+        } else if (selection.anchorNode.nodeType===Node.TEXT_NODE &&
+                  selection.anchorNode.parentNode.nodeType===Node.ELEMENT_NODE &&
+                  selection.anchorNode.parentNode.tagName.toLowerCase()==="a") {
+            // Safari bug: selection.selectAllChildren should include the top node
+            // as well, but instead only its children are added.
+            var oldlink = selection.anchorNode.parentNode;
+
+            link.innerHTML=oldlink.innerHTML;
+            try {
+                oldlink.parentNode.insertBefore(link, oldlink);
+                $(oldlink).remove();
+            } catch (ex) {
+                alert(ex);
+            }
+        } else {
+            try {
+                range.surroundContents(link);
+            } catch(err) {
+                /* Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=520001 */
+                link.appendChild(range.extractContents());
+                range.insertNode(link);
+                range.selectNode(link);
+            }
+        }
+    }
+
+    $("button.cancel").live("click", hide);
+
+    $("button.save").live("click", function() {
+        var form = this.form,
+            link = form["form.widgets.URL"].value,
+            title = form["form.widgets.title"].value,
+            newwindow = form["form.widgets.new_window:list"].checked;
+        if (link.indexOf(":")===-1 && link[0]!=="/") {
+            link="http://"+link;
+        }
+        InsertURL(link, title, newwindow);
+        hide();
+    });
+// ]]>
+    </script>
+  </body>
+</html>

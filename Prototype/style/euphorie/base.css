@@ -1,0 +1,1222 @@
+/* @override http://admin.euphorie.hosting.simplon.biz/++resource++NuPlone.style/euphorie/base.css */
+
+@font-face {
+	font-family: "Abadi";
+	src: url("fonts/Abadi-MT-Std-Condensed-Light.otf")
+}
+
+/* This CSS is written by Cornae. www.cornae.com */
+
+/* Colour scheme 
+
+Orange warnings/accents:	ff8100 / white
+Red for system errors:		red / white
+Yellow for notes:			fdfdc8 / 6f5a44
+Green for success:			b4ff8e / 405f31
+
+*/
+
+body {
+	background: url(body.jpg) no-repeat fixed;
+}
+
+#tabs {
+	background: #031c48 url(header.png) right 0;
+	overflow: visible;
+}
+
+#tabs li {
+	background: white url(body.jpg) no-repeat fixed;
+}
+
+#tabs li#search {
+	background-image: none;
+}
+
+#tabs li a:hover {
+	background-color: #031c48;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4B7696), to(#031C48));
+	background: -moz-linear-gradient(19% 75% 90deg,#031C48, #4B7696);
+}
+
+#tabs #home a {
+	background: url(osha-logo.png) no-repeat 40px 0;
+	height: 40px;
+	display: block;
+	width: 177px;
+	text-decoration: none;
+	padding-left: 83px;
+	padding-top: 41px;
+	margin-top: -10px;
+	text-indent: 0;
+	font: 40px Abadi;
+	text-shadow: rgba(0,0,0,0.39) 0 1px 2px;
+	letter-spacing: 1px;
+}
+
+#tabs #home a:hover {
+	color: #1a4759;
+}
+
+h1 {
+	font-family: Abadi;
+}
+
+a,
+button.link {
+	color: #2c6c85;
+}
+
+a:hover,
+button.link:hover {
+	color: #1a4759;
+}
+
+a.icon,
+a em.icon,
+.navigation em.icon,
+.navigation img  {
+	background-color: #2c6c85;
+}
+
+a.icon:hover,
+a:hover em.icon,
+.navigation a:hover img,
+.navigation .current img,
+.navigation a:hover em.icon {
+	background-color: #1a4759;
+}
+
+.icon.euphorie-risk {
+	background-position: -784px 0;
+}
+
+.icon.euphorie-module {
+	background-position: -640px 0;
+}
+
+.icon.euphorie-surveygroup {
+	background-position: -528px 0;
+}
+
+.icon.euphorie-page {
+	background-position: -224px 0;
+}
+
+.active em.icon.euphorie-risk {
+	background-position: -784px -16px;
+}
+
+.active em.icon.euphorie-module {
+	background-position: -640px -16px;
+}
+
+.active em.icon.euphorie-surveygroup {
+	background-position: -528px -16px;
+}
+
+.active em.icon.euphorie-page {
+	background-position: -224px -16px;
+}
+
+button em.icon.euphorie-risk {
+	background-position: -784px -32px;
+}
+
+button em.icon.euphorie-module {
+	background-position: -640px -32px;
+}
+
+button em.icon.euphorie-survey {
+	background-position: -528px -32px;
+}
+
+button em.icon.euphorie-page {
+	background-position: -224px -32px;
+}
+
+img {
+}
+
+/* @group Gallery */
+
+.additionalImages {
+	width: 156px;
+	float: right;
+	list-style-type: none;
+	clear: right;
+	margin: 0 0 10px;
+	padding: 6px 0 0;
+}
+
+.additionalImages li
+ {
+	list-style-type: none;
+	float: left;
+	margin-left: 7px;
+}
+
+.additionalImages a {
+	float: left;
+	margin-bottom: 10px;
+	text-align: center;
+	width: 45px;
+	height: 45px;
+	margin-right: 10px;
+}
+
+.additionalImages a:first-child {
+	width: 155px;
+	height: auto;
+	margin-right: 0;
+}
+
+.additionalImages img {
+	max-width: 45px;
+	max-height: 45px;
+	float: none;
+	cursor: pointer;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 0;
+}
+
+.additionalImages a:first-child img {
+	max-height: 500px;
+	max-width: 155px;
+	width: 155px;
+	float: left;
+}
+
+
+
+/* @end */
+
+/* @group Fancybox */
+
+/*
+ * FancyBox - jQuery Plugin
+ * Simple and fancy lightbox alternative
+ *
+ * Examples and documentation at: http://fancybox.net
+ * 
+ * Copyright (c) 2008 - 2010 Janis Skarnelis
+ *
+ * Version: 1.3.1 (05/03/2010)
+ * Requires: jQuery v1.3+
+ *
+ * Dual licensed under the MIT and GPL licenses:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *   http://www.gnu.org/licenses/gpl.html
+ */
+
+#fancybox-loading {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	height: 40px;
+	width: 40px;
+	margin-top: -20px;
+	margin-left: -20px;
+	cursor: pointer;
+	overflow: hidden;
+	z-index: 1104;
+	display: none;
+}
+
+* html #fancybox-loading {	/* IE6 */
+	position: absolute;
+	margin-top: 0;
+}
+
+#fancybox-loading div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 40px;
+	height: 480px;
+	background-image: url('fancybox/fancybox.png');
+}
+
+#fancybox-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: #000;
+	z-index: 1100;
+	display: none;
+}
+
+* html #fancybox-overlay {	/* IE6 */
+	position: absolute;
+	width: 100%;
+}
+
+#fancybox-tmp {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	overflow: auto;
+	display: none;
+}
+
+#fancybox-wrap {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 20px;
+	z-index: 1101;
+	display: none;
+}
+
+#fancybox-outer {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background: #FFF;
+}
+
+#fancybox-inner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: 0;
+	outline: none;
+	overflow: hidden;
+}
+
+#fancybox-hide-sel-frame {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: transparent;
+}
+
+#fancybox-close {
+	position: absolute;
+	top: -15px;
+	right: -15px;
+	width: 30px;
+	height: 30px;
+	background-image: url('fancybox/fancybox.png');
+	background-position: -40px 0px;
+	cursor: pointer;
+	z-index: 1103;
+	display: none;
+}
+
+#fancybox_error {
+	color: #444;
+	font: normal 12px/20px Arial;
+	padding: 7px;
+	margin: 0;
+}
+
+#fancybox-content {
+	height: auto;
+	width: auto;
+	padding: 0;
+	margin: 0;
+}
+
+#fancybox-img {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	border: none;
+	outline: none;
+	line-height: 0;
+	vertical-align: top;
+	-ms-interpolation-mode: bicubic;
+}
+
+#fancybox-frame {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border: none;
+	display: block;
+}
+
+#fancybox-title {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	font-family: Arial;
+	font-size: 12px;
+	z-index: 1102;
+}
+
+.fancybox-title-inside {
+	padding: 10px 0;
+	text-align: center;
+	color: #333;
+}
+
+.fancybox-title-outside {
+	padding-top: 5px;
+	color: #FFF;
+	text-align: center;
+	font-weight: bold;
+}
+
+.fancybox-title-over {
+	color: #FFF;
+	text-align: left;
+}
+
+#fancybox-title-over {
+	padding: 10px;
+	background-image: url('fancybox/fancy_title_over.png');
+	display: block;
+}
+
+#fancybox-title-wrap {
+	display: inline-block;
+}
+
+#fancybox-title-wrap span {
+	height: 32px;
+	float: left;
+}
+
+#fancybox-title-left {
+	padding-left: 15px;
+	background-image: url('fancybox/fancybox.png');
+	background-position: -40px -90px;
+	background-repeat: no-repeat;
+}
+
+#fancybox-title-main {
+	font-weight: bold;
+	line-height: 29px;
+	background-image: url('fancybox/fancybox-x.png');
+	background-position: 0px -40px;
+	color: #FFF;
+}
+
+#fancybox-title-right {
+	padding-left: 15px;
+	background-image: url('fancybox/fancybox.png');
+	background-position: -55px -90px;
+	background-repeat: no-repeat;
+}
+
+#fancybox-left, #fancybox-right {
+	position: absolute;
+	bottom: 0px;
+	height: 100%;
+	width: 35%;
+	cursor: pointer;
+	outline: none;
+	background-image: url('fancybox/blank.gif');
+	z-index: 1102;
+	display: none;
+}
+
+#fancybox-left {
+	left: 0px;
+}
+
+#fancybox-right {
+	right: 0px;
+}
+
+#fancybox-left-ico, #fancybox-right-ico {
+	position: absolute;
+	top: 50%;
+	left: -9999px;
+	width: 30px;
+	height: 30px;
+	margin-top: -15px;
+	cursor: pointer;
+	z-index: 1102;
+	display: block;
+}
+
+#fancybox-left-ico {
+	background-image: url('fancybox/fancybox.png');
+	background-position: -40px -30px;
+}
+
+#fancybox-right-ico {
+	background-image: url('fancybox/fancybox.png');
+	background-position: -40px -60px;
+}
+
+#fancybox-left:hover, #fancybox-right:hover {
+	visibility: visible;    /* IE6 */
+}
+
+#fancybox-left:hover span {
+	left: 20px;
+}
+
+#fancybox-right:hover span {
+	left: auto;
+	right: 20px;
+}
+
+.fancy-bg {
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	width: 20px;
+	height: 20px;
+	z-index: 1001;
+}
+
+#fancy-bg-n {
+	top: -20px;
+	left: 0;
+	width: 100%;
+	background-image: url('fancybox/fancybox-x.png');
+}
+
+#fancy-bg-ne {
+	top: -20px;
+	right: -20px;
+	background-image: url('fancybox/fancybox.png');
+	background-position: -40px -162px;
+}
+
+#fancy-bg-e {
+	top: 0;
+	right: -20px;
+	height: 100%;
+	background-image: url('fancybox/fancybox-y.png');
+	background-position: -20px 0px;
+}
+
+#fancy-bg-se {
+	bottom: -20px;
+	right: -20px;
+	background-image: url('fancybox/fancybox.png');
+	background-position: -40px -182px; 
+}
+
+#fancy-bg-s {
+	bottom: -20px;
+	left: 0;
+	width: 100%;
+	background-image: url('fancybox/fancybox-x.png');
+	background-position: 0px -20px;
+}
+
+#fancy-bg-sw {
+	bottom: -20px;
+	left: -20px;
+	background-image: url('fancybox/fancybox.png');
+	background-position: -40px -142px;
+}
+
+#fancy-bg-w {
+	top: 0;
+	left: -20px;
+	height: 100%;
+	background-image: url('fancybox/fancybox-y.png');
+}
+
+#fancy-bg-nw {
+	top: -20px;
+	left: -20px;
+	background-image: url('fancybox/fancybox.png');
+	background-position: -40px -122px;
+}
+
+/* IE */
+
+#fancybox-loading.fancybox-ie div	{ background: transparent; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='fancybox/fancy_loading.png', sizingMethod='scale'); }
+.fancybox-ie #fancybox-close		{ background: transparent; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='fancybox/fancy_close.png', sizingMethod='scale'); }
+
+.fancybox-ie #fancybox-title-over	{ background: transparent; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='fancybox/fancy_title_over.png', sizingMethod='scale'); zoom: 1; }
+.fancybox-ie #fancybox-title-left	{ background: transparent; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='fancybox/fancy_title_left.png', sizingMethod='scale'); }
+.fancybox-ie #fancybox-title-main	{ background: transparent; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='fancybox/fancy_title_main.png', sizingMethod='scale'); }
+.fancybox-ie #fancybox-title-right	{ background: transparent; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='fancybox/fancy_title_right.png', sizingMethod='scale'); }
+
+.fancybox-ie #fancybox-left-ico		{ background: transparent; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='fancybox/fancy_nav_left.png', sizingMethod='scale'); }
+.fancybox-ie #fancybox-right-ico	{ background: transparent; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='fancybox/fancy_nav_right.png', sizingMethod='scale'); }
+
+.fancybox-ie .fancy-bg { background: transparent !important; }
+
+.fancybox-ie #fancy-bg-n	{ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='fancybox/fancy_shadow_n.png', sizingMethod='scale'); }
+.fancybox-ie #fancy-bg-ne	{ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='fancybox/fancy_shadow_ne.png', sizingMethod='scale'); }
+.fancybox-ie #fancy-bg-e	{ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='fancybox/fancy_shadow_e.png', sizingMethod='scale'); }
+.fancybox-ie #fancy-bg-se	{ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='fancybox/fancy_shadow_se.png', sizingMethod='scale'); }
+.fancybox-ie #fancy-bg-s	{ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='fancybox/fancy_shadow_s.png', sizingMethod='scale'); }
+.fancybox-ie #fancy-bg-sw	{ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='fancybox/fancy_shadow_sw.png', sizingMethod='scale'); }
+.fancybox-ie #fancy-bg-w	{ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='fancybox/fancy_shadow_w.png', sizingMethod='scale'); }
+.fancybox-ie #fancy-bg-nw	{ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='fancybox/fancy_shadow_nw.png', sizingMethod='scale'); }
+
+
+
+/* @end */
+/* @group Tables */
+
+thead th {
+	border-bottom: 1px solid #1a4759;
+}
+
+tbody {
+	border-bottom: 1px solid #1a4759;
+}
+
+tbody tr:last-child td,tbody tr:last-child th {
+	border-bottom: 1px solid #1a4759;
+}
+
+tbody h3 {
+	border-bottom: 1px solid #1a4759;
+}
+
+/* @end */
+
+/* @group Version list */
+
+.portlet fieldset.version {
+	border-bottom: 1px solid #ebebeb;
+}
+
+.portlet fieldset.headerButtons {
+	margin: -2px 0 3px;
+	padding: 0 0 0 3px;
+	background-color: #efefef;
+}
+
+#portletVersioning h5 {
+}
+
+#portletVersioning ul.surveyVersions {
+	margin-bottom: 10px;
+}
+
+#portletVersioning ul.surveyVersions li {
+	position: relative;
+	padding-left: 22px;
+}
+
+#portletVersioning ul.surveyVersions li .sample {
+	float: left;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+}
+
+#portletVersioning ul.surveyVersions li:before {
+	content: " ";
+	background-color: gray;
+	width: 4px;
+	height: 4px;
+	display: block;
+	float: left;
+	margin-left: -14px;
+	margin-top: 7px;
+}
+
+#portletVersioning ul.surveyVersions li.published {
+	background-color: #dcebf9;
+	margin-top: -1px;
+	margin-bottom: -1px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	background-image: url(pattern-published.png);
+}
+
+#portletVersioning ul.surveyVersions li.current {
+	background-color: #fef5ba;
+	margin-top: -1px;
+	margin-bottom: -1px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+
+#portletVersioning ul.surveyVersions li.current.published {
+	background-color: #fef5ba;
+}
+
+#portletVersioning ul.surveyVersions li a.floatAfter {
+	text-align: right;
+	float: right;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+#portletVersioning ul.surveyVersions li a.button.icon {
+	float: none;
+	margin-left: 5px;
+}
+
+#portletVersioning ul.surveyVersions li.published a.button.icon {
+	background-color: white;
+	-webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+	-o-box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+	-moz-box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+	box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+	background-position-y: -80px ;
+}
+
+#portletVersioning ul.surveyVersions li.published a.button.icon:hover {
+	background-color: #eaeaea;
+}
+
+#portletVersioning ul.surveyVersions li label {
+	display: inline;
+	padding-left: 4px !important;
+}
+
+#portletVersioning ul.surveyVersions li ul {
+	margin: 0 !important;
+	padding-left: 1px;
+	overflow: hidden;
+}
+
+#portletVersioning ul.surveyVersions li ul li:first-child {
+	margin-top: 8px;
+}
+
+#portletVersioning ul.surveyVersions li ul li:last-child {
+	margin-bottom: 10px;
+}
+
+#portletVersioning ul.surveyVersions li span.toggle {
+	float: left;
+	margin-left: -19px;
+	width: 16px;
+	height: 16px;
+	position: relative;
+}
+
+/* @group Legend */
+
+div.legend {
+	-webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+	-moz-box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+	-o-box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+	box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+	padding: 10px;
+	border: 1px solid #ebebeb;
+	background-color: rgba(0,0,0,0.03);
+}
+
+ul.legend {
+	margin-left: 20px;
+}
+
+ul.legend em.sample {
+	float: left;
+	margin-left: -23px;
+	border: 1px solid silver;
+	width: 14px;
+	height: 14px;
+	margin-top: 1px;
+}
+
+em.sample {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	overflow: hidden;
+	text-indent: -100px;
+}
+
+em.sample.current {
+	background-color: #fef5ba;
+}
+
+em.sample.published {
+	background-color: #dcebf9;
+}
+
+
+
+/* @end */
+
+
+
+/* @end */
+
+/* @group Client preview */
+
+.client-preview {
+	margin-bottom: 0;
+	-webkit-mask-box-image: url(colour-preview-mask-inverted.png);
+	-moz-mask-box-image: url(colour-preview-mask-inverted.png);
+	-o-mask-box-image: url(colour-preview-mask-inverted.png);
+	mask-box-image: url(colour-preview-mask-inverted.png);
+	border-style: none;
+}
+
+.client-preview p.legend {
+	width: 510px !important;
+	height: 300px;
+	background-image: url(colour-preview-mask.png);
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	text-indent: -100px;
+	overflow: hidden;
+	z-index: 1;
+}
+
+
+
+/* @end */
+
+/* @group Farbtastic */
+
+.colourPicker {
+	position: relative;
+}
+
+.picker
+ {
+	width: 190px;
+	margin-right: 60px;
+	float: left;
+	position: relative;
+	height: 230px;
+	margin-bottom: 20px;
+	left: 30px;
+}
+
+.picker h4 {
+	margin-bottom: 10px;
+	text-align: center;
+}
+.farbtastic {
+  position: relative;
+	width: 195px;
+}
+.farbtastic * {
+  position: absolute;
+  cursor: crosshair;
+}
+.farbtastic, .farbtastic .wheel {
+  width: 195px;
+  height: 195px;
+}
+.farbtastic .color, .farbtastic .overlay {
+  top: 47px;
+  left: 47px;
+  width: 101px;
+  height: 101px;
+}
+.farbtastic .wheel {
+  background: url(wheel.png) no-repeat;
+  width: 195px;
+  height: 195px;
+}
+.farbtastic .overlay {
+  background: url(mask.png) no-repeat;
+}
+.farbtastic .marker {
+  width: 17px;
+  height: 17px;
+  margin: -8px 0 0 -8px;
+  overflow: hidden; 
+  background: url(marker.png) no-repeat;
+}
+
+.picker label {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+	width: 190px;
+	font-weight: bold;
+}
+
+.picker input {
+	margin: 0;
+	width: 60px;
+}
+
+
+
+/* @end */
+
+/* @group Languages */
+
+.languages {
+	list-style-type: none;
+	float: left;
+	margin-top: 0;
+	margin-left: 0;
+	margin-right: -60px;
+	padding: 0;
+}
+
+.languages li {
+	margin: 0 35px 118px 0;
+	width: 101px;
+	height: 0;
+	padding-top: 60px;
+	float: left;
+	-webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+	box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+	-webkit-transition: all 0.3s;
+	background: transparent url(flags.jpg) repeat-x 0 0;}
+
+.languages li a {
+	margin: 0;
+	width: 100px;
+	text-decoration: none;
+	font-size: 11px;
+	display: block;
+	line-height: 16px;
+	position: relative;
+	top: 5px;
+}
+
+.languages li a:hover {
+	text-decoration: underline;
+}
+
+/* @group Flags */
+
+.countries li.at,
+p.country.at {
+	
+}
+
+.countries li.be,
+p.country.be {
+	background-position: -101px 0;
+}
+
+.countries li.bg,
+p.country.bg {
+	background-position: -203px 0;
+}
+
+.countries li.se,
+p.country.se {
+	background-position: -2331px 0;
+}
+
+.countries li.cy,
+p.country.cy {
+	background-position: -304px 0;
+}
+
+.countries li.cz,
+p.country.cz {
+	background-position: -2432px 0;
+}
+
+.countries li.de,
+p.country.de {
+	background-position: -812px 0;
+}
+
+.countries li.dk,
+p.country.dk {
+	background-position: -406px 0;
+}
+
+.countries li.ee,
+p.country.ee {
+	background-position: -507px 0;
+}
+
+.countries li.es,
+p.country.es {
+	background-position: -2230px 0;
+}
+
+.countries li.fi,
+p.country.fi {
+	background-position: -609px 0;
+}
+
+.countries li.fr,
+p.country.fr {
+	background-position: -710px 0;
+}
+
+.countries li.gb,
+p.country.gb {
+	background-position: -2634px 0;
+}
+
+.countries li.gr,
+p.country.gr {
+	background-position: -913px 0;
+}
+
+.countries li.hu,
+p.country.hu {
+	background-position: -1015px 0;
+}
+
+.countries li.ie,
+p.country.ie {
+	background-position: -1117px 0;
+}
+
+.countries li.it,
+p.country.it {
+	background-position: -1218px 0;
+}
+
+.countries li.lt,
+p.country.lt {
+	background-position: -1420px 0;
+}
+
+.countries li.lu,
+p.country.lu {
+	background-position: -1522px 0;
+}
+
+.countries li.lv,
+p.country.lv {
+	background-position: -1319px 0;
+}
+
+.countries li.mt,
+p.country.mt {
+	background-position: -1623px 0;
+}
+
+.countries li.nl,
+p.country.nl {
+	background-position: -2533px 0;
+}
+
+.countries li.pl,
+p.country.pl {
+	background-position: -1724px 0;
+}
+
+.countries li.pt,
+p.country.pt {
+	background-position: -1825px 0;
+}
+
+.countries li.ro,
+p.country.ro {
+	background-position: -1927px 0;
+}
+
+.countries li.sk,
+p.country.ro {
+	background-position: -2028px 0;
+}
+
+.countries li.si,
+p.country.si {
+	background-position: -2129px 0;
+}
+
+/* @end */
+
+
+
+/* @end */
+
+/* @group Countries */
+
+.countries {
+	list-style-type: none;
+	float: left;
+	margin-top: 0;
+	margin-left: 0;
+	margin-right: -10%;
+	padding: 0;
+	width: 110%;
+}
+
+.countries li {
+	margin: 0 35px 50px 0;
+	width: 101px;
+	padding-top: 0;
+	float: left;
+	-webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+	box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+	-webkit-transition: all 0.3s;
+	background: transparent url(flags.jpg) repeat-x 0 0;
+	height: 60px;
+}
+
+.countries li:hover {
+	-webkit-box-shadow: 0 1px 14px rgba(0,0,0,0.6);
+	-moz-box-shadow: 0 1px 14px rgba(0,0,0,0.6);
+	box-shadow: 0 1px 14px rgba(0,0,0,0.6);
+}
+
+.countries li a {
+	margin: 0;
+	width: 100px;
+	text-decoration: none;
+	font-size: 10px;
+	display: block;
+	line-height: 16px;
+	position: relative;
+	top: 5px;
+	padding-top: 60px;
+}
+
+.countries li a:hover {
+	text-decoration: underline;
+}
+
+/* @group Flags */
+
+.countries li.at,
+p.country.at {
+	
+}
+
+.countries li.be,
+p.country.be {
+	background-position: -101px 0;
+}
+
+.countries li.bg,
+p.country.bg {
+	background-position: -203px 0;
+}
+
+.countries li.se,
+p.country.se {
+	background-position: -2331px 0;
+}
+
+.countries li.cy,
+p.country.cy {
+	background-position: -304px 0;
+}
+
+.countries li.cz,
+p.country.cz {
+	background-position: -2432px 0;
+}
+
+.countries li.de,
+p.country.de {
+	background-position: -812px 0;
+}
+
+.countries li.dk,
+p.country.dk {
+	background-position: -406px 0;
+}
+
+.countries li.ee,
+p.country.ee {
+	background-position: -507px 0;
+}
+
+.countries li.es,
+p.country.es {
+	background-position: -2230px 0;
+}
+
+.countries li.fi,
+p.country.fi {
+	background-position: -609px 0;
+}
+
+.countries li.fr,
+p.country.fr {
+	background-position: -710px 0;
+}
+
+.countries li.gb,
+p.country.gb {
+	background-position: -2634px 0;
+}
+
+.countries li.gr,
+p.country.gr {
+	background-position: -913px 0;
+}
+
+.countries li.hu,
+p.country.hu {
+	background-position: -1015px 0;
+}
+
+.countries li.ie,
+p.country.ie {
+	background-position: -1117px 0;
+}
+
+.countries li.it,
+p.country.it {
+	background-position: -1218px 0;
+}
+
+.countries li.lt,
+p.country.lt {
+	background-position: -1420px 0;
+}
+
+.countries li.lu,
+p.country.lu {
+	background-position: -1522px 0;
+}
+
+.countries li.lv,
+p.country.lv {
+	background-position: -1319px 0;
+}
+
+.countries li.mt,
+p.country.mt {
+	background-position: -1623px 0;
+}
+
+.countries li.nl,
+p.country.nl {
+	background-position: -2533px 0;
+}
+
+.countries li.pl,
+p.country.pl {
+	background-position: -1724px 0;
+}
+
+.countries li.pt,
+p.country.pt {
+	background-position: -1825px 0;
+}
+
+.countries li.ro,
+p.country.ro {
+	background-position: -1927px 0;
+}
+
+.countries li.sk,
+p.country.ro {
+	background-position: -2028px 0;
+}
+
+.countries li.si,
+p.country.si {
+	background-position: -2129px 0;
+}
+
+.countries li.eu,
+p.country.eu {
+	background-position: -2735px 0;
+}
+
+/* @end */
+
+
+
+/* @end */

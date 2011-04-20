@@ -1,0 +1,1717 @@
+/* @override http://develop.2style4you.com/cms/presentation/drawer/style/base.css */
+
+body {
+	overflow: hidden;
+	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	overflow: hidden;
+}
+
+* {
+	
+}
+
+/* @group Buttons */
+
+.buttonBar button {
+	
+}
+
+.buttonBar button.floatAfter {
+	margin-right: 0;
+	margin-left: 10px;
+}
+
+
+
+/* @end */
+
+/* @group pureView */
+
+#pureView  {
+	width: 100%;
+	position: fixed;
+}
+
+/* @end */
+
+/* @group editBar */
+
+iframe#editBar {
+	height: 440px;
+	width: 100%;
+	-webkit-box-shadow: 0 3px 4px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0 3px 4px rgba(0,0,0,0.5);
+	box-shadow: 0 3px 4px rgba(0,0,0,0.5);
+	z-index: 1;
+	top: -440px;
+	position: absolute;
+}
+
+.ui-tabs-hide {
+	opacity: 0;
+}
+
+/* @end */
+
+/* @group Editor Toggle */
+
+button#toggleEditor {
+	position: absolute;
+	right: 20px;
+	top: 40px;
+	margin: 0;
+	border: none;
+	padding-top: 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	background: transparent url(editorBarToggle.png) no-repeat right bottom !important;
+	height: 20px;
+	width: 82px;
+	color: #727272;
+	text-align: center;
+	font: 9px/9px "Lucida Grande", Lucida, Verdana, sans-serif;
+}
+
+ span#toggleEditor {
+        z-index: 9999;
+	position: fixed;
+	right: 20px;
+	top: 0;
+	margin: 0;
+	border: none;
+	padding-top: 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+        background: transparent url(editorBarToggle.png) no-repeat right bottom !important;
+	height: 16px;
+	width: 82px;
+	font: 9px/9px "Lucida Grande", Lucida, Verdana, sans-serif;
+	text-align: center;
+	display: block;
+	color: silver;
+	padding-top: 3px;
+}
+
+/* @end */
+
+/* @group Drop Sheets */
+
+iframe.dropSheet {
+	width: 510px;
+	margin-left: -255px;
+	left: 50%;
+	position: absolute;
+	z-index: 10;
+	-webkit-box-shadow: 0 0 15px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0 0 15px rgba(0,0,0,0.5);
+	box-shadow: 0 0 15px rgba(0,0,0,0.5);
+	top: 0;
+}
+
+body.dropSheet {
+	height: 400px;
+	background-color: rgba(207,216,221,0.9);
+	display: block;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 20px;
+	font-size: 11px;
+	color: rgba(0,0,0,0.7);
+	line-height: 15px;
+	margin: 0;
+}
+
+body.dropSheet h1 {
+	font-size: 20px;
+	font-weight: normal;
+	margin-top: 0;
+	margin-bottom: 15px;
+	letter-spacing: 2px;
+	text-shadow: 0 1px 0 rgba(255,255,255,1);
+	position: absolute;
+	top: 15px;
+	left: 20px;
+	width: 470px;
+	float: left;
+	font-style: normal;
+	font-variant: small-caps;
+}
+
+.dropSheet .navigationTabs {
+	list-style-type: none;
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+	padding-right: 20px;
+	padding-left: 20px;
+	background-color: #acb4b9;
+	margin: -20px -20px 20px;
+	padding-top: 45px;
+}
+
+.dropSheet .navigationTabs li {
+	list-style-type: none;
+	float: left;
+	margin-bottom: -1px;
+	margin-right: 5px;
+}
+
+.dropSheet .navigationTabs li a {
+	list-style-type: none;
+	float: left;
+	text-decoration: none;
+	color: rgba(0,0,0,0.7);
+	border-top: 1px solid rgba(0,0,0,0);
+	border-left: 1px solid rgba(0,0,0,0);
+	border-right: 1px solid rgba(0,0,0,0);
+	padding: 5px 8px 2px;
+	-moz-border-radius-topleft: 3px;
+	-webkit-border-top-left-radius: 4px;
+	border-top-left-radius: 3px;
+	-moz-border-radius-topright: 3px;
+	-webkit-border-top-right-radius: 4px;
+	border-top-right-radius: 3px;
+
+
+}
+
+.dropSheet .navigationTabs li.current a,
+.dropSheet .navigationTabs li.ui-tabs-selected a {
+	border-top: 1px solid rgba(0,0,0,0.4);
+	border-left: 1px solid rgba(0,0,0,0.4);
+	border-right: 1px solid rgba(0,0,0,0.4);
+	background-color: #cfd8dd;
+}
+
+.dropSheet div#tabs>.buttonBar {
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	z-index: 0;
+	float: left;
+}
+
+.dropSheet .formSection .buttonBar {
+	position: absolute;
+	bottom: 20px;
+	right: 0;
+	float: right;
+	z-index: 10;
+}
+
+.dropSheet .formSection {
+	position: absolute;
+	top: 96px;
+	left: 20px;
+	width: 470px;
+	-webkit-transition: opacity 0.4s;
+	z-index: 0;
+	bottom: 0;
+}
+
+.dropSheet .formSection.ui-tabs-hide {
+	z-index: -1;
+}
+
+/* @end */
+
+/* @group Image Panel */
+
+iframe#imagePanel {
+	height: 400px;
+}
+
+body#images {
+	width: 510px;
+}
+
+#gallery {
+	list-style-type: none;
+	float: left;
+}
+
+#gallery li {
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+#gallery li a {
+	float: left;
+}
+
+
+
+/* @end */
+
+/* @group Link Panel */
+iframe#linkPanel {
+	height: 400px;
+}
+
+/* @end */
+
+* {
+	outline: none;	
+}
+
+/* @group Blueprint */
+
+/* @group Reset */
+
+* {
+	outline: none;
+	cursor: default;
+}
+
+a {
+	cursor: pointer;
+}
+
+html,body,div,span,object,iframe,
+h1,h2,h3,h4,h5,h6,p,blockquote,pre,
+a,abbr,acronym,address,code,
+del,dfn,em,img,q,dl,dt,dd,ol,ul,li,
+fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td {
+	margin: 0;
+	padding: 0;
+}
+
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+caption,th,td {
+	text-align: left;
+	font-weight: 400;
+}
+
+/* Remove possible quote marks (") from <q>,<blockquote>. */
+
+blockquote:before,blockquote:after,q:before,q:after {
+	content: "";
+}
+
+blockquote,q {
+	quotes: "" "";
+}
+
+a img {
+	border: none;
+}
+
+/* @end */
+
+/* @group Grid */
+
+/* -------------------------------------------------------------- 
+   
+   grid.css
+   * Sets up an easy-to-use grid of 24 columns.
+   
+   By default, the grid is 950px wide, with 24 columns 
+   spanning 30px, and a 10px margin between columns.
+   
+   If you need fewer or more columns, namespaces or semantic
+   element names, use the compressor script (lib/compress.rb)
+   
+   Note: Changes made in this file will not be applied when
+   using the compressor: make changes in lib/blueprint/grid.css.rb
+   
+-------------------------------------------------------------- */
+
+/* A container should group all your columns. */
+.container {
+  width: 950px;
+  margin: 0 auto;
+}
+
+/* Use this class on any .span / container to see the grid. */
+.showgrid { background: url(src/grid.png);  }
+
+
+/* Columns
+-------------------------------------------------------------- */
+
+/* Sets up basic grid floating and margin. */
+.column, div.span-1, div.span-2, div.span-3, div.span-4, div.span-5, 
+div.span-6, div.span-7, div.span-8, div.span-9, div.span-10, 
+div.span-11, div.span-12, div.span-13, div.span-14, div.span-15, 
+div.span-16, div.span-17, div.span-18, div.span-19, div.span-20, 
+div.span-21, div.span-22, div.span-23, div.span-24 {
+  float: left;
+  margin-right: 10px; 
+}
+
+/* The last column in a row needs this class. */
+.last, div.last { margin-right: 0; }
+
+/* Use these classes to set the width of a column. */
+.span-1  { width: 30px; }
+.span-2  { width: 70px; }
+.span-3  { width: 110px; }
+.span-4  { width: 150px; }
+.span-5  { width: 190px; }
+.span-6  { width: 230px; }
+.span-7  { width: 270px; }
+.span-8  { width: 310px; }
+.span-9  { width: 350px; }
+.span-10 { width: 390px; }
+.span-11 { width: 430px; }
+.span-12 { width: 470px; }
+.span-13 { width: 510px; }
+.span-14 { width: 550px; }
+.span-15 { width: 590px; }
+.span-16 { width: 630px; }
+.span-17 { width: 670px; }
+.span-18 { width: 710px; }
+.span-19 { width: 750px; }
+.span-20 { width: 790px; }
+.span-21 { width: 830px; }
+.span-22 { width: 870px; }
+.span-23 { width: 910px; }
+.span-24 { width: 950px; margin: 0; }
+
+/* Add these to a column to append empty cols. */
+.append-1  { padding-right: 40px; }  
+.append-2  { padding-right: 80px; } 
+.append-3  { padding-right: 120px; } 
+.append-4  { padding-right: 160px; } 
+.append-5  { padding-right: 200px; } 
+.append-6  { padding-right: 240px; } 
+.append-7  { padding-right: 280px; } 
+.append-8  { padding-right: 320px; } 
+.append-9  { padding-right: 360px; } 
+.append-10 { padding-right: 400px; } 
+.append-11 { padding-right: 440px; } 
+.append-12 { padding-right: 480px; } 
+.append-13 { padding-right: 520px; } 
+.append-14 { padding-right: 560px; } 
+.append-15 { padding-right: 600px; } 
+.append-16 { padding-right: 640px; } 
+.append-17 { padding-right: 680px; } 
+.append-18 { padding-right: 720px; } 
+.append-19 { padding-right: 760px; } 
+.append-20 { padding-right: 800px; } 
+.append-21 { padding-right: 840px; } 
+.append-22 { padding-right: 880px; } 
+.append-23 { padding-right: 920px; } 
+
+/* Add these to a column to prepend empty cols. */
+.prepend-1  { padding-left: 40px; }  
+.prepend-2  { padding-left: 80px; } 
+.prepend-3  { padding-left: 120px; } 
+.prepend-4  { padding-left: 160px; } 
+.prepend-5  { padding-left: 200px; } 
+.prepend-6  { padding-left: 240px; } 
+.prepend-7  { padding-left: 280px; } 
+.prepend-8  { padding-left: 320px; } 
+.prepend-9  { padding-left: 360px; } 
+.prepend-10 { padding-left: 400px; } 
+.prepend-11 { padding-left: 440px; } 
+.prepend-12 { padding-left: 480px; } 
+.prepend-13 { padding-left: 520px; } 
+.prepend-14 { padding-left: 560px; } 
+.prepend-15 { padding-left: 600px; } 
+.prepend-16 { padding-left: 640px; } 
+.prepend-17 { padding-left: 680px; } 
+.prepend-18 { padding-left: 720px; } 
+.prepend-19 { padding-left: 760px; } 
+.prepend-20 { padding-left: 800px; } 
+.prepend-21 { padding-left: 840px; } 
+.prepend-22 { padding-left: 880px; } 
+.prepend-23 { padding-left: 920px; } 
+
+
+/* Border on right hand side of a column. */
+.border {
+  padding-right: 4px;
+  margin-right: 5px;
+  border-right: 1px solid #b2bbc1;
+}
+
+/* Border with more whitespace, spans one column. */
+.colborder {
+  padding-right: 24px !important;
+  margin-right: 25px !important;
+  border-right: 1px solid #b2bbc1;
+}
+
+
+/* Use these classes on an element to push it into the 
+   next column, or to pull it into the previous column.  */
+
+.pull-1 { margin-left: -40px; }
+.pull-2 { margin-left: -80px; }
+.pull-3 { margin-left: -120px; }
+.pull-4 { margin-left: -160px; }
+.pull-5 { margin-left: -200px; }
+
+.pull-6 { margin-left: -240px; }
+
+.pull-7 { margin-left: -280px; }
+
+.pull-8 { margin-left: 3200px; }
+
+.pull-1, .pull-2, .pull-3, .pull-4, .pull-5 {
+  float:left;
+	position:relative;
+}
+
+.push-1 { margin: 0 -40px 1.5em 40px; }
+.push-2 { margin: 0 -80px 1.5em 80px; }
+.push-3 { margin: 0 -120px 1.5em 120px; }
+.push-4 { margin: 0 -160px 1.5em 160px; }
+.push-5 { margin: 0 -200px 1.5em 200px; }
+
+.push-1, .push-2, .push-3, .push-4, .push-5 { 
+  float: right;
+	position:relative;
+}
+
+
+/* Misc classes and elements
+-------------------------------------------------------------- */
+
+/* In case you need to add a gutter above/below an element */
+.prepend-top { 
+	margin-top:1.5em; 
+}
+.append-bottom { 
+	margin-bottom:1.5em; 
+}
+
+/* Use a .box to create a padded box inside a column.  */ 
+.box { 
+  padding: 1.5em; 
+  margin-bottom: 1.5em; 
+  background: #E5ECF9; 
+}
+
+/* Use this to create a horizontal ruler across a column. */
+hr {
+  background: #ddd; 
+  color: #ddd;
+  clear: both; 
+  float: none; 
+  width: 100%; 
+  height: .1em;
+  border: none;
+	margin-bottom: 10px;
+}
+hr.space {
+  background: #fff;
+  color: #fff;
+}
+
+
+/* Clearing floats without extra markup
+   Based on How To Clear Floats Without Structural Markup by PiE
+   [http://www.positioniseverything.net/easyclearing.html] */
+
+.clearfix:after, .container:after {
+    content: "\0020"; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden; 
+    overflow:hidden; 
+}
+.clearfix, .container {display: block;}
+
+/* Regular clearing
+   apply to column that should drop below previous ones. */
+
+.clear { clear:both; }
+
+/* @end */
+
+/* @end */
+
+/* @group Editor Bar */
+
+#editorBar {
+	z-index: 0;
+}
+
+.floatBefore {
+	float: left;
+}
+
+.floatAfter {
+	float: right;
+}
+
+.overlaySection {
+	background: rgba(255,255,255,0.8);
+}
+
+#main_ifr {
+	overflow: auto;
+	position: fixed;
+	top: 40px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+}
+
+/* @group Page properties */
+
+#cms-pageProperties {
+	height: 400px;
+	background-color: #cfd8dd;
+	display: block;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 20px;
+	font-size: 11px;
+	color: rgba(0,0,0,0.7);
+	line-height: 15px;
+}
+
+#cms-pageProperties p,#cms-pageProperties table,#cms-pageProperties dl,#cms-pageProperties ul,#cms-pageProperties ol {
+	margin-bottom: 15px;
+}
+
+#cms-pageProperties h2 {
+	font-size: 20px;
+	font-weight: bold;
+	margin-top: 0;
+	margin-bottom: 15px;
+	letter-spacing: 2px;
+	text-shadow: 0 1px 0 rgba(255,255,255,1);
+	font-variant: small-caps;
+}
+
+#cms-pageProperties fieldset label {
+	color: black;
+}
+
+#cms-pageProperties fieldset input[type="checkbox"] {
+	width: auto;
+}
+
+#cms-bodyTypes p.introduction label {
+	white-space: nowrap;
+}
+
+#cms-bodyTypes,
+#cms-comments {
+	height: 100%;
+}
+
+#cms-bodyTypes fieldset {
+	width: 43px;
+}
+
+#cms-bodyTypes legend,
+#cms-bodyTypes p.question {
+	background-color: rgba(255,255,255,0.5);
+	text-align: center;
+	height: 18px;
+	padding-top: 2px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0 0 5px rgba(0,0,0,0.2);
+	box-shadow: 0 0 5px rgba(0,0,0,0.2);
+	margin-bottom: 7px !important;
+}
+
+#cms-bodyTypes fieldset.condensed#cms-bodyType-hourglass legend {
+	font-weight: normal;
+	font-style: normal;
+	font-size: 14px;
+	line-height: 12px;
+}
+
+#cms-bodyTypes fieldset.condensed#cms-bodyType-rectangle legend {
+	font-weight: normal;
+	font-style: normal;
+	font-size: 12px;
+	line-height: 12px;
+}
+
+#cms-bodyTypes fieldset.condensed#cms-bodyType-apple legend {
+	font-weight: normal;
+	font-style: normal;
+	font-size: 12px;
+	line-height: 18px;
+}
+
+/* @end */
+/* @group Editor Bar */
+
+#buttonBar {
+	width: 100%;
+	height: 39px;
+	background: url(editorBarToggle.png) repeat-x 0 0;
+	margin-top: 0;
+	border-top: 1px solid #7f7f7f;
+	position: relative;
+}
+
+#buttonBar fieldset {
+	margin: 0;
+	padding: 0;
+	border-style: none;
+	position: static;
+	display: inline;
+	float: left;
+}
+
+#buttonBar label {
+	float: left;
+}
+
+#editorFunctions {
+	padding-left: 9px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+#cmsFunctions {
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: inline;
+	float: right;
+	width: 100%;
+	height: 4px;
+}
+
+#cmsFunctions * {
+	float: right !important;
+}
+
+button,
+select
+ {
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.6);
+	color: #d8d8d8;
+	float: left;
+	-webkit-transition: opacity 1s;
+}
+
+button,
+label.icon {
+	padding: 1px 15px 4px;
+	margin-top: 8px;
+	text-transform: none;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	font-size: 11px;
+	border: 1px solid #1d1d1d;
+	background: black url(button.png) repeat-x 0 center;
+	-webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.15);
+	-moz-box-shadow: 0 1px 0 rgba(255,255,255,0.15);
+	box-shadow: 0 1px 0 rgba(255,255,255,0.15);
+	margin-right: 8px;
+	height: 22px;
+	line-height: 17px;
+	-webkit-transition: color 0.4s;
+	float: left;
+}
+
+button:active,
+label.icon:active {
+	background-position-y: -22px;
+}
+
+#buttonBar button.icon,
+#buttonBar label.icon {
+	background-color: #d8d8d8;
+	-webkit-transition: background-color 0.4s;
+	width: 30px;
+	text-indent: -1000px;
+	overflow: hidden;
+	background-image: url(icons-bar.png);
+}
+
+#buttonBar button.icon:active,
+#buttonBar label.icon:active {
+	background-position-y: -22px;
+}
+
+#buttonBar button.active,
+#buttonBar label.icon.active {
+	background-color: #217efb;
+	color: #217efb;
+}
+
+#buttonBar select {
+	margin-top: 8px;
+	background-color: black;
+	border: 1px solid #585858;
+	font-size: 11px;
+	height: 22px;
+	margin-right: 8px;
+	padding: 2px;
+}
+
+#buttonBar select option {
+	padding-top: 10px;
+}
+
+/* @group Button Group */
+
+#buttonBar .buttonGroup {
+	margin-right: 8px;
+	width: auto;
+	display: inline;
+}
+
+#buttonBar .buttonGroup button {
+	margin-right: -1px;
+	margin-left: 0;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+}
+
+#buttonBar #editorFunctions .buttonGroup button:first-child,
+#buttonBar #cmsFunctions .buttonGroup button:last-child {
+	-moz-border-radius-topleft: 3px;
+	-webkit-border-top-left-radius: 3px;
+	border-top-left-radius: 3px;
+	-moz-border-radius-bottomleft: 3px;
+	-webkit-border-bottom-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	margin-right: -1px;
+}
+
+#buttonBar #editorFunctions .buttonGroup button:last-child,
+#buttonBar #cmsFunctions .buttonGroup button:first-child {
+	-moz-border-radius-topright: 3px;
+	-webkit-border-top-right-radius:  3px;
+	border-top-right-radius: 3px;
+	-moz-border-radius-bottomright: 3px;
+	-webkit-border-bottom-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	margin-right: 0;
+}
+
+
+
+/* @end */
+
+/* @group Selects */
+
+#buttonBar label.icon {
+	padding: 0;
+	width: 35px;
+	position: relative;
+	overflow: hidden;
+	text-indent: -1000px;
+	height: 20px;
+	background-position: 0 -1px;
+	display: block;
+}
+
+#buttonBar .icon select {
+	opacity: 0;
+	width: 35px;
+	height: 22px;
+	position: absolute;
+	margin: 0;
+	top: 0;
+	left: 0;
+	display: block;
+}
+
+#buttonBar select option{
+}
+
+/* @end */
+
+/* @end */
+
+
+
+/* @end */
+
+/* @group Tiny MCE */
+
+#content .mceLayout table {
+	width: auto !important;
+	margin-bottom: 0 !important;
+}
+
+.mceLayout table td,
+.mceLayout table th,
+.mceIframeContainer {
+	border-style: none !important;
+	padding: 0 !important;
+}
+
+.mceIframeContainer {
+	border-bottom: 1px solid silver !important;
+}
+
+.mceLayout a {
+	padding-bottom: 0;
+	background-image: none !important;;
+}
+
+
+
+/* @end */
+
+/* @group Forms */
+
+/* @group Input File */
+
+p.fileUploader {
+	position: relative;
+}
+
+p.fileUploader button {
+	z-index: 0;
+	position: relative;
+}
+
+p.fileUploader input.file {
+	height: 30px;
+	width: auto;
+	opacity: 0;
+	-moz-opacity: 0;
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+	cursor: pointer;
+	z-index: 1;
+	position: absolute;
+	margin-left: -5px;
+	top: 0;
+	left: 0;
+	margin-top: -10px;
+	bottom: 0;
+}
+
+/* @end */
+
+*[disabled="disabled"] {
+	opacity: 0.4;
+}
+
+fieldset em.error {
+	clear: left;
+	color: white;
+	font-size: 10px;
+	line-height: 13px;
+	font-weight: bold;
+	padding: 4px 5px 4px 10px;
+	background: red url(labelFormError-vertical.png) no-repeat 0 0;
+	position: absolute;
+	margin-top: -2px;
+	width: 120px;
+	right: 0;
+	margin-right: -141px;
+	top: 9px;
+}
+
+input[type="text"],textarea {
+	margin-top: -3px;
+	width: 197px;
+	max-width: 197px;
+	margin-bottom: 6px;
+	margin-top: 0;
+	padding: 2px 5px;
+	border: 1px solid silver;
+	background-color: transparent;
+	font: 11px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	margin-left: 0;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+}
+
+input[type="checkbox"] {
+	height: 12px;
+	margin: 0;
+}
+
+.span-9 label em.error {
+	left: 350px;
+}
+
+.span-9 input[type="text"],.span-9 textarea {
+	width: 160px;
+	max-width: 160px;
+}
+
+.span-8 input[type="text"],.span-8 textarea {
+	width: 142px;
+	max-width: 150px;
+}
+
+.span-8 fieldset.concise textarea {
+	
+
+/*margin-right: -165px;*/
+	right: -156px;
+}
+
+.span-7 input,.span-7 textarea {
+	width: 124px;
+	max-width: 124px;
+}
+
+label {
+}
+
+/* @group Add and remove */
+
+#addImage {
+	float: right;
+	margin-top: 10px;
+}
+
+/* @end */
+
+/* @group Fieldsets */
+
+fieldset {
+	border-style: none;
+	position: relative;
+	border-top: 1px solid #b2bbc1;
+	border-bottom: 1px solid #b2bbc1;
+	margin-top: -1px;
+	margin-bottom: 0;
+	padding: 0 0 2px;
+}
+
+fieldset.floatBefore {
+	margin-right: 10px;
+}
+
+fieldset.floatBefore.last {
+	margin-right: 0;
+}
+
+fieldset legend span {
+	width: 100%;
+	margin-left: -100px;
+	display: inline;
+	margin-bottom: 10px;
+	float: left;
+	padding-right: 10px;
+	text-align: right;
+}
+
+/* @group Fieldset Concise */
+
+fieldset.concise,
+form.concise fieldset {
+	width: 100%;
+	clear: left;
+	padding: 0 0 5px;
+}
+
+fieldset.concise label,
+form.concise fieldset label {
+	padding-top: 9px;
+	position: relative;
+	float: left;
+	padding-right: 55%;
+	width: 45%;
+}
+
+fieldset.concise label input,
+form.concise fieldset label input,
+fieldset.concise label select,
+form.concise fieldset label select,
+fieldset.concise label ul,
+form.concise fieldset label ul,
+.SI-FILES-STYLIZED label.cabinet button {
+	position: absolute;
+	left: 50%;
+	margin-bottom: 0;
+	margin-top: 0;
+	top: 6px;
+	margin-left: 0;
+}
+
+fieldset.concise label select,
+form.concise fieldset label select {
+	top: 6px;
+}
+
+form.concise fieldset label textarea,
+fieldset.concise label textarea {
+	position: relative;
+	vertical-align: top;
+	top: 0;
+	right: -240px;
+}
+
+fieldset.concise p.question,
+form.concise fieldset p.question {
+	width: auto;
+	margin: 0;
+	padding: 0;
+}
+
+/* @end */
+
+/* @group Fieldset Comprehensive */
+
+fieldset.comprehensive,
+form.comprehensive fieldset,
+form.concise fieldset.comprehensive,
+form.compact fieldset.comprehensive {
+	width: 50%;
+	clear: left;
+	position: relative;
+	padding: 7px 0 7px 50%;
+}
+
+fieldset.comprehensive label,
+form.comprehensive fieldset label,
+form.concise fieldset.comprehensive label,
+form.compact fieldset.comprehensive label {
+	font-weight: normal;
+	font-style: normal;
+	position: static;
+	margin: 0;
+	padding: 0;
+	float: none;
+	width: 90%;
+}
+
+fieldset.comprehensive label *,
+form.comprehensive fieldset label *,
+form.concise fieldset.comprehensive label *,
+form.compact fieldset.comprehensive label * {
+	position: static;
+}
+
+fieldset.comprehensive legend
+ {
+	position: absolute;
+	top: 7px;
+	left: 0;
+	width: 50%;
+}
+
+fieldset.comprehensive p.question,
+form.comprehensive fieldset p.question,
+form.concise fieldset.comprehensive p.question,
+form.compact fieldset.comprehensive p.question {
+	width: 100%;
+	text-align: left;
+	padding: 0 0 4px;
+	position: relative;
+	display: inline;
+	float: right;
+	margin-left: -100%;
+	left: -100%;
+}
+
+/* @end */
+
+/* @group Fieldset Condensed */
+
+fieldset.condensed,
+form.condensed fieldset {
+	padding: 7px 0 7px 0 !important;
+	padding-bottom: 0;
+}
+
+fieldset.condensed p.question {
+	width: auto;
+	margin: 0 0 4px 0 !important;
+	padding: 2px 0 0;
+	font-weight: bold;
+	position: static;
+}
+
+fieldset.condensed label,
+form.condensed fieldset label {
+	clear: left;
+	font-weight: normal;
+	font-style: normal;
+	display: inline-block;
+}
+
+fieldset.condensed label input,
+form.condensed fieldset label input {
+	
+}
+
+fieldset.condensed fieldset {
+	clear: left;
+}
+
+fieldset.condensed fieldset p.question {
+	font-weight: normal;
+	font-style: normal;
+}
+
+fieldset.condensed legend {
+	margin-bottom: 15px;
+	float: left;
+	width: 100%;
+	font-weight: bold;
+}
+
+/* @end */
+
+/* @end */
+
+address {
+	margin-top: 0;
+}
+
+input:focus,
+textarea:focus {
+	border: 1px solid black;
+	outline: none;
+}
+
+abbr.currency {
+	margin-left: -11px;
+	position: absolute;
+	margin-top: 2px;
+}
+
+label abbr.currency {
+	margin-left: 0;
+	position: static;
+	margin-top: 0;
+}
+
+/* @group Personals */
+
+li.firstName input {
+	width: 88px;
+}
+
+li.surname input {
+	width: 88px;
+}
+
+/* @end */
+
+/* @group Radio List */
+
+.radioList {
+	position: relative;
+	list-style-image: none !important;
+	padding-left: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+.radioList li {
+	padding-bottom: 3px;
+	position: relative;
+}
+
+.radioList li label {
+	padding-left: 19px;
+	display: inline-block;
+	width: 100%;
+}
+
+.radioList li label:hover {
+	color: black;
+	background-position: 0 -399px;
+}
+
+.radioList li.selected label,
+.radioList li.selected label:hover {
+	color: black;
+	background-position: 0 -199px;
+}
+
+.radioList li label input {
+	width: 13px;
+	position: absolute;
+	top: 1px;
+	left: 0;
+	margin: 0;
+}
+
+/* @end */
+
+/* @group Radio Row */
+
+fieldset ol.radioRow,
+fieldset ul.radioRow {
+	list-style-image: none !important;
+	padding-left: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+fieldset ol.radioRow li,
+fieldset ul.radioRow li {
+	list-style-image: none !important;
+	padding-left: 0 !important;
+	margin-left: 0 !important;
+	margin-bottom: 0 !important;
+	margin-right: 5px;
+}
+
+.radioRow li label {
+	padding-right: 10px;
+	padding-left: 16px;
+	position: relative;
+}
+
+.radioRow li label input {
+	width: auto !important;
+	margin-left: 0;
+	position: absolute;
+	left: 0;
+	top: 0;
+	margin: 0;
+}
+
+/* @end */
+
+/* @group Input Row */
+
+ul.inputRow,
+ol.inputRow {
+	display: inline !important;
+	margin-top: 0 !important;
+	padding-top: 0 !important;
+	margin-left: 0 !important;
+	padding-left: 0 !important;
+	list-style-type: none !important;
+	background-image: none!important;
+	list-style-image: none!important;
+}
+
+ul.inputRow li {
+	display: inline;
+	float: left;
+	margin-right: 8px;
+}
+
+ul.inputRow li label {
+	width: auto !important;
+}
+
+/* @end */
+
+/* @group Input List */
+
+ul.inputList,
+ol.inputList,
+ol.radioList,
+ul.radioList,
+ol.checkList,
+ul.checkList {
+	margin-top: 0;
+	padding-top: 0;
+	margin-left: 0;
+	padding-left: 0;
+	list-style-type: none !important;
+}
+
+ul.inputList li,
+ol.radioList li,
+ul.radioList li,
+ol.checkList li,
+ul.checkList li {
+	margin-left: 0;
+	padding-left: 0;
+	float: left;
+	clear: left;
+}
+
+/* @end */
+
+/* @group Check List */
+
+ul.checkList {
+	list-style-type: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+ul.checkList li {
+	list-style-type: none;
+	margin: 0 !important;
+	padding: 0 0 1px 0;
+	list-style-image: none;
+	position: relative;
+}
+
+ul.checkList li label {
+	padding-left: 18px;
+}
+
+ul.checkList li input {
+	width: auto;
+	margin-bottom: 2px;
+	position: absolute;
+	left: 0;
+	top: 2px;
+	margin-left: 0;
+	border-style: none;
+	padding: 0 0 1px 19px;
+	margin: 0;
+}
+
+/* @end */
+	
+/* @group Check Row */
+
+ol.checkRow li,
+ul.checkRow li,
+ol.radioRow li,
+ul.radioRow li {
+	float: none;
+	margin-left: 0;
+	padding-left: 0;
+	display: inline;
+}
+
+ol.checkRow li label,
+ul.checkRow li label,
+ol.radioRow li label,
+ul.radioRow li label {
+	display: inline;
+}
+
+ol.checkRow li input,
+ul.checkRow li input {
+	width: auto;
+}
+
+/* @end */
+
+/* @group Super Imposed Labels */
+
+label.superImpose {
+	position: absolute !important;
+	white-space: nowrap;
+	display: block;
+	padding: 0 !important;
+	margin-left: 7px !important;
+	color: silver;
+	margin-top: 1px !important;
+	font-size: 11px;
+}
+
+li label.superImpose {
+	margin-top: 0;
+}
+
+/* @end */
+
+/* @group date-eu */
+
+ol.date-eu {
+	margin-bottom: 0 !important;
+	padding-left: 0 !important;
+}
+
+ol.date-eu li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+ol.date-eu label {
+	display: none;
+	background-color: #f00;
+}
+
+ol.date-eu .day input {
+	width: 30px;
+}
+
+ol.date-eu li.month select,
+select.month {
+	display: inline;
+	width: auto;
+	margin: 0;
+}
+
+ol.date-eu li.month input {
+	width: 30px;
+}
+
+ol.date-eu .year input {
+	width: 60px;
+	display: inline;
+}
+
+label.date input {
+	width: 73px;
+}
+
+/* @end */
+
+/* @group address-nl */
+
+ol.address-nl {
+	width: 211px;
+	position: relative;
+	float: left;
+	margin-bottom: -4px !important;
+	padding-left: 0 !important;
+}
+
+.address-nl label {
+	display: none;
+}
+
+.address-nl li {
+	display: inline;
+	margin: 0;
+	padding-left: 0;
+	padding-right: 0;
+	float: left;
+	padding-bottom: 5px;
+	width: auto;
+	position: relative;
+}
+
+.address-nl li.street input {
+	width: 198px;
+}
+
+.address-nl li.postalCode input {
+	width: 51px;
+	margin-right: 6px;}
+
+.address-nl li.residence input {
+	width: 128px;
+	-moz-box-sizing: border-box;
+
+}
+
+.address-nl li.country input {
+	width: 198px;
+}
+
+/* @end */
+
+/* @end */
+
+/* @group Icons */
+
+button.emphasised {
+	font-style: italic;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	text-transform: lowercase !important;
+	font-weight: bold;
+	text-align: center;
+	width: 30px;
+	padding-right: 0!important;
+	padding-left: 0 !important;
+	line-height: 18px !important;
+}
+
+button.strong {
+	font-weight: bold;
+	padding-right: 0;
+	padding-left: 0;
+	width: 30px;
+	text-align: center;
+}
+
+#buttonBar button.image,
+#buttonBar label.image {
+	background-position: -149px -1px;
+}
+
+#buttonBar button.actions,
+#buttonBar label.actions {
+	background-position: 2px -1px;
+	width: 35px;
+}
+
+#buttonBar button.add,
+#buttonBar label.add {
+	background-position: -27px -1px;
+}
+
+#buttonBar button.comment,
+#buttonBar label.comment {
+	background-position: -59px -1px;
+}
+
+#buttonBar button.addComment,
+#buttonBar label.addComment {
+	background-position: -89px -1px;
+}
+
+#buttonBar button.trackChanges,
+#buttonBar label.trackChanges {
+	background-position: -180px -1px !important;
+}
+
+#buttonBar button.pageProperties,
+#buttonBar label.pageProperties {
+	background-position: -240px -1px !important;
+}
+
+#buttonBar button.unorderedList,
+#buttonBar label.unorderedList {
+	background-position: -270px -1px;
+}
+
+#buttonBar button.orderedList,
+#buttonBar label.orderedList {
+	background-position: -300px -1px;
+}
+
+#buttonBar button.gloWorm,
+#buttonBar label.gloWorm {
+	background-position: -330px -1px;
+}
+
+#buttonBar button.gloWorm:hover {
+	background-color: white !important;
+}
+
+#buttonBar button.formatBlock,
+#buttonBar label.formatBlock {
+	background-position: -357px -1px;
+}
+
+#buttonBar button.blockQuote,
+#buttonBar label.blockQuote {
+	background-position: -389px -1px;
+}
+
+#buttonBar button.superscript,
+#buttonBar label.superscript {
+	background-position: -420px -1px;
+}
+
+#buttonBar button.subscript,
+#buttonBar label.subscript {
+	background-position: -450px -1px;
+}
+
+#buttonBar button.table,
+#buttonBar label.table {
+	background-position: -480px -1px;
+}
+
+#buttonBar button.link,
+#buttonBar label.link {
+	background-position: -510px -1px;
+}
+
+#buttonBar button.delete,
+#buttonBar label.delete {
+	background-position: -540px -1px;
+}
+
+#buttonBar button.inspector,
+#buttonBar label.inspector {
+	background-position: -570px -1px;
+}
+
+#buttonBar button.content,
+#buttonBar label.content {
+	background-position: -600px -1px;
+}
+
+#buttonBar button.view,
+#buttonBar label.view {
+	background-position: -630px -1px;
+}
+
+#buttonBar button.undo,
+#buttonBar label.undo {
+	background-position: -660px -1px;
+}
+
+#buttonBar button.redo,
+#buttonBar label.redo {
+	background-position: -690px -1px;
+}
+
+#buttonBar button.html,
+#buttonBar label.html {
+	background-position: -720px -1px;
+}
+
+#buttonBar button.screen,
+#buttonBar label.screen {
+	background-position: -747px -1px;
+}
+
+#buttonBar button.persona,
+#buttonBar label.persona {
+	background-position: -777px -1px;
+}
+
+#buttonBar button.scenario,
+#buttonBar label.scenario {
+	background-position: -807px -1px;
+}
+
+#buttonBar button.definitionList,
+#buttonBar label.definitionList {
+	background-position: -870px -1px;
+}
+
+#buttonBar button.style,
+#buttonBar label.style {
+	background-position: -837px -1px;
+}
+
+#buttonBar button.strong,
+#buttonBar label.strong {
+	background-position: -900px -1px;
+}
+
+#buttonBar button.emphasised,
+#buttonBar label.emphasised {
+	background-position: -931px -1px;
+}
+
+#buttonBar button.externalLink,
+#buttonBar label.externalLink {
+	background-position: -960px -1px;
+}
+
+#buttonBar button.listOutdent,
+#buttonBar label.listOutdent {
+	background-position: -990px -1px;
+}
+
+#buttonBar button.listIndent,
+#buttonBar label.listIndent {
+	background-position: -1020px -1px;
+}
+
+#buttonBar button.unlink,
+#buttonBar label.unlink {
+	background-position: -1050px -1px;
+}
+
+#buttonBar button.remove,
+#buttonBar label.remove {
+	background-position: -1080px -1px;
+}
+
+
+
+/* @end */

@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../style/main/base.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    <title>
+      Plone
+    </title>
+  </head>
+  <body class="siteMenu">
+    <ul class="menu" id="siteMenu">
+      <li id="user">
+        <a href="#">Cornelis</a>
+        <ul>
+          <li>
+            <ul>
+              <li>
+                <a href="#">Log out</a>
+              </li>
+              <li>
+                <a href="../settings.html" target="_top">Settings</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Actions</a>
+        <ul>
+          <li>Add new
+            <ul>
+              <li>
+                <a href="#">Page</a>
+              </li>
+              <li>
+                <a href="#">Folder</a>
+              </li>
+              <li>
+                <a href="#">Media object</a>
+              </li>
+            </ul>
+          </li>
+          <li>Organise
+            <ul>
+              <li>
+                <a href="#">Copy</a>
+              </li>
+              <li>
+                <a href="#">Cut</a>
+              </li>
+              <li>
+                <a href="#">Paste</a>
+              </li>
+              <li>
+                <a href="#">Delete</a>
+              </li>
+              <li>
+                <a href="#">Properties</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="../spuitlansen-edit.html" target="top">Edit</a>
+      </li>
+    </ul>
+
+  <script type="text/javascript" src="../libraries/jquery-1.4.3.js"></script>
+  <script type="text/javascript" src="../behaviour/behaviour.js"> </script>
+  <script type="text/javascript">
+var sitemenu = {
+    // Timer to control hiding of the sitemenu in the main document
+    timer: null,
+
+    getIframeElement: function() {
+        var contentDoc = window.frameElement.ownerDocument,
+            $iframe = $("#siteMenu", contentDoc);
+        return $iframe;
+    },
+
+    clearTimer: function() {
+        if (sitemenu.timer) {
+            clearTimeout(sitemenu.timer);
+            sitemenu.timer = null;
+        }
+    },
+
+    setTimer: function() {
+        if (sitemenu.timer) {
+            return;
+        }
+
+        sitemenu.timer = setTimeout(function() {
+            sitemenu.getIframeElement().css("height", null);
+            }, 1000);
+    },
+
+    init: function() {
+        $("#siteMenu").live("mouseover", function(e) {
+            if (!sitemenu.clearTimer()) {
+                sitemenu.getIframeElement().css("height", "100%");
+            }
+        });
+
+        $("#siteMenu").live("mouseout", function(e) {
+            sitemenu.clearTimer();
+            sitemenu.setTimer();
+        });
+    }
+};
+
+sitemenu.init();
+  </script>
+  </body>
+</html>
