@@ -2,7 +2,11 @@ Changelog
 =========
 
 1.0rc5 - Unreleased
-----------------
+-------------------
+
+* Prefer `Title` method to get the current title for the title of the delete
+  confirmation page.
+  [wichert]
 
 * Do not put a <p> element in an <object>; IE9 will move it outside the object
   element, thus resulting in leftovers even when using the object->iframe
