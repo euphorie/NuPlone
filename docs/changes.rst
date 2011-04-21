@@ -1,10 +1,11 @@
 Changelog
 =========
 
-1.0rc6 - Unreleased
--------------------
+1.0rc6 - April 21
+-----------------
 
-* ...
+* Re-release rc5 as rc6 to fixup error in source control tagging.
+  [wichert]
 
 
 1.0rc5 - April 21
