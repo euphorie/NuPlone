@@ -6,7 +6,7 @@ version = "1.0rc5"
 setup(name="NuPlone",
       version=version,
       description="A new user interface for Plone",
-      long_description=open("README.txt").read() + "\n" +
+      long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "changes.rst")).read(),
       classifiers=[
           "Development Status :: 2 - Pre-Alpha",
