@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.0rc5 - Unreleased
--------------------
+1.0rc5 - April 21
+-----------------
 
 * Prefer `Title` method to get the current title for the title of the delete
   confirmation page.
@@ -24,8 +24,8 @@ Changelog
   [jcbrand]
 
 
-1.0rc4 - Unreleased
-----------------
+1.0rc4 - Febuary 1, 2011
+------------------------
 
 * Paper brown bag: fix initialisation of rich text editor in forms. This
   broke in 1.0rc3 as a part of the tooltip changes.
