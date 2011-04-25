@@ -9,7 +9,7 @@
       tal:define="tools context/@@tools">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.z3cform.style}/base.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.style}/base.css"/>
   </head>
   <body id="links" class="dropSheet">
     <h1 i18n:translate="header_place_link">Place a Link</h1>

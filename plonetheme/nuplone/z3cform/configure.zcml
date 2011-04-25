@@ -33,11 +33,6 @@
     />
 
   <browser:resourceDirectory
-    name="NuPlone.z3cform.style"
-    directory="templates/style"
-    />
-
-  <browser:resourceDirectory
     name="NuPlone.tinymce"
     directory="tiny_mce"
     />
