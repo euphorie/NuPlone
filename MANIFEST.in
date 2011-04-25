@@ -1,0 +1,9 @@
+include *.rst
+recursive-include plonetheme *.zcml
+recursive-include plonetheme/nuplone/locales *.po
+recursive-include plonetheme/nuplone/locales *.mo
+graft docs
+prune docs/.build
+graft plonetheme/nuplone/skin/templates
+graft plonetheme/nuplone/tiles/templates
+graft plonetheme/nuplone/z3cform/templates
