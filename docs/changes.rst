@@ -4,6 +4,10 @@ Changelog
 1.0rc7 - April 26
 -----------------
 
+* Exclude prototype from all distribution forms; the symlinked files confuse
+  distutils too much.
+  [wichert]
+
 * Add MANIFEST.in and restructure symlinks for css/javacsript files to
   guarantee all files are included in eggs.
   [wichert]
