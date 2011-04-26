@@ -4,7 +4,8 @@ Changelog
 1.0rc7 - Unreleased
 -------------------
 
-* Add MANIFEST.in to guarantee all files are included in eggs.
+* Add MANIFEST.in and restructure symlinks for css/javacsript files to
+  guarantee all files are included in eggs.
   [wichert]
 
 1.0rc6 - April 21
