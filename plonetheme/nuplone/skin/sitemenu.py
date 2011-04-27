@@ -1,4 +1,5 @@
 from Acquisition import aq_inner
+from Acquisition import aq_parent
 from zope.interface import Interface
 from five import grok
 from AccessControl.Permissions import copy_or_move
@@ -76,9 +77,10 @@ class Sitemenu(grok.View):
         """
         context=aq_inner(self.context)
         context_url=context.absolute_url()
+        parent=aq_parent(context)
         is_root=ISiteRoot.providedBy(context)
         is_copyable=not is_root and ICopySource.providedBy(context) and checkPermission(context, copy_or_move)
-        can_delete=not is_root and checkPermission(context, delete_objects)
+        can_delete=not is_root and checkPermission(parent, delete_objects)
         can_copy=is_copyable and context.cb_isCopyable()
         can_cut=is_copyable and can_delete and context.cb_isMoveable()
         can_paste=ICopyContainer.providedBy(context) and context.cb_dataValid()
