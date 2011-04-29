@@ -9,7 +9,7 @@
       tal:define="tools context/@@tools">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.style}/base.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="${tools/portal/++resource++NuPlone.style}/form/base.css"/>
   </head>
   <body id="editBar">
     <div id="buttonBar">

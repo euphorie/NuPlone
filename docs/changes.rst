@@ -1,6 +1,13 @@
 Changelog
 =========
 
+1.0rc8 - Unreleased
+-------------------
+
+* Correct location of toolbar CSS.
+  [wichert]
+
+
 1.0rc7 - April 26
 -----------------
 
