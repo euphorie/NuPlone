@@ -1,21 +1,31 @@
 # Translations template for NuPlone.
-# Copyright (C) 2010 Wichert Akkerman, Simplon
+# Copyright (C) 2011 Wichert Akkerman, Simplon
 # This file is distributed under the same license as the NuPlone project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: NuPlone 1.0\n"
+"Project-Id-Version: NuPlone 1.0rc7\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
-"POT-Creation-Date: 2010-07-21 18:11+0200\n"
+"POT-Creation-Date: 2011-05-04 20:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 0.9.5\n"
+"Generated-By: Babel 0.9.6\n"
+
+#. Default: <pre-1900-date>
+#: plonetheme/nuplone/utils.py:189 plonetheme/nuplone/utils.py:202
+msgid "date_to_early"
+msgstr ""
+
+#. Default: ${date} at ${time}
+#: plonetheme/nuplone/utils.py:204
+msgid "format_datetime"
+msgstr ""
 
 #. Default: Copied
 #: plonetheme/nuplone/skin/actions.py:33
@@ -53,59 +63,59 @@ msgid "message_paste_generic"
 msgstr ""
 
 #. Default: Deletion cancelled
-#: plonetheme/nuplone/skin/actions.py:104
+#: plonetheme/nuplone/skin/actions.py:105
 msgid "message_delete_cancel"
 msgstr ""
 
 #. Default: Object removed
-#: plonetheme/nuplone/skin/actions.py:113
+#: plonetheme/nuplone/skin/actions.py:114
 msgid "message_delete_success"
 msgstr ""
 
 #. Default: Your name
-#: plonetheme/nuplone/skin/contact.py:25
+#: plonetheme/nuplone/skin/contact.py:27
 msgid "label_your_name"
 msgstr ""
 
 #. Default: Email address
-#: plonetheme/nuplone/skin/contact.py:30 plonetheme/nuplone/skin/settings.py:20
+#: plonetheme/nuplone/skin/contact.py:32 plonetheme/nuplone/skin/settings.py:20
 msgid "label_email"
 msgstr ""
 
 #. Default: Subject
-#: plonetheme/nuplone/skin/contact.py:35
+#: plonetheme/nuplone/skin/contact.py:37
 msgid "label_subject"
 msgstr ""
 
 #. Default: Your message
-#: plonetheme/nuplone/skin/contact.py:40
+#: plonetheme/nuplone/skin/contact.py:42
 msgid "label_contact_text"
 msgstr ""
 
 #. Default: Contact
-#: plonetheme/nuplone/skin/contact.py:53
+#: plonetheme/nuplone/skin/contact.py:55
 msgid "header_contact"
 msgstr ""
 
 #. Default: Send
-#: plonetheme/nuplone/skin/contact.py:56 plonetheme/nuplone/skin/pwreminder.py:60
+#: plonetheme/nuplone/skin/contact.py:58 plonetheme/nuplone/skin/pwreminder.py:60
 msgid "button_send"
 msgstr ""
 
 #. Default: Contact request: ${subject}
-#: plonetheme/nuplone/skin/contact.py:63
+#: plonetheme/nuplone/skin/contact.py:68
 msgid "contact_mail_subject"
 msgstr ""
 
 #. Default: An error occured while processing your contact request. Please try
 #. again later.
-#: plonetheme/nuplone/skin/contact.py:77 plonetheme/nuplone/skin/contact.py:81
+#: plonetheme/nuplone/skin/contact.py:82 plonetheme/nuplone/skin/contact.py:86
 #: plonetheme/nuplone/skin/pwreminder.py:102
 #: plonetheme/nuplone/skin/pwreminder.py:106
 msgid "error_contactmail"
 msgstr ""
 
-#: plonetheme/nuplone/skin/contact.py:84
+#: plonetheme/nuplone/skin/contact.py:89
 msgid "Message sent"
 msgstr ""
 
@@ -207,9 +217,44 @@ msgstr ""
 msgid "label_fullname"
 msgstr ""
 
-#. Default: ${date} at ${time}
-#: plonetheme/nuplone/skin/tools.py:41
-msgid "format_datetime"
+#. Default: Actions
+#: plonetheme/nuplone/skin/sitemenu.py:38
+msgid "menu_actions"
+msgstr ""
+
+#. Default: Add new
+#: plonetheme/nuplone/skin/sitemenu.py:57
+msgid "menu_add_new"
+msgstr ""
+
+#. Default: Organise
+#: plonetheme/nuplone/skin/sitemenu.py:88
+msgid "menu_organise"
+msgstr ""
+
+#. Default: Copy
+#: plonetheme/nuplone/skin/sitemenu.py:91
+msgid "menu_copy"
+msgstr ""
+
+#. Default: Cut
+#: plonetheme/nuplone/skin/sitemenu.py:94
+msgid "menu_cut"
+msgstr ""
+
+#. Default: Paste
+#: plonetheme/nuplone/skin/sitemenu.py:97
+msgid "menu_paste"
+msgstr ""
+
+#. Default: Delete
+#: plonetheme/nuplone/skin/sitemenu.py:100
+msgid "menu_delete"
+msgstr ""
+
+#. Default: Plone
+#: plonetheme/nuplone/skin/tools.py:51
+msgid "default_site_title"
 msgstr ""
 
 #. Default: Cancel
@@ -233,11 +278,11 @@ msgstr ""
 msgid "title_delete"
 msgstr ""
 
-#: plonetheme/nuplone/skin/templates/dexterity.pt:16
+#: plonetheme/nuplone/skin/templates/dexterity.pt:18
 msgid "Group name"
 msgstr ""
 
-#: plonetheme/nuplone/skin/templates/dexterity.pt:10
+#: plonetheme/nuplone/skin/templates/dexterity.pt:12
 msgid "Default fieldset"
 msgstr ""
 
@@ -321,7 +366,11 @@ msgstr ""
 msgid "header_login"
 msgstr ""
 
-#: plonetheme/nuplone/skin/templates/layout.pt:18
+#: plonetheme/nuplone/skin/templates/layout.pt:43
+msgid "Can not open site menu."
+msgstr ""
+
+#: plonetheme/nuplone/skin/templates/layout.pt:21
 msgid "Change order of items by dragging the handle"
 msgstr ""
 
@@ -364,43 +413,8 @@ msgid "reminder_email_header"
 msgstr ""
 
 #. Default: Edit
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:67
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:49
 msgid "menu_edit"
-msgstr ""
-
-#. Default: Delete
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:60
-msgid "menu_delete"
-msgstr ""
-
-#. Default: Paste
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:57
-msgid "menu_paste"
-msgstr ""
-
-#. Default: Cut
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:54
-msgid "menu_cut"
-msgstr ""
-
-#. Default: Copy
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:51
-msgid "menu_copy"
-msgstr ""
-
-#. Default: Organise
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:48
-msgid "menu_organise"
-msgstr ""
-
-#. Default: Add new
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:41
-msgid "menu_add_new"
-msgstr ""
-
-#. Default: Actions
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:39
-msgid "menu_actions"
 msgstr ""
 
 #. Default: Settings
@@ -429,18 +443,13 @@ msgid "portlet_languages"
 msgstr ""
 
 #. Default: Submit
-#: plonetheme/nuplone/tiles/templates/tabs.pt:14
+#: plonetheme/nuplone/tiles/templates/tabs.pt:16
 msgid "button_submit"
 msgstr ""
 
 #. Default: Search
-#: plonetheme/nuplone/tiles/templates/tabs.pt:14
+#: plonetheme/nuplone/tiles/templates/tabs.pt:16
 msgid "menu_search"
-msgstr ""
-
-#. Default: Home
-#: plonetheme/nuplone/tiles/templates/tabs.pt:10
-msgid "menu_home"
 msgstr ""
 
 #. Default: URL
