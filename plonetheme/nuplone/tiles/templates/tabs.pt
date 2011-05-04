@@ -5,6 +5,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       meta:interpolation="true"
       tal:omit-tag=""
+      i18n:domain="nuplone"
       tal:define="tools nocall:context/@@tools">
   <ul id="tabs">
     <li tal:repeat="tab view/tabs" class="${tab/class}"><a href="${tab/url}">${tab/title}</a></li>
