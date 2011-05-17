@@ -1,3 +1,4 @@
+import logging
 from zope.annotation.interfaces import IAnnotations
 from zope.i18n import translate
 from webhelpers.html.builder import literal
@@ -5,10 +6,12 @@ from Products.statusmessages import adapter
 from Products.statusmessages import STATUSMESSAGEKEY
 from htmllaundry import cleaners 
 from htmllaundry.utils import sanitize 
+
+
+logger = logging.getLogger('plonetheme/nuplone/adapter.py')
+
 HTMLMESSAGEKEY = 'literal-messages'
 
-import logging
-logger = logging.getLogger('plonetheme/nuplone/adapter.py')
 
 msgcleaner = \
     cleaners.LaundryCleaner(
@@ -25,6 +28,7 @@ msgcleaner = \
             frames = True,
             annoying_tags = False,
             link_target = "_blank")
+
 
 class StatusMessage(adapter.StatusMessage):
     """ Overrides the standard IStatusMessage adapter to provide literal string
@@ -61,7 +65,7 @@ class StatusMessage(adapter.StatusMessage):
                                 context.cookies.get(HTMLMESSAGEKEY))
         html_msgs = html_msgs and adapter._decodeCookieValue(html_msgs) or []
         for msg in html_msgs:
-            msg.message = literal(sanitize(msg.message, cleaner=msgcleaner, wrap="span"))
+            msg.message = literal(sanitize(msg.message, cleaner=msgcleaner, wrap=None))
 
         value = msgs + html_msgs
         

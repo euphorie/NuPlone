@@ -51,7 +51,7 @@ setup(name="NuPlone",
           "p01.widget.password",
           "Products.statusmessages",
           "WebHelpers",
-          "htmllaundry",
+          "htmllaundry >=1.10",
           "zope.i18n",
       ],
       extras_require = {

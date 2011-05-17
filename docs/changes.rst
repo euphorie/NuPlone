@@ -4,6 +4,9 @@ Changelog
 1.0rc8 - Unreleased
 -------------------
 
+* Correct htmllaundry dependency.
+  [wichert]
+
 * Correct location of toolbar CSS.
   [wichert]
 
