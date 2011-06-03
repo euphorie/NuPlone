@@ -4,6 +4,9 @@ Changelog
 1.0rc8 - Unreleased
 -------------------
 
+* Two newlines TinyMCE bug fixed (Github issue #1)
+  [jcbrand]
+
 * Correct htmllaundry dependency.
   [wichert]
 
