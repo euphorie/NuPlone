@@ -10028,9 +10028,6 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 			t.forceBlocks = new tinymce.ForceBlocks(t, {
 				forced_root_block : s.forced_root_block
 			});
-			t.forceBlocks = new tinymce.ForceBlocks(t, {
-				forced_root_block : s.forced_root_block
-			});
 
 			t.editorCommands = new tinymce.EditorCommands(t);
 
