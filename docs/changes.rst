@@ -4,6 +4,9 @@ Changelog
 1.0rc8 - Unreleased
 -------------------
 
+* Add css class to enable secondary InfoPanels (per field).
+  [jcbrand]
+
 * Two newlines TinyMCE bug fixed (Github issue #1)
   [jcbrand]
 
