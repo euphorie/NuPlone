@@ -29,7 +29,7 @@
         </fieldset>
 
         <div class="buttonBar">
-          <button type="submit" i18n:translate="button_login">Login</button>
+          <button type="submit" id="login_submit" i18n:translate="button_login">Login</button>
         </div>
       </form>
 

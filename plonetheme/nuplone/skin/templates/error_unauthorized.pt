@@ -29,13 +29,13 @@
             <legend i18n:translate="legend_credentials">Credentials</legend>
             <input type="hidden" name="login_attempt" value="1"/>
             <label><tal:span i18n:translate="label_login">Login</tal:span>
-              <input name="__ac_name" type="text"/></label>
+              <input name="__ac_name" type="text" id="login_name"/></label>
             <label><tal:span i18n:translate="label_password">Password</tal:span>
-              <input name="__ac_password" type="password"/></label>
+              <input name="__ac_password" type="password" id="login_password"/></label>
           </fieldset>
 
           <div class="buttonBar">
-            <button type="submit" i18n:translate="button_login">Login</button>
+            <button type="submit" id="login_submit" i18n:translate="button_login">Login</button>
           </div>
         </form>
 
