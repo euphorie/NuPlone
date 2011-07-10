@@ -3,8 +3,9 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="nuplone"
       tal:omit-tag="">
-  <label tal:attributes="class view/@@dependencies"><tal:span replace="view/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup>
-    <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/> <textarea
+<div class="z3cFieldContainer" tal:attributes="class string:${view/@@dependencies} z3cFieldContainer">
+  <label><tal:span replace="view/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup>
+    <textarea
         tal:content="structure view/value"
         tal:attributes="id view/id;
                         name view/name; 
@@ -13,5 +14,7 @@
                         readonly view/readonly;
                         cols view/cols;
                         rows view/rows" /> <tal:error condition="view/error" replace="structure view/error/render|nothing"/></label>
+    <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/> 
+</div>
 </html>
 

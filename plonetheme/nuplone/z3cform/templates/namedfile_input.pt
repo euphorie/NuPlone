@@ -4,8 +4,8 @@
       i18n:domain="nuplone"
       tal:define="download_url view/download_url;"
       tal:omit-tag="">
-  <label tal:attributes="class view/@@dependencies"><tal:span replace="view/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup>
-    <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/>
+<div class="z3cFieldContainer" tal:attributes="class string:${view/@@dependencies} z3cFieldContainer">
+  <label><tal:span replace="view/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup>
       <span tal:condition="view/allow_nochange"><a tal:attributes="href view/download_url" tal:content="view/filename">sunset.jpg</a> (<tal:span replace="view/file_size">100</tal:span>kB)</span>
     <input type="file"
         tal:attributes="id view/id;
@@ -13,5 +13,7 @@
                         class view/klass;
                         disabled view/disabled;
                         readonly view/readonly; "/> <tal:error condition="view/error" replace="structure view/error/render|nothing"/></label>
+    <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/>
+</div>
 </html>
 

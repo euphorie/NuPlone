@@ -223,6 +223,10 @@ dl.accordion dd dfn.infoPanel {
 	
 }
 
+div.z3cFieldContainer {
+    clear: both;
+}
+
 .richInput.empty div.input.rich {
 	min-height: 40px;
 }
