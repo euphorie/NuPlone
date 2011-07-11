@@ -20,7 +20,7 @@ msgstr "<pre-1900-date>"
 #. Default: ${date} at ${time}
 #: plonetheme/nuplone/utils.py:204
 msgid "format_datetime"
-msgstr "${date} à ${heure}"
+msgstr "${date} à ${time}"
 
 #. Default: Copied
 #: plonetheme/nuplone/skin/actions.py:33
@@ -102,7 +102,7 @@ msgstr "Envoyer"
 #. Default: Contact request: ${subject}
 #: plonetheme/nuplone/skin/contact.py:68
 msgid "contact_mail_subject"
-msgstr "Demande de contact : ${sujet}"
+msgstr "Demande de contact : ${subject}"
 
 #. Default: An error occured while processing your contact request. Please try
 #. again later.
@@ -289,7 +289,7 @@ msgstr "Êtes-vous sûr de vouloir effacer cet objet ?"
 #. Default: Delete "${title}"
 #: plonetheme/nuplone/skin/templates/delete.pt:12
 msgid "title_delete"
-msgstr "Effacer \"${titre}"
+msgstr "Effacer \"${title}"
 
 #: plonetheme/nuplone/skin/templates/dexterity.pt:18
 msgid "Group name"
@@ -326,31 +326,26 @@ msgstr ""
 msgid "header_error_notfound"
 msgstr "Introuvable"
 
-#. Default: If you forgot your password you can ${reset_password}
 #. Default: If you forgot your password you can ${reset_password}.
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
 #: plonetheme/nuplone/skin/templates/login.pt:37
 msgid "message_reset_password"
 msgstr ""
-"Si vous avez oublié votre mot de passe, vous pouvez ${réinitialiser_mot de "
-"passe} par défaut : si vous avez oublié votre mot de passe, vous pouvez "
-"${réinitialiser_mot de passe}."
+"Si vous avez oublié votre mot de passe, vous pouvez ${reset_password}."
 
-#. Default: request a password reset.
 #. Default: request a password reset
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
 #: plonetheme/nuplone/skin/templates/login.pt:37
 #: plonetheme/nuplone/skin/templates/login.pt:17
 msgid "reset_password"
 msgstr ""
-"demander une réinitialisation de mot de passe. Par défaut : demander une "
-"réinitialisation de mot de passe"
+"demander une réinitialisation de mot de passe"
 
 #. Default: No account? Please ${request_account}.
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
 #: plonetheme/nuplone/skin/templates/login.pt:36
 msgid "message_no_account"
-msgstr "Aucun compte ? Veuillez ${demander_compte}."
+msgstr "Aucun compte ? Veuillez ${request_account}."
 
 #. Default: request an account
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
@@ -404,7 +399,7 @@ msgstr "Changer l'ordre des éléments en tirant sur la poignée"
 msgid "message_invalid_login"
 msgstr ""
 "Connexion invalide. Si vous avez oublié votre mot de passe vous pouvez "
-"${réinitialiser_mot de passe}."
+"${reset_password}."
 
 #. Default: You are already logged in. Please logout first before trying to
 #. login
@@ -443,7 +438,7 @@ msgstr ""
 #: plonetheme/nuplone/skin/templates/pwreset-email.pt:8
 msgid "password_reset_intro"
 msgstr ""
-"une réinitialisation de mot de passe pour le compte '${connexion}' a été "
+"une réinitialisation de mot de passe pour le compte '${login}' a été "
 "demandée. Pour réinitialiser votre mot de passe, veuillez consulter cet URL "
 ":"
 
@@ -557,7 +552,7 @@ msgstr "Placer un lien"
 #: plonetheme/nuplone/z3cform/templates/form.pt:27
 #: plonetheme/nuplone/z3cform/templates/wrappedform.pt:21
 msgid "${legend}"
-msgstr "${légende}"
+msgstr "${legend}"
 
 #: plonetheme/nuplone/z3cform/templates/namedimage_input.pt:14
 msgid "Remove image"
@@ -569,7 +564,7 @@ msgstr "Confirmer le mot de passe"
 
 #: plonetheme/nuplone/z3cform/templates/wrappedform.pt:9
 msgid "${status}"
-msgstr "${état}"
+msgstr "${status}"
 
 #: plonetheme/nuplone/z3cform/templates/wysiwyg_input.pt:10
 msgid "Please enter text here"
