@@ -5,7 +5,8 @@
       i18n:domain="nuplone"
       meta:interpolation="true"
       tal:omit-tag="">
-    <label class="${view/@@dependencies}">${view/label}<sup tal:condition="view/required" class="required">*</sup> <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/>
+<div class="z3cFieldContainer" tal:attributes="class string:${view/@@dependencies} z3cFieldContainer">
+    <label>${view/label}<sup tal:condition="view/required" class="required">*</sup> 
       <textarea
         tal:content="view/value"
         tal:attributes="id view/id;
@@ -14,7 +15,8 @@
                         disabled view/disabled;
                         readonly view/readonly;
                         cols view/cols;
-                        rows view/rows" /> <tal:error condition="view/error" replace="structure view/error/render|nothing"/>
-  </label>
+                        rows view/rows" /> <tal:error condition="view/error" replace="structure view/error/render|nothing"/></label>
+    <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/>
+</div>
 </html>
 

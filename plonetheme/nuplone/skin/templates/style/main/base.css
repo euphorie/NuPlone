@@ -223,6 +223,10 @@ dl.accordion dd dfn.infoPanel {
 	
 }
 
+div.z3cFieldContainer {
+    clear: both;
+}
+
 .richInput.empty div.input.rich {
 	min-height: 40px;
 }
@@ -2687,7 +2691,6 @@ fieldset p.legend {
 	color: #3f3f3f;
 	margin-bottom: 0;
 	margin-top: 20px;
-	text-transform: uppercase;
 	letter-spacing: 1px;
 }
 

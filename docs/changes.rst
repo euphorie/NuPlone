@@ -1,14 +1,23 @@
 Changelog
 =========
 
-1.0rc8 - Unreleased
+1.0rc9 - Unreleased
 -------------------
+
+* Refactored infoPanels on z3cforms to fix alignment issues.
+  [jcbrand]
+
+* Don't capitalize quetions and legends.
+  [jcbrand]
 
 * Add css class to enable secondary InfoPanels (per field).
   [jcbrand]
 
 * Two newlines TinyMCE bug fixed (Github issue #1)
   [jcbrand]
+
+1.0rc8 - May 17
+---------------
 
 * Correct htmllaundry dependency.
   [wichert]

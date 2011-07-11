@@ -279,18 +279,6 @@ var mapal = {
         $("legend", root).each(function() {
             $(this).replaceWith('<p class="legend">'+$(this).html()+'</p>');
         });
-
-        $("label dfn.infoPanel", root).each(function() {
-            var $panel = $(this),
-                $label = $panel.closest("label"),
-                $body = $("body"),
-                offset = $panel.offset();
-            $panel
-                .remove()
-                .appendTo($body)
-                .css({position: "absolute", left: offset.left, top: offset.top});
-            $label.data("mapal.infoPanel", $panel);
-        });
     },
 
 
