@@ -186,5 +186,11 @@ object#siteMenu {
 	display: none;
 }
 
+#siteMenu {
+    overflow: hidden !important;
+    height: 100%;
+    width: 180px;
+}
+
 /* @end */
 

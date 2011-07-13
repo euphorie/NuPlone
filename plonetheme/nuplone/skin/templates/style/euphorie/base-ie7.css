@@ -11,6 +11,8 @@
 	margin-top: -18px;
 }
 
-
+.colourPicker {
+    overflow: auto !important;
+}
 
 /* @end */
