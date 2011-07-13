@@ -542,19 +542,21 @@ var mapal = {
     initIEButtons: function() {
         if ($.browser.msie ) {
             var version = Number( $.browser.version.split(".", 2).join(""));
-            if (version>80) {
+            if (version>80)
                 return;
-            }
         }
 
         $("form button[type=submit]").live("click", function() {
             var name = this.name,
                 $el = $("<input/>"),
-                value = this.attributes.getNamedItem("value").nodeValue;
+                value = this.attributes.getNamedItem("value");
+
+            if (value == undefined)
+                return
 
             $el.attr("type", "hidden")
                .attr("name", name)
-               .val(value)
+               .val(value.nodeValue)
                .appendTo(this.form);
             $("button[type=submit]", this.form).attr("name", "_buttonfix");
         });
