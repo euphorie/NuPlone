@@ -2692,6 +2692,12 @@ fieldset p.legend {
 	margin-bottom: 0;
 	margin-top: 20px;
 	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+fieldset p.question:lang(el),
+fieldset p.legend:lang(el) {
+	text-transform: none !important;
 }
 
 /* @group Fieldset Concise */

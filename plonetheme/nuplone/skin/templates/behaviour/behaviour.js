@@ -277,7 +277,15 @@ var mapal = {
         $(".jsOnly", root).show();
 
         $("legend", root).each(function() {
-            $(this).replaceWith('<p class="legend">'+$(this).html()+'</p>');
+            var p = $('<p>'+$(this).html()+'</p>')
+            $(this).replaceWith(p);
+
+            // Copy over its attributes
+            $.each($(this).get(0).attributes, function(i, a) {p.attr(a.nodeName, a.nodeValue)});
+            if (p.attr('class')) {
+                p.attr('class', p.attr('class') + ' legend');
+            }
+            else p.attr('class', 'legend');
         });
     },
 

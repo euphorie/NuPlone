@@ -4,9 +4,11 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="nuplone"
       meta:interpolation="true"
+      tal:define="portal_state context/@@plone_portal_state"
       tal:omit-tag="">
   <fieldset class="richInput">
-    <legend class="${view/@@dependencies}">${view/label}<sup tal:condition="view/required" class="required">*</sup></legend>
+    <legend class="${view/@@dependencies}"
+            tal:attributes="lang portal_state/language">${view/label}<sup tal:condition="view/required" class="required">*</sup></legend>
     <dfn class="infoPanel" 
          i18n:attributes="title" 
          title="Information" 
