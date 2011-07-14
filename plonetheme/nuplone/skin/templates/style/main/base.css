@@ -2696,7 +2696,11 @@ fieldset p.legend {
 }
 
 fieldset p.question:lang(el),
-fieldset p.legend:lang(el) {
+fieldset p.question:lang(el-cy),
+fieldset p.question:lang(el-gr),
+fieldset p.legend:lang(el),
+fieldset p.legend:lang(el-cy),
+fieldset p.legend:lang(el-gr) {
 	text-transform: none !important;
 }
 
