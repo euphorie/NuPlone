@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = "1.0rc10"
+version = "1.0rc9"
 
 setup(name="NuPlone",
       version=version,
