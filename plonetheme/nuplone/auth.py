@@ -17,6 +17,8 @@ class LoginChallenger(BasePlugin):
         if not NuPloneSkin.providedBy(request):
             return False
 
+        response.setStatus(403)
+        response._locked_status = True
         return True
 
 
