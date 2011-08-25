@@ -324,7 +324,6 @@ msgstr ""
 msgid "header_error_notfound"
 msgstr "Δεν βρέθηκε"
 
-#. Default: If you forgot your password you can ${reset_password}
 #. Default: If you forgot your password you can ${reset_password}.
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
 #: plonetheme/nuplone/skin/templates/login.pt:37
@@ -334,7 +333,6 @@ msgstr ""
 "${reset_password} Προεπιλογή: Εάν έχετε ξεχάσει τον κωδικό πρόσβασής σας "
 "μπορείτε να επιλέξετε ${reset_password}. "
 
-#. Default: request a password reset.
 #. Default: request a password reset
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
 #: plonetheme/nuplone/skin/templates/login.pt:37
