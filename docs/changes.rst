@@ -4,6 +4,12 @@ Changelog
 1.0rc9 - Unreleased
 -------------------
 
+* Register screen-ie6.css as zrt-resource.
+  [jcbrand]
+
+* New Spanish translations
+  [thomas_w]
+
 * Refactored infoPanels on z3cforms to fix alignment issues.
   [jcbrand]
 
