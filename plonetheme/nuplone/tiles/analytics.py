@@ -6,7 +6,7 @@ class AnalyticsTile(AppConfigTile):
     def __call__(self):
         self.account=self.data.get("account", None)
         if not self.account:
-            return None
+            return ''
 
         self.domain=self.data.get("domain", None)
 
