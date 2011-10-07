@@ -7,7 +7,7 @@ Changelog
 * Register screen-ie6.css as zrt-resource.
   [jcbrand]
 
-* New Spanish translations
+* New Spanish, Slovenian translations
   [thomas_w]
 
 * Refactored infoPanels on z3cforms to fix alignment issues.
