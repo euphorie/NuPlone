@@ -1284,6 +1284,14 @@ div.secondInfoPanel {
 	margin-top: 3px;
 }
 
+input#form-widgets-title,
+input#form-widgets-question {
+    width: 167%;
+}
+
+span#siteTitle {
+    display: none;
+}
 
 /* @end */
 

@@ -9,7 +9,7 @@
       tal:define="tools nocall:context/@@tools">
   <ul id="tabs">
     <li tal:repeat="tab view/tabs" class="${tab/class}"><a href="${tab/url}">${tab/title}</a></li>
-    <li id="home"><a href="${view/home_url}">${tools/site_title}</a></li>
+    <li id="home"><a href="${view/home_url}"><span id="siteTitle">${tools/site_title}</span></a></li>
     <li id="search">
       <form method="get" action="${tools/navroot_url}/@@search">
         <fieldset>
