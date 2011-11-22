@@ -20,6 +20,10 @@ body {
 	background: url(body.jpg) no-repeat fixed;
 }
 
+.introduction * {
+	font-weight: normal;
+}
+
 #tabs {
 	background: #031c48 url(header.png) right 0;
 	overflow: visible;
