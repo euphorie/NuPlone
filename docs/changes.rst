@@ -4,6 +4,9 @@ Changelog
 1.0rc9 - Unreleased
 -------------------
 
+* Add support for Plone 4.1.
+  [wichert]
+
 * Register screen-ie6.css as zrt-resource.
   [jcbrand]
 
@@ -13,7 +16,7 @@ Changelog
 * Refactored infoPanels on z3cforms to fix alignment issues.
   [jcbrand]
 
-* Don't capitalize quetions and legends.
+* Don't capitalize questions and legends.
   [jcbrand]
 
 * Add css class to enable secondary InfoPanels (per field).
@@ -21,6 +24,7 @@ Changelog
 
 * Two newlines TinyMCE bug fixed (Github issue #1)
   [jcbrand]
+
 
 1.0rc8 - May 17
 ---------------
