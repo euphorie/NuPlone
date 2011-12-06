@@ -7,13 +7,13 @@
       meta:interpolation="true"
       i18n:domain="nuplone"
       tal:define="tools context/@@tools; factories view/factories">
-  <head>
+  <head tal:define="style_url tools/portal/++resource++NuPlone.style">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.libraries/css_browser_selector.js"></script>
-    <link rel="stylesheet" type="text/css" media="all" tal:attributes="href string:${tools/portal/++resource++NuPlone.style/main}/base.css" />
-    <!--[if IE 6]> <link rel="stylesheet" type="text/css" media="screen" href="${tools/portal/++resource++NuPlone.style/main}/base-ie6.css" /> <![endif]-->
-    <!--[if IE 7]> <link rel="stylesheet" type="text/css" media="screen" href="${tools/portal/++resource++NuPlone.style/main}/base-ie7.css" /> <![endif]-->
-    <!--[if IE 8]> <link rel="stylesheet" type="text/css" media="screen" href="${tools/portal/++resource++NuPlone.style/main}/base-ie8.css" /> <![endif]-->
+    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/css_browser_selector.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" href="${style_url}/main/base.css" />
+    <!--[if IE 6]> <link rel="stylesheet" type="text/css" media="screen" href="${style_url}/main/base-ie6.css" /> <![endif]-->
+    <!--[if IE 7]> <link rel="stylesheet" type="text/css" media="screen" href="${style_url}/main/base-ie7.css" /> <![endif]-->
+    <!--[if IE 8]> <link rel="stylesheet" type="text/css" media="screen" href="${style_url}/main/base-ie8.css" /> <![endif]-->
     <title i18n:translate="title_site_menu">Site menu</title>
     <base target="_parent"/>
   </head>
@@ -54,8 +54,8 @@
       </tal:block>
     </ul>
 
-  <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.libraries/jquery-1.4.2.js"></script>
-  <script type="text/javascript" tal:attributes="src tools/portal/++resource++NuPlone.behaviour/behaviour.js"></script>
+  <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery-1.4.2.js"></script>
+  <script type="text/javascript" src="${tools/portal/++resource++NuPlone.behaviour}/behaviour.js"></script>
   <script tal:define="menu view/actions; url menu/url|nothing" tal:condition="not: url" type="text/javascript" meta:interpolation="false">
         $("a.contextActions").click(function(event) {
                 event.preventDefault();
