@@ -4,7 +4,7 @@ Changelog
 1.0rc9 - Unreleased
 -------------------
 
-* Add support for Plone 4.1.
+* Add support for Plone 4.1 and Chameleon 2.x.
   [wichert]
 
 * Register screen-ie6.css as zrt-resource.

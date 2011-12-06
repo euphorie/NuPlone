@@ -1,7 +1,6 @@
 <configure
   xmlns="http://namespaces.zope.org/zope"
-  xmlns:plone="http://namespaces.plone.org/plone"
-  xmlns:tales="http://namespaces.zope.org/tales">
+  xmlns:plone="http://namespaces.plone.org/plone">
 
   <include package="plone.tiles" file="meta.zcml" />
   <include package="plone.tiles" />
@@ -9,10 +8,6 @@
 
   <adapter
     factory=".navigation.TreeFactory" />
-
-  <utility
-    name="tile"
-    factory=".tales.TileTranslator"/>
 
   <adapter
     factory=".tile.AppConfigTileDataManager" />

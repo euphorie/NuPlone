@@ -8,10 +8,6 @@
     name="NuPlone"
     />
 
-  <utility
-    name="permission"
-    factory=".tales.PermissionTranslator"/>
-
    <browser:defaultView
      for="Products.CMFCore.interfaces.IContentish"
      layer=".interfaces.NuPloneSkin"
@@ -37,6 +33,7 @@
      />
 
    <include package="z3c.zrtresource" file="meta.zcml" />
+
    <browser:zrt-resource
        name="client.screen-ie6.css"
        file="templates/style/client/screen-ie6.css"

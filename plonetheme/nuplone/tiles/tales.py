@@ -1,36 +1,36 @@
 import logging
-import re
-from chameleon.zpt.expressions import ExpressionTranslator
-from chameleon.zpt.interfaces import IExpressionTranslator
-from chameleon.core import types
-from zope.interface import implements
+from chameleon.tales import StringExpr
+from chameleon.astutil import Symbol
+from chameleon.astutil import Static
+from chameleon.codegen import template
+from zope.contentprovider.interfaces import ContentProviderLookupError
 from plonetheme.nuplone.tiles.tile import getTile
 from plonetheme.nuplone.utils import SimpleLiteral
+
 
 log = logging.getLogger(__name__)
 
 
-def _lookup_tile(context, request, name):
-    tile=getTile(context, request, name)
-    if tile is None:
-        return u""
-    return SimpleLiteral(tile())
+class TileProviderTraverser(object):
+    def __call__(self, context, request, name):
+        tile = getTile(context, request, name)
+        if tile is None:  # XXX Use custom exception?
+            raise ContentProviderLookupError(name)
+        return SimpleLiteral(tile())
 
 
+class TileExpression(StringExpr):
+    render_tile = Static(
+            template("cls()", cls=Symbol(TileProviderTraverser), mode='eval'))
 
-class TileTranslator(ExpressionTranslator):
-    implements(IExpressionTranslator)
+    def __call__(self, target, engine):
+        assignment = super(TileExpression, self).__call__(target, engine)
+        return assignment + template(
+                'target = render_tile(context, request, target.strip())',
+                target=target,
+                render_tile=self.render_tile)
 
-    symbol = "_lookup_tile"
-    re_name = re.compile(r"^[a-zA-Z0-9_.-]+$")
 
-    def translate(self, string, escape=None):
-        if not string:
-            return None
-        string=string.strip()
-        if self.re_name.match(string) is None:
-            raise SyntaxError(string)
-        value=types.value("%s(context, request, '%s')" % (self.symbol, string))
-        value.symbol_mapping[self.symbol]=_lookup_tile
-        return value
-
+import five.pt.engine
+five.pt.engine.Program.secure_expression_types['tile'] = TileExpression
+five.pt.engine.Program.expression_types['tile'] = TileExpression

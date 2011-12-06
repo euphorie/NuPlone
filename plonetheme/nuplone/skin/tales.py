@@ -1,24 +1,18 @@
 import re
-from chameleon.zpt.expressions import ExpressionTranslator
-from chameleon.zpt.interfaces import IExpressionTranslator
-from chameleon.core import types
-from zope.interface import implements
+from chameleon.codegen import template
+from chameleon.astutil import Symbol
+from chameleon.tales import StringExpr
 from plonetheme.nuplone.utils import checkPermission
 
-class PermissionTranslator(ExpressionTranslator):
-    implements(IExpressionTranslator)
 
-    symbol = "_checkPermission"
-    re_name = re.compile(r"^[A-z _-]+$")
-
-    def translate(self, string, escape=None):
-        if not string:
-            return None
-        string=string.strip()
-        if self.re_name.match(string) is None:
-            raise SyntaxError(string)
-        value=types.value("%s(context, '%s')" % (self.symbol, string))
-        value.symbol_mapping[self.symbol]=checkPermission
-        return value
+class PermissionExpr(StringExpr):
+    def __call__(self, target, engine):
+        assignment = super(PermissionExpr, self).__call__(target, engine)
+        return assignment + template(
+                'target = check_permission(context, target)',
+                target=target, check_permission=Symbol(checkPermission))
 
 
+import five.pt.engine
+five.pt.engine.Program.secure_expression_types['permission'] = PermissionExpr
+five.pt.engine.Program.expression_types['permission'] = PermissionExpr
