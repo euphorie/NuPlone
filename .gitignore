@@ -4,5 +4,9 @@
 *.mo
 *~
 *.sw?
+/bin
 /dist
+/develop-eggs
+/eggs
+/parts
 /NuPlone.egg-info
