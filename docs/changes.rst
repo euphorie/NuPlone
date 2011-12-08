@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.0rc9 - Unreleased
--------------------
+1.0 - December 8, 2011
+----------------------
 
 * Add support for Plone 4.1 and Chameleon 2.x.
   [wichert]
@@ -26,8 +26,8 @@ Changelog
   [jcbrand]
 
 
-1.0rc8 - May 17
----------------
+1.0rc8 - May 17, 2011
+---------------------
 
 * Correct htmllaundry dependency.
   [wichert]
@@ -36,8 +36,8 @@ Changelog
   [wichert]
 
 
-1.0rc7 - April 26
------------------
+1.0rc7 - April 26, 2011
+-----------------------
 
 * Exclude prototype from all distribution forms; the symlinked files confuse
   distutils too much.
@@ -47,15 +47,15 @@ Changelog
   guarantee all files are included in eggs.
   [wichert]
 
-1.0rc6 - April 21
------------------
+1.0rc6 - April 21, 2011
+-----------------------
 
 * Re-release rc5 as rc6 to fixup error in source control tagging.
   [wichert]
 
 
-1.0rc5 - April 21
------------------
+1.0rc5 - April 21, 2011
+-----------------------
 
 * Prefer `Title` method to get the current title for the title of the delete
   confirmation page.
