@@ -15,7 +15,8 @@ class TileProviderTraverser(object):
     def __call__(self, context, request, name):
         tile = getTile(context, request, name)
         if tile is None:  # XXX Use custom exception?
-            raise ContentProviderLookupError(name)
+            log.warn('Request for unknown tile %s', name)
+            return u''
         return SimpleLiteral(tile())
 
 
