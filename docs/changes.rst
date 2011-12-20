@@ -4,7 +4,8 @@ Changelog
 1.1 - Unreleased
 ----------------
 
-* ...
+- Allow anonymous users to switch the current language as well. This fixes
+  Euphorie ticket `27 <https://github.com/euphorie/Euphorie/issues/27>`_,
 
 
 1.0 - December 8, 2011

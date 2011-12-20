@@ -9,7 +9,7 @@ from Products.statusmessages.interfaces import IStatusMessage
 
 class SwitchLanguage(grok.View):
     grok.context(Interface)
-    grok.require('zope2.View')
+    grok.require('zope2.Public')
     grok.name('switch-language')
 
     def render(self):
