@@ -1,14 +1,14 @@
 # Translations template for NuPlone.
-# Copyright (C) 2011 Wichert Akkerman, Simplon
+# Copyright (C) 2012 Wichert Akkerman, Simplon
 # This file is distributed under the same license as the NuPlone project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: NuPlone 1.0rc9\n"
+"Project-Id-Version: NuPlone 1.2dev\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
-"POT-Creation-Date: 2011-08-25 10:40+0200\n"
+"POT-Creation-Date: 2012-02-29 20:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -125,7 +125,7 @@ msgid "message_switch_language"
 msgstr ""
 
 #. Default: Failed to switch language
-#: plonetheme/nuplone/skin/language.py:20
+#: plonetheme/nuplone/skin/language.py:21
 msgid "message_switch_language_error"
 msgstr ""
 
@@ -257,15 +257,9 @@ msgstr ""
 msgid "default_site_title"
 msgstr ""
 
-#. Default: Cancel
-#: plonetheme/nuplone/skin/templates/delete.pt:23
-#: plonetheme/nuplone/z3cform/templates/editlink.pt:26
-msgid "button_cancel"
-msgstr ""
-
-#. Default: Delete
-#: plonetheme/nuplone/skin/templates/delete.pt:22
-msgid "button_delete"
+#. Default: Delete "${title}"
+#: plonetheme/nuplone/skin/templates/delete.pt:12
+msgid "title_delete"
 msgstr ""
 
 #. Default: Are you sure you want to delete this object?
@@ -273,17 +267,28 @@ msgstr ""
 msgid "delete_confirm"
 msgstr ""
 
-#. Default: Delete "${title}"
-#: plonetheme/nuplone/skin/templates/delete.pt:12
-msgid "title_delete"
+#. Default: Delete
+#: plonetheme/nuplone/skin/templates/delete.pt:22
+msgid "button_delete"
+msgstr ""
+
+#. Default: Cancel
+#: plonetheme/nuplone/skin/templates/delete.pt:23
+#: plonetheme/nuplone/z3cform/templates/editlink.pt:26
+msgid "button_cancel"
+msgstr ""
+
+#: plonetheme/nuplone/skin/templates/dexterity.pt:12
+msgid "Default fieldset"
 msgstr ""
 
 #: plonetheme/nuplone/skin/templates/dexterity.pt:18
 msgid "Group name"
 msgstr ""
 
-#: plonetheme/nuplone/skin/templates/dexterity.pt:12
-msgid "Default fieldset"
+#. Default: Oops
+#: plonetheme/nuplone/skin/templates/error_generic.pt:10
+msgid "header_error_generic"
 msgstr ""
 
 #. Default: Something went wrong while trying to serve your request.
@@ -291,9 +296,9 @@ msgstr ""
 msgid "message_error_generic"
 msgstr ""
 
-#. Default: Oops
-#: plonetheme/nuplone/skin/templates/error_generic.pt:10
-msgid "header_error_generic"
+#. Default: Not found
+#: plonetheme/nuplone/skin/templates/error_notfound.pt:10
+msgid "header_error_notfound"
 msgstr ""
 
 #. Default: The object you were looking for does not exist on this server. Please
@@ -302,40 +307,24 @@ msgstr ""
 msgid "message_error_notfound"
 msgstr ""
 
-#. Default: Not found
-#: plonetheme/nuplone/skin/templates/error_notfound.pt:10
-msgid "header_error_notfound"
-msgstr ""
-
-#. Default: If you forgot your password you can ${reset_password}.
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
-#: plonetheme/nuplone/skin/templates/login.pt:37
-msgid "message_reset_password"
-msgstr ""
-
-#. Default: request a password reset
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
-#: plonetheme/nuplone/skin/templates/login.pt:37
-#: plonetheme/nuplone/skin/templates/login.pt:17
-msgid "reset_password"
-msgstr ""
-
-#. Default: No account? Please ${request_account}.
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
-#: plonetheme/nuplone/skin/templates/login.pt:36
-msgid "message_no_account"
-msgstr ""
-
-#. Default: request an account
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
-#: plonetheme/nuplone/skin/templates/login.pt:36
-msgid "message_no_account_request_account"
-msgstr ""
-
 #. Default: Login
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:38
-#: plonetheme/nuplone/skin/templates/login.pt:32
-msgid "button_login"
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
+msgid "header_login"
+msgstr ""
+
+#. Default: Unauthorized
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
+msgid "header_error_unauthorized"
+msgstr ""
+
+#. Default: I am afraid you are not authorised to do this.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:18
+msgid "message_error_unauthorized"
+msgstr ""
+
+#. Default: You need to be logged in to access this page.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:23
+msgid "message_error_not_logged_in"
 msgstr ""
 
 #. Default: Credentials
@@ -344,37 +333,48 @@ msgstr ""
 msgid "legend_credentials"
 msgstr ""
 
-#. Default: You need to be logged in to access this page.
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:23
-msgid "message_error_not_logged_in"
-msgstr ""
-
-#. Default: I am afraid you are not authorised to do this.
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:18
-msgid "message_error_unauthorized"
-msgstr ""
-
-#. Default: Unauthorized
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
-msgid "header_error_unauthorized"
-msgstr ""
-
 #. Default: Login
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
-msgid "header_login"
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:38
+#: plonetheme/nuplone/skin/templates/login.pt:32
+msgid "button_login"
 msgstr ""
 
-#: plonetheme/nuplone/skin/templates/layout.pt:43
-msgid "Can not open site menu."
+#. Default: request an account
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
+#: plonetheme/nuplone/skin/templates/login.pt:36
+msgid "message_no_account_request_account"
+msgstr ""
+
+#. Default: No account? Please ${request_account}.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
+#: plonetheme/nuplone/skin/templates/login.pt:36
+msgid "message_no_account"
+msgstr ""
+
+#. Default: request a password reset
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
+#: plonetheme/nuplone/skin/templates/login.pt:17
+#: plonetheme/nuplone/skin/templates/login.pt:37
+msgid "reset_password"
+msgstr ""
+
+#. Default: If you forgot your password you can ${reset_password}.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
+#: plonetheme/nuplone/skin/templates/login.pt:37
+msgid "message_reset_password"
 msgstr ""
 
 #: plonetheme/nuplone/skin/templates/layout.pt:21
 msgid "Change order of items by dragging the handle"
 msgstr ""
 
-#. Default: Invalid login. If you forgot your password you can ${reset_password}.
-#: plonetheme/nuplone/skin/templates/login.pt:16
-msgid "message_invalid_login"
+#: plonetheme/nuplone/skin/templates/layout.pt:43
+msgid "Can not open site menu."
+msgstr ""
+
+#. Default: Login
+#: plonetheme/nuplone/skin/templates/login.pt:12
+msgid "title_login"
 msgstr ""
 
 #. Default: You are already logged in. Please logout first before trying to login
@@ -383,20 +383,14 @@ msgstr ""
 msgid "message_already_logged_in"
 msgstr ""
 
-#. Default: Login
-#: plonetheme/nuplone/skin/templates/login.pt:12
-msgid "title_login"
+#. Default: Invalid login. If you forgot your password you can ${reset_password}.
+#: plonetheme/nuplone/skin/templates/login.pt:16
+msgid "message_invalid_login"
 msgstr ""
 
-#. Default: Please note that this is an automated email. You can not reply to it.
-#: plonetheme/nuplone/skin/templates/pwreset-email.pt:16
-msgid "automated_email"
-msgstr ""
-
-#. Default: If you did not request a password reset or have found your password
-#. please ignore this email. Your password will not be changed.
-#: plonetheme/nuplone/skin/templates/pwreset-email.pt:13
-msgid "password_reset_epilogue"
+#. Default: Dear user,
+#: plonetheme/nuplone/skin/templates/pwreset-email.pt:6
+msgid "reminder_email_header"
 msgstr ""
 
 #. Default: a password reset for the account '${login}' has been requested. To
@@ -405,29 +399,15 @@ msgstr ""
 msgid "password_reset_intro"
 msgstr ""
 
-#. Default: Dear user,
-#: plonetheme/nuplone/skin/templates/pwreset-email.pt:6
-msgid "reminder_email_header"
+#. Default: If you did not request a password reset or have found your password
+#. please ignore this email. Your password will not be changed.
+#: plonetheme/nuplone/skin/templates/pwreset-email.pt:13
+msgid "password_reset_epilogue"
 msgstr ""
 
-#. Default: Edit
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:52
-msgid "menu_edit"
-msgstr ""
-
-#. Default: Settings
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:34
-msgid "menu_settings"
-msgstr ""
-
-#. Default: Log out
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:31
-msgid "menu_logout"
-msgstr ""
-
-#. Default: Login
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:23
-msgid "menu_login"
+#. Default: Please note that this is an automated email. You can not reply to it.
+#: plonetheme/nuplone/skin/templates/pwreset-email.pt:16
+msgid "automated_email"
 msgstr ""
 
 #. Default: Site menu
@@ -435,19 +415,39 @@ msgstr ""
 msgid "title_site_menu"
 msgstr ""
 
+#. Default: Login
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:23
+msgid "menu_login"
+msgstr ""
+
+#. Default: Log out
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:31
+msgid "menu_logout"
+msgstr ""
+
+#. Default: Settings
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:34
+msgid "menu_settings"
+msgstr ""
+
+#. Default: Edit
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:52
+msgid "menu_edit"
+msgstr ""
+
 #. Default: Languages
 #: plonetheme/nuplone/tiles/templates/language.pt:10
 msgid "portlet_languages"
 msgstr ""
 
-#. Default: Submit
-#: plonetheme/nuplone/tiles/templates/tabs.pt:16
-msgid "button_submit"
-msgstr ""
-
 #. Default: Search
 #: plonetheme/nuplone/tiles/templates/tabs.pt:16
 msgid "menu_search"
+msgstr ""
+
+#. Default: Submit
+#: plonetheme/nuplone/tiles/templates/tabs.pt:16
+msgid "button_submit"
 msgstr ""
 
 #. Default: URL
@@ -484,10 +484,10 @@ msgstr ""
 msgid "Information"
 msgstr ""
 
-#. Default: Year
-#: plonetheme/nuplone/z3cform/templates/date_input.pt:25
-#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:25
-msgid "label_year"
+#. Default: Day
+#: plonetheme/nuplone/z3cform/templates/date_input.pt:9
+#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:9
+msgid "label_day"
 msgstr ""
 
 #. Default: Month
@@ -496,20 +496,20 @@ msgstr ""
 msgid "label_month"
 msgstr ""
 
-#. Default: Day
-#: plonetheme/nuplone/z3cform/templates/date_input.pt:9
-#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:9
-msgid "label_day"
-msgstr ""
-
-#. Default: Save changes
-#: plonetheme/nuplone/z3cform/templates/editlink.pt:25
-msgid "button_save_changes"
+#. Default: Year
+#: plonetheme/nuplone/z3cform/templates/date_input.pt:25
+#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:25
+msgid "label_year"
 msgstr ""
 
 #. Default: Place a Link
 #: plonetheme/nuplone/z3cform/templates/editlink.pt:15
 msgid "header_place_link"
+msgstr ""
+
+#. Default: Save changes
+#: plonetheme/nuplone/z3cform/templates/editlink.pt:25
+msgid "button_save_changes"
 msgstr ""
 
 #: plonetheme/nuplone/z3cform/templates/form.pt:27
