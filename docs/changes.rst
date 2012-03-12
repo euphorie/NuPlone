@@ -4,7 +4,8 @@ Changelog
 1.2 - Unreleased
 ----------------
 
-- ...
+- Added Bulgarian translation
+  [thomasw]
 
 
 1.1 - December 20, 2011
