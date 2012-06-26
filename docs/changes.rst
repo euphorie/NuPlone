@@ -6,6 +6,8 @@ Changelog
 
 - Added Bulgarian translation
   [thomasw]
+- Added Flemish (nl_BE) translation
+  [thomasw]
 
 
 1.1 - December 20, 2011
