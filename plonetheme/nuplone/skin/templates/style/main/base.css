@@ -2665,15 +2665,6 @@ sup.required {
 fieldset.richInput .infoPanel {
 	top: -1px;
 }
-
-/* Next statement is to compensate for Firefox' absolute positioning behaviour where it counts in the padding with the positioning */
-
-html.gecko .comprehensive .infoPanel {
-	left: 65%;
-}
-
-
-
 /* @end */
 
 /* @group Fieldsets */
