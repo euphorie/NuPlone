@@ -8,6 +8,10 @@ Changelog
   [thomasw]
 - Added Flemish (nl_BE) translation
   [thomasw]
+- Added Catalan (ca) translation
+  [thomasw]
+- Added Latvian (lv) translation
+  [thomasw]
 
 
 1.1 - December 20, 2011
