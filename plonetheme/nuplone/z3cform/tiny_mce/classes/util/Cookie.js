@@ -1,11 +1,11 @@
 /**
  * Cookie.js
  *
- * Copyright 2009, Moxiecode Systems AB
+ * Copyright, Moxiecode Systems AB
  * Released under LGPL License.
  *
- * License: http://tinymce.moxiecode.com/license
- * Contributing: http://tinymce.moxiecode.com/contributing
+ * License: http://www.tinymce.com/license
+ * Contributing: http://www.tinymce.com/contributing
  */
 
 (function() {
@@ -16,6 +16,15 @@
 	 *
 	 * @class tinymce.util.Cookie
 	 * @static
+	 * @example
+	 * // Gets a cookie from the browser
+	 * console.debug(tinymce.util.Cookie.get('mycookie'));
+	 * 
+	 * // Gets a hash table cookie from the browser and takes out the x parameter from it
+	 * console.debug(tinymce.util.Cookie.getHash('mycookie').x);
+	 * 
+	 * // Sets a hash table cookie to the browser
+	 * tinymce.util.Cookie.setHash({x : '1', y : '2'});
 	 */
 	tinymce.create('static tinymce.util.Cookie', {
 		/**
@@ -79,7 +88,7 @@
 			if (b == -1) {
 				b = c.indexOf(p);
 
-				if (b != 0)
+				if (b !== 0)
 					return null;
 			} else
 				b += 2;
@@ -115,15 +124,16 @@
 		 * Removes/deletes a cookie by name.
 		 *
 		 * @method remove
-		 * @param {String} n Cookie name to remove/delete.
-		 * @param {Strong} p Optional path to remove the cookie from.
+		 * @param {String} name Cookie name to remove/delete.
+		 * @param {Strong} path Optional path to remove the cookie from.
+		 * @param {Strong} domain Optional domain to restrict the cookie to.
 		 */
-		remove : function(n, p) {
-			var d = new Date();
+		remove : function(name, path, domain) {
+			var date = new Date();
 
-			d.setTime(d.getTime() - 1000);
+			date.setTime(date.getTime() - 1000);
 
-			this.set(n, '', d, p, d);
+			this.set(name, '', date, path, domain);
 		}
 	});
 })();

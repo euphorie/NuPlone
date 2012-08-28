@@ -1,21 +1,22 @@
 /**
  * adapter.js
  *
- * Copyright 2009, Moxiecode Systems AB
+ * Copyright, Moxiecode Systems AB
  * Released under LGPL License.
  *
- * License: http://tinymce.moxiecode.com/license
- * Contributing: http://tinymce.moxiecode.com/contributing
+ * License: http://www.tinymce.com/license
+ * Contributing: http://www.tinymce.com/contributing
  */
 
 // #ifdef jquery_adapter
 
 (function($, tinymce) {
-	var is = tinymce.is, attrRegExp = /^(href|src|style)$/i, undefined;
+	var is = tinymce.is, attrRegExp = /^(href|src|style)$/i, undef;
 
 	// jQuery is undefined
-	if (!$)
-		return alert("Load jQuery first!");
+	if (!$ && window.console) {
+		return console.log("Load jQuery first!");
+	}
 
 	// Stick jQuery into the tinymce namespace
 	tinymce.$ = $;
@@ -25,25 +26,25 @@
 		patchEditor : function(editor) {
 			var fn = $.fn;
 
-			// Adapt the css function to make sure that the _mce_style
+			// Adapt the css function to make sure that the data-mce-style
 			// attribute gets updated with the new style information
 			function css(name, value) {
 				var self = this;
 
-				// Remove _mce_style when set operation occurs
+				// Remove data-mce-style when set operation occurs
 				if (value)
-					self.removeAttr('_mce_style');
+					self.removeAttr('data-mce-style');
 
 				return fn.css.apply(self, arguments);
 			};
 
-			// Apapt the attr function to make sure that it uses the _mce_ prefixed variants
+			// Apapt the attr function to make sure that it uses the data-mce- prefixed variants
 			function attr(name, value) {
 				var self = this;
 
-				// Update/retrive _mce_ attribute variants
+				// Update/retrive data-mce- attribute variants
 				if (attrRegExp.test(name)) {
-					if (value !== undefined) {
+					if (value !== undef) {
 						// Use TinyMCE behavior when setting the specifc attributes
 						self.each(function(i, node) {
 							editor.dom.setAttrib(node, name, value);
@@ -51,23 +52,11 @@
 
 						return self;
 					} else
-						return self.attr('_mce_' + name);
+						return self.attr('data-mce-' + name);
 				}
 
 				// Default behavior
 				return fn.attr.apply(self, arguments);
-			};
-
-			function htmlPatchFunc(func) {
-				// Returns a modified function that processes
-				// the HTML before executing the action this makes sure
-				// that href/src etc gets moved into the _mce_ variants
-				return function(content) {
-					if (content)
-						content = editor.dom.processHTML(content);
-
-					return func.call(this, content);
-				};
 			};
 
 			// Patch various jQuery functions to handle tinymce specific attribute and content behavior
@@ -76,17 +65,10 @@
 			function patch(jq) {
 				// Patch some functions, only patch the object once
 				if (jq.css !== css) {
-					// Patch css/attr to use the _mce_ prefixed attribute variants
+					// Patch css/attr to use the data-mce- prefixed attribute variants
 					jq.css = css;
 					jq.attr = attr;
 
-					// Patch HTML functions to use the DOMUtils.processHTML filter logic
-					jq.html = htmlPatchFunc(fn.html);
-					jq.append = htmlPatchFunc(fn.append);
-					jq.prepend = htmlPatchFunc(fn.prepend);
-					jq.after = htmlPatchFunc(fn.after);
-					jq.before = htmlPatchFunc(fn.before);
-					jq.replaceWith = htmlPatchFunc(fn.replaceWith);
 					jq.tinymce = editor;
 
 					// Each pushed jQuery instance needs to be patched
@@ -238,7 +220,7 @@
 					case "style":
 						e.each(function(i, v){
 							if (s.keep_values)
-								$(v).attr('_mce_style', v);
+								$(v).attr('data-mce-style', v);
 
 							v.style.cssText = v;
 						});
@@ -257,7 +239,7 @@
 								if (s.url_converter)
 									v = s.url_converter.call(s.url_converter_scope || t, v, n, v);
 
-								t.setAttrib(v, '_mce_' + n, v);
+								t.setAttrib(v, 'data-mce-' + n, v);
 							}
 						});
 

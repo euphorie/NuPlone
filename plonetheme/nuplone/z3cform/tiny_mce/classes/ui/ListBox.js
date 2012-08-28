@@ -1,15 +1,15 @@
 /**
  * ListBox.js
  *
- * Copyright 2009, Moxiecode Systems AB
+ * Copyright, Moxiecode Systems AB
  * Released under LGPL License.
  *
- * License: http://tinymce.moxiecode.com/license
- * Contributing: http://tinymce.moxiecode.com/contributing
+ * License: http://www.tinymce.com/license
+ * Contributing: http://www.tinymce.com/contributing
  */
 
 (function(tinymce) {
-	var DOM = tinymce.DOM, Event = tinymce.dom.Event, each = tinymce.each, Dispatcher = tinymce.util.Dispatcher;
+	var DOM = tinymce.DOM, Event = tinymce.dom.Event, each = tinymce.each, Dispatcher = tinymce.util.Dispatcher, undef;
 
 	/**
 	 * This class is used to create list boxes/select list. This one will generate
@@ -17,6 +17,41 @@
 	 *
 	 * @class tinymce.ui.ListBox
 	 * @extends tinymce.ui.Control
+	 * @example
+	 * // Creates a new plugin class and a custom listbox
+	 * tinymce.create('tinymce.plugins.ExamplePlugin', {
+	 *     createControl: function(n, cm) {
+	 *         switch (n) {
+	 *             case 'mylistbox':
+	 *                 var mlb = cm.createListBox('mylistbox', {
+	 *                      title : 'My list box',
+	 *                      onselect : function(v) {
+	 *                          tinyMCE.activeEditor.windowManager.alert('Value selected:' + v);
+	 *                      }
+	 *                 });
+	 * 
+	 *                 // Add some values to the list box
+	 *                 mlb.add('Some item 1', 'val1');
+	 *                 mlb.add('some item 2', 'val2');
+	 *                 mlb.add('some item 3', 'val3');
+	 * 
+	 *                 // Return the new listbox instance
+	 *                 return mlb;
+	 *         }
+	 * 
+	 *         return null;
+	 *     }
+	 * });
+	 * 
+	 * // Register plugin with a short name
+	 * tinymce.PluginManager.add('example', tinymce.plugins.ExamplePlugin);
+	 * 
+	 * // Initialize TinyMCE with the new plugin and button
+	 * tinyMCE.init({
+	 *    ...
+	 *    plugins : '-example', // - means TinyMCE will not try to load it
+	 *    theme_advanced_buttons1 : 'mylistbox' // Add the new example listbox to the toolbar
+	 * });
 	 */
 	tinymce.create('tinymce.ui.ListBox:tinymce.ui.Control', {
 		/**
@@ -26,11 +61,12 @@
 		 * @method ListBox
 		 * @param {String} id Control id for the list box.
 		 * @param {Object} s Optional name/value settings object.
+		 * @param {Editor} ed Optional the editor instance this button is for.
 		 */
-		ListBox : function(id, s) {
+		ListBox : function(id, s, ed) {
 			var t = this;
 
-			t.parent(id, s);
+			t.parent(id, s, ed);
 
 			/**
 			 * Array of ListBox items.
@@ -69,6 +105,7 @@
 			t.onRenderMenu = new tinymce.util.Dispatcher(this);
 
 			t.classPrefix = 'mceListBox';
+			t.marked = {};
 		},
 
 		/**
@@ -81,11 +118,13 @@
 		select : function(va) {
 			var t = this, fv, f;
 
-			if (va == undefined)
+			t.marked = {};
+
+			if (va == undef)
 				return t.selectByIndex(-1);
 
 			// Is string or number make function selector
-			if (va && va.call)
+			if (va && typeof(va)=="function")
 				f = va;
 			else {
 				f = function(v) {
@@ -117,25 +156,40 @@
 		 * @param {String} idx Index to select, pass -1 to select menu/title of select box.
 		 */
 		selectByIndex : function(idx) {
-			var t = this, e, o;
+			var t = this, e, o, label;
+
+			t.marked = {};
 
 			if (idx != t.selectedIndex) {
 				e = DOM.get(t.id + '_text');
+				label = DOM.get(t.id + '_voiceDesc');
 				o = t.items[idx];
 
 				if (o) {
 					t.selectedValue = o.value;
 					t.selectedIndex = idx;
 					DOM.setHTML(e, DOM.encode(o.title));
+					DOM.setHTML(label, t.settings.title + " - " + o.title);
 					DOM.removeClass(e, 'mceTitle');
+					DOM.setAttrib(t.id, 'aria-valuenow', o.title);
 				} else {
 					DOM.setHTML(e, DOM.encode(t.settings.title));
+					DOM.setHTML(label, DOM.encode(t.settings.title));
 					DOM.addClass(e, 'mceTitle');
 					t.selectedValue = t.selectedIndex = null;
+					DOM.setAttrib(t.id, 'aria-valuenow', t.settings.title);
 				}
-
 				e = 0;
 			}
+		},
+
+		/**
+		 * Marks a specific item by name. Marked values are optional items to mark as active.
+		 *
+		 * @param {String} value Value item to mark.
+		 */
+		mark : function(value) {
+			this.marked[value] = true;
 		},
 
 		/**
@@ -179,10 +233,11 @@
 		renderHTML : function() {
 			var h = '', t = this, s = t.settings, cp = t.classPrefix;
 
-			h = '<table id="' + t.id + '" cellpadding="0" cellspacing="0" class="' + cp + ' ' + cp + 'Enabled' + (s['class'] ? (' ' + s['class']) : '') + '"><tbody><tr>';
-			h += '<td>' + DOM.createHTML('a', {id : t.id + '_text', href : 'javascript:;', 'class' : 'mceText', onclick : "return false;", onmousedown : 'return false;'}, DOM.encode(t.settings.title)) + '</td>';
-			h += '<td>' + DOM.createHTML('a', {id : t.id + '_open', tabindex : -1, href : 'javascript:;', 'class' : 'mceOpen', onclick : "return false;", onmousedown : 'return false;'}, '<span></span>') + '</td>';
-			h += '</tr></tbody></table>';
+			h = '<span role="listbox" aria-haspopup="true" aria-labelledby="' + t.id +'_voiceDesc" aria-describedby="' + t.id + '_voiceDesc"><table role="presentation" tabindex="0" id="' + t.id + '" cellpadding="0" cellspacing="0" class="' + cp + ' ' + cp + 'Enabled' + (s['class'] ? (' ' + s['class']) : '') + '"><tbody><tr>';
+			h += '<td>' + DOM.createHTML('span', {id: t.id + '_voiceDesc', 'class': 'voiceLabel', style:'display:none;'}, t.settings.title); 
+			h += DOM.createHTML('a', {id : t.id + '_text', tabindex : -1, href : 'javascript:;', 'class' : 'mceText', onclick : "return false;", onmousedown : 'return false;'}, DOM.encode(t.settings.title)) + '</td>';
+			h += '<td>' + DOM.createHTML('a', {id : t.id + '_open', tabindex : -1, href : 'javascript:;', 'class' : 'mceOpen', onclick : "return false;", onmousedown : 'return false;'}, '<span><span style="display:none;" class="mceIconOnly" aria-hidden="true">\u25BC</span></span>') + '</td>';
+			h += '</tr></tbody></table></span>';
 
 			return h;
 		},
@@ -193,9 +248,9 @@
 		 * @method showMenu
 		 */
 		showMenu : function() {
-			var t = this, p1, p2, e = DOM.get(this.id), m;
+			var t = this, p2, e = DOM.get(this.id), m;
 
-			if (t.isDisabled() || t.items.length == 0)
+			if (t.isDisabled() || t.items.length === 0)
 				return;
 
 			if (t.menu && t.menu.isMenuVisible)
@@ -206,7 +261,6 @@
 				t.isMenuRendered = true;
 			}
 
-			p1 = DOM.getPos(this.settings.menu_container);
 			p2 = DOM.getPos(e);
 
 			m = t.menu;
@@ -215,13 +269,19 @@
 			m.settings.keyboard_focus = !tinymce.isOpera; // Opera is buggy when it comes to auto focus
 
 			// Select in menu
-			if (t.oldID)
-				m.items[t.oldID].setSelected(0);
+			each(t.items, function(o) {
+				if (m.items[o.id]) {
+					m.items[o.id].setSelected(0);
+				}
+			});
 
 			each(t.items, function(o) {
+				if (m.items[o.id] && t.marked[o.value]) {
+					m.items[o.id].setSelected(1);
+				}
+
 				if (o.value === t.selectedValue) {
 					m.items[o.id].setSelected(1);
-					t.oldID = o.id;
 				}
 			});
 
@@ -242,6 +302,8 @@
 			var t = this;
 
 			if (t.menu && t.menu.isMenuVisible) {
+				DOM.removeClass(t.id, t.classPrefix + 'Selected');
+
 				// Prevent double toogles by canceling the mouse click event to the button
 				if (e && e.type == "mousedown" && (e.target.id == t.id + '_text' || e.target.id == t.id + '_open'))
 					return;
@@ -265,11 +327,14 @@
 			m = t.settings.control_manager.createDropMenu(t.id + '_menu', {
 				menu_line : 1,
 				'class' : t.classPrefix + 'Menu mceNoIcons',
-				max_width : 150,
+				max_width : 250,
 				max_height : 150
 			});
 
-			m.onHideMenu.add(t.hideMenu, t);
+			m.onHideMenu.add(function() {
+				t.hideMenu();
+				t.focus();
+			});
 
 			m.add({
 				title : t.settings.title,
@@ -282,9 +347,10 @@
 
 			each(t.items, function(o) {
 				// No value then treat it as a title
-				if (o.value === undefined) {
+				if (o.value === undef) {
 					m.add({
 						title : o.title,
+						role : "option",
 						'class' : 'mceMenuItemTitle',
 						onclick : function() {
 							if (t.settings.onselect('') !== false)
@@ -293,6 +359,7 @@
 					});
 				} else {
 					o.id = DOM.uniqueId();
+					o.role= "option";
 					o.onclick = function() {
 						if (t.settings.onselect(o.value) !== false)
 							t.select(o.value); // Must be runned after
@@ -316,40 +383,39 @@
 			var t = this, cp = t.classPrefix;
 
 			Event.add(t.id, 'click', t.showMenu, t);
-			Event.add(t.id + '_text', 'focus', function() {
+			Event.add(t.id, 'keydown', function(evt) {
+				if (evt.keyCode == 32) { // Space
+					t.showMenu(evt);
+					Event.cancel(evt);
+				}
+			});
+			Event.add(t.id, 'focus', function() {
 				if (!t._focused) {
-					t.keyDownHandler = Event.add(t.id + '_text', 'keydown', function(e) {
-						var idx = -1, v, kc = e.keyCode;
-
-						// Find current index
-						each(t.items, function(v, i) {
-							if (t.selectedValue == v.value)
-								idx = i;
-						});
-
-						// Move up/down
-						if (kc == 38)
-							v = t.items[idx - 1];
-						else if (kc == 40)
-							v = t.items[idx + 1];
-						else if (kc == 13) {
+					t.keyDownHandler = Event.add(t.id, 'keydown', function(e) {
+						if (e.keyCode == 40) {
+							t.showMenu();
+							Event.cancel(e);
+						}
+					});
+					t.keyPressHandler = Event.add(t.id, 'keypress', function(e) {
+						var v;
+						if (e.keyCode == 13) {
 							// Fake select on enter
 							v = t.selectedValue;
 							t.selectedValue = null; // Needs to be null to fake change
+							Event.cancel(e);
 							t.settings.onselect(v);
-							return Event.cancel(e);
-						}
-
-						if (v) {
-							t.hideMenu();
-							t.select(v.value);
 						}
 					});
 				}
 
 				t._focused = 1;
 			});
-			Event.add(t.id + '_text', 'blur', function() {Event.remove(t.id + '_text', 'keydown', t.keyDownHandler); t._focused = 0;});
+			Event.add(t.id, 'blur', function() {
+				Event.remove(t.id, 'keydown', t.keyDownHandler);
+				Event.remove(t.id, 'keypress', t.keyPressHandler);
+				t._focused = 0;
+			});
 
 			// Old IE doesn't have hover on all elements
 			if (tinymce.isIE6 || !DOM.boxModel) {

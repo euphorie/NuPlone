@@ -1,11 +1,11 @@
 /**
  * TreeWalker.js
  *
- * Copyright 2009, Moxiecode Systems AB
+ * Copyright, Moxiecode Systems AB
  * Released under LGPL License.
  *
- * License: http://tinymce.moxiecode.com/license
- * Contributing: http://tinymce.moxiecode.com/contributing
+ * License: http://www.tinymce.com/license
+ * Contributing: http://www.tinymce.com/contributing
  */
 
 tinymce.dom.TreeWalker = function(start_node, root_node) {
@@ -59,6 +59,6 @@ tinymce.dom.TreeWalker = function(start_node, root_node) {
 	 * @return {Node} Current node where the walker is after moving to the previous node.
 	 */
 	this.prev = function(shallow) {
-		return (node = findSibling(node, 'lastChild', 'lastSibling', shallow));
+		return (node = findSibling(node, 'lastChild', 'previousSibling', shallow));
 	};
 };

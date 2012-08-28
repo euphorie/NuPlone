@@ -1,11 +1,11 @@
 /**
  * EditorManager.js
  *
- * Copyright 2009, Moxiecode Systems AB
+ * Copyright, Moxiecode Systems AB
  * Released under LGPL License.
  *
- * License: http://tinymce.moxiecode.com/license
- * Contributing: http://tinymce.moxiecode.com/contributing
+ * License: http://www.tinymce.com/license
+ * Contributing: http://www.tinymce.com/contributing
  */
 
 (function(tinymce) {
@@ -18,7 +18,7 @@
 		DOM = tinymce.DOM, Event = tinymce.dom.Event,
 		ThemeManager = tinymce.ThemeManager, PluginManager = tinymce.PluginManager,
 		explode = tinymce.explode,
-		Dispatcher = tinymce.util.Dispatcher, undefined, instanceCounter = 0;
+		Dispatcher = tinymce.util.Dispatcher, undef, instanceCounter = 0;
 
 	// Setup some URLs where the editor API is located and where the document is
 	tinymce.documentBaseURL = window.location.href.replace(/[\?#].*$/, '').replace(/[\/\\][^\/]+$/, '');
@@ -51,6 +51,11 @@
 	 * @event onAddEditor
 	 * @param {tinymce} sender TinyMCE root class/namespace.
 	 * @param {tinymce.Editor} editor Editor instance.
+	 * @example
+	 * tinyMCE.execCommand("mceAddControl", false, "some_textarea");
+	 * tinyMCE.onAddEditor.add(function(mgr,ed) {
+	 *     console.debug('A new editor is available' + ed.id);
+	 * });
 	 */
 	tinymce.onAddEditor = new Dispatcher(tinymce);
 
@@ -69,6 +74,9 @@
 		 *
 		 * @property editors
 		 * @type Object
+		 * @example
+		 * for (edId in tinyMCE.editors)
+		 *     tinyMCE.editors[edId].save();
 		 */
 		editors : [],
 
@@ -85,6 +93,9 @@
 		 *
 		 * @property activeEditor
 		 * @type tinymce.Editor
+		 * @example
+		 * tinyMCE.activeEditor.selection.getContent();
+		 * tinymce.EditorManager.activeEditor.selection.getContent();
 		 */
 		activeEditor : null,
 
@@ -93,9 +104,39 @@
 		 *
 		 * @method init
 		 * @param {Object} s Settings object to be passed to each editor instance.
+		 * @example
+		 * // Initializes a editor using the longer method
+		 * tinymce.EditorManager.init({
+		 *    some_settings : 'some value'
+		 * });
+		 * 
+		 * // Initializes a editor instance using the shorter version
+		 * tinyMCE.init({
+		 *    some_settings : 'some value'
+		 * });
 		 */
 		init : function(s) {
 			var t = this, pl, sl = tinymce.ScriptLoader, e, el = [], ed;
+
+			function createId(elm) {
+				var id = elm.id;
+	
+				// Use element id, or unique name or generate a unique id
+				if (!id) {
+					id = elm.name;
+	
+					if (id && !DOM.get(id)) {
+						id = elm.name;
+					} else {
+						// Generate unique name
+						id = DOM.uniqueId();
+					}
+
+					elm.setAttribute('id', id);
+				}
+
+				return id;
+			};
 
 			function execCallback(se, n, s) {
 				var f = se[n];
@@ -112,15 +153,14 @@
 				return f.apply(s || this, Array.prototype.slice.call(arguments, 2));
 			};
 
-			s = extend({
-				theme : "simple",
-				language : "en"
-			}, s);
+			function hasClass(n, c) {
+				return c.constructor === RegExp ? c.test(n.className) : DOM.hasClass(n, c);
+			};
 
 			t.settings = s;
 
 			// Legacy call
-			Event.add(document, 'init', function() {
+			Event.bind(window, 'ready', function() {
 				var l, co;
 
 				execCallback(s, 'onpageload');
@@ -155,30 +195,36 @@
 
 					case "textareas":
 					case "specific_textareas":
-						function hasClass(n, c) {
-							return c.constructor === RegExp ? c.test(n.className) : DOM.hasClass(n, c);
-						};
-
-						each(DOM.select('textarea'), function(v) {
-							if (s.editor_deselector && hasClass(v, s.editor_deselector))
+						each(DOM.select('textarea'), function(elm) {
+							if (s.editor_deselector && hasClass(elm, s.editor_deselector))
 								return;
 
-							if (!s.editor_selector || hasClass(v, s.editor_selector)) {
-								// Can we use the name
-								e = DOM.get(v.name);
-								if (!v.id && !e)
-									v.id = v.name;
-
-								// Generate unique name if missing or already exists
-								if (!v.id || t.get(v.id))
-									v.id = DOM.uniqueId();
-
-								ed = new tinymce.Editor(v.id, s);
+							if (!s.editor_selector || hasClass(elm, s.editor_selector)) {
+								ed = new tinymce.Editor(createId(elm), s);
 								el.push(ed);
 								ed.render(1);
 							}
 						});
 						break;
+					
+					default:
+						if (s.types) {
+							// Process type specific selector
+							each(s.types, function(type) {
+								each(DOM.select(type.selector), function(elm) {
+									var editor = new tinymce.Editor(createId(elm), tinymce.extend({}, s, type));
+									el.push(editor);
+									editor.render(1);
+								});
+							});
+						} else if (s.selector) {
+							// Process global selector
+							each(DOM.select(s.selector), function(elm) {
+								var editor = new tinymce.Editor(createId(elm), s);
+								el.push(editor);
+								editor.render(1);
+							});
+						}
 				}
 
 				// Call onInit when all editors are initialized
@@ -214,9 +260,19 @@
 		 * @method get
 		 * @param {String/Number} id Editor instance id or index to return.
 		 * @return {tinymce.Editor} Editor instance to return.
+		 * @example
+		 * // Adds an onclick event to an editor by id (shorter version)
+		 * tinyMCE.get('mytextbox').onClick.add(function(ed, e) {
+		 *    ed.windowManager.alert('Hello world!');
+		 * });
+		 * 
+		 * // Adds an onclick event to an editor by id (longer version)
+		 * tinymce.EditorManager.get('mytextbox').onClick.add(function(ed, e) {
+		 *    ed.windowManager.alert('Hello world!');
+		 * });
 		 */
 		get : function(id) {
-			if (id === undefined)
+			if (id === undef)
 				return this.editors;
 
 			return this.editors[id];
@@ -308,6 +364,12 @@
 		execCommand : function(c, u, v) {
 			var t = this, ed = t.get(v), w;
 
+			function clr() {
+				ed.destroy();
+				w.detachEvent('onunload', clr);
+				w = w.tinyMCE = w.tinymce = null; // IE leak
+			};
+
 			// Manager commands
 			switch (c) {
 				case "mceFocus":
@@ -336,12 +398,6 @@
 
 					// Fix IE memory leaks
 					if (tinymce.isIE) {
-						function clr() {
-							ed.destroy();
-							w.detachEvent('onunload', clr);
-							w = w.tinyMCE = w.tinymce = null; // IE leak
-						};
-
 						w.attachEvent('onunload', clr);
 					}
 
@@ -401,6 +457,9 @@
 		 * Calls the save method on all editor instances in the collection. This can be useful when a form is to be submitted.
 		 *
 		 * @method triggerSave
+		 * @example
+		 * // Saves all contents
+		 * tinyMCE.triggerSave();
 		 */
 		triggerSave : function() {
 			each(this.editors, function(e) {
@@ -450,4 +509,20 @@
  * @member
  * @property tinyMCE
  * @type tinymce
+ * @example
+ * // To initialize editor instances
+ * tinyMCE.init({
+ *    ...
+ * });
+ */
+
+/**
+ * Alternative name for tinymce added for compatibility.
+ *
+ * @member tinymce
+ * @property EditorManager
+ * @type tinymce
+ * @example
+ * // To initialize editor instances
+ * tinymce.EditorManager.get('editor');
  */

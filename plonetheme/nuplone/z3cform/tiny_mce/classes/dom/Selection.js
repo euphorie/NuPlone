@@ -1,11 +1,11 @@
 /**
  * Selection.js
  *
- * Copyright 2009, Moxiecode Systems AB
+ * Copyright, Moxiecode Systems AB
  * Released under LGPL License.
  *
- * License: http://tinymce.moxiecode.com/license
- * Contributing: http://tinymce.moxiecode.com/contributing
+ * License: http://www.tinymce.com/license
+ * Contributing: http://www.tinymce.com/contributing
  */
 
 (function(tinymce) {
@@ -14,12 +14,16 @@
 	};
 
 	// Shorten names
-	var is = tinymce.is, isIE = tinymce.isIE, each = tinymce.each;
+	var is = tinymce.is, isIE = tinymce.isIE, each = tinymce.each, TreeWalker = tinymce.dom.TreeWalker;
 
 	/**
 	 * This class handles text and control selection it's an crossbrowser utility class.
 	 * Consult the TinyMCE Wiki API for more details and examples on how to use this class.
+	 *
 	 * @class tinymce.dom.Selection
+	 * @example
+	 * // Getting the currently selected node for the active editor
+	 * alert(tinymce.activeEditor.selection.getNode().nodeName);
 	 */
 	tinymce.create('tinymce.dom.Selection', {
 		/**
@@ -31,18 +35,50 @@
 		 * @param {Window} win Window to bind the selection object to.
 		 * @param {tinymce.dom.Serializer} serializer DOM serialization class to use for getContent.
 		 */
-		Selection : function(dom, win, serializer) {
+		Selection : function(dom, win, serializer, editor) {
 			var t = this;
 
 			t.dom = dom;
 			t.win = win;
 			t.serializer = serializer;
+			t.editor = editor;
 
 			// Add events
 			each([
+				/**
+				 * This event gets executed before contents is extracted from the selection.
+				 *
+				 * @event onBeforeSetContent
+				 * @param {tinymce.dom.Selection} selection Selection object that fired the event.
+				 * @param {Object} args Contains things like the contents that will be returned.
+				 */
 				'onBeforeSetContent',
+
+				/**
+				 * This event gets executed before contents is inserted into selection.
+				 *
+				 * @event onBeforeGetContent
+				 * @param {tinymce.dom.Selection} selection Selection object that fired the event.
+				 * @param {Object} args Contains things like the contents that will be inserted.
+				 */
 				'onBeforeGetContent',
+
+				/**
+				 * This event gets executed when contents is inserted into selection.
+				 *
+				 * @event onSetContent
+				 * @param {tinymce.dom.Selection} selection Selection object that fired the event.
+				 * @param {Object} args Contains things like the contents that will be inserted.
+				 */
 				'onSetContent',
+
+				/**
+				 * This event gets executed when contents is extracted from the selection.
+				 *
+				 * @event onGetContent
+				 * @param {tinymce.dom.Selection} selection Selection object that fired the event.
+				 * @param {Object} args Contains things like the contents that will be returned.
+				 */
 				'onGetContent'
 			], function(e) {
 				t[e] = new tinymce.util.Dispatcher(t);
@@ -52,16 +88,37 @@
 			if (!t.win.getSelection)
 				t.tridentSel = new tinymce.dom.TridentSelection(t);
 
+			if (tinymce.isIE && dom.boxModel)
+				this._fixIESelection();
+
 			// Prevent leaks
 			tinymce.addUnload(t.destroy, t);
 		},
 
+		/**
+		 * Move the selection cursor range to the specified node and offset.
+		 * @param node Node to put the cursor in.
+		 * @param offset Offset from the start of the node to put the cursor at.
+		 */
+		setCursorLocation: function(node, offset) {
+			var t = this; var r = t.dom.createRng();
+			r.setStart(node, offset);
+			r.setEnd(node, offset);
+			t.setRng(r);
+			t.collapse(false);
+		},
 		/**
 		 * Returns the selected contents using the DOM serializer passed in to this class.
 		 *
 		 * @method getContent
 		 * @param {Object} s Optional settings class with for example output format text or html.
 		 * @return {String} Selected contents in for example HTML format.
+		 * @example
+		 * // Alerts the currently selected contents
+		 * alert(tinyMCE.activeEditor.selection.getContent());
+		 *
+		 * // Alerts the currently selected contents as plain text
+		 * alert(tinyMCE.activeEditor.selection.getContent({format : 'text'}));
 		 */
 		getContent : function(s) {
 			var t = this, r = t.getRng(), e = t.dom.create("body"), se = t.getSel(), wb, wa, n;
@@ -70,6 +127,7 @@
 			wb = wa = '';
 			s.get = true;
 			s.format = s.format || 'html';
+			s.forced_root_block = '';
 			t.onBeforeGetContent.dispatch(t, s);
 
 			if (s.format == 'text')
@@ -80,9 +138,13 @@
 
 				if (n)
 					e.appendChild(n);
-			} else if (is(r.item) || is(r.htmlText))
-				e.innerHTML = r.item ? r.item(0).outerHTML : r.htmlText;
-			else
+			} else if (is(r.item) || is(r.htmlText)) {
+				// IE will produce invalid markup if elements are present that
+				// it doesn't understand like custom elements or HTML5 elements.
+				// Adding a BR in front of the contents and then remoiving it seems to fix it though.
+				e.innerHTML = '<br>' + (r.item ? r.item(0).outerHTML : r.htmlText);
+				e.removeChild(e.firstChild);
+			} else
 				e.innerHTML = r.toString();
 
 			// Keep whitespace before and after
@@ -106,60 +168,90 @@
 		 * where the caret is placed in the editor/page.
 		 *
 		 * @method setContent
-		 * @param {String} h HTML contents to set could also be other formats depending on settings.
-		 * @param {Object} s Optional settings object with for example data format.
+		 * @param {String} content HTML contents to set could also be other formats depending on settings.
+		 * @param {Object} args Optional settings object with for example data format.
+		 * @example
+		 * // Inserts some HTML contents at the current selection
+		 * tinyMCE.activeEditor.selection.setContent('<strong>Some contents</strong>');
 		 */
-		setContent : function(h, s) {
-			var t = this, r = t.getRng(), c, d = t.win.document;
+		setContent : function(content, args) {
+			var self = this, rng = self.getRng(), caretNode, doc = self.win.document, frag, temp;
 
-			s = s || {format : 'html'};
-			s.set = true;
-			h = s.content = t.dom.processHTML(h);
+			args = args || {format : 'html'};
+			args.set = true;
+			content = args.content = content;
 
 			// Dispatch before set content event
-			t.onBeforeSetContent.dispatch(t, s);
-			h = s.content;
+			if (!args.no_events)
+				self.onBeforeSetContent.dispatch(self, args);
 
-			if (r.insertNode) {
+			content = args.content;
+
+			if (rng.insertNode) {
 				// Make caret marker since insertNode places the caret in the beginning of text after insert
-				h += '<span id="__caret">_</span>';
+				content += '<span id="__caret">_</span>';
 
 				// Delete and insert new node
-				
-				if (r.startContainer == d && r.endContainer ==  d) {
+				if (rng.startContainer == doc && rng.endContainer == doc) {
 					// WebKit will fail if the body is empty since the range is then invalid and it can't insert contents
-					d.body.innerHTML = h;
+					doc.body.innerHTML = content;
 				} else {
-					r.deleteContents();
-					if (d.body.childNodes.length == 0) {
-						d.body.innerHTML = h;
+					rng.deleteContents();
+
+					if (doc.body.childNodes.length === 0) {
+						doc.body.innerHTML = content;
 					} else {
-						r.insertNode(r.createContextualFragment(h));
+						// createContextualFragment doesn't exists in IE 9 DOMRanges
+						if (rng.createContextualFragment) {
+							rng.insertNode(rng.createContextualFragment(content));
+						} else {
+							// Fake createContextualFragment call in IE 9
+							frag = doc.createDocumentFragment();
+							temp = doc.createElement('div');
+
+							frag.appendChild(temp);
+							temp.outerHTML = content;
+
+							rng.insertNode(frag);
+						}
 					}
 				}
 
 				// Move to caret marker
-				c = t.dom.get('__caret');
+				caretNode = self.dom.get('__caret');
+
 				// Make sure we wrap it compleatly, Opera fails with a simple select call
-				r = d.createRange();
-				r.setStartBefore(c);
-				r.setEndBefore(c);
-				t.setRng(r);
+				rng = doc.createRange();
+				rng.setStartBefore(caretNode);
+				rng.setEndBefore(caretNode);
+				self.setRng(rng);
 
 				// Remove the caret position
-				t.dom.remove('__caret');
+				self.dom.remove('__caret');
+
+				try {
+					self.setRng(rng);
+				} catch (ex) {
+					// Might fail on Opera for some odd reason
+				}
 			} else {
-				if (r.item) {
+				if (rng.item) {
 					// Delete content and get caret text selection
-					d.execCommand('Delete', false, null);
-					r = t.getRng();
+					doc.execCommand('Delete', false, null);
+					rng = self.getRng();
 				}
 
-				r.pasteHTML(h);
+				// Explorer removes spaces from the beginning of pasted contents
+				if (/^\s+/.test(content)) {
+					rng.pasteHTML('<span id="__mce_tmp">_</span>' + content);
+					self.dom.remove('__mce_tmp');
+				} else
+					rng.pasteHTML(content);
 			}
 
 			// Dispatch set content event
-			t.onSetContent.dispatch(t, s);
+			if (!args.no_events)
+				self.onSetContent.dispatch(self, args);
 		},
 
 		/**
@@ -170,7 +262,7 @@
 		 * @return {Element} Start element of selection range.
 		 */
 		getStart : function() {
-			var rng = this.getRng(), startElement, parentElement, checkRng, node;
+			var self = this, rng = self.getRng(), startElement, parentElement, checkRng, node;
 
 			if (rng.duplicate || rng.item) {
 				// Control selection, return first item
@@ -181,6 +273,9 @@
 				checkRng = rng.duplicate();
 				checkRng.collapse(1);
 				startElement = checkRng.parentElement();
+				if (startElement.ownerDocument !== self.dom.doc) {
+					startElement = self.dom.getRoot();
+				}
 
 				// Check if range parent is inside the start element, then return the inner parent element
 				// This will fix issues when a single element is selected, IE would otherwise return the wrong start element
@@ -191,10 +286,6 @@
 						break;
 					}
 				}
-
-				// If start element is body element try to move to the first child if it exists
-				if (startElement && startElement.nodeName == 'BODY')
-					return startElement.firstChild || startElement;
 
 				return startElement;
 			} else {
@@ -218,31 +309,34 @@
 		 * @return {Element} End element of selection range.
 		 */
 		getEnd : function() {
-			var t = this, r = t.getRng(), e, eo;
+			var self = this, rng = self.getRng(), endElement, endOffset;
 
-			if (r.duplicate || r.item) {
-				if (r.item)
-					return r.item(0);
+			if (rng.duplicate || rng.item) {
+				if (rng.item)
+					return rng.item(0);
 
-				r = r.duplicate();
-				r.collapse(0);
-				e = r.parentElement();
+				rng = rng.duplicate();
+				rng.collapse(0);
+				endElement = rng.parentElement();
+				if (endElement.ownerDocument !== self.dom.doc) {
+					endElement = self.dom.getRoot();
+				}
 
-				if (e && e.nodeName == 'BODY')
-					return e.lastChild || e;
+				if (endElement && endElement.nodeName == 'BODY')
+					return endElement.lastChild || endElement;
 
-				return e;
+				return endElement;
 			} else {
-				e = r.endContainer;
-				eo = r.endOffset;
+				endElement = rng.endContainer;
+				endOffset = rng.endOffset;
 
-				if (e.nodeType == 1 && e.hasChildNodes())
-					e = e.childNodes[eo > 0 ? eo - 1 : eo];
+				if (endElement.nodeType == 1 && endElement.hasChildNodes())
+					endElement = endElement.childNodes[endOffset > 0 ? endOffset - 1 : endOffset];
 
-				if (e && e.nodeType == 3)
-					return e.parentNode;
+				if (endElement && endElement.nodeType == 3)
+					return endElement.parentNode;
 
-				return e;
+				return endElement;
 			}
 		},
 
@@ -254,6 +348,14 @@
 		 * @param {Number} type Optional state if the bookmark should be simple or not. Default is complex.
 		 * @param {Boolean} normalized Optional state that enables you to get a position that it would be after normalization.
 		 * @return {Object} Bookmark object, use moveToBookmark with this object to restore the selection.
+		 * @example
+		 * // Stores a bookmark of the current selection
+		 * var bm = tinyMCE.activeEditor.selection.getBookmark();
+		 *
+		 * tinyMCE.activeEditor.setContent(tinyMCE.activeEditor.getContent() + 'Some new content');
+		 *
+		 * // Restore the selection bookmark
+		 * tinyMCE.activeEditor.selection.moveToBookmark(bm);
 		 */
 		getBookmark : function(type, normalized) {
 			var t = this, dom = t.dom, rng, rng2, id, collapsed, name, element, index, chr = '\uFEFF', styles;
@@ -269,45 +371,71 @@
 				return index;
 			};
 
-			if (type == 2) {
-				function getLocation() {
-					var rng = t.getRng(true), root = dom.getRoot(), bookmark = {};
+			function normalizeTableCellSelection(rng) {
+				function moveEndPoint(start) {
+					var container, offset, childNodes, prefix = start ? 'start' : 'end';
 
-					function getPoint(rng, start) {
-						var container = rng[start ? 'startContainer' : 'endContainer'],
-							offset = rng[start ? 'startOffset' : 'endOffset'], point = [], node, childNodes, after = 0;
+					container = rng[prefix + 'Container'];
+					offset = rng[prefix + 'Offset'];
 
-						if (container.nodeType == 3) {
-							if (normalized) {
-								for (node = container.previousSibling; node && node.nodeType == 3; node = node.previousSibling)
-									offset += node.nodeValue.length;
-							}
+					if (container.nodeType == 1 && container.nodeName == "TR") {
+						childNodes = container.childNodes;
+						container = childNodes[Math.min(start ? offset : offset - 1, childNodes.length - 1)];
+						if (container) {
+							offset = start ? 0 : container.childNodes.length;
+							rng['set' + (start ? 'Start' : 'End')](container, offset);
+						}
+					}
+				};
 
-							point.push(offset);
-						} else {
-							childNodes = container.childNodes;
+				moveEndPoint(true);
+				moveEndPoint();
 
-							if (offset >= childNodes.length && childNodes.length) {
-								after = 1;
-								offset = Math.max(0, childNodes.length - 1);
-							}
+				return rng;
+			};
 
-							point.push(t.dom.nodeIndex(childNodes[offset], normalized) + after);
+			function getLocation() {
+				var rng = t.getRng(true), root = dom.getRoot(), bookmark = {};
+
+				function getPoint(rng, start) {
+					var container = rng[start ? 'startContainer' : 'endContainer'],
+						offset = rng[start ? 'startOffset' : 'endOffset'], point = [], node, childNodes, after = 0;
+
+					if (container.nodeType == 3) {
+						if (normalized) {
+							for (node = container.previousSibling; node && node.nodeType == 3; node = node.previousSibling)
+								offset += node.nodeValue.length;
 						}
 
-						for (; container && container != root; container = container.parentNode)
-							point.push(t.dom.nodeIndex(container, normalized));
+						point.push(offset);
+					} else {
+						childNodes = container.childNodes;
 
-						return point;
-					};
+						if (offset >= childNodes.length && childNodes.length) {
+							after = 1;
+							offset = Math.max(0, childNodes.length - 1);
+						}
 
-					bookmark.start = getPoint(rng, true);
+						point.push(t.dom.nodeIndex(childNodes[offset], normalized) + after);
+					}
 
-					if (!t.isCollapsed())
-						bookmark.end = getPoint(rng);
+					for (; container && container != root; container = container.parentNode)
+						point.push(t.dom.nodeIndex(container, normalized));
 
-					return bookmark;
+					return point;
 				};
+
+				bookmark.start = getPoint(rng, true);
+
+				if (!t.isCollapsed())
+					bookmark.end = getPoint(rng);
+
+				return bookmark;
+			};
+
+			if (type == 2) {
+				if (t.tridentSel)
+					return t.tridentSel.getBookmark(type);
 
 				return getLocation();
 			}
@@ -327,14 +455,25 @@
 				if (!rng.item) {
 					rng2 = rng.duplicate();
 
-					// Insert start marker
-					rng.collapse();
-					rng.pasteHTML('<span _mce_type="bookmark" id="' + id + '_start" style="' + styles + '">' + chr + '</span>');
+					try {
+						// Insert start marker
+						rng.collapse();
+						rng.pasteHTML('<span data-mce-type="bookmark" id="' + id + '_start" style="' + styles + '">' + chr + '</span>');
 
-					// Insert end marker
-					if (!collapsed) {
-						rng2.collapse(false);
-						rng2.pasteHTML('<span _mce_type="bookmark" id="' + id + '_end" style="' + styles + '">' + chr + '</span>');
+						// Insert end marker
+						if (!collapsed) {
+							rng2.collapse(false);
+
+							// Detect the empty space after block elements in IE and move the end back one character <p></p>] becomes <p>]</p>
+							rng.moveToElementText(rng2.parentElement());
+							if (rng.compareEndPoints('StartToEnd', rng2) === 0)
+								rng2.move('character', -1);
+
+							rng2.pasteHTML('<span data-mce-type="bookmark" id="' + id + '_end" style="' + styles + '">' + chr + '</span>');
+						}
+					} catch (ex) {
+						// IE might throw unspecified error so lets ignore it
+						return null;
 					}
 				} else {
 					// Control selection
@@ -350,16 +489,17 @@
 					return {name : name, index : findIndex(name, element)};
 
 				// W3C method
-				rng2 = rng.cloneRange();
+				rng2 = normalizeTableCellSelection(rng.cloneRange());
 
 				// Insert end marker
 				if (!collapsed) {
 					rng2.collapse(false);
-					rng2.insertNode(dom.create('span', {_mce_type : "bookmark", id : id + '_end', style : styles}, chr));
+					rng2.insertNode(dom.create('span', {'data-mce-type' : "bookmark", id : id + '_end', style : styles}, chr));
 				}
 
+				rng = normalizeTableCellSelection(rng);
 				rng.collapse(true);
-				rng.insertNode(dom.create('span', {_mce_type : "bookmark", id : id + '_start', style : styles}, chr));
+				rng.insertNode(dom.create('span', {'data-mce-type' : "bookmark", id : id + '_start', style : styles}, chr));
 			}
 
 			t.moveToBookmark({id : id, keep : 1});
@@ -373,122 +513,144 @@
 		 * @method moveToBookmark
 		 * @param {Object} bookmark Bookmark to restore selection from.
 		 * @return {Boolean} true/false if it was successful or not.
+		 * @example
+		 * // Stores a bookmark of the current selection
+		 * var bm = tinyMCE.activeEditor.selection.getBookmark();
+		 *
+		 * tinyMCE.activeEditor.setContent(tinyMCE.activeEditor.getContent() + 'Some new content');
+		 *
+		 * // Restore the selection bookmark
+		 * tinyMCE.activeEditor.selection.moveToBookmark(bm);
 		 */
 		moveToBookmark : function(bookmark) {
 			var t = this, dom = t.dom, marker1, marker2, rng, root, startContainer, endContainer, startOffset, endOffset;
 
-			// Clear selection cache
-			if (t.tridentSel)
-				t.tridentSel.destroy();
+			function setEndPoint(start) {
+				var point = bookmark[start ? 'start' : 'end'], i, node, offset, children;
+
+				if (point) {
+					offset = point[0];
+
+					// Find container node
+					for (node = root, i = point.length - 1; i >= 1; i--) {
+						children = node.childNodes;
+
+						if (point[i] > children.length - 1)
+							return;
+
+						node = children[point[i]];
+					}
+
+					// Move text offset to best suitable location
+					if (node.nodeType === 3)
+						offset = Math.min(point[0], node.nodeValue.length);
+
+					// Move element offset to best suitable location
+					if (node.nodeType === 1)
+						offset = Math.min(point[0], node.childNodes.length);
+
+					// Set offset within container node
+					if (start)
+						rng.setStart(node, offset);
+					else
+						rng.setEnd(node, offset);
+				}
+
+				return true;
+			};
+
+			function restoreEndPoint(suffix) {
+				var marker = dom.get(bookmark.id + '_' + suffix), node, idx, next, prev, keep = bookmark.keep;
+
+				if (marker) {
+					node = marker.parentNode;
+
+					if (suffix == 'start') {
+						if (!keep) {
+							idx = dom.nodeIndex(marker);
+						} else {
+							node = marker.firstChild;
+							idx = 1;
+						}
+
+						startContainer = endContainer = node;
+						startOffset = endOffset = idx;
+					} else {
+						if (!keep) {
+							idx = dom.nodeIndex(marker);
+						} else {
+							node = marker.firstChild;
+							idx = 1;
+						}
+
+						endContainer = node;
+						endOffset = idx;
+					}
+
+					if (!keep) {
+						prev = marker.previousSibling;
+						next = marker.nextSibling;
+
+						// Remove all marker text nodes
+						each(tinymce.grep(marker.childNodes), function(node) {
+							if (node.nodeType == 3)
+								node.nodeValue = node.nodeValue.replace(/\uFEFF/g, '');
+						});
+
+						// Remove marker but keep children if for example contents where inserted into the marker
+						// Also remove duplicated instances of the marker for example by a split operation or by WebKit auto split on paste feature
+						while (marker = dom.get(bookmark.id + '_' + suffix))
+							dom.remove(marker, 1);
+
+						// If siblings are text nodes then merge them unless it's Opera since it some how removes the node
+						// and we are sniffing since adding a lot of detection code for a browser with 3% of the market isn't worth the effort. Sorry, Opera but it's just a fact
+						if (prev && next && prev.nodeType == next.nodeType && prev.nodeType == 3 && !tinymce.isOpera) {
+							idx = prev.nodeValue.length;
+							prev.appendData(next.nodeValue);
+							dom.remove(next);
+
+							if (suffix == 'start') {
+								startContainer = endContainer = prev;
+								startOffset = endOffset = idx;
+							} else {
+								endContainer = prev;
+								endOffset = idx;
+							}
+						}
+					}
+				}
+			};
+
+			function addBogus(node) {
+				// Adds a bogus BR element for empty block elements
+				if (dom.isBlock(node) && !node.innerHTML && !isIE)
+					node.innerHTML = '<br data-mce-bogus="1" />';
+
+				return node;
+			};
 
 			if (bookmark) {
 				if (bookmark.start) {
 					rng = dom.createRng();
 					root = dom.getRoot();
 
-					function setEndPoint(start) {
-						var point = bookmark[start ? 'start' : 'end'], i, node, offset, children;
+					if (t.tridentSel)
+						return t.tridentSel.moveToBookmark(bookmark);
 
-						if (point) {
-							// Find container node
-							for (node = root, i = point.length - 1; i >= 1; i--) {
-								children = node.childNodes;
-
-								if (children.length)
-									node = children[point[i]];
-							}
-
-							// Set offset within container node
-							if (start)
-								rng.setStart(node, point[0]);
-							else
-								rng.setEnd(node, point[0]);
-						}
-					};
-
-					setEndPoint(true);
-					setEndPoint();
-
-					t.setRng(rng);
+					if (setEndPoint(true) && setEndPoint()) {
+						t.setRng(rng);
+					}
 				} else if (bookmark.id) {
-					function restoreEndPoint(suffix) {
-						var marker = dom.get(bookmark.id + '_' + suffix), node, idx, next, prev, keep = bookmark.keep;
-
-						if (marker) {
-							node = marker.parentNode;
-
-							if (suffix == 'start') {
-								if (!keep) {
-									idx = dom.nodeIndex(marker);
-								} else {
-									node = marker.firstChild;
-									idx = 1;
-								}
-
-								startContainer = endContainer = node;
-								startOffset = endOffset = idx;
-							} else {
-								if (!keep) {
-									idx = dom.nodeIndex(marker);
-								} else {
-									node = marker.firstChild;
-									idx = 1;
-								}
-
-								endContainer = node;
-								endOffset = idx;
-							}
-
-							if (!keep) {
-								prev = marker.previousSibling;
-								next = marker.nextSibling;
-
-								// Remove all marker text nodes
-								each(tinymce.grep(marker.childNodes), function(node) {
-									if (node.nodeType == 3)
-										node.nodeValue = node.nodeValue.replace(/\uFEFF/g, '');
-								});
-
-								// Remove marker but keep children if for example contents where inserted into the marker
-								// Also remove duplicated instances of the marker for example by a split operation or by WebKit auto split on paste feature
-								while (marker = dom.get(bookmark.id + '_' + suffix))
-									dom.remove(marker, 1);
-
-								// If siblings are text nodes then merge them
-								if (prev && next && prev.nodeType == next.nodeType && prev.nodeType == 3) {
-									idx = prev.nodeValue.length;
-									prev.appendData(next.nodeValue);
-									dom.remove(next);
-
-									if (suffix == 'start') {
-										startContainer = endContainer = prev;
-										startOffset = endOffset = idx;
-									} else {
-										endContainer = prev;
-										endOffset = idx;
-									}
-								}
-							}
-						}
-					};
-
-					function addBogus(node) {
-						// Adds a bogus BR element for empty block elements
-						// on non IE browsers just to have a place to put the caret
-						if (!isIE && dom.isBlock(node) && !node.innerHTML)
-							node.innerHTML = '<br _mce_bogus="1" />';
-
-						return node;
-					};
-
 					// Restore start/end points
 					restoreEndPoint('start');
 					restoreEndPoint('end');
 
-					rng = dom.createRng();
-					rng.setStart(addBogus(startContainer), startOffset);
-					rng.setEnd(addBogus(endContainer), endOffset);
-					t.setRng(rng);
+					if (startContainer) {
+						rng = dom.createRng();
+						rng.setStart(addBogus(startContainer), startOffset);
+						rng.setEnd(addBogus(endContainer), endOffset);
+						t.setRng(rng);
+					}
 				} else if (bookmark.name) {
 					t.select(dom.select(bookmark.name)[bookmark.index]);
 				} else if (bookmark.rng)
@@ -503,47 +665,52 @@
 		 * @param {Element} node HMTL DOM element to select.
 		 * @param {Boolean} content Optional bool state if the contents should be selected or not on non IE browser.
 		 * @return {Element} Selected element the same element as the one that got passed in.
+		 * @example
+		 * // Select the first paragraph in the active editor
+		 * tinyMCE.activeEditor.selection.select(tinyMCE.activeEditor.dom.select('p')[0]);
 		 */
 		select : function(node, content) {
 			var t = this, dom = t.dom, rng = dom.createRng(), idx;
 
-			idx = dom.nodeIndex(node);
-			rng.setStart(node.parentNode, idx);
-			rng.setEnd(node.parentNode, idx + 1);
+			function setPoint(node, start) {
+				var walker = new TreeWalker(node, node);
 
-			// Find first/last text node or BR element
-			if (content) {
-				function setPoint(node, start) {
-					var walker = new tinymce.dom.TreeWalker(node, node);
+				do {
+					// Text node
+					if (node.nodeType == 3 && tinymce.trim(node.nodeValue).length !== 0) {
+						if (start)
+							rng.setStart(node, 0);
+						else
+							rng.setEnd(node, node.nodeValue.length);
 
-					do {
-						// Text node
-						if (node.nodeType == 3 && tinymce.trim(node.nodeValue).length != 0) {
-							if (start)
-								rng.setStart(node, 0);
-							else
-								rng.setEnd(node, node.nodeValue.length);
+						return;
+					}
 
-							return;
-						}
+					// BR element
+					if (node.nodeName == 'BR') {
+						if (start)
+							rng.setStartBefore(node);
+						else
+							rng.setEndBefore(node);
 
-						// BR element
-						if (node.nodeName == 'BR') {
-							if (start)
-								rng.setStartBefore(node);
-							else
-								rng.setEndBefore(node);
+						return;
+					}
+				} while (node = (start ? walker.next() : walker.prev()));
+			};
 
-							return;
-						}
-					} while (node = (start ? walker.next() : walker.prev()));
-				};
+			if (node) {
+				idx = dom.nodeIndex(node);
+				rng.setStart(node.parentNode, idx);
+				rng.setEnd(node.parentNode, idx + 1);
 
-				setPoint(node, 1);
-				setPoint(node);
+				// Find first/last text node or BR element
+				if (content) {
+					setPoint(node, 1);
+					setPoint(node);
+				}
+
+				t.setRng(rng);
 			}
-
-			t.setRng(rng);
 
 			return node;
 		},
@@ -570,20 +737,20 @@
 		 * Collapse the selection to start or end of range.
 		 *
 		 * @method collapse
-		 * @param {Boolean} b Optional boolean state if to collapse to end or not. Defaults to start.
+		 * @param {Boolean} to_start Optional boolean state if to collapse to end or not. Defaults to start.
 		 */
-		collapse : function(b) {
-			var t = this, r = t.getRng(), n;
+		collapse : function(to_start) {
+			var self = this, rng = self.getRng(), node;
 
 			// Control range on IE
-			if (r.item) {
-				n = r.item(0);
-				r = this.win.document.body.createTextRange();
-				r.moveToElementText(n);
+			if (rng.item) {
+				node = rng.item(0);
+				rng = self.win.document.body.createTextRange();
+				rng.moveToElementText(node);
 			}
 
-			r.collapse(!!b);
-			t.setRng(r);
+			rng.collapse(!!to_start);
+			self.setRng(rng);
 		},
 
 		/**
@@ -604,38 +771,59 @@
 		 * @method getRng
 		 * @param {Boolean} w3c Forces a compatible W3C range on IE.
 		 * @return {Range} Internal browser range object.
+		 * @see http://www.quirksmode.org/dom/range_intro.html
+		 * @see http://www.dotvoid.com/2001/03/using-the-range-object-in-mozilla/
 		 */
 		getRng : function(w3c) {
-			var t = this, s, r;
+			var self = this, selection, rng, elm, doc = self.win.document;
 
 			// Found tridentSel object then we need to use that one
-			if (w3c && t.tridentSel)
-				return t.tridentSel.getRangeAt(0);
+			if (w3c && self.tridentSel) {
+				return self.tridentSel.getRangeAt(0);
+			}
 
 			try {
-				if (s = t.getSel())
-					r = s.rangeCount > 0 ? s.getRangeAt(0) : (s.createRange ? s.createRange() : t.win.document.createRange());
+				if (selection = self.getSel()) {
+					rng = selection.rangeCount > 0 ? selection.getRangeAt(0) : (selection.createRange ? selection.createRange() : doc.createRange());
+				}
 			} catch (ex) {
 				// IE throws unspecified error here if TinyMCE is placed in a frame/iframe
+			}
+
+			// We have W3C ranges and it's IE then fake control selection since IE9 doesn't handle that correctly yet
+			if (tinymce.isIE && rng && rng.setStart && doc.selection.createRange().item) {
+				elm = doc.selection.createRange().item(0);
+				rng = doc.createRange();
+				rng.setStartBefore(elm);
+				rng.setEndAfter(elm);
 			}
 
 			// No range found then create an empty one
 			// This can occur when the editor is placed in a hidden container element on Gecko
 			// Or on IE when there was an exception
-			if (!r)
-				r = t.win.document.createRange ? t.win.document.createRange() : t.win.document.body.createTextRange();
+			if (!rng) {
+				rng = doc.createRange ? doc.createRange() : doc.body.createTextRange();
+			}
 
-			if (t.selectedRange && t.explicitRange) {
-				if (r.compareBoundaryPoints(r.START_TO_START, t.selectedRange) === 0 && r.compareBoundaryPoints(r.END_TO_END, t.selectedRange) === 0) {
+			// If range is at start of document then move it to start of body
+			if (rng.setStart && rng.startContainer.nodeType === 9 && rng.collapsed) {
+				elm = self.dom.getRoot();
+				rng.setStart(elm, 0);
+				rng.setEnd(elm, 0);
+			}
+
+			if (self.selectedRange && self.explicitRange) {
+				if (rng.compareBoundaryPoints(rng.START_TO_START, self.selectedRange) === 0 && rng.compareBoundaryPoints(rng.END_TO_END, self.selectedRange) === 0) {
 					// Safari, Opera and Chrome only ever select text which causes the range to change.
 					// This lets us use the originally set range if the selection hasn't been changed by the user.
-					r = t.explicitRange;
+					rng = self.explicitRange;
 				} else {
-					t.selectedRange = null;
-					t.explicitRange = null;
+					self.selectedRange = null;
+					self.explicitRange = null;
 				}
 			}
-			return r;
+
+			return rng;
 		},
 
 		/**
@@ -644,23 +832,41 @@
 		 * @method setRng
 		 * @param {Range} r Range to select.
 		 */
-		setRng : function(r) {
+		setRng : function(r, forward) {
 			var s, t = this;
-			
+
 			if (!t.tridentSel) {
 				s = t.getSel();
 
 				if (s) {
 					t.explicitRange = r;
-					s.removeAllRanges();
+
+					try {
+						s.removeAllRanges();
+					} catch (ex) {
+						// IE9 might throw errors here don't know why
+					}
+
 					s.addRange(r);
-					t.selectedRange = s.getRangeAt(0);
+
+					// Forward is set to false and we have an extend function
+					if (forward === false && s.extend) {
+						s.collapse(r.endContainer, r.endOffset);
+						s.extend(r.startContainer, r.startOffset);
+					}
+
+					// adding range isn't always successful so we need to check range count otherwise an exception can occur
+					t.selectedRange = s.rangeCount > 0 ? s.getRangeAt(0) : null;
 				}
 			} else {
 				// Is W3C Range
 				if (r.cloneRange) {
-					t.tridentSel.addRange(r);
-					return;
+					try {
+						t.tridentSel.addRange(r);
+						return;
+					} catch (ex) {
+						//IE9 throws an error here if called before selection is placed in the editor
+					}
 				}
 
 				// Is IE specific range
@@ -678,6 +884,9 @@
 		 * @method setNode
 		 * @param {Element} n Element to set as the contents of the selection.
 		 * @return {Element} Returns the element that got passed in.
+		 * @example
+		 * // Inserts a DOM node at current selection/caret location
+		 * tinyMCE.activeEditor.selection.setNode(tinyMCE.activeEditor.dom.create('img', {src : 'some.gif', title : 'some title'}));
 		 */
 		setNode : function(n) {
 			var t = this;
@@ -692,29 +901,58 @@
 		 *
 		 * @method getNode
 		 * @return {Element} Currently selected element or common ancestor element.
+		 * @example
+		 * // Alerts the currently selected elements node name
+		 * alert(tinyMCE.activeEditor.selection.getNode().nodeName);
 		 */
 		getNode : function() {
-			var t = this, rng = t.getRng(), sel = t.getSel(), elm;
+			var t = this, rng = t.getRng(), sel = t.getSel(), elm, start = rng.startContainer, end = rng.endContainer;
+
+			function skipEmptyTextNodes(n, forwards) {
+				var orig = n;
+				while (n && n.nodeType === 3 && n.length === 0) {
+					n = forwards ? n.nextSibling : n.previousSibling;
+				}
+				return n || orig;
+			};
+
+			// Range maybe lost after the editor is made visible again
+			if (!rng)
+				return t.dom.getRoot();
 
 			if (rng.setStart) {
-				// Range maybe lost after the editor is made visible again
-				if (!rng)
-					return t.dom.getRoot();
-
 				elm = rng.commonAncestorContainer;
 
 				// Handle selection a image or other control like element such as anchors
 				if (!rng.collapsed) {
 					if (rng.startContainer == rng.endContainer) {
-						if (rng.startOffset - rng.endOffset < 2) {
+						if (rng.endOffset - rng.startOffset < 2) {
 							if (rng.startContainer.hasChildNodes())
 								elm = rng.startContainer.childNodes[rng.startOffset];
 						}
 					}
 
 					// If the anchor node is a element instead of a text node then return this element
-					if (tinymce.isWebKit && sel.anchorNode && sel.anchorNode.nodeType == 1) 
-						return sel.anchorNode.childNodes[sel.anchorOffset]; 
+					//if (tinymce.isWebKit && sel.anchorNode && sel.anchorNode.nodeType == 1)
+					//	return sel.anchorNode.childNodes[sel.anchorOffset];
+
+					// Handle cases where the selection is immediately wrapped around a node and return that node instead of it's parent.
+					// This happens when you double click an underlined word in FireFox.
+					if (start.nodeType === 3 && end.nodeType === 3) {
+						if (start.length === rng.startOffset) {
+							start = skipEmptyTextNodes(start.nextSibling, true);
+						} else {
+							start = start.parentNode;
+						}
+						if (rng.endOffset === 0) {
+							end = skipEmptyTextNodes(end.previousSibling, false);
+						} else {
+							end = end.parentNode;
+						}
+
+						if (start && start === end)
+							return start;
+					}
 				}
 
 				if (elm && elm.nodeType == 3)
@@ -738,7 +976,8 @@
 			if (sb && eb && sb != eb) {
 				n = sb;
 
-				while ((n = n.nextSibling) && n != eb) {
+				var walker = new TreeWalker(sb, dom.getRoot());
+				while ((n = walker.next()) && n != eb) {
 					if (dom.isBlock(n))
 						bl.push(n);
 				}
@@ -750,17 +989,343 @@
 			return bl;
 		},
 
-		destroy : function(s) {
-			var t = this;
+		isForward: function(){
+			var dom = this.dom, sel = this.getSel(), anchorRange, focusRange;
 
-			t.win = null;
+			// No support for selection direction then always return true
+			if (!sel || sel.anchorNode == null || sel.focusNode == null) {
+				return true;
+			}
 
-			if (t.tridentSel)
-				t.tridentSel.destroy();
+			anchorRange = dom.createRng();
+			anchorRange.setStart(sel.anchorNode, sel.anchorOffset);
+			anchorRange.collapse(true);
+
+			focusRange = dom.createRng();
+			focusRange.setStart(sel.focusNode, sel.focusOffset);
+			focusRange.collapse(true);
+
+			return anchorRange.compareBoundaryPoints(anchorRange.START_TO_START, focusRange) <= 0;
+		},
+
+		normalize : function() {
+			var self = this, rng, normalized, collapsed, node, sibling;
+
+			function normalizeEndPoint(start) {
+				var container, offset, walker, dom = self.dom, body = dom.getRoot(), node, nonEmptyElementsMap, nodeName;
+
+				function hasBrBeforeAfter(node, left) {
+					var walker = new TreeWalker(node, dom.getParent(node.parentNode, dom.isBlock) || body);
+
+					while (node = walker[left ? 'prev' : 'next']()) {
+						if (node.nodeName === "BR") {
+							return true;
+						}
+					}
+				};
+
+				// Walks the dom left/right to find a suitable text node to move the endpoint into
+				// It will only walk within the current parent block or body and will stop if it hits a block or a BR/IMG
+				function findTextNodeRelative(left, startNode) {
+					var walker, lastInlineElement;
+
+					startNode = startNode || container;
+					walker = new TreeWalker(startNode, dom.getParent(startNode.parentNode, dom.isBlock) || body);
+
+					// Walk left until we hit a text node we can move to or a block/br/img
+					while (node = walker[left ? 'prev' : 'next']()) {
+						// Found text node that has a length
+						if (node.nodeType === 3 && node.nodeValue.length > 0) {
+							container = node;
+							offset = left ? node.nodeValue.length : 0;
+							normalized = true;
+							return;
+						}
+
+						// Break if we find a block or a BR/IMG/INPUT etc
+						if (dom.isBlock(node) || nonEmptyElementsMap[node.nodeName.toLowerCase()]) {
+							return;
+						}
+
+						lastInlineElement = node;
+					}
+
+					// Only fetch the last inline element when in caret mode for now
+					if (collapsed && lastInlineElement) {
+						container = lastInlineElement;
+						normalized = true;
+						offset = 0;
+					}
+				};
+
+				container = rng[(start ? 'start' : 'end') + 'Container'];
+				offset = rng[(start ? 'start' : 'end') + 'Offset'];
+				nonEmptyElementsMap = dom.schema.getNonEmptyElements();
+
+				// If the container is a document move it to the body element
+				if (container.nodeType === 9) {
+					container = dom.getRoot();
+					offset = 0;
+				}
+
+				// If the container is body try move it into the closest text node or position
+				if (container === body) {
+					// If start is before/after a image, table etc
+					if (start) {
+						node = container.childNodes[offset > 0 ? offset - 1 : 0];
+						if (node) {
+							nodeName = node.nodeName.toLowerCase();
+							if (nonEmptyElementsMap[node.nodeName] || node.nodeName == "TABLE") {
+								return;
+							}
+						}
+					}
+
+					// Resolve the index
+					if (container.hasChildNodes()) {
+						container = container.childNodes[Math.min(!start && offset > 0 ? offset - 1 : offset, container.childNodes.length - 1)];
+						offset = 0;
+
+						// Don't walk into elements that doesn't have any child nodes like a IMG
+						if (container.hasChildNodes() && !/TABLE/.test(container.nodeName)) {
+							// Walk the DOM to find a text node to place the caret at or a BR
+							node = container;
+							walker = new TreeWalker(container, body);
+
+							do {
+								// Found a text node use that position
+								if (node.nodeType === 3 && node.nodeValue.length > 0) {
+									offset = start ? 0 : node.nodeValue.length;
+									container = node;
+									normalized = true;
+									break;
+								}
+
+								// Found a BR/IMG element that we can place the caret before
+								if (nonEmptyElementsMap[node.nodeName.toLowerCase()]) {
+									offset = dom.nodeIndex(node);
+									container = node.parentNode;
+
+									// Put caret after image when moving the end point
+									if (node.nodeName ==  "IMG" && !start) {
+										offset++;
+									}
+
+									normalized = true;
+									break;
+								}
+							} while (node = (start ? walker.next() : walker.prev()));
+						}
+					}
+				}
+
+				// Lean the caret to the left if possible
+				if (collapsed) {
+					// So this: <b>x</b><i>|x</i>
+					// Becomes: <b>x|</b><i>x</i>
+					// Seems that only gecko has issues with this
+					if (container.nodeType === 3 && offset === 0) {
+						findTextNodeRelative(true);
+					}
+
+					// Lean left into empty inline elements when the caret is before a BR
+					// So this: <i><b></b><i>|<br></i>
+					// Becomes: <i><b>|</b><i><br></i>
+					// Seems that only gecko has issues with this
+					if (container.nodeType === 1) {
+						node = container.childNodes[offset];
+						if(node && node.nodeName === 'BR' && !hasBrBeforeAfter(node) && !hasBrBeforeAfter(node, true)) {
+							findTextNodeRelative(true, container.childNodes[offset]);
+						}
+					}
+				}
+
+				// Lean the start of the selection right if possible
+				// So this: x[<b>x]</b>
+				// Becomes: x<b>[x]</b>
+				if (start && !collapsed && container.nodeType === 3 && offset === container.nodeValue.length) {
+					findTextNodeRelative(false);
+				}
+
+				// Set endpoint if it was normalized
+				if (normalized)
+					rng['set' + (start ? 'Start' : 'End')](container, offset);
+			};
+
+			// Normalize only on non IE browsers for now
+			if (tinymce.isIE)
+				return;
+			
+			rng = self.getRng();
+			collapsed = rng.collapsed;
+
+			// Normalize the end points
+			normalizeEndPoint(true);
+
+			if (!collapsed)
+				normalizeEndPoint();
+
+			// Set the selection if it was normalized
+			if (normalized) {
+				// If it was collapsed then make sure it still is
+				if (collapsed) {
+					rng.collapse(true);
+				}
+
+				//console.log(self.dom.dumpRng(rng));
+				self.setRng(rng, self.isForward());
+			}
+		},
+
+		/**
+		 * Executes callback of the current selection matches the specified selector or not and passes the state and args to the callback.
+		 *
+		 * @method selectorChanged
+		 * @param {String} selector CSS selector to check for.
+		 * @param {function} callback Callback with state and args when the selector is matches or not.
+		 */
+		selectorChanged: function(selector, callback) {
+			var self = this, currentSelectors;
+
+			if (!self.selectorChangedData) {
+				self.selectorChangedData = {};
+				currentSelectors = {};
+
+				self.editor.onNodeChange.addToTop(function(ed, cm, node) {
+					var dom = self.dom, parents = dom.getParents(node, null, dom.getRoot()), matchedSelectors = {};
+
+					// Check for new matching selectors
+					each(self.selectorChangedData, function(callbacks, selector) {
+						each(parents, function(node) {
+							if (dom.is(node, selector)) {
+								if (!currentSelectors[selector]) {
+									// Execute callbacks
+									each(callbacks, function(callback) {
+										callback(true, {node: node, selector: selector, parents: parents});
+									});
+
+									currentSelectors[selector] = callbacks;
+								}
+
+								matchedSelectors[selector] = callbacks;
+								return false;
+							}
+						});
+					});
+
+					// Check if current selectors still match
+					each(currentSelectors, function(callbacks, selector) {
+						if (!matchedSelectors[selector]) {
+							delete currentSelectors[selector];
+
+							each(callbacks, function(callback) {
+								callback(false, {node: node, selector: selector, parents: parents});
+							});
+						}
+					});
+				});
+			}
+
+			// Add selector listeners
+			if (!self.selectorChangedData[selector]) {
+				self.selectorChangedData[selector] = [];
+			}
+
+			self.selectorChangedData[selector].push(callback);
+
+			return self;
+		},
+
+		destroy : function(manual) {
+			var self = this;
+
+			self.win = null;
 
 			// Manual destroy then remove unload handler
-			if (!s)
-				tinymce.removeUnload(t.destroy);
+			if (!manual)
+				tinymce.removeUnload(self.destroy);
+		},
+
+		// IE has an issue where you can't select/move the caret by clicking outside the body if the document is in standards mode
+		_fixIESelection : function() {
+			var dom = this.dom, doc = dom.doc, body = doc.body, started, startRng, htmlElm;
+
+			// Return range from point or null if it failed
+			function rngFromPoint(x, y) {
+				var rng = body.createTextRange();
+
+				try {
+					rng.moveToPoint(x, y);
+				} catch (ex) {
+					// IE sometimes throws and exception, so lets just ignore it
+					rng = null;
+				}
+
+				return rng;
+			};
+
+			// Fires while the selection is changing
+			function selectionChange(e) {
+				var pointRng;
+
+				// Check if the button is down or not
+				if (e.button) {
+					// Create range from mouse position
+					pointRng = rngFromPoint(e.x, e.y);
+
+					if (pointRng) {
+						// Check if pointRange is before/after selection then change the endPoint
+						if (pointRng.compareEndPoints('StartToStart', startRng) > 0)
+							pointRng.setEndPoint('StartToStart', startRng);
+						else
+							pointRng.setEndPoint('EndToEnd', startRng);
+
+						pointRng.select();
+					}
+				} else
+					endSelection();
+			}
+
+			// Removes listeners
+			function endSelection() {
+				var rng = doc.selection.createRange();
+
+				// If the range is collapsed then use the last start range
+				if (startRng && !rng.item && rng.compareEndPoints('StartToEnd', rng) === 0)
+					startRng.select();
+
+				dom.unbind(doc, 'mouseup', endSelection);
+				dom.unbind(doc, 'mousemove', selectionChange);
+				startRng = started = 0;
+			};
+
+			// Make HTML element unselectable since we are going to handle selection by hand
+			doc.documentElement.unselectable = true;
+			
+			// Detect when user selects outside BODY
+			dom.bind(doc, ['mousedown', 'contextmenu'], function(e) {
+				if (e.target.nodeName === 'HTML') {
+					if (started)
+						endSelection();
+
+					// Detect vertical scrollbar, since IE will fire a mousedown on the scrollbar and have target set as HTML
+					htmlElm = doc.documentElement;
+					if (htmlElm.scrollHeight > htmlElm.clientHeight)
+						return;
+
+					started = 1;
+					// Setup start position
+					startRng = rngFromPoint(e.x, e.y);
+					if (startRng) {
+						// Listen for selection change events
+						dom.bind(doc, 'mouseup', endSelection);
+						dom.bind(doc, 'mousemove', selectionChange);
+
+						dom.win.focus();
+						startRng.select();
+					}
+				}
+			});
 		}
 	});
 })(tinymce);

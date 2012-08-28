@@ -1,17 +1,25 @@
 /**
  * XHR.js
  *
- * Copyright 2009, Moxiecode Systems AB
+ * Copyright, Moxiecode Systems AB
  * Released under LGPL License.
  *
- * License: http://tinymce.moxiecode.com/license
- * Contributing: http://tinymce.moxiecode.com/contributing
+ * License: http://www.tinymce.com/license
+ * Contributing: http://www.tinymce.com/contributing
  */
 
 /**
  * This class enables you to send XMLHTTPRequests cross browser.
  * @class tinymce.util.XHR
  * @static
+ * @example
+ * // Sends a low level Ajax request
+ * tinymce.util.XHR.send({
+ *    url : 'someurl',
+ *    success : function(text) {
+ *       console.debug(text);
+ *    }
+ * });
  */
 tinymce.create('static tinymce.util.XHR', {
 	/**
@@ -23,6 +31,18 @@ tinymce.create('static tinymce.util.XHR', {
 	 */
 	send : function(o) {
 		var x, t, w = window, c = 0;
+
+		function ready() {
+			if (!o.async || x.readyState == 4 || c++ > 10000) {
+				if (o.success && c < 10000 && x.status == 200)
+					o.success.call(o.success_scope, '' + x.responseText, x, o);
+				else if (o.error)
+					o.error.call(o.error_scope, c > 10000 ? 'TIMED_OUT' : 'GENERAL', x, o);
+
+				x = null;
+			} else
+				w.setTimeout(ready, 10);
+		};
 
 		// Default settings
 		o.scope = o.scope || this;
@@ -56,18 +76,6 @@ tinymce.create('static tinymce.util.XHR', {
 			x.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 
 			x.send(o.data);
-
-			function ready() {
-				if (!o.async || x.readyState == 4 || c++ > 10000) {
-					if (o.success && c < 10000 && x.status == 200)
-						o.success.call(o.success_scope, '' + x.responseText, x, o);
-					else if (o.error)
-						o.error.call(o.error_scope, c > 10000 ? 'TIMED_OUT' : 'GENERAL', x, o);
-
-					x = null;
-				} else
-					w.setTimeout(ready, 10);
-			};
 
 			// Syncronous request
 			if (!o.async)
