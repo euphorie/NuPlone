@@ -155,7 +155,7 @@ class TestHTMLStatusMessages(ptc.PloneTestCase):
         self.assertEquals(len(messages), 1)
         test = messages[0]
         self.assertEquals(test.type, u'success')
-        self.assertEquals(test.message, u'<span>test</span>')
+        self.assertEquals(test.message, u'test')
         self.assertEquals(type(test.message), literal)
 
         # Add two HTML messages
@@ -166,7 +166,7 @@ class TestHTMLStatusMessages(ptc.PloneTestCase):
         messages = status.show()
         self.assertEquals(len(messages), 2)
         test = messages[1]
-        self.assertEquals(test.message, u'<span>test1</span>')
+        self.assertEquals(test.message, u'test1')
         self.assertEquals(type(test.message), literal)
         self.assertEquals(test.type, u'warn')
 
@@ -178,7 +178,7 @@ class TestHTMLStatusMessages(ptc.PloneTestCase):
         messages = status.show()
         self.assertEquals(len(messages), 1)
         test = messages[0]
-        self.assertEquals(test.message, u'<span>test</span>')
+        self.assertEquals(test.message, u'test')
         self.assertEquals(type(test.message), literal)
         self.assertEquals(test.type, u'info')
 
@@ -194,7 +194,7 @@ class TestHTMLStatusMessages(ptc.PloneTestCase):
 
         test = messages[0]
         self.assertEquals(type(test.message), literal)
-        assert(test.message == '<span>%s</span>' % (u'm' * 0x3FF))
+        assert(test.message == '%s' % (u'm' * 0x3FF))
         assert(test.type == u't' * 0x1F)
 
 
@@ -211,7 +211,7 @@ class TestHTMLStatusMessages(ptc.PloneTestCase):
         self.assertEquals(test.type, u'info')
 
         test = messages[1]
-        self.assertEquals(test.message, u'<span>test1</span>')
+        self.assertEquals(test.message, u'test1')
         self.assertEquals(type(test.message), literal)
         self.assertEquals(test.type, u'warn')
 
@@ -223,7 +223,7 @@ class TestHTMLStatusMessages(ptc.PloneTestCase):
         self.assertEquals(test.type, u'success')
         self.assertEquals(
             test.message, 
-            u'<span>You can go </span><a href="http://plone.org" rel="nofollow" target="_blank">here</a><span>.</span>')
+            u'You can go <a href="http://plone.org" rel="nofollow" target="_blank">here</a>.')
         self.assertEquals(type(test.message), literal)
 
         # Add html message with disallowed tags
@@ -234,7 +234,7 @@ class TestHTMLStatusMessages(ptc.PloneTestCase):
         self.assertEquals(test.type, u'success')
         self.assertEquals(
             test.message, 
-            u'<span>You can go </span><a href="http://plone.org" rel="nofollow" target="_blank">here</a><span>.</span>')
+            u'You can go <a href="http://plone.org" rel="nofollow" target="_blank">here</a>.')
         self.assertEquals(type(test.message), literal)
 
         status.addHTML(u"<script type=\"javascript\">alert('hello')</script>", type=u'success')
@@ -242,7 +242,13 @@ class TestHTMLStatusMessages(ptc.PloneTestCase):
         self.assertEquals(len(messages), 1)
         test = messages[0]
         self.assertEquals(test.type, u'success')
-        self.assertEquals( test.message, '')
+        self.assertEquals(test.message, '')
         self.assertEquals(type(test.message), literal)
 
-
+        status.addHTML(u'<a href="data:text/html;base64,PHNjcmlwdD5hbGVydCgidGVzdCIpOzwvc2NyaXB0Pg==">click me</a>', type=u'success')
+        messages = status.show()
+        self.assertEquals(len(messages), 1)
+        test = messages[0]
+        self.assertEquals(test.type, u'success')
+        self.assertEquals( test.message, '<a href="">click me</a>')
+        self.assertEquals(type(test.message), literal)

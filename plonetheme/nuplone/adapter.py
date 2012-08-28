@@ -7,11 +7,9 @@ from Products.statusmessages import STATUSMESSAGEKEY
 from htmllaundry import cleaners 
 from htmllaundry.utils import sanitize 
 
-
 logger = logging.getLogger('plonetheme/nuplone/adapter.py')
 
 HTMLMESSAGEKEY = 'literal-messages'
-
 
 msgcleaner = \
     cleaners.LaundryCleaner(
@@ -21,9 +19,11 @@ msgcleaner = \
             allow_tags = [ "blockquote", "a", "em", "strong", "span"],
             add_nofollow = True,
             scripts = True,
-            javascript = False,
+            javascript = True,
             comments = True,
             style = False,
+            links = False,
+            meta = True,
             processing_instructions = True,
             frames = True,
             annoying_tags = False,
@@ -64,6 +64,7 @@ class StatusMessage(adapter.StatusMessage):
         html_msgs = annotations.get(HTMLMESSAGEKEY,
                                 context.cookies.get(HTMLMESSAGEKEY))
         html_msgs = html_msgs and adapter._decodeCookieValue(html_msgs) or []
+
         for msg in html_msgs:
             msg.message = literal(sanitize(msg.message, cleaner=msgcleaner, wrap=None))
 
