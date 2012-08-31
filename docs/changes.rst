@@ -15,8 +15,6 @@ Changelog
 - Update TinyMCE to version 3.5.6
   [jcbrand]
 
-
-
 1.1 - December 20, 2011
 -----------------------
 
