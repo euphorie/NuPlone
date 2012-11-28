@@ -4,16 +4,10 @@ Changelog
 1.2 - Unreleased
 ----------------
 
-- Added Bulgarian translation
-  [thomasw]
-- Added Flemish (nl_BE) translation
-  [thomasw]
-- Added Catalan (ca) translation
-  [thomasw]
-- Added Latvian (lv) translation
-  [thomasw]
+- Add new translation: Bulgarian, Flemish, Catalan, Latvian and Portugese.
 - Update TinyMCE to version 3.5.6
-  [jcbrand]
+- Configure HTML cleanup code to strip data: attributes. 
+
 
 1.1 - December 20, 2011
 -----------------------
