@@ -54,7 +54,7 @@
       </tal:block>
     </ul>
 
-  <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery-1.4.2.js"></script>
+  <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery-1.4.4.js"></script>
   <script type="text/javascript" src="${tools/portal/++resource++NuPlone.behaviour}/behaviour.js"></script>
   <script tal:define="menu view/actions; url menu/url|nothing" tal:condition="not: url" type="text/javascript" meta:interpolation="false">
         $("a.contextActions").click(function(event) {
