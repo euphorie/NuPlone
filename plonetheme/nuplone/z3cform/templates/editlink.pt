@@ -32,8 +32,7 @@
     <script type="text/javascript" meta:interpolation="false">
 // <![CDATA[
     function reset() {
-        $("input[type=text]").val(null);
-        $("input[type=checkbox]").attr("checked", "checked");
+        $("#external form").reset();
         $("em.message.warning").remove();
     }
 
@@ -123,15 +122,17 @@
             var link = topDoc.createElement("a"),
                 oldlink;
 
-            range = getRangeObject(selection),
-            $link = $(link).attr("href", url).attr("title", title ? title : null);
+            range = getRangeObject(selection);
+            link.href = url;
+            if (title)
+              link.title = title;
 
             if (newwindow) {
-                $link.attr("target", "_blank");
+                link.target = "_blank";
             }
 
             if (range.collapsed) {
-                $link.text(title);
+                link.appendChild(topDoc.createTextNode(title));
                 range.insertNode(link);
             } else if (selection.anchorNode.nodeType===Node.ELEMENT_NODE &&
                       selection.anchorNode.tagName.toLowerCase()==="a") {

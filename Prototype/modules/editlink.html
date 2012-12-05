@@ -12,7 +12,7 @@
       <form action="${request/getURL}" method="${view/method}" enctype="${view/enctype}">
         <fieldset class="concise">
           <label>URL <sup class="required">*</sup>
-            <input type="text" class="text-widget required uri-field" value="" name="form.widgets.URL" id="form-widgets-URL"> </label>
+            <input type="url" class="text-widget required uri-field" value="" name="form.widgets.URL" id="form-widgets-URL"> </label>
           <label>Title 
             <input type="text" class="text-widget textline-field" value="" name="form.widgets.title" id="form-widgets-title"> </label>
           <label>Open link in new window <sup class="required">*</sup>
@@ -29,7 +29,7 @@
     <script type="text/javascript">
 // <![CDATA[
     function reset() {
-        $("input[type=text]").val(null);
+        $("input[type=url]").val(null);
         $("input[type=checkbox]").attr("checked", "checked");
         $("em.message.warning").remove();
     }
@@ -79,15 +79,18 @@
             topWindow = topDoc.defaultView!==undefined ? topDoc.defaultView : topDoc.parentWindow,
             selection = topWindow.getSelection(),
             range = getRangeObject(selection),
-            $link = $("<a/>").attr("href", url).attr("title", title ? title : null),
-            link = $link.get(0);
+            link = topDoc.createElement("A");
+
+        link.href = url;
+        if (title)
+          link.title = title;
 
         if (newwindow) {
-            $link.attr("target", "_blank");
+            link.target ="_blank";
         }
 
         if (range.collapsed) {
-            $link.text(title);
+            link.appendChild(topDoc.createTextNode(title));
             range.insertNode(link);
         } else if (selection.anchorNode.nodeType===Node.ELEMENT_NODE &&
                   selection.anchorNode.tagName.toLowerCase()==="a") {
