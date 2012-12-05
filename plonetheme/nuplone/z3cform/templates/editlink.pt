@@ -27,6 +27,7 @@
         </div>
       </form>
     </div>
+    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/rangy-core.js"></script>
     <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery-1.4.4.js"></script>
     <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery.form.js"></script>
     <script type="text/javascript" meta:interpolation="false">
@@ -59,49 +60,26 @@
     }
 
 
-    function getSelectionAnchor(window, document) {
-        if (window.getSelection) {
-            return window.getSelection().anchorNode;
-        } else {
-            // Internet Explorer
-            return document.selection.createRange().parentElement();
-        }
-    }
-
-    // http://www.quirksmode.org/dom/range_intro.html
-    function getSelectionObject(window, document) {
-        if (window.getSelection) {
-            return window.getSelection();
-        } else {
-            return document.selection.createRange();
-        }
-    } 
-
-    // http://www.quirksmode.org/dom/range_intro.html
-    function getRangeObject(selectionObject) {
-        if (selectionObject.getRangeAt) {
-              return selectionObject.getRangeAt(0);
-        } else { // Safari!
-            var range = document.createRange();
-            range.setStart(selectionObject.anchorNode,selectionObject.anchorOffset);
-            range.setEnd(selectionObject.focusNode,selectionObject.focusOffset);
-            return range;
-        }
-    }
-
     function removeLink() {
         var topDoc = window.frameElement.ownerDocument,
             topWindow = topDoc.defaultView!==undefined ? topDoc.defaultView : topDoc.parentWindow,
-            $anchor = $(getSelectionAnchor(topWindow, topDoc)),
-            $link;
+            selection = rangy.getSelection(topWindow),
+            range, link, found;
 
-        // XXX: handle IE where there is no selection and we need to create a new range based on
-        // the cursor position 
-        $link=$anchor.closest("a");
-        if (!$link.length){
+        if (selection.rangeCount===0 || selection.isCollapsed)
             return;
+        link = selection.anchorNode;
+        found=false;
+        while (link!==null && !found) {
+            if (link.nodeType===Node.ELEMENT_NODE && link.tagName==="A")
+                found=true;
+            else
+              link=link.parentNode;
         }
+        if (!found)
+            return;
 
+        var $link = $(link);
         $link.replaceWith($link.contents());
     }
 
@@ -109,86 +87,38 @@
     function InsertURL(url, title, newwindow) {
         var topDoc = window.frameElement.ownerDocument,
             topWindow = topDoc.defaultView!==undefined ? topDoc.defaultView : topDoc.parentWindow,
-            selection = getSelectionObject(topWindow, topDoc),
-            range, $link;
+            selection = rangy.getSelection(topWindow),
+            range, link, found;
 
-        if (window.getSelection) {
-            // Modern browsers, using a W3C range object
-            var link = topDoc.createElement("a"),
-                oldlink;
+        if (selection.rangeCount===0)
+            selection.addRange(range=rangy.createRange(topDoc));
+        else
+            range = selection.getRangeAt(0);
 
-            range = getRangeObject(selection);
-            link.href = url;
-            if (title)
-              link.title = title;
-
-            if (newwindow) {
-                link.target = "_blank";
-            }
-
-            if (range.collapsed) {
-                link.appendChild(topDoc.createTextNode(title));
-                range.insertNode(link);
-            } else if (selection.anchorNode.nodeType===Node.ELEMENT_NODE &&
-                      selection.anchorNode.tagName.toLowerCase()==="a") {
-                oldlink = selection.anchorNode;
-
-                link.innerHTML=oldlink.innerHTML;
-                try {
-                    oldlink.parentNode.insertBefore(link, oldlink);
-                    $(oldlink).remove();
-                } catch (ex) {
-                    alert(ex);
-                }
-            } else if (selection.anchorNode.nodeType===Node.TEXT_NODE &&
-                      selection.anchorNode.parentNode.nodeType===Node.ELEMENT_NODE &&
-                      selection.anchorNode.parentNode.tagName.toLowerCase()==="a") {
-                // Safari bug: selection.selectAllChildren should include the top node
-                // as well, but instead only its children are added.
-                oldlink = selection.anchorNode.parentNode;
-
-                link.innerHTML=oldlink.innerHTML;
-                try {
-                    oldlink.parentNode.insertBefore(link, oldlink);
-                    $(oldlink).remove();
-                } catch (e) {
-                    alert(e);
-                }
-            } else {
-                try {
-                    range.surroundContents(link);
-                } catch(err) {
-                    /* Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=520001 */
-                    link.appendChild(range.extractContents());
-                    range.insertNode(link);
-                    range.selectNode(link);
-                }
-            }
+        if (range.collapsed || !range.canSurroundContents()) {
+              link = topDoc.createElement("A");
+              link.appendChild(topDoc.createTextNode(title || url));
+              range.insertNode(link);
         } else {
-            // Special code path for IE
-            range=selection;
-            $link = $(range.parentElement()).closest("a");
-
-            if ($link.length) {
-                // The selection is inside a link, so update it
-                $link
-                    .attr("href", url)
-                    .attr("target", newwindow ? "_blank" : null)
-                    .attr("title", title ? title : null);
-            } else {
-                range.execCommand("CreateLink", false, url);
-                $link=$(range.parentElement());
-                if (title) {
-                    $link.attr("title", title);
-                }
-                if (newwindow) {
-                    $link.attr("target", "_blank");
-                }
-                if (range.text==="") {
-                  $link.text(url);
-                }
+          // Try to find a parent link
+            link = range.startContainer;
+            found=false;
+            while (link!==null && !found) {
+                if (link.nodeType===Node.ELEMENT_NODE && link.tagName==="A")
+                    found=true;
+                else
+                  link=link.parentNode;
+            }
+            if (!found) {
+                link = topDoc.createElement("A");
+                range.surroundContents(link);
             }
         }
+        if (url.indexOf(":")===-1 && url[0]!=="/")
+            url = "http://"+url;
+        link.href = url;
+        link.target = newwindow ? "_blank" : "";
+        link.title = title || "";
     }
 
     $("button.cancel").live("click", hide);
@@ -198,9 +128,6 @@
             link = form["form.widgets.URL"].value,
             title = form["form.widgets.title"].value,
             newwindow = form["form.widgets.new_window:list"].checked;
-        if (link.indexOf(":")===-1 && link[0]!=="/") {
-            link="http://"+link;
-        }
         InsertURL(link, title, newwindow);
         hide();
     });
