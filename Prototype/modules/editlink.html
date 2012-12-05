@@ -29,8 +29,7 @@
     <script type="text/javascript">
 // <![CDATA[
     function reset() {
-        $("input[type=url]").val(null);
-        $("input[type=checkbox]").attr("checked", "checked");
+        $("#external form")[0].reset();
         $("em.message.warning").remove();
     }
 
@@ -46,16 +45,11 @@
         if (el===undefined) {
             reset();
         } else {
-            var topWindow = topDoc.defaultView!==undefined ? topDoc.defaultView : topDoc.parentWindow,
-                $link = $(el),
-                link = $link.attr("href"),
-                title = $link.attr("title"),
-                newwindow = $link.attr("target")==="_blank";
-            
+            var topWindow = topDoc.defaultView!==undefined ? topDoc.defaultView : topDoc.parentWindow;
             topWindow.getSelection().selectAllChildren(el);
-            $("input[name=form.widgets.new_window:list]").get(0).checked = $link.attr("target")==="_blank";
-            $("input[name=form.widgets.URL]").val($link.attr("href"));
-            $("input[name=form.widgets.title]").val($link.attr("title"));
+            $("input[name=form.widgets.new_window:list]").get(0).checked = (el.target==="_blank");
+            $("input[name=form.widgets.URL]").val(el.href);
+            $("input[name=form.widgets.title]").val(el.title);
         }
 
         $("#linkFrame", topDoc).show();

@@ -32,7 +32,7 @@
     <script type="text/javascript" meta:interpolation="false">
 // <![CDATA[
     function reset() {
-        $("#external form").reset();
+        $("#external form")[0].reset();
         $("em.message.warning").remove();
     }
 
@@ -48,16 +48,11 @@
         if (el===undefined) {
             reset();
         } else {
-            var topWindow = topDoc.defaultView!==undefined ? topDoc.defaultView : topDoc.parentWindow,
-                $link = $(el),
-                link = $link.attr("href") || "",
-                title = $link.attr("title") || "",
-                newwindow = $link.attr("target")==="_blank";
-            
+            var topWindow = topDoc.defaultView!==undefined ? topDoc.defaultView : topDoc.parentWindow;
             topWindow.getSelection().selectAllChildren(el);
-            $("input[name=form.widgets.new_window:list]").get(0).checked = newwindow;
-            $("input[name=form.widgets.URL]").val(link);
-            $("input[name=form.widgets.title]").val(title);
+            $("input[name=form.widgets.new_window:list]").get(0).checked = (el.target==="_blank");
+            $("input[name=form.widgets.URL]").val(el.href);
+            $("input[name=form.widgets.title]").val(el.title);
         }
 
         $("#linkFrame", topDoc).show();
