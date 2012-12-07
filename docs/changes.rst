@@ -1,15 +1,17 @@
 Changelog
 =========
 
-1.2 - Unreleased
-----------------
+1.2 - December 7, 2012
+----------------------
 
 - Rewrite code to handle links in rich text fields. This fixes ticket
   `ticket 56 <https://github.com/euphorie/Euphorie/issues/56>`_.
 
 - Add new translation: Bulgarian, Flemish, Catalan, Latvian and Portugese.
 
-- Update TinyMCE to version 3.5.6
+- Update htmllaundry to 2.0.
+
+- Update TinyMCE to version 3.5.6.
 
 - Configure HTML cleanup code to strip data: attributes. 
 
