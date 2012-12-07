@@ -3,6 +3,8 @@ var editlink = {
     ELEMENT_NODE: 1,
     TEXT_NODE: 3,
 
+    current_range: null,
+
     reset: function() {
         $("#external form")[0].reset();
         $("em.message.warning").remove();
@@ -14,13 +16,17 @@ var editlink = {
     },
 
     show: function(el) {
-        var topDoc = window.frameElement.ownerDocument;
+        var topDoc = window.frameElement.ownerDocument,
+            topWindow = topDoc.defaultView!==undefined ? topDoc.defaultView : topDoc.parentWindow,
+            selection;
 
         if (el===undefined) {
+            selection=rangy.getSelection(topWindow);
+            editlink.current_range=(selection.rangeCount===0) ? null : selection.getRangeAt(0).cloneRange();
             editlink.reset();
         } else {
-            var topWindow = topDoc.defaultView!==undefined ? topDoc.defaultView : topDoc.parentWindow;
-            topWindow.getSelection().selectAllChildren(el);
+            editlink.current_range=rangy.createRange(topDoc);
+            editlink.current_range.selectNode(el);
             $("input[name=form.widgets.new_window:list]").get(0).checked = (el.target==="_blank");
             $("input[name=form.widgets.URL]").val(el.href);
             $("input[name=form.widgets.title]").val(el.title);
@@ -58,18 +64,17 @@ var editlink = {
             selection = rangy.getSelection(topWindow),
             range, link, found;
 
-        if (selection.rangeCount===0)
-            selection.addRange(range=rangy.createRange(topDoc));
-        else
-            range = selection.getRangeAt(0);
+        if (editlink.current_range===null)
+            return;
 
-        if (range.collapsed || !range.canSurroundContents()) {
+        selection.setSingleRange(editlink.current_range);
+        if (editlink.current_range.collapsed || !editlink.current_range.canSurroundContents()) {
               link = topDoc.createElement("A");
               link.appendChild(topDoc.createTextNode(title || url));
-              range.insertNode(link);
+              editlink.current_range.insertNode(link);
         } else {
           // Try to find a parent link
-            link = range.startContainer;
+            link = editlink.current_range.startContainer;
             found=false;
             while (link!==null && !found) {
                 if (link.nodeType===editlink.ELEMENT_NODE && link.tagName==="A")
@@ -79,7 +84,7 @@ var editlink = {
             }
             if (!found) {
                 link = topDoc.createElement("A");
-                range.surroundContents(link);
+                editlink.current_range.surroundContents(link);
             }
         }
         if (url.indexOf(":")===-1 && url[0]!=="/")
