@@ -6,7 +6,7 @@ var editlink = {
     
     hide: function() {
         var topDoc = window.frameElement.ownerDocument;
-        $("#linkFrame", topDoc).hide();
+        $("#linkFrame", topDoc).css({top: "-2000px"});
     },
 
     show: function(el) {
@@ -22,7 +22,7 @@ var editlink = {
             $("input[name=form.widgets.title]").val(el.title);
         }
 
-        $("#linkFrame", topDoc).show();
+        $("#linkFrame", topDoc).css({top: "70px"});
     },
 
     removeLink: function() {
