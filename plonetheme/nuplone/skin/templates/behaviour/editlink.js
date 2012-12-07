@@ -1,4 +1,8 @@
 var editlink = {
+    // Define these here since IE does not have Node constants
+    ELEMENT_NODE: 1,
+    TEXT_NODE: 3,
+
     reset: function() {
         $("#external form")[0].reset();
         $("em.message.warning").remove();
@@ -36,7 +40,7 @@ var editlink = {
         link = selection.anchorNode;
         found=false;
         while (link!==null && !found) {
-            if (link.nodeType===Node.ELEMENT_NODE && link.tagName==="A")
+            if (link.nodeType===editlink.ELEMENT_NODE && link.tagName==="A")
                 found=true;
             else
               link=link.parentNode;
@@ -68,7 +72,7 @@ var editlink = {
             link = range.startContainer;
             found=false;
             while (link!==null && !found) {
-                if (link.nodeType===Node.ELEMENT_NODE && link.tagName==="A")
+                if (link.nodeType===editlink.ELEMENT_NODE && link.tagName==="A")
                     found=true;
                 else
                   link=link.parentNode;
