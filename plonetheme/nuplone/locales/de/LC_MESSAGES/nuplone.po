@@ -1,18 +1,19 @@
-# Translations template for NuPlone.
+# German translations for NuPlone.
 # Copyright (C) 2011 Wichert Akkerman, Syslab.com, EU-OSHA
 # This file is distributed under the same license as the NuPlone project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: NuPlone 1.0rc9\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
-"POT-Creation-Date: 2011-08-25 10:40+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2012-12-07 17:16+0100\n"
+"PO-Revision-Date: 2012-12-07 17:17+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
@@ -77,8 +78,7 @@ msgid "label_your_name"
 msgstr "Ihr Name"
 
 #. Default: Email address
-#: plonetheme/nuplone/skin/contact.py:32
-#: plonetheme/nuplone/skin/settings.py:20
+#: plonetheme/nuplone/skin/contact.py:32 plonetheme/nuplone/skin/settings.py:20
 msgid "label_email"
 msgstr "E-Mail-Adresse"
 
@@ -115,8 +115,8 @@ msgstr "Kontaktanfrage: ${subject}"
 #: plonetheme/nuplone/skin/pwreminder.py:106
 msgid "error_contactmail"
 msgstr ""
-"Bei der Verarbeitung Ihrer Kontaktanfrage ist ein Fehler aufgetreten. Bitte "
-"versuchen Sie es später noch einmal."
+"Bei der Verarbeitung Ihrer Kontaktanfrage ist ein Fehler aufgetreten. "
+"Bitte versuchen Sie es später noch einmal."
 
 #: plonetheme/nuplone/skin/contact.py:89
 msgid "Message sent"
@@ -128,7 +128,7 @@ msgid "message_switch_language"
 msgstr "Sprache aktualisiert."
 
 #. Default: Failed to switch language
-#: plonetheme/nuplone/skin/language.py:20
+#: plonetheme/nuplone/skin/language.py:21
 msgid "message_switch_language_error"
 msgstr "Fehler bei der Sprachumschaltung"
 
@@ -170,8 +170,8 @@ msgstr "Passwort zurücksetzen"
 
 #. Default: For security reasons, we store your password encrypted, and cannot
 #. mail
-#. it to you. If you would like to reset your password, fill out the form
-#. below and
+#. it to you. If you would like to reset your password, fill out the form below
+#. and
 #. we will send you an email at the address you gave when you registered to
 #. start
 #. the process of resetting your password.
@@ -179,11 +179,11 @@ msgstr "Passwort zurücksetzen"
 msgid "intro_password_reset_request"
 msgstr ""
 "Aus Sicherheitsgründen wird Ihr Passwort in verschlüsselter Form "
-"gespeichert, sodass es Ihnen nicht per E-Mail zugesendet werden kann. Wenn "
-"Sie Ihr Passwort zurücksetzen möchten, füllen Sie das untenstehende Formular"
-" aus. Wir senden Ihnen dann eine E-Mail an die Adresse, die Sie bei der "
-"Registrierung angegeben haben, sodass Ihr Passwort zurückgesetzt werden "
-"kann."
+"gespeichert, sodass es Ihnen nicht per E-Mail zugesendet werden kann. "
+"Wenn Sie Ihr Passwort zurücksetzen möchten, füllen Sie das untenstehende "
+"Formular aus. Wir senden Ihnen dann eine E-Mail an die Adresse, die Sie "
+"bei der Registrierung angegeben haben, sodass Ihr Passwort zurückgesetzt "
+"werden kann."
 
 #. Default: Unknown username.
 #: plonetheme/nuplone/skin/pwreminder.py:73
@@ -205,8 +205,8 @@ msgstr "Passwort zurücksetzen für ${site}"
 #: plonetheme/nuplone/skin/pwreminder.py:109
 msgid "info_pwrest_mail_sent"
 msgstr ""
-"Ihnen wurde eine E-Mail mit den Anweisungen zum Zurücksetzen des Passwortes "
-"gesendet."
+"Ihnen wurde eine E-Mail mit den Anweisungen zum Zurücksetzen des "
+"Passwortes gesendet."
 
 #. Default: Reset password
 #: plonetheme/nuplone/skin/pwreminder.py:125
@@ -216,8 +216,7 @@ msgstr "Passwort zurücksetzen"
 #. Default: Please fill out the form below to set your password.
 #: plonetheme/nuplone/skin/pwreminder.py:126
 msgid "intro_password_reset"
-msgstr ""
-"Füllen Sie das untenstehende Formular aus, um Ihr Passwort einzurichten."
+msgstr "Füllen Sie das untenstehende Formular aus, um Ihr Passwort einzurichten."
 
 #. Default: Change
 #: plonetheme/nuplone/skin/pwreminder.py:144
@@ -274,44 +273,49 @@ msgstr "Löschen"
 msgid "default_site_title"
 msgstr "Plone"
 
-#. Default: Cancel
-#: plonetheme/nuplone/skin/templates/delete.pt:23
-#: plonetheme/nuplone/z3cform/templates/editlink.pt:26
-msgid "button_cancel"
-msgstr "Abbrechen"
-
-#. Default: Delete
-#: plonetheme/nuplone/skin/templates/delete.pt:22
-msgid "button_delete"
-msgstr "Löschen"
+#. Default: Delete "${title}"
+#: plonetheme/nuplone/skin/templates/delete.pt:12
+msgid "title_delete"
+msgstr "„${title}“ löschen"
 
 #. Default: Are you sure you want to delete this object?
 #: plonetheme/nuplone/skin/templates/delete.pt:19
 msgid "delete_confirm"
 msgstr "Sind Sie sicher, dass Sie dieses Objekt löschen möchten?"
 
-#. Default: Delete "${title}"
-#: plonetheme/nuplone/skin/templates/delete.pt:12
-msgid "title_delete"
-msgstr "„${title}“ löschen"
+#. Default: Delete
+#: plonetheme/nuplone/skin/templates/delete.pt:22
+msgid "button_delete"
+msgstr "Löschen"
+
+#. Default: Cancel
+#: plonetheme/nuplone/skin/templates/delete.pt:23
+#: plonetheme/nuplone/z3cform/templates/editlink.pt:26
+msgid "button_cancel"
+msgstr "Abbrechen"
+
+#: plonetheme/nuplone/skin/templates/dexterity.pt:12
+msgid "Default fieldset"
+msgstr "Standardfeldset"
 
 #: plonetheme/nuplone/skin/templates/dexterity.pt:18
 msgid "Group name"
 msgstr "Gruppenname"
 
-#: plonetheme/nuplone/skin/templates/dexterity.pt:12
-msgid "Default fieldset"
-msgstr "Standardfeldset"
+#. Default: Oops
+#: plonetheme/nuplone/skin/templates/error_generic.pt:10
+msgid "header_error_generic"
+msgstr "Hoppla!"
 
 #. Default: Something went wrong while trying to serve your request.
 #: plonetheme/nuplone/skin/templates/error_generic.pt:13
 msgid "message_error_generic"
 msgstr "Bei der Bearbeitung Ihrer Anfrage ist ein Fehler aufgetreten."
 
-#. Default: Oops
-#: plonetheme/nuplone/skin/templates/error_generic.pt:10
-msgid "header_error_generic"
-msgstr "Hoppla!"
+#. Default: Not found
+#: plonetheme/nuplone/skin/templates/error_notfound.pt:10
+msgid "header_error_notfound"
+msgstr "Nicht gefunden."
 
 #. Default: The object you were looking for does not exist on this server.
 #. Please
@@ -323,41 +327,25 @@ msgstr ""
 "Überprüfen Sie die Schreibweise oder verwenden Sie die Sitesuche, um das "
 "Element zu finden."
 
-#. Default: Not found
-#: plonetheme/nuplone/skin/templates/error_notfound.pt:10
-msgid "header_error_notfound"
-msgstr "Nicht gefunden."
-
-#. Default: If you forgot your password you can ${reset_password}.
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
-#: plonetheme/nuplone/skin/templates/login.pt:37
-msgid "message_reset_password"
-msgstr "Wenn Sie Ihr Passwort vergessen haben, können Sie ${reset_password}."
-
-#. Default: request a password reset
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
-#: plonetheme/nuplone/skin/templates/login.pt:37
-#: plonetheme/nuplone/skin/templates/login.pt:17
-msgid "reset_password"
-msgstr "das Zurücksetzen des Passwortes anfragen"
-
-#. Default: No account? Please ${request_account}.
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
-#: plonetheme/nuplone/skin/templates/login.pt:36
-msgid "message_no_account"
-msgstr "Kein Konto? ${request_account}."
-
-#. Default: request an account
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
-#: plonetheme/nuplone/skin/templates/login.pt:36
-msgid "message_no_account_request_account"
-msgstr "Fragen Sie ein Konto an"
-
 #. Default: Login
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:38
-#: plonetheme/nuplone/skin/templates/login.pt:32
-msgid "button_login"
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
+msgid "header_login"
 msgstr "Anmelden"
+
+#. Default: Unauthorized
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
+msgid "header_error_unauthorized"
+msgstr "Fehlende Berechtigung"
+
+#. Default: I am afraid you are not authorised to do this.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:18
+msgid "message_error_unauthorized"
+msgstr "Ich fürchte, Sie besitzen hierfür nicht die erforderliche Berechtigung."
+
+#. Default: You need to be logged in to access this page.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:23
+msgid "message_error_not_logged_in"
+msgstr "Zum Zugriff auf diese Seite müssen Sie angemeldet sein."
 
 #. Default: Credentials
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:29
@@ -365,42 +353,49 @@ msgstr "Anmelden"
 msgid "legend_credentials"
 msgstr "Anmeldeinformationen"
 
-#. Default: You need to be logged in to access this page.
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:23
-msgid "message_error_not_logged_in"
-msgstr "Zum Zugriff auf diese Seite müssen Sie angemeldet sein."
-
-#. Default: I am afraid you are not authorised to do this.
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:18
-msgid "message_error_unauthorized"
-msgstr ""
-"Ich fürchte, Sie besitzen hierfür nicht die erforderliche Berechtigung."
-
-#. Default: Unauthorized
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
-msgid "header_error_unauthorized"
-msgstr "Fehlende Berechtigung"
-
 #. Default: Login
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
-msgid "header_login"
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:38
+#: plonetheme/nuplone/skin/templates/login.pt:32
+msgid "button_login"
 msgstr "Anmelden"
 
-#: plonetheme/nuplone/skin/templates/layout.pt:43
-msgid "Can not open site menu."
-msgstr "Sitemenü kann nicht geöffnet werden."
+#. Default: request an account
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
+#: plonetheme/nuplone/skin/templates/login.pt:36
+msgid "message_no_account_request_account"
+msgstr "Fragen Sie ein Konto an"
+
+#. Default: No account? Please ${request_account}.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
+#: plonetheme/nuplone/skin/templates/login.pt:36
+msgid "message_no_account"
+msgstr "Kein Konto? ${request_account}."
+
+#. Default: request a password reset
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
+#: plonetheme/nuplone/skin/templates/login.pt:17
+#: plonetheme/nuplone/skin/templates/login.pt:37
+msgid "reset_password"
+msgstr "das Zurücksetzen des Passwortes anfragen"
+
+#. Default: If you forgot your password you can ${reset_password}.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
+#: plonetheme/nuplone/skin/templates/login.pt:37
+msgid "message_reset_password"
+msgstr "Wenn Sie Ihr Passwort vergessen haben, können Sie ${reset_password}."
 
 #: plonetheme/nuplone/skin/templates/layout.pt:21
 msgid "Change order of items by dragging the handle"
 msgstr "Ziehen Sie Elemente am Ziehpunkt, um deren Reihenfolge zu ändern."
 
-#. Default: Invalid login. If you forgot your password you can
-#. ${reset_password}.
-#: plonetheme/nuplone/skin/templates/login.pt:16
-msgid "message_invalid_login"
-msgstr ""
-"Ungültige Anmeldeeingabe. Wenn Sie Ihr Passwort vergessen haben, können Sie "
-"${reset_password}."
+#: plonetheme/nuplone/skin/templates/layout.pt:43
+msgid "Can not open site menu."
+msgstr "Sitemenü kann nicht geöffnet werden."
+
+#. Default: Login
+#: plonetheme/nuplone/skin/templates/login.pt:12
+msgid "title_login"
+msgstr "Anmelden"
 
 #. Default: You are already logged in. Please logout first before trying to
 #. login
@@ -408,31 +403,21 @@ msgstr ""
 #: plonetheme/nuplone/skin/templates/login.pt:14
 msgid "message_already_logged_in"
 msgstr ""
-"Sie sind bereits angemeldet. Bitte melden Sie sich zunächst ab, bevor Sie "
-"erneut versuchen, sich anzumelden."
+"Sie sind bereits angemeldet. Bitte melden Sie sich zunächst ab, bevor Sie"
+" erneut versuchen, sich anzumelden."
 
-#. Default: Login
-#: plonetheme/nuplone/skin/templates/login.pt:12
-msgid "title_login"
-msgstr "Anmelden"
-
-#. Default: Please note that this is an automated email. You can not reply to
-#. it.
-#: plonetheme/nuplone/skin/templates/pwreset-email.pt:16
-msgid "automated_email"
+#. Default: Invalid login. If you forgot your password you can
+#. ${reset_password}.
+#: plonetheme/nuplone/skin/templates/login.pt:16
+msgid "message_invalid_login"
 msgstr ""
-"Beachten Sie bitte, dass diese E-Mail automatisch generiert wurde. Sie "
-"können auf diese E-Mail nicht antworten."
+"Ungültige Anmeldeeingabe. Wenn Sie Ihr Passwort vergessen haben, können "
+"Sie ${reset_password}."
 
-#. Default: If you did not request a password reset or have found your
-#. password
-#. please ignore this email. Your password will not be changed.
-#: plonetheme/nuplone/skin/templates/pwreset-email.pt:13
-msgid "password_reset_epilogue"
-msgstr ""
-"Wenn Sie keine Zurücksetzung des Passworts angefragt oder Ihr Passwort "
-"wiedergefunden haben, ignorieren Sie diese E-Mail. Ihr Passwort wird in dem "
-"Fall nicht geändert."
+#. Default: Dear user,
+#: plonetheme/nuplone/skin/templates/pwreset-email.pt:6
+msgid "reminder_email_header"
+msgstr "Sehr geehrte(r) Benutzer(in),"
 
 #. Default: a password reset for the account '${login}' has been requested. To
 #. reset your password please visit this URL:
@@ -442,50 +427,62 @@ msgstr ""
 "Für das Konto '${login}' wurde das Zurücksetzen des Passworts angefragt. "
 "Besuchen Sie die folgende Website, um Ihr Passwort zurückzusetzen:"
 
-#. Default: Dear user,
-#: plonetheme/nuplone/skin/templates/pwreset-email.pt:6
-msgid "reminder_email_header"
-msgstr "Sehr geehrte(r) Benutzer(in),"
+#. Default: If you did not request a password reset or have found your password
+#. please ignore this email. Your password will not be changed.
+#: plonetheme/nuplone/skin/templates/pwreset-email.pt:13
+msgid "password_reset_epilogue"
+msgstr ""
+"Wenn Sie keine Zurücksetzung des Passworts angefragt oder Ihr Passwort "
+"wiedergefunden haben, ignorieren Sie diese E-Mail. Ihr Passwort wird in "
+"dem Fall nicht geändert."
 
-#. Default: Edit
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:52
-msgid "menu_edit"
-msgstr "Bearbeiten"
-
-#. Default: Settings
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:34
-msgid "menu_settings"
-msgstr "Einstellungen"
-
-#. Default: Log out
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:31
-msgid "menu_logout"
-msgstr "Abmelden"
-
-#. Default: Login
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:23
-msgid "menu_login"
-msgstr "Anmelden"
+#. Default: Please note that this is an automated email. You can not reply to
+#. it.
+#: plonetheme/nuplone/skin/templates/pwreset-email.pt:16
+msgid "automated_email"
+msgstr ""
+"Beachten Sie bitte, dass diese E-Mail automatisch generiert wurde. Sie "
+"können auf diese E-Mail nicht antworten."
 
 #. Default: Site menu
 #: plonetheme/nuplone/skin/templates/sitemenu.pt:17
 msgid "title_site_menu"
 msgstr "Sitemenü"
 
+#. Default: Login
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:23
+msgid "menu_login"
+msgstr "Anmelden"
+
+#. Default: Log out
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:31
+msgid "menu_logout"
+msgstr "Abmelden"
+
+#. Default: Settings
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:34
+msgid "menu_settings"
+msgstr "Einstellungen"
+
+#. Default: Edit
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:52
+msgid "menu_edit"
+msgstr "Bearbeiten"
+
 #. Default: Languages
 #: plonetheme/nuplone/tiles/templates/language.pt:10
 msgid "portlet_languages"
 msgstr "Sprachen"
 
-#. Default: Submit
-#: plonetheme/nuplone/tiles/templates/tabs.pt:16
-msgid "button_submit"
-msgstr "Absenden"
-
 #. Default: Search
 #: plonetheme/nuplone/tiles/templates/tabs.pt:16
 msgid "menu_search"
 msgstr "Suchen"
+
+#. Default: Submit
+#: plonetheme/nuplone/tiles/templates/tabs.pt:16
+msgid "button_submit"
+msgstr "Absenden"
 
 #. Default: URL
 #: plonetheme/nuplone/z3cform/wysiwyg.py:11
@@ -521,11 +518,11 @@ msgstr "Link in neuem Fenster öffnen"
 msgid "Information"
 msgstr "Informationen"
 
-#. Default: Year
-#: plonetheme/nuplone/z3cform/templates/date_input.pt:25
-#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:25
-msgid "label_year"
-msgstr "Jahr"
+#. Default: Day
+#: plonetheme/nuplone/z3cform/templates/date_input.pt:9
+#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:9
+msgid "label_day"
+msgstr "Tag"
 
 #. Default: Month
 #: plonetheme/nuplone/z3cform/templates/date_input.pt:16
@@ -533,26 +530,21 @@ msgstr "Jahr"
 msgid "label_month"
 msgstr "Monat"
 
-#. Default: Day
-#: plonetheme/nuplone/z3cform/templates/date_input.pt:9
-#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:9
-msgid "label_day"
-msgstr "Tag"
-
-#. Default: Save changes
-#: plonetheme/nuplone/z3cform/templates/editlink.pt:25
-msgid "button_save_changes"
-msgstr "Änderungen speichern"
+#. Default: Year
+#: plonetheme/nuplone/z3cform/templates/date_input.pt:25
+#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:25
+msgid "label_year"
+msgstr "Jahr"
 
 #. Default: Place a Link
 #: plonetheme/nuplone/z3cform/templates/editlink.pt:15
 msgid "header_place_link"
 msgstr "Link einfügen"
 
-#: plonetheme/nuplone/z3cform/templates/form.pt:27
-#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:21
-msgid "${legend}"
-msgstr "${legend}"
+#. Default: Save changes
+#: plonetheme/nuplone/z3cform/templates/editlink.pt:25
+msgid "button_save_changes"
+msgstr "Änderungen speichern"
 
 #: plonetheme/nuplone/z3cform/templates/namedimage_input.pt:14
 msgid "Remove image"
@@ -562,10 +554,13 @@ msgstr "Bild entfernen"
 msgid "Confirm password"
 msgstr "Passwort bestätigen"
 
-#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:9
-msgid "${status}"
-msgstr "${status}"
-
 #: plonetheme/nuplone/z3cform/templates/wysiwyg_input.pt:18
 msgid "Please enter text here"
 msgstr "Hier Text eingeben."
+
+#~ msgid "${legend}"
+#~ msgstr "${legend}"
+
+#~ msgid "${status}"
+#~ msgstr "${status}"
+

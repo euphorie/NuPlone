@@ -1,18 +1,20 @@
-# Translations template for NuPlone.
+# Slovak translations for NuPlone.
 # Copyright (C) 2011 Wichert Akkerman, Simplon
 # This file is distributed under the same license as the NuPlone project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: NuPlone 1.0rc9\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
-"POT-Creation-Date: 2011-08-25 10:40+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2012-12-07 17:16+0100\n"
+"PO-Revision-Date: 2012-12-07 17:17+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: sk <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
@@ -77,8 +79,7 @@ msgid "label_your_name"
 msgstr "Vaše meno"
 
 #. Default: Email address
-#: plonetheme/nuplone/skin/contact.py:32
-#: plonetheme/nuplone/skin/settings.py:20
+#: plonetheme/nuplone/skin/contact.py:32 plonetheme/nuplone/skin/settings.py:20
 msgid "label_email"
 msgstr "E-mailová adresa"
 
@@ -115,8 +116,8 @@ msgstr "Požiadavka na kontakt: ${subject}"
 #: plonetheme/nuplone/skin/pwreminder.py:106
 msgid "error_contactmail"
 msgstr ""
-"Počas spracovania vašej požiadavky na kontakt sa vyskytla chyba. Skúste to "
-"prosím neskôr."
+"Počas spracovania vašej požiadavky na kontakt sa vyskytla chyba. Skúste "
+"to prosím neskôr."
 
 #: plonetheme/nuplone/skin/contact.py:89
 msgid "Message sent"
@@ -128,7 +129,7 @@ msgid "message_switch_language"
 msgstr "Jazyk bol aktualizovaný"
 
 #. Default: Failed to switch language
-#: plonetheme/nuplone/skin/language.py:20
+#: plonetheme/nuplone/skin/language.py:21
 msgid "message_switch_language_error"
 msgstr "Zmena jazyka bola neúspešná"
 
@@ -170,16 +171,16 @@ msgstr "Obnoviť heslo"
 
 #. Default: For security reasons, we store your password encrypted, and cannot
 #. mail
-#. it to you. If you would like to reset your password, fill out the form
-#. below and
+#. it to you. If you would like to reset your password, fill out the form below
+#. and
 #. we will send you an email at the address you gave when you registered to
 #. start
 #. the process of resetting your password.
 #: plonetheme/nuplone/skin/pwreminder.py:52
 msgid "intro_password_reset_request"
 msgstr ""
-"Z bezpečnostných dôvodov uchovávame vaše heslo zašifrované a nemôžeme vám ho"
-" oznámiť e-mailom.Ak by ste chceli obnoviť svoje heslo, vyplňte"
+"Z bezpečnostných dôvodov uchovávame vaše heslo zašifrované a nemôžeme vám"
+" ho oznámiť e-mailom.Ak by ste chceli obnoviť svoje heslo, vyplňte"
 
 #. Default: Unknown username.
 #: plonetheme/nuplone/skin/pwreminder.py:73
@@ -267,44 +268,49 @@ msgstr "Vymazať"
 msgid "default_site_title"
 msgstr "Plone"
 
-#. Default: Cancel
-#: plonetheme/nuplone/skin/templates/delete.pt:23
-#: plonetheme/nuplone/z3cform/templates/editlink.pt:26
-msgid "button_cancel"
-msgstr "Zrušiť"
-
-#. Default: Delete
-#: plonetheme/nuplone/skin/templates/delete.pt:22
-msgid "button_delete"
-msgstr "Vymazať"
+#. Default: Delete "${title}"
+#: plonetheme/nuplone/skin/templates/delete.pt:12
+msgid "title_delete"
+msgstr "Vymazať \"${title}"
 
 #. Default: Are you sure you want to delete this object?
 #: plonetheme/nuplone/skin/templates/delete.pt:19
 msgid "delete_confirm"
 msgstr "Ste si istí, že chcete vymazať tento objekt?"
 
-#. Default: Delete "${title}"
-#: plonetheme/nuplone/skin/templates/delete.pt:12
-msgid "title_delete"
-msgstr "Vymazať \"${title}"
+#. Default: Delete
+#: plonetheme/nuplone/skin/templates/delete.pt:22
+msgid "button_delete"
+msgstr "Vymazať"
+
+#. Default: Cancel
+#: plonetheme/nuplone/skin/templates/delete.pt:23
+#: plonetheme/nuplone/z3cform/templates/editlink.pt:26
+msgid "button_cancel"
+msgstr "Zrušiť"
+
+#: plonetheme/nuplone/skin/templates/dexterity.pt:12
+msgid "Default fieldset"
+msgstr "Predvolená skupina polí"
 
 #: plonetheme/nuplone/skin/templates/dexterity.pt:18
 msgid "Group name"
 msgstr "Názov skupiny"
 
-#: plonetheme/nuplone/skin/templates/dexterity.pt:12
-msgid "Default fieldset"
-msgstr "Predvolená skupina polí"
+#. Default: Oops
+#: plonetheme/nuplone/skin/templates/error_generic.pt:10
+msgid "header_error_generic"
+msgstr "Oops"
 
 #. Default: Something went wrong while trying to serve your request.
 #: plonetheme/nuplone/skin/templates/error_generic.pt:13
 msgid "message_error_generic"
 msgstr "Pri pokuse o vybavenie vašej požiadavky došlo k chybe."
 
-#. Default: Oops
-#: plonetheme/nuplone/skin/templates/error_generic.pt:10
-msgid "header_error_generic"
-msgstr "Oops"
+#. Default: Not found
+#: plonetheme/nuplone/skin/templates/error_notfound.pt:10
+msgid "header_error_notfound"
+msgstr "Nenašlo sa"
 
 #. Default: The object you were looking for does not exist on this server.
 #. Please
@@ -312,45 +318,29 @@ msgstr "Oops"
 #: plonetheme/nuplone/skin/templates/error_notfound.pt:13
 msgid "message_error_notfound"
 msgstr ""
-"Objekt, ktorý ste hľadali, neexistuje na tomto serveri. Skontrolujte si, či "
-"ste zadali správny názov, alebo na nájdenie položky použite vyhľadávanie na "
-"stránke."
-
-#. Default: Not found
-#: plonetheme/nuplone/skin/templates/error_notfound.pt:10
-msgid "header_error_notfound"
-msgstr "Nenašlo sa"
-
-#. Default: If you forgot your password you can ${reset_password}.
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
-#: plonetheme/nuplone/skin/templates/login.pt:37
-msgid "message_reset_password"
-msgstr "Ak ste zabudli heslo, môžete ${reset_password}."
-
-#. Default: request a password reset
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
-#: plonetheme/nuplone/skin/templates/login.pt:37
-#: plonetheme/nuplone/skin/templates/login.pt:17
-msgid "reset_password"
-msgstr "požiadať o obnovenie hesla."
-
-#. Default: No account? Please ${request_account}.
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
-#: plonetheme/nuplone/skin/templates/login.pt:36
-msgid "message_no_account"
-msgstr "Nemáte konto? Prosím ${request_account}."
-
-#. Default: request an account
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
-#: plonetheme/nuplone/skin/templates/login.pt:36
-msgid "message_no_account_request_account"
-msgstr "požiadajte o konto"
+"Objekt, ktorý ste hľadali, neexistuje na tomto serveri. Skontrolujte si, "
+"či ste zadali správny názov, alebo na nájdenie položky použite "
+"vyhľadávanie na stránke."
 
 #. Default: Login
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:38
-#: plonetheme/nuplone/skin/templates/login.pt:32
-msgid "button_login"
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
+msgid "header_login"
 msgstr "Prihlásiť"
+
+#. Default: Unauthorized
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
+msgid "header_error_unauthorized"
+msgstr "Neoprávnený"
+
+#. Default: I am afraid you are not authorised to do this.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:18
+msgid "message_error_unauthorized"
+msgstr "Na túto činnosť nemáte oprávnenie."
+
+#. Default: You need to be logged in to access this page.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:23
+msgid "message_error_not_logged_in"
+msgstr "Pre prístup na túto stránku musíte byť prihlásení."
 
 #. Default: Credentials
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:29
@@ -358,39 +348,49 @@ msgstr "Prihlásiť"
 msgid "legend_credentials"
 msgstr "Poverenie"
 
-#. Default: You need to be logged in to access this page.
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:23
-msgid "message_error_not_logged_in"
-msgstr "Pre prístup na túto stránku musíte byť prihlásení."
-
-#. Default: I am afraid you are not authorised to do this.
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:18
-msgid "message_error_unauthorized"
-msgstr "Na túto činnosť nemáte oprávnenie."
-
-#. Default: Unauthorized
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
-msgid "header_error_unauthorized"
-msgstr "Neoprávnený"
-
 #. Default: Login
-#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
-msgid "header_login"
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:38
+#: plonetheme/nuplone/skin/templates/login.pt:32
+msgid "button_login"
 msgstr "Prihlásiť"
 
-#: plonetheme/nuplone/skin/templates/layout.pt:43
-msgid "Can not open site menu."
-msgstr "Menu stránok nie je možné otvoriť."
+#. Default: request an account
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
+#: plonetheme/nuplone/skin/templates/login.pt:36
+msgid "message_no_account_request_account"
+msgstr "požiadajte o konto"
+
+#. Default: No account? Please ${request_account}.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
+#: plonetheme/nuplone/skin/templates/login.pt:36
+msgid "message_no_account"
+msgstr "Nemáte konto? Prosím ${request_account}."
+
+#. Default: request a password reset
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
+#: plonetheme/nuplone/skin/templates/login.pt:17
+#: plonetheme/nuplone/skin/templates/login.pt:37
+msgid "reset_password"
+msgstr "požiadať o obnovenie hesla."
+
+#. Default: If you forgot your password you can ${reset_password}.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
+#: plonetheme/nuplone/skin/templates/login.pt:37
+msgid "message_reset_password"
+msgstr "Ak ste zabudli heslo, môžete ${reset_password}."
 
 #: plonetheme/nuplone/skin/templates/layout.pt:21
 msgid "Change order of items by dragging the handle"
 msgstr "Potiahnutím úchytu zmeňte poradie položiek"
 
-#. Default: Invalid login. If you forgot your password you can
-#. ${reset_password}.
-#: plonetheme/nuplone/skin/templates/login.pt:16
-msgid "message_invalid_login"
-msgstr "Neplatné prihlásenie. Ak ste zabudli heslo, môžete ${reset_password}."
+#: plonetheme/nuplone/skin/templates/layout.pt:43
+msgid "Can not open site menu."
+msgstr "Menu stránok nie je možné otvoriť."
+
+#. Default: Login
+#: plonetheme/nuplone/skin/templates/login.pt:12
+msgid "title_login"
+msgstr "Prihlásiť"
 
 #. Default: You are already logged in. Please logout first before trying to
 #. login
@@ -401,10 +401,32 @@ msgstr ""
 "Už ste prihlásení. Najprv sa prosím odhláste, potom sa skúste znovu "
 "prihlásiť."
 
-#. Default: Login
-#: plonetheme/nuplone/skin/templates/login.pt:12
-msgid "title_login"
-msgstr "Prihlásiť"
+#. Default: Invalid login. If you forgot your password you can
+#. ${reset_password}.
+#: plonetheme/nuplone/skin/templates/login.pt:16
+msgid "message_invalid_login"
+msgstr "Neplatné prihlásenie. Ak ste zabudli heslo, môžete ${reset_password}."
+
+#. Default: Dear user,
+#: plonetheme/nuplone/skin/templates/pwreset-email.pt:6
+msgid "reminder_email_header"
+msgstr "Vážený používateľ,"
+
+#. Default: a password reset for the account '${login}' has been requested. To
+#. reset your password please visit this URL:
+#: plonetheme/nuplone/skin/templates/pwreset-email.pt:8
+msgid "password_reset_intro"
+msgstr ""
+"požiadali ste o obnovenie hesla pre konto '${login}'. Pre obnovenie hesla"
+" prosím navštívte toto URL:"
+
+#. Default: If you did not request a password reset or have found your password
+#. please ignore this email. Your password will not be changed.
+#: plonetheme/nuplone/skin/templates/pwreset-email.pt:13
+msgid "password_reset_epilogue"
+msgstr ""
+"Ak ste nepožiadali o obnovenie hesla alebo ste svoje heslo našli, "
+"ignorujte prosím tento e-mail. Vaše heslo sa nezmení."
 
 #. Default: Please note that this is an automated email. You can not reply to
 #. it.
@@ -412,67 +434,45 @@ msgstr "Prihlásiť"
 msgid "automated_email"
 msgstr "Tento e-mail bol odoslaný automaticky. Nemôžete naň odpovedať."
 
-#. Default: If you did not request a password reset or have found your
-#. password
-#. please ignore this email. Your password will not be changed.
-#: plonetheme/nuplone/skin/templates/pwreset-email.pt:13
-msgid "password_reset_epilogue"
-msgstr ""
-"Ak ste nepožiadali o obnovenie hesla alebo ste svoje heslo našli, ignorujte "
-"prosím tento e-mail. Vaše heslo sa nezmení."
-
-#. Default: a password reset for the account '${login}' has been requested. To
-#. reset your password please visit this URL:
-#: plonetheme/nuplone/skin/templates/pwreset-email.pt:8
-msgid "password_reset_intro"
-msgstr ""
-"požiadali ste o obnovenie hesla pre konto '${login}'. Pre obnovenie hesla "
-"prosím navštívte toto URL:"
-
-#. Default: Dear user,
-#: plonetheme/nuplone/skin/templates/pwreset-email.pt:6
-msgid "reminder_email_header"
-msgstr "Vážený používateľ,"
-
-#. Default: Edit
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:52
-msgid "menu_edit"
-msgstr "Upraviť"
-
-#. Default: Settings
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:34
-msgid "menu_settings"
-msgstr "Nastavenia"
-
-#. Default: Log out
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:31
-msgid "menu_logout"
-msgstr "Odhlásiť"
+#. Default: Site menu
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:17
+msgid "title_site_menu"
+msgstr "Menu stránok"
 
 #. Default: Login
 #: plonetheme/nuplone/skin/templates/sitemenu.pt:23
 msgid "menu_login"
 msgstr "Prihlásiť"
 
-#. Default: Site menu
-#: plonetheme/nuplone/skin/templates/sitemenu.pt:17
-msgid "title_site_menu"
-msgstr "Menu stránok"
+#. Default: Log out
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:31
+msgid "menu_logout"
+msgstr "Odhlásiť"
+
+#. Default: Settings
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:34
+msgid "menu_settings"
+msgstr "Nastavenia"
+
+#. Default: Edit
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:52
+msgid "menu_edit"
+msgstr "Upraviť"
 
 #. Default: Languages
 #: plonetheme/nuplone/tiles/templates/language.pt:10
 msgid "portlet_languages"
 msgstr "Jazyky"
 
-#. Default: Submit
-#: plonetheme/nuplone/tiles/templates/tabs.pt:16
-msgid "button_submit"
-msgstr "Odovzdať"
-
 #. Default: Search
 #: plonetheme/nuplone/tiles/templates/tabs.pt:16
 msgid "menu_search"
 msgstr "Vyhľadať"
+
+#. Default: Submit
+#: plonetheme/nuplone/tiles/templates/tabs.pt:16
+msgid "button_submit"
+msgstr "Odovzdať"
 
 #. Default: URL
 #: plonetheme/nuplone/z3cform/wysiwyg.py:11
@@ -508,11 +508,11 @@ msgstr "Otvoriť odkaz v novom okne"
 msgid "Information"
 msgstr "Informácie"
 
-#. Default: Year
-#: plonetheme/nuplone/z3cform/templates/date_input.pt:25
-#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:25
-msgid "label_year"
-msgstr "Rok"
+#. Default: Day
+#: plonetheme/nuplone/z3cform/templates/date_input.pt:9
+#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:9
+msgid "label_day"
+msgstr "Deň"
 
 #. Default: Month
 #: plonetheme/nuplone/z3cform/templates/date_input.pt:16
@@ -520,26 +520,21 @@ msgstr "Rok"
 msgid "label_month"
 msgstr "Mesiac"
 
-#. Default: Day
-#: plonetheme/nuplone/z3cform/templates/date_input.pt:9
-#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:9
-msgid "label_day"
-msgstr "Deň"
-
-#. Default: Save changes
-#: plonetheme/nuplone/z3cform/templates/editlink.pt:25
-msgid "button_save_changes"
-msgstr "Uložiť zmeny"
+#. Default: Year
+#: plonetheme/nuplone/z3cform/templates/date_input.pt:25
+#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:25
+msgid "label_year"
+msgstr "Rok"
 
 #. Default: Place a Link
 #: plonetheme/nuplone/z3cform/templates/editlink.pt:15
 msgid "header_place_link"
 msgstr "Vložiť odkaz"
 
-#: plonetheme/nuplone/z3cform/templates/form.pt:27
-#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:21
-msgid "${legend}"
-msgstr "${legend}"
+#. Default: Save changes
+#: plonetheme/nuplone/z3cform/templates/editlink.pt:25
+msgid "button_save_changes"
+msgstr "Uložiť zmeny"
 
 #: plonetheme/nuplone/z3cform/templates/namedimage_input.pt:14
 msgid "Remove image"
@@ -549,10 +544,13 @@ msgstr "Odstrániť obrázok"
 msgid "Confirm password"
 msgstr "Potvrdiť heslo"
 
-#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:9
-msgid "${status}"
-msgstr "${status}"
-
 #: plonetheme/nuplone/z3cform/templates/wysiwyg_input.pt:18
 msgid "Please enter text here"
 msgstr "Tu zadajte prosím text."
+
+#~ msgid "${legend}"
+#~ msgstr "${legend}"
+
+#~ msgid "${status}"
+#~ msgstr "${status}"
+

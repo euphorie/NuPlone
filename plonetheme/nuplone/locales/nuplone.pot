@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NuPlone 1.2dev\n"
 "Report-Msgid-Bugs-To: wichert@wiggy.net\n"
-"POT-Creation-Date: 2012-02-29 20:35+0100\n"
+"POT-Creation-Date: 2012-12-07 17:16+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -512,21 +512,12 @@ msgstr ""
 msgid "button_save_changes"
 msgstr ""
 
-#: plonetheme/nuplone/z3cform/templates/form.pt:27
-#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:21
-msgid "${legend}"
-msgstr ""
-
 #: plonetheme/nuplone/z3cform/templates/namedimage_input.pt:14
 msgid "Remove image"
 msgstr ""
 
 #: plonetheme/nuplone/z3cform/templates/passwordconfirm_input.pt:17
 msgid "Confirm password"
-msgstr ""
-
-#: plonetheme/nuplone/z3cform/templates/wrappedform.pt:9
-msgid "${status}"
 msgstr ""
 
 #: plonetheme/nuplone/z3cform/templates/wysiwyg_input.pt:18
