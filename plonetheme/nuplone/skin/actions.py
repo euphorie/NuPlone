@@ -77,7 +77,9 @@ class Paste(grok.View):
             flash(_("message_paste_valueerror", default=u"You can not paste the copied data here."), "error")
         except zExceptions.Unauthorized:
             flash(_("message_paste_unauthorized", default=u"You are not allowed to paste here."), "error")
-        except CopyError:
+        except CopyError, e:
+            if "Insufficient Privileges" in e.message:
+                raise zExceptions.Unauthorized
             flash(_("message_paste_generic", default=u"No valid data found in the clipboard."), "error")
 
         self.request.response.redirect(context.absolute_url())
