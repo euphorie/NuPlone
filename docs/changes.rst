@@ -4,7 +4,7 @@ Changelog
 1.3 - Unreleased
 ----------------------
 
-- ...
+- Added new translations: Finnish and Lithuanian
 
 
 1.2 - December 7, 2012
