@@ -498,7 +498,7 @@ body {
 	font: 13px/20px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	display: block;
 	color: #4b4540;
-	padding: 0 40px;
+	padding: 0 40px 40px;
 	background: #e9e9e8;
 	float: left;
 	margin-right: -30px;
@@ -521,6 +521,14 @@ body {
 	font-weight: lighter;
 	font-size: 35px;
 	padding: 25px 20px 15px 40px;
+}
+
+#simulation h2 {
+	margin-bottom: 20px;
+	margin-top: 0;
+	line-height: 20px;
+	font-weight: bold;
+	font-size: 16px;
 }
 
 #simulation fieldset p.legend {
@@ -547,6 +555,17 @@ body {
 #simulation p.emphasis {
 	border: 4px double silver;
 	width: 563px;
+}
+
+#simulation ol.form-iteration {
+	list-style-type: none;
+	margin: 0;
+}
+
+#simulation ol.form-iteration li {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
 }
 
 /* @group Gallery */

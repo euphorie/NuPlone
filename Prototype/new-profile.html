@@ -25,7 +25,7 @@
     <!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
   </head>
   <body>
-  	<div id="content" class="edit-question">
+  	<div id="content" class="edit">
     	<div id="mainContent">
         <h1>
           <!-- InstanceBeginEditable name="Page title" -->New profile question<!-- InstanceEndEditable -->
@@ -46,11 +46,11 @@
             <label >Multiple item question <sup class="required">*</sup>
               <input type="text" id="form-widgets-label_multiple_present" name="form.widgets.label_multiple_present" value="Heeft u meer dan dan één viskar?" class="span-7 required textline-field" /></label>
       
-            <label >Single occurance prompt <sup class="required">*</sup>
+            <label >Single occurrence prompt <sup class="required">*</sup>
               <input type="text" id="form-widgets-label_single_occurance" name="form.widgets.label_single_occurance" value="Waar staat u viskar?" class="span-7 required textline-field" /></label>
             <dfn class="infoPanel" title="Information">This must ask to user for the name of the relevant location.</dfn>
 
-            <label >Multiple occurance prompt <sup class="required">*</sup>
+            <label >Multiple occurrence prompt <sup class="required">*</sup>
               <input type="text" id="form-widgets-label_multiple_occurances" name="form.widgets.label_multiple_occurances" value="Waar staan uw viskarren?" class="span-7 required textline-field" /></label>
             <dfn class="infoPanel" title="Information">This must ask to user for the names of all relevant locations.</dfn>
           </fieldset>
@@ -140,6 +140,57 @@
   </div>
           <!-- InstanceEndEditable -->
       </div>
+    	<div id="simulation">
+    		<h1>Fine dining</h1>
+    		      <section>
+    		
+    		    	<h2>Commercial manned guarding</h2>
+    		
+    		    	<p>
+    		    	  Curabitur gravida fermentum sapien lacinia tempus. Fusce congue gravida
+    		    	  leo non luctus. Morbi quis turpis neque, a tincidunt mi. Integer
+    		    	  scelerisque consectetur odio, nec sagittis turpis porttitor at. Fusce
+    		    	  porta posuere accumsan.
+    		    	</p>
+    		
+    		    	<fieldset class="comprehensive radioList">
+    		    		<legend>Does your organisation provide mobile patrolling?</legend>
+    		    		<label><input type="radio" name="profilequestion" value="yes" /> Yes</label>
+    		    		<label><input type="radio" name="profilequestion" value="no" /> No</label>
+    		    	</fieldset>
+    		
+    				<fieldset class="comprehensive radioList dependsOn-profilequestion-equals-yes">
+    					<legend>Do you offer this service in multiple locations?</legend>
+    					<label><input type="radio" name="profilequestiona" value="yes" /> Yes</label>
+    					<label><input type="radio" name="profilequestiona" checked="checked" value="no" /> No</label>
+    				</fieldset>
+    		
+    				<fieldset class="comprehensive dependsOn-profilequestion-equals-yes">
+    			        <legend>
+    			        	<span class="dependsOn-profilequestiona-equals-no">Name of location you would like to assess</span>
+    			        	<span class="dependsOn-profilequestiona-equals-yes">Name of locations you would like to assess</span>
+    			        </legend>
+    			        <ol class="form-iteration">
+    			          <li><input type="text" name="dummy"/> <button type="button" class="small remove dependsOn-profilequestiona-equals-yes">Remove</button></li>
+    			        </ol>
+    			        <p class="buttons addButton dependsOn-profilequestiona-equals-yes">
+    			        	<button class="small" type="button">Add another item</button>
+    			        </p>
+    		      	</fieldset>
+    		
+    		      </section>
+    		      <section>
+    		      	<h2>Alarm reponse</h2>
+    		
+    		      	<fieldset class="comprehensive radioList">
+    		      		<legend>Does your organisation provide alarm response?</legend>
+    		      		<label><input type="radio" name="profilequestion-2" value="yes" /> Yes</label>
+    		      		<label><input type="radio" name="profilequestion-2" value="no" /> No</label>
+    		      	</fieldset>
+    		      </section>
+    		
+    		      	<button class="floatAfter" type="submit">Continue</button>
+    	</div>
       <ul id="navigation" class="navigation">
         <li class="navTreeItem visualNoMarker navTreeItemInPath navTreeFolderish">
           <a href="#" class="state-missing-value navTreeItemInPath navTreeFolderish" title="">Varkenshouderij <em class="icon folder">(Folder)</em></a>
