@@ -518,6 +518,14 @@ body {
 	
 }
 
+@media only screen and (min-width: 1350px) {
+
+#simulation {
+	zoom: 100%;
+}
+	
+}
+
 #simulation h1 {
 	margin: 0 -40px 20px;
 	text-shadow: 0px 1px 0px rgba(255, 255, 255,1);
