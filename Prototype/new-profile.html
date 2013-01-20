@@ -22,12 +22,6 @@
     <script type="text/javascript" src="libraries/ui-1.8/jquery-ui.js"> </script>
     <script type="text/javascript" src="libraries/css_browser_selector.js"> </script>
     <script type="text/javascript" src="behaviour/behaviour.js"> </script>
-    <script type="text/javascript">
-      var plone = {portal_url: "./",
-                   context_url: location.href.replace("new-profile.html", "modules") };
-    </script>
-    <script type="text/javascript" src="../plonetheme/nuplone/z3cform/tiny_mce/tiny_mce_src.js"> </script>
-    <script type="text/javascript" src="../plonetheme/nuplone/z3cform/templates/behaviour.js"> </script>
     <!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
   </head>
   <body>
@@ -93,7 +87,7 @@
     		
     		    	<fieldset class="comprehensive radioList">
     		    		<legend class="example-question">Does your organisation provide mobile patrolling?</legend>
-    		    		<label><input type="radio" name="profilequestion" value="yes" /> Yes</label>
+    		    		<label><input type="radio" name="profilequestion" value="yes" checked="checked"/> Yes</label>
     		    		<label><input type="radio" name="profilequestion" value="no" /> No</label>
     		    	</fieldset>
     		
@@ -103,7 +97,7 @@
     					<label><input type="radio" name="profilequestiona" checked="checked" value="no" /> No</label>
     				</fieldset>
     		
-    				<fieldset class="comprehensive dependsOn-profilequestion-equals-yes">
+    				<fieldset class="comprehensive dependsOn-profilequestion-equals-yes dependsOn-profilequestiona">
     			        <legend>
     			        	<span class="dependsOn-profilequestiona-equals-no example-label_single_occurance">Name of location you would like to assess</span>
     			        	<span class="dependsOn-profilequestiona-equals-yes example-label_multiple_occurances">Name of locations you would like to assess</span>
@@ -117,17 +111,8 @@
     		      	</fieldset>
     		
     		      </section>
-    		      <section>
-    		      	<h2>Alarm reponse</h2>
     		
-    		      	<fieldset class="comprehensive radioList">
-    		      		<legend>Does your organisation provide alarm response?</legend>
-    		      		<label><input type="radio" name="profilequestion-2" value="yes" /> Yes</label>
-    		      		<label><input type="radio" name="profilequestion-2" value="no" /> No</label>
-    		      	</fieldset>
-    		      </section>
-    		
-    		      	<button class="floatAfter" type="submit">Continue</button>
+    		      	<button class="floatAfter" type="button">Continue</button>
     	</div>
       <ul id="navigation" class="navigation">
         <li class="navTreeItem visualNoMarker navTreeItemInPath navTreeFolderish">
@@ -233,58 +218,11 @@
       <p id="appendix">
         <a href="#">Link to sector organisation</a> | <a href="#">Disclaimer</a> | Design by <a href="http://www.cornae.com">Cornae</a>
       </p>
-  <script type="text/javascript">
-// <![CDATA
-(function() {
-function getText(node) {
-    var text="";
-
-    for (var child=node.firstChild; child!==null && child.nodeType===3; child=child.nextSibling)
-      text+=child.nodeValue;
-    return text;
-}
-
-function setText(node, text) {
-    var child;
-    while (node.firstChild!==null && node.firstChild.nodeType===3)
-      node.removeChild(node.firstChild);
-    var text_node = document.createTextNode(text);
-    if (node.firstChild===null)
-      node.appendChild(text_node);
-    else
-      node.insertBefore(text_node, node.firstChild);
-}
-
-jQuery("form :input").each(function() {
-    var selector = /form\.widgets\.(.*)/.exec(this.name);
-    if (selector===null)
-        return;
-    selector="#simulation .example-"+selector[1];
-    var $examples = jQuery(selector);
-    if ($examples.length===0)
-        return;
-    jQuery(this)
-        .focus(function() { jQuery(selector).addClass("focus"); })
-        .blur(function() { jQuery(selector).removeClass("focus"); })
-        .keyup(function() {
-            var text = this.value;
-            jQuery(selector).each(function() {
-                var $this = jQuery(this);
-                if (!$this.data("original")) {
-                    $this.data("original", getText(this));
-                    if (!text)
-                        return;
-                }
-                if (!text)
-                    text=$this.data("original");
-                setText(this, text);
-            });
-        })
-        .keyup();
-});
-})();
-
-// ]]>
-  </script>
+    <script type="text/javascript">
+      var plone = {portal_url: "./",
+                   context_url: location.href.replace("new-profile.html", "modules") };
+    </script>
+    <script type="text/javascript" src="../plonetheme/nuplone/z3cform/tiny_mce/tiny_mce_src.js"> </script>
+    <script type="text/javascript" src="../plonetheme/nuplone/z3cform/templates/behaviour.js"> </script>
   </body>
 <!-- InstanceEnd --></html>
