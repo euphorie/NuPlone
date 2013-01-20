@@ -87,7 +87,7 @@ var mapal = {
         for (i=0; i<command.on.length; i++) {
             parts=command.on[i];
 
-            $input = $form.find(":input[name="+parts[0]+"]");
+            $input = $form.find(":input[name='"+parts[0]+"']");
             if (!$input.length) {
                 result.push(false);
                 continue;
@@ -152,7 +152,7 @@ var mapal = {
                 continue;
             }
 
-            $result=$result.add($form.find(":input[name="+parts[0]+"]"));
+            $result=$result.add($form.find(":input[name='"+parts[0]+"']"));
         }
 
         return $result;
