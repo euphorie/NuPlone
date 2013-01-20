@@ -457,6 +457,12 @@ body {
 	padding-bottom: 110px;
 }
 
+#content.edit {
+	width: 100%;
+	padding-right: 0;
+	border-style: none;
+}
+
 #navigation {
 	width: 190px;
 	font-size: 10px;
@@ -464,9 +470,23 @@ body {
 	margin-top: -50px;
 }
 
+#content.edit #navigation {
+	margin-left: -1000px;
+}
+
 #mainContent {
 	float: right;
 	width: 510px;
+}
+
+#content.edit #mainContent {
+	float: left;
+	padding-right: 40px;
+	border-right: 1px solid silver;
+}
+
+#simulation {
+	
 }
 
 

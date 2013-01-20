@@ -28,7 +28,7 @@
 </script><!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
   </head>
   <body>
-  	<div id="content">
+  	<div id="content" class="edit">
     	<div id="mainContent">
         <h1>
           <!-- InstanceBeginEditable name="Page title" -->Stallen reinigen en spuiten<!-- InstanceEndEditable -->
@@ -60,6 +60,7 @@
           <label class="year" for="year">Year </label>
           <input type="text" maxlength="4" name="year" class="year"/>
         </fieldset>
+       </fieldset>
       <fieldset>
         <legend>Separation title</legend> 
         <label>Statement<sup class="required">*</sup>
@@ -191,7 +192,7 @@
       </div>
     </form>
 	   <!-- InstanceEndEditable -->
-      </div>
+      
       <ul id="navigation" class="navigation">
         <li class="navTreeItem visualNoMarker navTreeItemInPath navTreeFolderish">
           <a href="http://euphorie.hosting.simplon.biz/sectors/nl/intensvee/varkenshouderij" class="state-missing-value navTreeItemInPath navTreeFolderish" title="">Varkenshouderij <em class="icon folder">(Folder)</em></a>
@@ -292,62 +293,7 @@
         </p>
       </object>
     </p>
-    <div id="portlets" class="sortable">
-   	
-       
-      <div class="portlet contextual collapsible" id="portletVersioning">
-      	<h3>Survey versions</h3>
-          <div class="portletContent">
-          	<form action="#">
-            	<fieldset class="version">
-            	<legend>Survey 2010</legend>
-              <fieldset class="headerButtons">
-              	<button type="submit" class="micro" title="Create a duplicate of the selected survey">Duplicate</button>
-              	<button type="submit" class="micro" title="Push the selected version live with its latest changes">Publish</button>
-              </fieldset>
-              <ul class="radioList surveyVersions">
-            		<li class="published current">
-                	<em class="sample published current">Current / Published</em><input type="radio" name="version" checked="checked" value="dec" /> <label><a href="#">January 4 2009</a></label> <a href="#" class="floatAfter">Preview</a> <a href="#" class="floatAfter">Edit</a>
-                 </li>
-              </ul>
-              </fieldset>
-              
-            	<fieldset class="version">
-            	<legend>Survey 2009</legend>
-              <fieldset class="headerButtons">
-              	<button type="submit" class="micro" title="Create a duplicate of the selected survey">Duplicate</button>
-              	<button type="submit" class="micro" title="Push the selected version live with its latest changes">Publish</button>
-              </fieldset>
-              <ul class="radioList surveyVersions">
-            		<li class="current">
-                	<em class="sample current">Current</em><input type="radio" name="version" value="dec" /> <label><a href="#">December 12 2009</a></label> <a href="#" class="floatAfter">Preview</a> <a href="#" class="floatAfter">Edit</a>
-                 </li>
-            		<li class="published">
-                	<em class="sample published">Published</em><input checked="checked" type="radio" name="version" value="aug"/> <label><a href="#">August 5 2009</a></label> <a href="#" class="floatAfter">Preview</a> <a href="#" class="floatAfter">Edit</a> <a class="button icon upload floatAfter">Update</a>
-
-                </li>            		<li><input type="radio" name="version" value="mar" /> <label><a href="#">March 18 2009</a></label> <a href="#" class="floatAfter">Preview</a> <a href="#" class="floatAfter">Edit</a></li>
-
-            		<li><input type="radio" name="version" value="feb" /> <label><a href="#">February 2 2009</a></label> <a href="#" class="floatAfter">Preview</a> <a href="#" class="floatAfter">Edit</a></li>
-            		<li><input type="radio" name="version" value="jan" /> <label><a href="#">January 28 2009</a></label> <a href="#" class="floatAfter">Preview</a> <a href="#" class="floatAfter">Edit</a></li>
-              </ul>
-              </fieldset>
-              <p class="buttonBar top">
-              	<button type="submit" class="micro" title="Start to write a new survey. You will be asked whether you want to start off with a copy of an existing survey">Create new survey</button>
-              </p>
-             </form>
-             <div class="legend">
-             		<h5>Legend</h5>
-               <ul class="legend">
-                	<li class="published"><em class="sample published">Current</em> Version that is currently online</li>
-                	<li class="current"><em class="sample current">Current</em> Version you are currently reviewing</li>
-               </ul>
-               <p><em class="button icon upload">Update</em> = This version has changes that are currently unpublished. Click the update icon to bring all the changes live</p>
-             </div>
-          </div>
-      </div>
-     	
-	  
-	  </div>
+    
   <form id="workflowState" action="#" class="draft">
         <fieldset class="radioList">
           <p class="currentState">
