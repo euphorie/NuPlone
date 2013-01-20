@@ -180,7 +180,7 @@ dl.accordion dd {
 	margin: 0;
 }
 
-dl.accordion .colborder hr,dl.accordion .colborder p.question {
+dl.accordion .colborder hr,dl.accordion .colborder p.legend {
 	display: none;
 }
 
@@ -471,12 +471,14 @@ body {
 }
 
 #content.edit #navigation {
-	margin-left: -1000px;
+	display: none;
 }
 
 #mainContent {
 	float: right;
 	width: 510px;
+	margin-right: 40px;
+	padding-bottom: 40px;
 }
 
 #content.edit #mainContent {
@@ -485,9 +487,318 @@ body {
 	border-right: 1px solid silver;
 }
 
+
+
+/* @end */
+
+/* @group Simulation */
+
 #simulation {
+	width: 590px;
+	font: 13px/20px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	display: block;
+	color: #4b4540;
+	padding: 0 40px;
+	background: #e9e9e8 url(body.png) repeat-y center 0;
+	float: left;
+	margin-right: -30px;
+	zoom: 82.47%;
+}
+
+@media only screen and (max-width: 1210px) {
+
+#simulation {
+	zoom: 67%;
+}
 	
 }
+
+#simulation h1 {
+	margin: 0 -40px 20px;
+	text-shadow: 0px 1px 0px rgba(255, 255, 255,1);
+	background: #c8c3be url(header.png) no-repeat 0 0;
+	line-height: 38px;
+	font-weight: lighter;
+	font-size: 35px;
+	padding: 25px 20px 15px 40px;
+}
+
+#simulation fieldset p.legend {
+	width: 95%;
+	font-weight: normal;
+	font-style: normal;
+	color: #3f3f3f;
+	margin-bottom: 0;
+}
+
+#simulation div.message,
+#simulationp.message {
+	padding: 10px;
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	margin-bottom: 20px;
+	clear: left;
+	float: left;
+	width: 570px;
+}
+
+#simulation div.emphasis,
+#simulation p.emphasis {
+	border: 4px double silver;
+	width: 563px;
+}
+
+/* @group Gallery */
+
+#simulation .gallery {
+	width: 170px;
+	float: left;
+	margin-bottom: 0;
+}
+
+#simulation .gallery a {
+	float: left;
+	margin-bottom: 10px;
+	text-align: center;
+	width: 45px;
+	height: 45px;
+	margin-right: 10px;
+}
+
+#simulation .gallery a:first-child {
+	width: 155px;
+	height: auto;
+	margin-right: 0;
+}
+
+#simulation .gallery img {
+	max-width: 45px;
+	max-height: 45px;
+	float: none;
+	cursor: pointer;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 0;
+}
+
+#simulation .gallery a:first-child img {
+	max-height: 500px;
+	max-width: 155px;
+	width: 155px;
+	float: left;
+}
+
+
+
+/* @end */
+
+/* @group Fieldset Comprehensive */
+
+#simulation .comprehensive,
+#simulation .comprehensive fieldset,
+#simulation .concise fieldset.comprehensive,
+#simulation .compact fieldset.comprehensive {
+	width: 50%;
+    clear: left; /* Reverted: removing this breaks the evaluation form in FF */
+	border-bottom: 1px solid silver;
+	padding-left: 50%;
+	margin-bottom: 20px;
+}
+
+#simulation fieldset.comprehensive label,
+#simulation form.comprehensive fieldset label,
+#simulation form.concise fieldset.comprehensive label,
+#simulation form.compact fieldset.comprehensive label {
+	font-weight: normal;
+	font-style: normal;
+	position: static;
+	margin: 0;
+	padding: 0;
+	float: none;
+	width: auto;
+}
+
+#simulation .concise fieldset.comprehensive,
+#simulation .condensed fieldset.comprehensive {
+	border-bottom-style: none;
+	padding-bottom: 0;
+}
+
+#simulation fieldset.comprehensive label *,
+#simulation form.comprehensive fieldset label *,
+#simulation form.concise fieldset.comprehensive label *,
+#simulation fieldset.concise #simulation fieldset.comprehensive label *,
+#simulation form.compact fieldset.comprehensive label *
+ {
+	position: static;
+	margin-right: 0;
+	float: none;
+	vertical-align: baseline;
+}
+
+#simulation fieldset.comprehensive p.legend,
+#simulation form.comprehensive fieldset p.legend,
+#simulation form.concise fieldset.comprehensive p.legend,
+form.compact fieldset.comprehensive p.legend {
+	width: 90% !important;
+	display: inline;
+	text-align: left;
+	margin-right: 0;
+	padding: 0;
+	margin-bottom: 4px;
+	float: left;
+	margin-left: -100%;
+}
+
+/* @end */
+
+/* @group Buttons */
+
+#simulation .buttonBar {
+	margin-bottom: 20px;
+	width: 100%;
+	float: left;
+}
+
+#simulation .buttonBar.super {
+	float: right;
+	width: auto;
+	margin-top: -70px;
+}
+
+#simulation .buttonBar.super button.floatAfter {
+	margin-left: 10px;
+	position: static;
+	float: right;
+	margin-right: 0;
+}
+
+#simulation button,
+#simulation .button-medium,
+#simulation .accordion dt {
+	position: relative;
+	padding: 5px 20px 6px;
+	margin-right: 10px;
+	margin-left: 0;
+	color: #c8c3be;
+	border: 1px solid #7f7f7f;
+	text-shadow: 0px -1px 0px rgba(0,0,0,1);
+	line-height: 17px;
+	border-bottom: 1px solid #7f7f7f;
+	font-size: 13px;
+	-webkit-transition: all 0.3s;
+	text-decoration: none !important;
+	background-color: #332e29;
+	background-image: url(button-default.png);
+	background: -webkit-gradient(linear, 0% 100%, 0% 0%, from(#413C37), to(#726D68));
+	cursor: default !important;
+	display: inline-block;
+}
+
+#simulation button:active,
+#simulation .button-medium:active,
+#simulation .accordion dt:active {
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#413C37), to(#726D68));
+	text-shadow: rgba(0,0,0,0.5) 0 2px 3px;
+}
+
+#simulation button.small,
+#simulation .button-small,
+#simulation .button.small,
+#simulation .solutions ol li:before {
+	position: relative;
+	padding: 2px 6px 3px;
+	margin-right: 5px;
+	margin-left: 0;
+	background-image: url(button-default.png);
+	color: #c8c3be;
+	border: 1px solid #7f7f7f;
+	text-shadow: 0px -1px 0px rgba(0,0,0,1);
+	background-color: #332e29;
+	-webkit-background-size: 100%;
+	-moz-background-size: 100%;
+	background-size: 100%;
+	line-height: 9px;
+	border-bottom: 1px solid #7f7f7f;
+	font-size: 9px;
+	-webkit-transition: all 0.3s;
+	text-decoration: none;
+	cursor: default;
+	top: -2px;
+	display: inline-block;
+}
+
+#simulation button:hover,
+#simulation .button-medium:hover {
+	color: white;
+	border: 1px solid #332e29;
+}
+
+#simulation button.floatBefore,
+#simulation .button-medium.floatBefore {
+	float: right;
+	right: 50%;
+}
+
+#simulation button.floatAfter,
+#simulation .button-medium.floatAfter {
+	float: left;
+	left: 50%;
+}
+
+#simulation button.back,
+#simulation .button-medium.back {
+	background-image: none;
+	background-color: transparent;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	text-shadow: 0px 1px 0px rgba(255,255,255,0.6);
+	color: #7f7f7f;
+	border-style: none;
+	border-bottom-style: solid;
+	padding: 6px 0 0;
+	cursor: pointer;
+}
+
+#simulation button.back:hover,
+#simulation .button-medium.back:hover {
+	color: #332e29;
+	border-bottom: 1px solid #332e29;
+}
+
+#simulation a.button-medium.back {
+	padding-top: 8px;
+}
+
+#simulation button.link {
+	background-image: none;
+	background-color: transparent;
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+	border-style: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	text-shadow: none;
+	text-decoration: underline !important;
+	cursor: pointer !important;
+	letter-spacing: 0;
+}
+
+#simulation #simulation button[disabled="disabled"],
+#simulation .button.disabled,
+#simulation button[disabled="disabled"]:hover,
+#simulation .button.disabled:hover,
+#simulation button:disabled {
+	opacity: 0.6;
+	color: gray;
+}
+
+
+/* @end */
 
 
 
@@ -1401,8 +1712,8 @@ td.actions {
 	font-size: 10px;
 	color: silver;
 	width: 100%;
-	float: left;
 	margin-top: -80px;
+	clear: both;
 }
 
 #appendix a {
@@ -2695,7 +3006,7 @@ fieldset {
 	margin: 0 0 20px;
 }
 
-fieldset p.question,
+fieldset p.legend,
 fieldset p.legend {
 	width: 95% !important;
 	font-weight: bold;
@@ -2706,9 +3017,9 @@ fieldset p.legend {
 	text-transform: uppercase;
 }
 
-fieldset p.question:lang(el),
-fieldset p.question:lang(el-cy),
-fieldset p.question:lang(el-gr),
+fieldset p.legend:lang(el),
+fieldset p.legend:lang(el-cy),
+fieldset p.legend:lang(el-gr),
 fieldset p.legend:lang(el),
 fieldset p.legend:lang(el-cy),
 fieldset p.legend:lang(el-gr) {
@@ -2724,8 +3035,8 @@ form.concise fieldset {
 	position: relative;
 }
 
-fieldset.concise p.question,
-form.concise fieldset p.question,
+fieldset.concise p.legend,
+form.concise fieldset p.legend,
 fieldset.concise legend,
 form.concise fieldset legend {
 	width: auto;
@@ -2856,12 +3167,12 @@ fieldset.comprehenisve input[type="checkbox"],
 	margin-top: 3px;
 }
 
-fieldset.comprehensive p.question,
-form.comprehensive fieldset p.question,
 fieldset.comprehensive p.legend,
 form.comprehensive fieldset p.legend,
-form.concise fieldset.comprehensive p.question,
-form.compact fieldset.comprehensive p.question {
+fieldset.comprehensive p.legend,
+form.comprehensive fieldset p.legend,
+form.concise fieldset.comprehensive p.legend,
+form.compact fieldset.comprehensive p.legend {
 	width: 48% !important;
 	display: inline;
 	text-align: left;
@@ -2901,7 +3212,7 @@ form.condensed fieldset label {
 	margin-bottom: 20px;
 }
 
-fieldset.condensed p.question {
+fieldset.condensed p.legend {
 	width: auto;
 	margin: 0;
 	letter-spacing: 0;
@@ -2916,7 +3227,7 @@ fieldset.condensed label textarea {
 	margin-bottom: 0;
 }
 
-fieldset.condensed fieldset p.question {
+fieldset.condensed fieldset p.legend {
 	font-weight: normal;
 	font-style: normal;
 }
