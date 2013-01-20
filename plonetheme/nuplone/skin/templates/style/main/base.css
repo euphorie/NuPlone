@@ -505,6 +505,10 @@ body {
 	zoom: 82.47%;
 }
 
+#simulation .focus {
+	background-color: #fdfdc8;
+}
+
 @media only screen and (max-width: 1210px) {
 
 #simulation {
