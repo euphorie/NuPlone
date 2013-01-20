@@ -133,8 +133,9 @@ body.edit {
 	width: 100%;
 	z-index: 10000 !important;
 	overflow: hidden;
-	-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.6);
 	height: 40px;
+	border-style: none;
+	border-bottom: 1px solid #797979;
 }
 
 
