@@ -56,6 +56,7 @@ setup(name='NuPlone',
           'zope.i18n',
           'plone.dexterity',
           'z3c.zrtresource',
+          'lxml >=2.3.1',  # For security
       ],
       extras_require={
               'tests': ['plone.testing',
