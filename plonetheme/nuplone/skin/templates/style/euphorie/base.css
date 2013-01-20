@@ -46,16 +46,10 @@ body {
 #tabs #home a {
 	background: url(osha-logo.png) no-repeat 40px 0;
 	height: 40px;
-	display: block;
 	width: 177px;
-	text-decoration: none;
 	padding-left: 83px;
 	padding-top: 41px;
 	margin-top: -10px;
-	text-indent: 0;
-	font: 40px Abadi;
-	text-shadow: rgba(0,0,0,0.39) 0 1px 2px;
-	letter-spacing: 1px;
 }
 
 #tabs #home a:hover {
