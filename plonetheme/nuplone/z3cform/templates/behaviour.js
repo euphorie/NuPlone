@@ -99,7 +99,7 @@ var z3cform = {
         if (!$("#tinyControls").length) {
             $("<iframe/>")
                 .attr("id", "tinyControls")
-                .attr("src", plone.context_url+"/@@tiny-controls")
+                .attr("src", plone.context_url+"/@@tiny-controls.html")
                 .css("position", "absolute")
                 .css("top", "0px")
                 .css("left", "0px")
@@ -110,7 +110,7 @@ var z3cform = {
         if (!$("#linkFrame").length) {
             $("<iframe/>")
                 .attr("id", "linkFrame")
-                .attr("src", plone.context_url+"/@@edit-link")
+                .attr("src", plone.context_url+"/@@edit-link.html")
                 .attr("frameborder", "0")
                 .css("z-index", "1100")
                 .css("height", "250px")
