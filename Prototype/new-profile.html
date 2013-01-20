@@ -24,7 +24,7 @@
     <script type="text/javascript" src="behaviour/behaviour.js"> </script>
     <script type="text/javascript">
       var plone = {portal_url: "./",
-                   context_url: location.href.replace("edit-risk.html", "modules") };
+                   context_url: location.href.replace("new-profile.html", "modules") };
     </script>
     <script type="text/javascript" src="../plonetheme/nuplone/z3cform/tiny_mce/tiny_mce_src.js"> </script>
     <script type="text/javascript" src="../plonetheme/nuplone/z3cform/templates/behaviour.js"> </script>
@@ -75,27 +75,6 @@
       <button type="submit" id="form-buttons-cancel" name="form.buttons.cancel" value="Clear unsaved changes" class="submit-widget button-field standalone">Clear unsaved changes</button>
     </div>
   </form>
-
-  <style type="text/css">
-    .example {
-      background-color: #ebebeb;
-      border: 1px solid black;
-      padding: 10px;
-    }
-
-    .example fieldset.comprehensive p.legend {
-      width: 70% !important;
-    }
-
-    .example fieldset.concise label {
-      width: 45%;
-    }
-
-    .example .focus {
-      background: #fef5ba;
-    }
-
-  </style>
 
   <h2>Client example for single occurance.</h2>
 
@@ -150,7 +129,7 @@
     		<h1>Fine dining</h1>
     		      <section>
     		
-    		    	<h2>Commercial manned guarding</h2>
+    		    	<h2 class="example-title">Commercial manned guarding</h2>
     		
     		    	<p>
     		    	  Curabitur gravida fermentum sapien lacinia tempus. Fusce congue gravida
@@ -160,21 +139,21 @@
     		    	</p>
     		
     		    	<fieldset class="comprehensive radioList">
-    		    		<legend>Does your organisation provide mobile patrolling?</legend>
+    		    		<legend class="example-question">Does your organisation provide mobile patrolling?</legend>
     		    		<label><input type="radio" name="profilequestion" value="yes" /> Yes</label>
     		    		<label><input type="radio" name="profilequestion" value="no" /> No</label>
     		    	</fieldset>
     		
     				<fieldset class="comprehensive radioList dependsOn-profilequestion-equals-yes">
-    					<legend>Do you offer this service in multiple locations?</legend>
+    					<legend class="example-label_multiple_present">Do you offer this service in multiple locations?</legend>
     					<label><input type="radio" name="profilequestiona" value="yes" /> Yes</label>
     					<label><input type="radio" name="profilequestiona" checked="checked" value="no" /> No</label>
     				</fieldset>
     		
     				<fieldset class="comprehensive dependsOn-profilequestion-equals-yes">
     			        <legend>
-    			        	<span class="dependsOn-profilequestiona-equals-no">Name of location you would like to assess</span>
-    			        	<span class="dependsOn-profilequestiona-equals-yes">Name of locations you would like to assess</span>
+    			        	<span class="dependsOn-profilequestiona-equals-no example-label_single_occurance">Name of location you would like to assess</span>
+    			        	<span class="dependsOn-profilequestiona-equals-yes example-label_multiple_occurances">Name of locations you would like to assess</span>
     			        </legend>
     			        <ol class="form-iteration">
     			          <li><input type="text" name="dummy"/> <button type="button" class="small remove dependsOn-profilequestiona-equals-yes">Remove</button></li>
@@ -327,7 +306,7 @@ jQuery("form :input").each(function() {
     var selector = /form\.widgets\.(.*)/.exec(this.name);
     if (selector===null)
         return;
-    selector=".example .example-"+selector[1];
+    selector="#simulation .example-"+selector[1];
     var $examples = jQuery(selector);
     if ($examples.length===0)
         return;
