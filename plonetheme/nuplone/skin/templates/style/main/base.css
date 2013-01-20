@@ -581,6 +581,10 @@ body {
 	padding: 0;
 }
 
+#simulation ol.form-iteration li:before {
+	display: none;
+}
+
 /* @group Gallery */
 
 #simulation .gallery {
