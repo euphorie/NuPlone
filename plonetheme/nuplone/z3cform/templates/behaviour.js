@@ -1,4 +1,23 @@
 var z3cform = {
+    getText: function(node) {
+        var text="";
+
+        for (var child=node.firstChild; child!==null && child.nodeType===3; child=child.nextSibling)
+            text+=child.nodeValue;
+        return text;
+    },
+
+    setText: function(node, text) {
+        var child;
+        while (node.firstChild!==null && node.firstChild.nodeType===3)
+            node.removeChild(node.firstChild);
+        var text_node = document.createTextNode(text);
+        if (node.firstChild===null)
+            node.appendChild(text_node);
+        else
+            node.insertBefore(text_node, node.firstChild);
+    },
+
     renumberElement: function (el, attr, i) {
         var $el = $(el),
             buf = $el.attr(attr);
@@ -19,6 +38,36 @@ var z3cform = {
                 z3cform.renumberElement(this, "name", i);
             });
         }
+    },
+
+    initialiseExamples: function() {
+	$("form :input").each(function() {
+	    var selector = /form\.widgets\.(.*)/.exec(this.name);
+	    if (selector===null)
+		return;
+	    selector="#simulation .example-"+selector[1];
+	    var $examples = $(selector);
+	    if ($examples.length===0)
+		return;
+	    $(this)
+		.focus(function() { $(selector).addClass("focus"); })
+		.blur(function() { $(selector).removeClass("focus"); })
+		.keyup(function() {
+		    var text = this.value;
+		    $(selector).each(function() {
+			var $this = $(this);
+			if (!$this.data("original")) {
+			    $this.data("original", z3cform.getText(this));
+			    if (!text)
+				return;
+			}
+			if (!text)
+			    text=$this.data("original");
+			z3cform.setText(this, text);
+		    });
+		})
+		.keyup();
+	});
     },
 
     initialiseMultiwidget: function() {
@@ -146,7 +195,7 @@ var z3cform = {
             $div
                 .attr("id", id)
                 .addClass("rich")
-		.addClass("input")
+                .addClass("input")
                 .data("z3cform.name", $textarea.attr("name"))
                 .html($textarea.val());
             $textarea.replaceWith($div);
@@ -229,6 +278,7 @@ var z3cform = {
 
     init: function() {
         z3cform.initialiseMultiwidget();
+        z3cform.initialiseExamples();
     }
 };
 
