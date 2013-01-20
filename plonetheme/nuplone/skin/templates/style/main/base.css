@@ -450,9 +450,9 @@ body {
 }
 
 #content {
-	width: 730px;
+	width: 770px;
 	float: left;
-	padding-right: 61px;
+	padding-right: 21px;
 	border-right: 1px solid silver;
 	margin-top: 142px;
 	padding-bottom: 110px;
@@ -3447,8 +3447,6 @@ ul.radioRow li label {
 	left: 840px;
 	background-color: white;
 	width: 260px;
-  	-webkit-transition-property: width;
-  	-webkit-transition-duration: 2s, 1s;
 	line-height: 18px;
 }
 
