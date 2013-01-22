@@ -862,6 +862,7 @@ dl.grid dd {
 	float: left;
 	margin-bottom: 0;
 	margin-left: 0;
+	white-space: pre-line;
 }
 
 dl.grid dt label {
