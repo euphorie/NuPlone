@@ -23,7 +23,7 @@ class ExternalLinkSchema(form.Schema):
 class EditLink(form.SchemaForm):
     grok.context(Interface)
     grok.require("cmf.ModifyPortalContent")
-    grok.name("edit-link")
+    grok.name("edit-link.html")
     grok.template("editlink")
 
     ignoreContext = True
