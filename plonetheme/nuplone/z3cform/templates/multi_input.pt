@@ -3,11 +3,11 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="nuplone"
       tal:omit-tag="">
-  <fieldset tal:attributes="class string:concise multiWidget ${view/@@dependencies}">
-    <legend><tal:span replace="view/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup></legend> <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/>
+  <fieldset class="concise multiWidget ${view/@@dependencies}">
+    <legend>${view/label} <sup tal:condition="view/required" class="required">*</sup></legend> <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description">${description}</dfn>
     <input type="hidden" tal:replace="structure view/counterMarker" />
     <tal:field repeat="widget view/widgets"><tal:widget condition="python:widget.mode!='hidden'" replace="structure widget/render"/></tal:field>
-    <button type="button" class="add jsOnly" tal:attributes="value string:${view/form/action}/++widget++${view/field/__name__}/new-entry">Add new</button>
+    <button type="button" class="add jsOnly" i18n:translate="" value="${view/form/action}/++widget++${view/field/__name__}/new-entry">Add new</button>
   </fieldset>
 </html>
 

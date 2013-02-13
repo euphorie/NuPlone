@@ -1,11 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       tal:omit-tag="">
-  <button type="submit"
-          tal:attributes="id view/id;
-                          name view/name;
-                          value view/value;
-                          class view/klass;"
-          tal:content="view/title">Action title</button>
+  <button type="submit" id="${view/id}" name="${view/name}" value="${view/value}" class="${view/klass}">${view/title}</button>
 </html>
 

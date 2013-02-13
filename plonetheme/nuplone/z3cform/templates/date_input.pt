@@ -3,31 +3,16 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="nuplone"
       tal:omit-tag="">
-  <fieldset tal:attributes="class string:comprehensive date-eu ${view/@@dependencies}">
-    <legend><tal:span replace="view/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup></legend> <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/>
-    <input type="hidden" value="1" tal:attributes="name string:${view/name}-empty-marker" />
-    <label class="day" tal:attributes="for string:${view/id}-day" i18n:translate="label_day">Day</label>
-    <input type="text" maxlength="2"
-        tal:attributes="id string:${view/id}-day;
-                        name string:${view/name}-day;
-                        value view/day;
-                        disabled view/disabled;
-                        readonly view/readonly"/>
-    <label class="month" tal:attributes="for string:${view/id}-month" i18n:translate="label_month">Month</label>
-    <select tal:attributes="id string:${view/id}-month;
-                              name string:${view/name}-month;
-                              disabled view/disabled;
-                              readonly view/readonly">
-      <option tal:repeat="month view/months"
-              tal:attributes="value month/value; selected python:'selected' if month['selected'] else None"
-              tal:content="month/name">Month</option>
+  <fieldset class="comprehensive date-eu ${view/@@dependencies}${python:' error' if view.error is not None else ''}">
+    <legend>${view/label} <sup tal:condition="view/required" class="required">*</sup></legend> <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description">${description}</dfn>
+    <input type="hidden" value="1" name="${view/name}-empty-marker" />
+    <label class="day" for="${view/id}-day" i18n:translate="label_day">Day</label>
+    <input type="text" maxlength="2" id="${view/id}-day" name="${view/name}-day" value="${view/day}" disabled="${view/disabled}" readonly="${view/readonly}"/>
+    <label class="month" for="${view/id}-month" i18n:translate="label_month">Month</label>
+    <select id="${view/id}-month" name="${view/name}-month" disabled="${view/disabled}" readonly="${view/readonly}">
+      <option tal:repeat="month view/months" value="${month/value}" selected="${python:'selected' if month['selected'] else None}">${month/name}</option>
     </select>
-    <label class="year" tal:attributes="for string:${view/id}-year" i18n:translate="label_year">Year</label>
-    <input type="text" maxlength="2"
-        tal:attributes="id string:${view/id}-year;
-                        name string:${view/name}-year;
-                        value view/year;
-                        disabled view/disabled;
-                        readonly view/readonly"/>
+    <label class="year" for="${view/id}-year" i18n:translate="label_year">Year</label>
+    <input type="text" maxlength="2" id="${view/id}-year" name="${view/name}-year" value="${view/year}" disabled="${view/disabled}" readonly="${view/readonly}"/>
   </fieldset>
 </html>

@@ -4,20 +4,15 @@
       i18n:domain="nuplone"
       tal:omit-tag=""
       tal:define="item python:view.items[0]">
-  <fieldset tal:attributes="class string:comprehensive checkboxList ${view/@@dependencies}">
-    <legend><tal:span replace="item/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup></legend> <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/> 
+  <fieldset class="comprehensive checkboxList ${view/@@dependencies}${python:' error' if view.error is not None else ''}">
+    <legend>${item/label} <sup tal:condition="view/required" class="required">*</sup></legend> <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description">${description}</dfn>
 
     <label tal:repeat="item view/items"><input type="checkbox"
-      tal:define="checked item/checked"
-      tal:attributes="id view/id;
-                      name item/name; 
-                      value item/value;
-                      checked python:'checked' if checked else None;
-                      class view/klass;
-                      disabled view/disabled;
-                      readonly view/readonly;"
-                        /><tal:label i18n:domain="plone" i18n:translate="" replace="item/label"/></label>
+      tal:define="checked item/checked" id="${view/id}" name="${item/name}"
+      value="${item/value}" checked="${python:'checked' if checked else None}"
+      class="${view/klass}" disabled="${view/disabled}"
+      readonly="${view/readonly}" /><tal:label i18n:domain="plone" i18n:translate="" replace="item/label"/></label>
     <tal:error condition="view/error" replace="structure view/error/render|nothing"/>
-    <input type="hidden" value="1" tal:attributes="name string:${view/name}-empty-marker" />
+    <input type="hidden" value="1" name="${view/name}-empty-marker" />
   </fieldset>
 </html>

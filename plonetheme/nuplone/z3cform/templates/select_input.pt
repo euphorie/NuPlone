@@ -3,24 +3,14 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="nuplone"
       tal:omit-tag="">
-
-<div class="z3cFieldContainer" tal:attributes="class string:${view/@@dependencies} z3cFieldContainer">
-  <label><tal:span replace="view/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup>
-    <select tal:attributes="id view/id;
-                            name view/name;
-                            class view/klass;
-                            multiple view/multiple;
-                            size view/size">
-      <tal:item repeat="item view/items"><option
-          tal:define="selected item/selected" 
-          tal:attributes="id item/id;
-                         value item/value;
-                         selected python:'selected' if selected else None;"
-          tal:content="item/content">Option label</option></tal:item>
+<div class="${view/@@dependencies} z3cFieldContainer">
+  <label class="${python:'error' if view.error is not None else None}">${view/label} <sup tal:condition="view/required" class="required">*</sup>
+    <select id="${view/id}" name="${view/name}" class="${view/klass}" multiple="${view/multiple}" size="${view/size}">
+      <tal:item repeat="item view/items"><option tal:define="selected item/selected" id="${item/id}" value="${item/value}" selected="${python:'selected' if selected else None;}">${item/content}</option></tal:item>
     </select>
   <tal:error condition="view/error" replace="structure view/error/render|nothing"/> </label>
-    <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description" tal:content="description"/>
-  <input type="hidden" value="1" tal:attributes="name string:${view/name}-empty-marker" />
+<dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description">${description}</dfn>
+  <input type="hidden" value="1" name="${view/name}-empty-marker" />
 </div>
 </html>
 

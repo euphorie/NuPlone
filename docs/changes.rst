@@ -4,6 +4,9 @@ Changelog
 1.3 - Unreleased
 ----------------------
 
+- Update form markup to add an `error` class on labels for fields with
+  errors.
+
 - Added new translations: Finnish and Lithuanian
 
 
