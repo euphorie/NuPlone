@@ -4,10 +4,18 @@ Changelog
 1.3 - Unreleased
 ----------------------
 
+- Prevent the *Paste* action from being show in places where paste was
+  not allowed.
+
+- Stop the portlet sidebar from jumping from left to right on page lods.
+
+- Tighten lxml dependency to make sure security improvements in its html
+  cleaner are included.
+
 - Update form markup to add an `error` class on labels for fields with
   errors.
 
-- Added new translations: Finnish and Lithuanian
+- Add new translations: Finnish and Lithuanian
 
 
 1.2 - December 7, 2012
