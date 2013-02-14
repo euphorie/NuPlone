@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.3 - Unreleased
-----------------------
+1.3 - February 14, 2013 
+-----------------------
 
 - Prevent the *Paste* action from being show in places where paste was
   not allowed.
