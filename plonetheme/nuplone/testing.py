@@ -1,22 +1,18 @@
-from plone.app.testing import PloneSandboxLayer
-from plone.app.testing import PLONE_FIXTURE
+from plone.app.testing import PloneWithPackageLayer
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import FunctionalTesting
+import plonetheme.nuplone
 
-class NuPloneFixture(PloneSandboxLayer):
-    default_bases = (PLONE_FIXTURE, )
+FIXTURE = PloneWithPackageLayer(
+        zcml_filename="configure.zcml",
+        zcml_package=plonetheme.nuplone,
+        gs_profile_id="plonetheme.nuplone:default",
+        name="plonetheme.nuplone:fixture")
 
-    def setUpZope(self, app, configurationContext):
-        from zope.configuration import xmlconfig
-        import plonetheme.nuplone
-        xmlconfig.file("configure.zcml", plonetheme.nuplone, context=configurationContext)
-
-    def setupPloneSite(self, portal):
-        from plone.app.testing import applyProfile
-        applyProfile(portal, "plonetheme.nuplone:default")
-
-NUPLONE_FIXTURE = NuPloneFixture()
-NUPLONE_INTEGRATION_TESTING = IntegrationTesting(bases=(NUPLONE_FIXTURE,), name="NuPlone:Integration")
-NUPLONE_FUNCTIONAL_TESTING = FunctionalTesting(bases=(NUPLONE_FIXTURE,), name="NuPlone:Functional")
+NUPLONE_INTEGRATION_TESTING = IntegrationTesting(
+        bases=(FIXTURE,), name="NuPlone:Integration")
+NUPLONE_FUNCTIONAL_TESTING = FunctionalTesting(
+        bases=(FIXTURE,), name="NuPlone:Functional")
 
 
+__all__ = ['NUPLONE_INTEGRATION_TESTING', 'NUPLONE_FUNCTIONAL_TESTING']
