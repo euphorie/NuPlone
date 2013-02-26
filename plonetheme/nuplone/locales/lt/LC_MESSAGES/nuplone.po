@@ -19,12 +19,12 @@ msgstr ""
 #. Default: <pre-1900-date>
 #: plonetheme/nuplone/utils.py:189 plonetheme/nuplone/utils.py:202
 msgid "date_to_early"
-msgstr "<ankstesnė nei 1900 data>"
+msgstr "<data iki 1900 m.>"
 
 #. Default: ${date} at ${time}
 #: plonetheme/nuplone/utils.py:204
 msgid "format_datetime"
-msgstr "${date} ${time}"
+msgstr "${date}, ${time}"
 
 #. Default: Copied
 #: plonetheme/nuplone/skin/actions.py:33
@@ -34,37 +34,37 @@ msgstr "Nukopijuota"
 #. Default: Cut.
 #: plonetheme/nuplone/skin/actions.py:51
 msgid "message_cut_success"
-msgstr "Iškirpta."
+msgstr "Iškirpti."
 
 #. Default: It is not possible to move this object.
 #: plonetheme/nuplone/skin/actions.py:53
 msgid "message_cut_invalid"
-msgstr "Neįmanoma perkelti šio objekto."
+msgstr "Šio objekto perkelti negalima."
 
 #. Default: Pasted
 #: plonetheme/nuplone/skin/actions.py:73
 msgid "message_paste_succes"
-msgstr "Įklijuota"
+msgstr "Įterpta"
 
 #. Default: You can not paste the copied data here.
 #: plonetheme/nuplone/skin/actions.py:77
 msgid "message_paste_valueerror"
-msgstr "Jūs negalite čia įklijuoti nukopijuotų duomenų."
+msgstr "Čia iškirptų duomenų įterpti negalite."
 
 #. Default: You are not allowed to paste here.
 #: plonetheme/nuplone/skin/actions.py:79
 msgid "message_paste_unauthorized"
-msgstr "Jums neleidžiama įklijuoti čia."
+msgstr "Čia įterpti negalima."
 
 #. Default: No valid data found in the clipboard.
 #: plonetheme/nuplone/skin/actions.py:81
 msgid "message_paste_generic"
-msgstr "Mainų srityje nerasta galiojančių duomenų."
+msgstr "Iškarpinėje reikiamų duomenų nerasta."
 
 #. Default: Deletion cancelled
 #: plonetheme/nuplone/skin/actions.py:105
 msgid "message_delete_cancel"
-msgstr "Ištrynimas atšauktas"
+msgstr "Šalinimas atšauktas"
 
 #. Default: Object removed
 #: plonetheme/nuplone/skin/actions.py:114
@@ -80,7 +80,7 @@ msgstr "Jūsų vardas"
 #: plonetheme/nuplone/skin/contact.py:32
 #: plonetheme/nuplone/skin/settings.py:20
 msgid "label_email"
-msgstr "E. pašto adresas"
+msgstr "El. pašto adresas"
 
 #. Default: Subject
 #: plonetheme/nuplone/skin/contact.py:37
@@ -90,23 +90,23 @@ msgstr "Tema"
 #. Default: Your message
 #: plonetheme/nuplone/skin/contact.py:42
 msgid "label_contact_text"
-msgstr "Jūsų žinutė"
+msgstr "Jūsų pranešimas"
 
 #. Default: Contact
 #: plonetheme/nuplone/skin/contact.py:55
 msgid "header_contact"
-msgstr "Kontaktas"
+msgstr "Kontaktinė informacija"
 
 #. Default: Send
 #: plonetheme/nuplone/skin/contact.py:58
 #: plonetheme/nuplone/skin/pwreminder.py:60
 msgid "button_send"
-msgstr "Siųsti"
+msgstr "Siūsti"
 
 #. Default: Contact request: ${subject}
 #: plonetheme/nuplone/skin/contact.py:68
 msgid "contact_mail_subject"
-msgstr "Kontakto prašymas: ${subject}"
+msgstr "Kontaktinės informacijos užklausa: ${subject}"
 
 #. Default: An error occured while processing your contact request. Please try
 #. again later.
@@ -115,8 +115,8 @@ msgstr "Kontakto prašymas: ${subject}"
 #: plonetheme/nuplone/skin/pwreminder.py:106
 msgid "error_contactmail"
 msgstr ""
-"Apdorojant jūsų kontakto prašymą, įvyko klaida. Prašome pakartoti bandymą "
-"vėliau."
+"Apdorojant jūsų kontaktinės informacijos užklausą įvyko klaida. Pamėginkite "
+"dar kartą vėliau."
 
 #: plonetheme/nuplone/skin/contact.py:89
 msgid "Message sent"
@@ -130,22 +130,22 @@ msgstr "Kalba atnaujinta"
 #. Default: Failed to switch language
 #: plonetheme/nuplone/skin/language.py:21
 msgid "message_switch_language_error"
-msgstr "Nepavyko perjungti kalbos"
+msgstr "Kalbos pakeisti nepavyko"
 
 #. Default: You have been logged in.
 #: plonetheme/nuplone/skin/login.py:52
 msgid "message_logged_in"
-msgstr "Jūs buvote prijungtas."
+msgstr "Jūs prisijungėte."
 
 #. Default: You have been logged out.
 #: plonetheme/nuplone/skin/login.py:72
 msgid "message_logged_out"
-msgstr "Jūs buvote atjungtas."
+msgstr "Jūs išsiregistravote."
 
 #. Default: You were already logged out.
 #: plonetheme/nuplone/skin/login.py:74
 msgid "message_already_logged_out"
-msgstr "Jūs jau buvote atjungtas."
+msgstr "Jūs jau esate išsiregistravę."
 
 #. Default: Login
 #: plonetheme/nuplone/skin/pwreminder.py:25
@@ -166,7 +166,7 @@ msgstr "Slaptažodis"
 #. Default: Reset password
 #: plonetheme/nuplone/skin/pwreminder.py:50
 msgid "header_password_reset_request"
-msgstr "Atstatyti slaptažodį"
+msgstr "Atkurti slaptažodį"
 
 #. Default: For security reasons, we store your password encrypted, and cannot
 #. mail
@@ -178,11 +178,10 @@ msgstr "Atstatyti slaptažodį"
 #: plonetheme/nuplone/skin/pwreminder.py:52
 msgid "intro_password_reset_request"
 msgstr ""
-"Siekdami užtikrinti saugumą, mes saugome jūsų slaptažodį užšifruotą ir "
-"negalime jo išsiųsti e. paštu. Jei norite atstatyti savo slaptažodį, "
-"užpildykite žemiau pateiktą formą ir mes išsiųsime e. laišką jūsų "
-"registruojantis nurodytu adresu, kad būtų pradėta jūsų slaptažodžio "
-"atstatymo procedūra."
+"Saugumo sumetimais jūsų slaptažodis yra užkoduojamas, todėl jums jo atsiųsti"
+" el. paštu negalime. Jei slaptažodį norite atkurti, užpildykite žemiau "
+"esančią formą ir mes jums atsiųsite el. laišką adresu, kurį nurodėte "
+"teikdami slaptažodžio atkūrimo užklausą."
 
 #. Default: Unknown username.
 #: plonetheme/nuplone/skin/pwreminder.py:73
@@ -192,45 +191,43 @@ msgstr "Nežinomas naudotojo vardas."
 #. Default: No known email address for this user.
 #: plonetheme/nuplone/skin/pwreminder.py:79
 msgid "error_pwreset_no_email"
-msgstr "Tokio naudotojo e. pašto adresas nežinomas."
+msgstr "Nežinomas joks šio naudotojo el. pašto adresas."
 
 #. Default: Password reset for ${site}
 #: plonetheme/nuplone/skin/pwreminder.py:88
 msgid "password_reset_subject"
-msgstr "Prisijungimo prie ${site} slaptažodžio atstatymas"
+msgstr "${site} slaptažodžio atkūrimas."
 
 #. Default: An email with instructions for resetting your password has been
 #. sent.
 #: plonetheme/nuplone/skin/pwreminder.py:109
 msgid "info_pwrest_mail_sent"
-msgstr ""
-"Jums buvo išsiųstas e. laiškas su jūsų slaptažodžio atstatymo nurodymais."
+msgstr "Išsiųstas el. laiškas su nurodymais, kaip reikia atkurti slaptažodį."
 
 #. Default: Reset password
 #: plonetheme/nuplone/skin/pwreminder.py:125
 msgid "header_password_reset"
-msgstr "Atstatyti slaptažodį"
+msgstr "Atkurti slaptažodį"
 
 #. Default: Please fill out the form below to set your password.
 #: plonetheme/nuplone/skin/pwreminder.py:126
 msgid "intro_password_reset"
-msgstr ""
-"Prašome užpildyti žemiau pateiktą formą, kad nustatytumėte savo slaptažodį."
+msgstr "Norėdami atkurti slaptažodį, užpildykite žemiau esančią formą."
 
 #. Default: Change
 #: plonetheme/nuplone/skin/pwreminder.py:144
 msgid "button_change"
-msgstr "Pakeisti"
+msgstr "Keisti"
 
 #. Default: Your password has been reset.
 #: plonetheme/nuplone/skin/pwreminder.py:157
 msgid "password_reset"
-msgstr "Jūsų slaptažodis buvo atstatytas."
+msgstr "Jūsų slaptažodis atkurtas."
 
 #. Default: Full name
 #: plonetheme/nuplone/skin/settings.py:16
 msgid "label_fullname"
-msgstr "Vardas, pavardė"
+msgstr "Visas vardas"
 
 #. Default: Actions
 #: plonetheme/nuplone/skin/sitemenu.py:38
@@ -240,12 +237,12 @@ msgstr "Veiksmai"
 #. Default: Add new
 #: plonetheme/nuplone/skin/sitemenu.py:57
 msgid "menu_add_new"
-msgstr "Pridėti naują"
+msgstr "Įkelti naują"
 
 #. Default: Organise
 #: plonetheme/nuplone/skin/sitemenu.py:88
 msgid "menu_organise"
-msgstr "Organizuoti"
+msgstr "Tvarkyti"
 
 #. Default: Copy
 #: plonetheme/nuplone/skin/sitemenu.py:91
@@ -260,32 +257,32 @@ msgstr "Iškirpti"
 #. Default: Paste
 #: plonetheme/nuplone/skin/sitemenu.py:97
 msgid "menu_paste"
-msgstr "Įklijuoti"
+msgstr "Įterpti"
 
 #. Default: Delete
 #: plonetheme/nuplone/skin/sitemenu.py:100
 msgid "menu_delete"
-msgstr "Ištrinti"
+msgstr "Šalinti"
 
 #. Default: Plone
 #: plonetheme/nuplone/skin/tools.py:51
 msgid "default_site_title"
-msgstr "Telefonas"
+msgstr "Plone"
 
 #. Default: Delete "${title}"
 #: plonetheme/nuplone/skin/templates/delete.pt:12
 msgid "title_delete"
-msgstr "Ištrinti \"${title}"
+msgstr "Šalinti \"${title}"
 
 #. Default: Are you sure you want to delete this object?
 #: plonetheme/nuplone/skin/templates/delete.pt:19
 msgid "delete_confirm"
-msgstr "Ar tikrai norite ištrinti šį objektą?"
+msgstr "Ar tikrai norite pašalinti šį objektą?"
 
 #. Default: Delete
 #: plonetheme/nuplone/skin/templates/delete.pt:22
 msgid "button_delete"
-msgstr "Ištrinti"
+msgstr "Šalinti"
 
 #. Default: Cancel
 #: plonetheme/nuplone/skin/templates/delete.pt:23
@@ -295,7 +292,7 @@ msgstr "Atšaukti"
 
 #: plonetheme/nuplone/skin/templates/dexterity.pt:12
 msgid "Default fieldset"
-msgstr "Numatytasis laukų rinkinys"
+msgstr "Numatytasis laukelio nustatymas"
 
 #: plonetheme/nuplone/skin/templates/dexterity.pt:18
 msgid "Group name"
@@ -304,17 +301,17 @@ msgstr "Grupės pavadinimas"
 #. Default: Oops
 #: plonetheme/nuplone/skin/templates/error_generic.pt:10
 msgid "header_error_generic"
-msgstr "Oi!"
+msgstr "Oi..."
 
 #. Default: Something went wrong while trying to serve your request.
 #: plonetheme/nuplone/skin/templates/error_generic.pt:13
 msgid "message_error_generic"
-msgstr "Siekiant įvykdyti jūsų užklausą įvyko kažkokia klaida."
+msgstr "Bandant patenkinti jūsų užklausą įvyko klaida."
 
 #. Default: Not found
 #: plonetheme/nuplone/skin/templates/error_notfound.pt:10
 msgid "header_error_notfound"
-msgstr "Nerasta"
+msgstr "Rasti nepavyko"
 
 #. Default: The object you were looking for does not exist on this server.
 #. Please
@@ -322,28 +319,28 @@ msgstr "Nerasta"
 #: plonetheme/nuplone/skin/templates/error_notfound.pt:13
 msgid "message_error_notfound"
 msgstr ""
-"Objekto, kurio ieškojote, nėra šiame serveryje. Prašome patikrinti rašybą "
-"arba naudotis svetainės paieška norimam elementui rasti."
+"Objektų, kurių ieškote, šiame serveryje nėra. Patikrinkite rašybą arba "
+"ieškokite svetainės paiešką."
 
 #. Default: Login
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
 msgid "header_login"
-msgstr "Prisijungti"
+msgstr "Prisijungimas"
 
 #. Default: Unauthorized
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
 msgid "header_error_unauthorized"
-msgstr "Nėra įgaliojimų"
+msgstr "Neleistinas"
 
 #. Default: I am afraid you are not authorised to do this.
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:18
 msgid "message_error_unauthorized"
-msgstr "Atleiskite, bet jūs nesate įgalioti atlikti šį veiksmą."
+msgstr "Jūs neturite teisės to daryti."
 
 #. Default: You need to be logged in to access this page.
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:23
 msgid "message_error_not_logged_in"
-msgstr "Norint atidaryti šį puslapį, reikia būti prisijungus."
+msgstr "Norėdami patekti į šį puslapį, prisijunkite."
 
 #. Default: Credentials
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:29
@@ -355,45 +352,45 @@ msgstr "Kredencialai"
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:38
 #: plonetheme/nuplone/skin/templates/login.pt:32
 msgid "button_login"
-msgstr "Prisijungti"
+msgstr "Prisijungimas"
 
 #. Default: request an account
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
 #: plonetheme/nuplone/skin/templates/login.pt:36
 msgid "message_no_account_request_account"
-msgstr "paprašyti sukurti paskyrą"
+msgstr "paskyros užklausa"
 
 #. Default: No account? Please ${request_account}.
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
 #: plonetheme/nuplone/skin/templates/login.pt:36
 msgid "message_no_account"
-msgstr "Neturite paskyros? Prašome ${request_account}."
+msgstr "Neturite paskyros? Pateikite ${request_account}."
 
 #. Default: request a password reset
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
 #: plonetheme/nuplone/skin/templates/login.pt:17
 #: plonetheme/nuplone/skin/templates/login.pt:37
 msgid "reset_password"
-msgstr "paprašyti atstatyti slaptažodį"
+msgstr "slaptažodžio atkūrimo užklausa"
 
 #. Default: If you forgot your password you can ${reset_password}.
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
 #: plonetheme/nuplone/skin/templates/login.pt:37
 msgid "message_reset_password"
-msgstr "Jei užmiršote savo slaptažodį, galite ${reset_password}."
+msgstr "Pamiršę slaptažodį galite ${reset_password}."
 
 #: plonetheme/nuplone/skin/templates/layout.pt:21
 msgid "Change order of items by dragging the handle"
-msgstr "Pakeiskite elementų tvarką patraukę rankenėlę"
+msgstr "Keiskite elementų tvarką tempdami rankenėlę"
 
 #: plonetheme/nuplone/skin/templates/layout.pt:43
 msgid "Can not open site menu."
-msgstr "Neįmanoma atidaryti svetainės meniu."
+msgstr "Svetainės meniu atidaryti nepavyko."
 
 #. Default: Login
 #: plonetheme/nuplone/skin/templates/login.pt:12
 msgid "title_login"
-msgstr "Prisijungti"
+msgstr "Prisijungimas"
 
 #. Default: You are already logged in. Please logout first before trying to
 #. login
@@ -401,29 +398,29 @@ msgstr "Prisijungti"
 #: plonetheme/nuplone/skin/templates/login.pt:14
 msgid "message_already_logged_in"
 msgstr ""
-"Jūs jau esate prisijungę. Prašome pirmiausia atsijungti prieš vėl bandant "
-"prisijungti."
+"Jūs jau esate prisijungę. Pirmiausia išsiregistruokite, prieš bandydami dar "
+"kartąprisijungti."
 
 #. Default: Invalid login. If you forgot your password you can
 #. ${reset_password}.
 #: plonetheme/nuplone/skin/templates/login.pt:16
 msgid "message_invalid_login"
 msgstr ""
-"Negaliojantys prisijungimo duomenys. Jei pamiršote savo slaptažodį, galite "
+"Neteisingi prisijungimo duomenys. Jei pamiršote slaptažodį, galite "
 "${reset_password}."
 
 #. Default: Dear user,
 #: plonetheme/nuplone/skin/templates/pwreset-email.pt:6
 msgid "reminder_email_header"
-msgstr "Gerb. naudotojau(-a),"
+msgstr "Gerb. naudotojau,"
 
 #. Default: a password reset for the account '${login}' has been requested. To
 #. reset your password please visit this URL:
 #: plonetheme/nuplone/skin/templates/pwreset-email.pt:8
 msgid "password_reset_intro"
 msgstr ""
-"gavome prašymą atstatyti prisijungimo prie paskyros '${login}' slaptažodį. "
-"Norėdami atstatyti savo slaptažodį atidarykite šį URL:"
+"pateikta jūsų paskyros '${login}' slaptažodžio užklausa. Norėdami atskurti "
+"slaptažodį, apsilankykite adresu:"
 
 #. Default: If you did not request a password reset or have found your
 #. password
@@ -431,14 +428,16 @@ msgstr ""
 #: plonetheme/nuplone/skin/templates/pwreset-email.pt:13
 msgid "password_reset_epilogue"
 msgstr ""
-"Jei jūs neprašėte atstatyti slaptažodžio arba radote savo slaptažodį, "
-"prašome nekreipti dėmesio į šį e. laišką. Jūsų slaptažodis nebus pakeistas."
+"Jei slaptažodžio atkurti nenorite arba jį suradote, į šį laišką nekreipkite "
+"dėmesio. Jūsų slaptažodis pakeistas nebus."
 
 #. Default: Please note that this is an automated email. You can not reply to
 #. it.
 #: plonetheme/nuplone/skin/templates/pwreset-email.pt:16
 msgid "automated_email"
-msgstr "Šis e. laiškas sukurtas automatiškai, todėl į jį atsakyti nereikia."
+msgstr ""
+"Nepamirškite, kad tai yra automatiškai išsiųstas laiškas. Į jį atsakyti "
+"negalima."
 
 #. Default: Site menu
 #: plonetheme/nuplone/skin/templates/sitemenu.pt:17
@@ -448,17 +447,17 @@ msgstr "Svetainės meniu"
 #. Default: Login
 #: plonetheme/nuplone/skin/templates/sitemenu.pt:23
 msgid "menu_login"
-msgstr "Prisijungti"
+msgstr "Prisijungimas"
 
 #. Default: Log out
 #: plonetheme/nuplone/skin/templates/sitemenu.pt:31
 msgid "menu_logout"
-msgstr "Atsijungti"
+msgstr "Išsiregistravimas"
 
 #. Default: Settings
 #: plonetheme/nuplone/skin/templates/sitemenu.pt:34
 msgid "menu_settings"
-msgstr "Nuostatos"
+msgstr "Parametrai"
 
 #. Default: Edit
 #: plonetheme/nuplone/skin/templates/sitemenu.pt:52
@@ -473,17 +472,17 @@ msgstr "Kalbos"
 #. Default: Search
 #: plonetheme/nuplone/tiles/templates/tabs.pt:16
 msgid "menu_search"
-msgstr "Ieškoti"
+msgstr "Paieška"
 
 #. Default: Submit
 #: plonetheme/nuplone/tiles/templates/tabs.pt:16
 msgid "button_submit"
-msgstr "Išsiųsti"
+msgstr "Pateikti"
 
 #. Default: URL
 #: plonetheme/nuplone/z3cform/wysiwyg.py:11
 msgid "label_url"
-msgstr "URL"
+msgstr "URL adresas"
 
 #. Default: Title
 #: plonetheme/nuplone/z3cform/wysiwyg.py:15
@@ -493,7 +492,7 @@ msgstr "Pavadinimas"
 #. Default: Open link in new window
 #: plonetheme/nuplone/z3cform/wysiwyg.py:19
 msgid "label_new_window"
-msgstr "Atidaryti saitą naujame lange"
+msgstr "Atverti nuorodą naujame lange"
 
 #: plonetheme/nuplone/z3cform/templates/checkbox_input.pt:20
 #: plonetheme/nuplone/z3cform/templates/checkboxlist_input.pt:8
@@ -535,7 +534,7 @@ msgstr "Metai"
 #. Default: Place a Link
 #: plonetheme/nuplone/z3cform/templates/editlink.pt:15
 msgid "header_place_link"
-msgstr "Įdėti saitą"
+msgstr "Įkelti nuorodą"
 
 #. Default: Save changes
 #: plonetheme/nuplone/z3cform/templates/editlink.pt:25
@@ -544,7 +543,7 @@ msgstr "Išsaugoti pakeitimus"
 
 #: plonetheme/nuplone/z3cform/templates/namedimage_input.pt:14
 msgid "Remove image"
-msgstr "Šalinti vaizdą"
+msgstr "Pašalinti atvaizdą"
 
 #: plonetheme/nuplone/z3cform/templates/passwordconfirm_input.pt:17
 msgid "Confirm password"
@@ -552,4 +551,4 @@ msgstr "Patvirtinti slaptažodį"
 
 #: plonetheme/nuplone/z3cform/templates/wysiwyg_input.pt:18
 msgid "Please enter text here"
-msgstr "Įveskite tekstą čia"
+msgstr "Tekstą įveskite čia"
