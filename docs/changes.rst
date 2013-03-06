@@ -4,7 +4,7 @@ Changelog
 1.4 - Unreleased
 -----------------------
 
-- ...
+- Fix a syntax error in template for the select form widget.
 
 
 1.3 - February 14, 2013 
