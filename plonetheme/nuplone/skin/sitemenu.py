@@ -2,7 +2,6 @@ from five import grok
 from zope.interface import Interface
 
 from Acquisition import aq_inner
-from Acquisition import aq_parent
 from OFS.interfaces import ICopyContainer
 
 from Products.CMFCore.ActionInformation import ActionInfo
@@ -73,36 +72,37 @@ class Sitemenu(grok.View):
         """
         context = aq_inner(self.context)
         context_url = context.absolute_url()
-        parent = aq_parent(context)
         is_root = ISiteRoot.providedBy(context)
-
         pa = getToolByName(context, 'portal_actions')
         actions = pa.listActions(object=context,
-                                   categories= ('folder_buttons',),
-                                   ignore_categories=None)
+                                 categories=('folder_buttons',),
+                                 ignore_categories=None)
         ec = pa._getExprContext(context)
         actions = [ActionInfo(action, ec) for action in actions]
 
         menu = {"title": _("menu_organise", default=u"Organise")}
         children = menu["children"] = []
         for a in actions:
-            if a['visible'] and a['allowed'] and a['available'] and not is_root:
+            if a['visible'] and a['allowed'] \
+                    and a['available'] and not is_root:
+
                 if a['id'] == 'copy' and context.cb_isCopyable():
                     children.append({"title": _("menu_copy", default=u"Copy"),
                                     "url": "%s/@@copy" % context_url})
-                    
+
                 elif a['id'] == 'cut' and context.cb_isMoveable():
                     children.append({"title": _("menu_cut", default=u"Cut"),
                                     "url": "%s/@@cut" % context_url})
 
                 elif a['id'] == 'paste' and ICopyContainer.providedBy(context):
-                    children.append(
-                            {"title": _("menu_paste", default=u"Paste"),
-                            "url": "%s/@@paste" % context_url})
-
+                    children.append({
+                        "title": _("menu_paste", default=u"Paste"),
+                        "url": "%s/@@paste" % context_url
+                    })
                 elif a['id'] == 'delete':
-                    children.append(
-                            {"title": _("menu_delete", default=u"Delete"),
-                            "url": "%s/@@delete" % context_url})
+                    children.append({
+                        "title": _("menu_delete", default=u"Delete"),
+                        "url": "%s/@@delete" % context_url
+                    })
         if children:
             return menu
