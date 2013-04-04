@@ -11,3 +11,7 @@
 /parts
 /NuPlone.egg-info
 /.installed.cfg
+
+Prototype/.DS_Store
+
+.DS_Store
