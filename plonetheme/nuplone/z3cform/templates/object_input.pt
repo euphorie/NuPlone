@@ -6,8 +6,7 @@
   <fieldset class="concise ${view/@@dependencies}">
     <legend>${view/label} <sup tal:condition="view/required" class="required">*</sup></legend> <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description">${description}</dfn>
       <tal:field repeat="widget view/subform/widgets/values" replace="structure widget/render"/>
-      <input name="field-empty-marker" type="hidden" value="1"
-             tal:attributes="name string:${view/name}-empty-marker" />
+      <input name="${view/name}-empty-marker" type="hidden" value="1"/>
       <button type="button" class="remove jsOnly micro floatAfter" i18n:translate="">Remove</button>
   </fieldset>
 </html>
