@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.3.2 - Unreleased
+1.3.2 - April 4, 2013
 ---------------------
 
 - Fix editing of fields using object widgets: their data was not correctly
