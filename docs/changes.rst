@@ -4,8 +4,8 @@ Changelog
 1.3.2 - Unreleased
 ---------------------
 
-- ...
-
+- Fix editing of fields using object widgets: their data was not correctly
+  extracted due to a missing hidden form field.
 
 
 1.3.1 - March 6, 2013
