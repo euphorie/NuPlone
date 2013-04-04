@@ -4,6 +4,8 @@ Changelog
 1.3.2 - April 4, 2013
 ---------------------
 
+- Add standard makefile to manage builds and cleanup buildout configuration.
+
 - Fix editing of fields using object widgets: their data was not correctly
   extracted due to a missing hidden form field.
 

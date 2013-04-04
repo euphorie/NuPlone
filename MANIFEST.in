@@ -1,3 +1,4 @@
+include *.cfg
 include *.rst
 recursive-include plonetheme *.zcml
 recursive-include plonetheme/nuplone/locales *.po
