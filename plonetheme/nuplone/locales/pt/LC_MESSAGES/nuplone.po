@@ -6,15 +6,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: NuPlone 1.2dev\n"
-"Report-Msgid-Bugs-To: wichert@wiggy.net\n"
-"POT-Creation-Date: 2012-12-07 17:16+0100\n"
+"Report-Msgid-Bugs-To: euphorie@lists.wiggy.net\n"
+"POT-Creation-Date: 2013-04-04 14:32+0200\n"
 "PO-Revision-Date: 2012-11-08 15:30+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: pt <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "Generated-By: Babel 0.9.6\n"
 
 #. Default: <pre-1900-date>
@@ -58,17 +59,17 @@ msgid "message_paste_unauthorized"
 msgstr "Não é permitido colar aqui."
 
 #. Default: No valid data found in the clipboard.
-#: plonetheme/nuplone/skin/actions.py:81
+#: plonetheme/nuplone/skin/actions.py:83
 msgid "message_paste_generic"
 msgstr "Nenhum dado válido encontrado na área de transferência."
 
 #. Default: Deletion cancelled
-#: plonetheme/nuplone/skin/actions.py:105
+#: plonetheme/nuplone/skin/actions.py:107
 msgid "message_delete_cancel"
 msgstr "Eliminação cancelada"
 
 #. Default: Object removed
-#: plonetheme/nuplone/skin/actions.py:114
+#: plonetheme/nuplone/skin/actions.py:116
 msgid "message_delete_success"
 msgstr "Objeto removido"
 
@@ -78,7 +79,8 @@ msgid "label_your_name"
 msgstr "O seu nome"
 
 #. Default: Email address
-#: plonetheme/nuplone/skin/contact.py:32 plonetheme/nuplone/skin/settings.py:20
+#: plonetheme/nuplone/skin/contact.py:32
+#: plonetheme/nuplone/skin/settings.py:20
 msgid "label_email"
 msgstr "Endereço de e-mail"
 
@@ -115,8 +117,7 @@ msgstr "Pedido de contato: ${subject}"
 #: plonetheme/nuplone/skin/pwreminder.py:106
 msgid "error_contactmail"
 msgstr ""
-"Ocorreu um erro ao processar o pedido de contato. Tente novamente mais "
-"tarde."
+"Ocorreu um erro ao processar o pedido de contato. Tente novamente mais tarde."
 
 #: plonetheme/nuplone/skin/contact.py:89
 msgid "Message sent"
@@ -169,20 +170,16 @@ msgid "header_password_reset_request"
 msgstr "Repor palavra-passe"
 
 #. Default: For security reasons, we store your password encrypted, and cannot
-#. mail
-#. it to you. If you would like to reset your password, fill out the form below
-#. and
-#. we will send you an email at the address you gave when you registered to
-#. start
-#. the process of resetting your password.
+#. mail it to you. If you would like to reset your password, fill out the form
+#. below and we will send you an email at the address you gave when you
+#. registered to start the process of resetting your password.
 #: plonetheme/nuplone/skin/pwreminder.py:52
 msgid "intro_password_reset_request"
 msgstr ""
 "Por razões de segurança, a sua palavra-passe encriptada é guardada e não "
 "pode ser enviada por e-mail para si. Se pretender repor a palavra-passe, "
-"preencha o formulário em baixo ser-lhe-á enviado um e-mail para o "
-"endereço indicado no registo, para iniciar o processo de reposição da "
-"palavra-passe."
+"preencha o formulário em baixo ser-lhe-á enviado um e-mail para o endereço "
+"indicado no registo, para iniciar o processo de reposição da palavra-passe."
 
 #. Default: Unknown username.
 #: plonetheme/nuplone/skin/pwreminder.py:73
@@ -231,22 +228,22 @@ msgid "label_fullname"
 msgstr "Nome completo"
 
 #. Default: Actions
-#: plonetheme/nuplone/skin/sitemenu.py:38
+#: plonetheme/nuplone/skin/sitemenu.py:35
 msgid "menu_actions"
 msgstr "Ações"
 
 #. Default: Add new
-#: plonetheme/nuplone/skin/sitemenu.py:57
+#: plonetheme/nuplone/skin/sitemenu.py:53
 msgid "menu_add_new"
 msgstr "Adicionar novo"
 
 #. Default: Organise
-#: plonetheme/nuplone/skin/sitemenu.py:88
+#: plonetheme/nuplone/skin/sitemenu.py:83
 msgid "menu_organise"
 msgstr "Organizar"
 
 #. Default: Copy
-#: plonetheme/nuplone/skin/sitemenu.py:91
+#: plonetheme/nuplone/skin/sitemenu.py:90
 msgid "menu_copy"
 msgstr "Copiar"
 
@@ -256,12 +253,12 @@ msgid "menu_cut"
 msgstr "Cortar"
 
 #. Default: Paste
-#: plonetheme/nuplone/skin/sitemenu.py:97
+#: plonetheme/nuplone/skin/sitemenu.py:99
 msgid "menu_paste"
 msgstr "Colar"
 
 #. Default: Delete
-#: plonetheme/nuplone/skin/sitemenu.py:100
+#: plonetheme/nuplone/skin/sitemenu.py:104
 msgid "menu_delete"
 msgstr "Apagar"
 
@@ -315,13 +312,12 @@ msgid "header_error_notfound"
 msgstr "Não encontrado"
 
 #. Default: The object you were looking for does not exist on this server.
-#. Please
-#. check your spelling, or use the site search to find the item.
+#. Please check your spelling, or use the site search to find the item.
 #: plonetheme/nuplone/skin/templates/error_notfound.pt:13
 msgid "message_error_notfound"
 msgstr ""
-"O objeto que procura não existe neste servidor. Verifique a sua "
-"ortografia ou utilize a pesquisa do site para encontrar o item."
+"O objeto que procura não existe neste servidor. Verifique a sua ortografia "
+"ou utilize a pesquisa do site para encontrar o item."
 
 #. Default: Login
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
@@ -394,8 +390,7 @@ msgid "title_login"
 msgstr "Login"
 
 #. Default: You are already logged in. Please logout first before trying to
-#. login
-#. again.
+#. login again.
 #: plonetheme/nuplone/skin/templates/login.pt:14
 msgid "message_already_logged_in"
 msgstr ""
@@ -492,22 +487,22 @@ msgstr "Título"
 msgid "label_new_window"
 msgstr "Abrir ligação em nova janela"
 
-#: plonetheme/nuplone/z3cform/templates/checkbox_input.pt:20
+#: plonetheme/nuplone/z3cform/templates/checkbox_input.pt:15
 #: plonetheme/nuplone/z3cform/templates/checkboxlist_input.pt:8
 #: plonetheme/nuplone/z3cform/templates/date_input.pt:7
 #: plonetheme/nuplone/z3cform/templates/datetime_input.pt:7
 #: plonetheme/nuplone/z3cform/templates/multi_input.pt:7
-#: plonetheme/nuplone/z3cform/templates/namedfile_input.pt:16
+#: plonetheme/nuplone/z3cform/templates/namedfile_input.pt:11
 #: plonetheme/nuplone/z3cform/templates/namedimage_input.pt:10
 #: plonetheme/nuplone/z3cform/templates/object_input.pt:7
-#: plonetheme/nuplone/z3cform/templates/password_input.pt:17
-#: plonetheme/nuplone/z3cform/templates/passwordconfirm_input.pt:16
+#: plonetheme/nuplone/z3cform/templates/password_input.pt:9
+#: plonetheme/nuplone/z3cform/templates/passwordconfirm_input.pt:9
 #: plonetheme/nuplone/z3cform/templates/radio_input.pt:7
-#: plonetheme/nuplone/z3cform/templates/select_input.pt:22
-#: plonetheme/nuplone/z3cform/templates/text_input.pt:19
-#: plonetheme/nuplone/z3cform/templates/textarea_input.pt:19
-#: plonetheme/nuplone/z3cform/templates/textlines_input.pt:17
-#: plonetheme/nuplone/z3cform/templates/wysiwyg_input.pt:12
+#: plonetheme/nuplone/z3cform/templates/select_input.pt:12
+#: plonetheme/nuplone/z3cform/templates/text_input.pt:12
+#: plonetheme/nuplone/z3cform/templates/textarea_input.pt:12
+#: plonetheme/nuplone/z3cform/templates/textlines_input.pt:10
+#: plonetheme/nuplone/z3cform/templates/wysiwyg_input.pt:11
 msgid "Information"
 msgstr "Informação"
 
@@ -518,14 +513,14 @@ msgid "label_day"
 msgstr "Dia"
 
 #. Default: Month
-#: plonetheme/nuplone/z3cform/templates/date_input.pt:16
-#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:16
+#: plonetheme/nuplone/z3cform/templates/date_input.pt:11
+#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:11
 msgid "label_month"
 msgstr "Mês"
 
 #. Default: Year
-#: plonetheme/nuplone/z3cform/templates/date_input.pt:25
-#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:25
+#: plonetheme/nuplone/z3cform/templates/date_input.pt:15
+#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:15
 msgid "label_year"
 msgstr "Ano"
 
@@ -539,15 +534,24 @@ msgstr "Colocar uma ligação"
 msgid "button_save_changes"
 msgstr "Guardar alterações"
 
+#: plonetheme/nuplone/z3cform/templates/multi_input.pt:10
+msgid "Add new"
+msgstr ""
+
 #: plonetheme/nuplone/z3cform/templates/namedimage_input.pt:14
 msgid "Remove image"
 msgstr "Remover imagem"
 
-#: plonetheme/nuplone/z3cform/templates/passwordconfirm_input.pt:17
+#: plonetheme/nuplone/z3cform/templates/object_input.pt:10
+#, fuzzy
+msgid "Remove"
+msgstr "Remover imagem"
+
+#: plonetheme/nuplone/z3cform/templates/passwordconfirm_input.pt:10
 msgid "Confirm password"
 msgstr "Confirmar palavra-passe"
 
-#: plonetheme/nuplone/z3cform/templates/wysiwyg_input.pt:18
+#: plonetheme/nuplone/z3cform/templates/wysiwyg_input.pt:17
 msgid "Please enter text here"
 msgstr "Introduza o texto aqui"
 
@@ -556,4 +560,3 @@ msgstr "Introduza o texto aqui"
 
 #~ msgid "${status}"
 #~ msgstr "${status}"
-
