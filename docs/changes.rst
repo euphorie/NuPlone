@@ -4,7 +4,7 @@ Changelog
 1.3.3 - Unreleased
 ---------------------
 
-- ...
+- Added translation to Hungarian [pysailor]
 
 
 1.3.2 - April 4, 2013

@@ -1,0 +1,557 @@
+# Translations template for NuPlone.
+# Copyright (C) 2012 Wichert Akkerman, Simplon
+# This file is distributed under the same license as the NuPlone project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: NuPlone 1.2dev\n"
+"Report-Msgid-Bugs-To: euphorie@lists.wiggy.net\n"
+"POT-Creation-Date: 2013-04-04 14:42+0200\n"
+"PO-Revision-Date: 2013-04-08 00:30+0100\n"
+"Last-Translator: Florakalman <florakalman@yahoo.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 0.9.6\n"
+"X-Generator: Poedit 1.5.5\n"
+
+#. Default: <pre-1900-date>
+#: plonetheme/nuplone/utils.py:189 plonetheme/nuplone/utils.py:202
+msgid "date_to_early"
+msgstr "<pre-1900-date>"
+
+#. Default: ${date} at ${time}
+#: plonetheme/nuplone/utils.py:204
+msgid "format_datetime"
+msgstr "${date}-n ${time}-kor"
+
+#. Default: Copied
+#: plonetheme/nuplone/skin/actions.py:33
+msgid "message_copy_sucess"
+msgstr "Másolt"
+
+#. Default: Cut.
+#: plonetheme/nuplone/skin/actions.py:51
+msgid "message_cut_success"
+msgstr "Kivágás."
+
+#. Default: It is not possible to move this object.
+#: plonetheme/nuplone/skin/actions.py:53
+msgid "message_cut_invalid"
+msgstr "Ezt az objektumot nem lehet mozgatni."
+
+#. Default: Pasted
+#: plonetheme/nuplone/skin/actions.py:73
+msgid "message_paste_succes"
+msgstr "Beillesztve"
+
+#. Default: You can not paste the copied data here.
+#: plonetheme/nuplone/skin/actions.py:77
+msgid "message_paste_valueerror"
+msgstr "A másolt adatokat nem illesztheti be ide."
+
+#. Default: You are not allowed to paste here.
+#: plonetheme/nuplone/skin/actions.py:79
+msgid "message_paste_unauthorized"
+msgstr "Ide nem lehet beilleszteni."
+
+#. Default: No valid data found in the clipboard.
+#: plonetheme/nuplone/skin/actions.py:83
+msgid "message_paste_generic"
+msgstr "A vágólapon nincsenek érvényes adatok."
+
+#. Default: Deletion cancelled
+#: plonetheme/nuplone/skin/actions.py:107
+msgid "message_delete_cancel"
+msgstr "Törlés megszakítva"
+
+#. Default: Object removed
+#: plonetheme/nuplone/skin/actions.py:116
+msgid "message_delete_success"
+msgstr "Objektum eltávolítva"
+
+#. Default: Your name
+#: plonetheme/nuplone/skin/contact.py:27
+msgid "label_your_name"
+msgstr "Az Ön neve"
+
+#. Default: Email address
+#: plonetheme/nuplone/skin/contact.py:32
+#: plonetheme/nuplone/skin/settings.py:20
+msgid "label_email"
+msgstr "E-mailcím"
+
+#. Default: Subject
+#: plonetheme/nuplone/skin/contact.py:37
+msgid "label_subject"
+msgstr "Tárgy"
+
+#. Default: Your message
+#: plonetheme/nuplone/skin/contact.py:42
+msgid "label_contact_text"
+msgstr "Az Ön üzenete"
+
+#. Default: Contact
+#: plonetheme/nuplone/skin/contact.py:55
+msgid "header_contact"
+msgstr "Kapcsolattartó"
+
+#. Default: Send
+#: plonetheme/nuplone/skin/contact.py:58
+#: plonetheme/nuplone/skin/pwreminder.py:60
+msgid "button_send"
+msgstr "Küldés"
+
+#. Default: Contact request: ${subject}
+#: plonetheme/nuplone/skin/contact.py:68
+msgid "contact_mail_subject"
+msgstr "Kapcsolattartó igény: ${subject}"
+
+#. Default: An error occured while processing your contact request. Please try
+#. again later.
+#: plonetheme/nuplone/skin/contact.py:82 plonetheme/nuplone/skin/contact.py:86
+#: plonetheme/nuplone/skin/pwreminder.py:102
+#: plonetheme/nuplone/skin/pwreminder.py:106
+msgid "error_contactmail"
+msgstr ""
+"A kapcsolattartó igény feldolgozása közben hiba történt. Kérjük, később "
+"próbálja újra."
+
+#: plonetheme/nuplone/skin/contact.py:89
+msgid "Message sent"
+msgstr "Üzenet elküldve"
+
+#. Default: Language updated
+#: plonetheme/nuplone/skin/language.py:18
+msgid "message_switch_language"
+msgstr "Nyelv frissítve"
+
+#. Default: Failed to switch language
+#: plonetheme/nuplone/skin/language.py:21
+msgid "message_switch_language_error"
+msgstr "A nyelv átváltása nem sikerült"
+
+#. Default: You have been logged in.
+#: plonetheme/nuplone/skin/login.py:52
+msgid "message_logged_in"
+msgstr "Ön bejelentkezett."
+
+#. Default: You have been logged out.
+#: plonetheme/nuplone/skin/login.py:72
+msgid "message_logged_out"
+msgstr "Ön kijelentkezett."
+
+#. Default: You were already logged out.
+#: plonetheme/nuplone/skin/login.py:74
+msgid "message_already_logged_out"
+msgstr "Már kijelentkezett."
+
+#. Default: Login
+#: plonetheme/nuplone/skin/pwreminder.py:25
+#: plonetheme/nuplone/skin/pwreminder.py:32
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:31
+#: plonetheme/nuplone/skin/templates/login.pt:25
+msgid "label_login"
+msgstr "Bejelentkezés"
+
+#. Default: Password
+#: plonetheme/nuplone/skin/pwreminder.py:36
+#: plonetheme/nuplone/skin/settings.py:24
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:33
+#: plonetheme/nuplone/skin/templates/login.pt:27
+msgid "label_password"
+msgstr "Jelszó"
+
+#. Default: Reset password
+#: plonetheme/nuplone/skin/pwreminder.py:50
+msgid "header_password_reset_request"
+msgstr "Jelszó alaphelyzetbe állítása"
+
+#. Default: For security reasons, we store your password encrypted, and cannot
+#. mail it to you. If you would like to reset your password, fill out the form
+#. below and we will send you an email at the address you gave when you
+#. registered to start the process of resetting your password.
+#: plonetheme/nuplone/skin/pwreminder.py:52
+msgid "intro_password_reset_request"
+msgstr ""
+"A jelszavát biztonsági okokból kódolva tároljuk, és nem tudjuk elküldeni e-"
+"mailben. Ha szeretné visszaállítani a jelszót, akkor töltse ki a lenti "
+"formanyomtatványt. Ezután kap tőlünk egy e-mailt a regisztrációkor megadott "
+"címre, amelynek segítségével elindíthatja a jelszó visszaállításának "
+"folyamatát."
+
+#. Default: Unknown username.
+#: plonetheme/nuplone/skin/pwreminder.py:73
+msgid "error_pwreset_unknown_user"
+msgstr "Ismeretlen felhasználói név."
+
+#. Default: No known email address for this user.
+#: plonetheme/nuplone/skin/pwreminder.py:79
+msgid "error_pwreset_no_email"
+msgstr "Ehhez a felhasználóhoz nem tartozik ismert e-mailcím."
+
+#. Default: Password reset for ${site}
+#: plonetheme/nuplone/skin/pwreminder.py:88
+msgid "password_reset_subject"
+msgstr "${site} jelszavának visszaállítása"
+
+#. Default: An email with instructions for resetting your password has been
+#. sent.
+#: plonetheme/nuplone/skin/pwreminder.py:109
+msgid "info_pwrest_mail_sent"
+msgstr ""
+"Elküldünk Önnek egy e-mailt a jelszó visszaállítására vonatkozó útmutatóval."
+
+#. Default: Reset password
+#: plonetheme/nuplone/skin/pwreminder.py:125
+msgid "header_password_reset"
+msgstr "Jelszó visszaállítása"
+
+#. Default: Please fill out the form below to set your password.
+#: plonetheme/nuplone/skin/pwreminder.py:126
+msgid "intro_password_reset"
+msgstr "A jelszó beállításához töltse ki a lenti formanyomtatványt."
+
+#. Default: Change
+#: plonetheme/nuplone/skin/pwreminder.py:144
+msgid "button_change"
+msgstr "Megváltoztatás"
+
+#. Default: Your password has been reset.
+#: plonetheme/nuplone/skin/pwreminder.py:157
+msgid "password_reset"
+msgstr "A jelszó visszaállítása megtörtént."
+
+#. Default: Full name
+#: plonetheme/nuplone/skin/settings.py:16
+msgid "label_fullname"
+msgstr "Teljes név"
+
+#. Default: Actions
+#: plonetheme/nuplone/skin/sitemenu.py:35
+msgid "menu_actions"
+msgstr "Lépések"
+
+#. Default: Add new
+#: plonetheme/nuplone/skin/sitemenu.py:53
+msgid "menu_add_new"
+msgstr "Új hozzáadása"
+
+#. Default: Organise
+#: plonetheme/nuplone/skin/sitemenu.py:83
+msgid "menu_organise"
+msgstr "Rendezés"
+
+#. Default: Copy
+#: plonetheme/nuplone/skin/sitemenu.py:90
+msgid "menu_copy"
+msgstr "Másolás"
+
+#. Default: Cut
+#: plonetheme/nuplone/skin/sitemenu.py:94
+msgid "menu_cut"
+msgstr "Kivágás"
+
+#. Default: Paste
+#: plonetheme/nuplone/skin/sitemenu.py:99
+msgid "menu_paste"
+msgstr "Beillesztés"
+
+#. Default: Delete
+#: plonetheme/nuplone/skin/sitemenu.py:104
+msgid "menu_delete"
+msgstr "Törlés"
+
+#. Default: Plone
+#: plonetheme/nuplone/skin/tools.py:51
+msgid "default_site_title"
+msgstr "Plone"
+
+#. Default: Delete "${title}"
+#: plonetheme/nuplone/skin/templates/delete.pt:12
+msgid "title_delete"
+msgstr "\"${title} törlése"
+
+#. Default: Are you sure you want to delete this object?
+#: plonetheme/nuplone/skin/templates/delete.pt:19
+msgid "delete_confirm"
+msgstr "Biztosan tötölni szeretné ezt az objektumot?"
+
+#. Default: Delete
+#: plonetheme/nuplone/skin/templates/delete.pt:22
+msgid "button_delete"
+msgstr "Törlés"
+
+#. Default: Cancel
+#: plonetheme/nuplone/skin/templates/delete.pt:23
+#: plonetheme/nuplone/z3cform/templates/editlink.pt:26
+msgid "button_cancel"
+msgstr "Mégse"
+
+#: plonetheme/nuplone/skin/templates/dexterity.pt:12
+msgid "Default fieldset"
+msgstr "Alapértelmezett mezőbeállítás"
+
+#: plonetheme/nuplone/skin/templates/dexterity.pt:18
+msgid "Group name"
+msgstr "Csoport neve"
+
+#. Default: Oops
+#: plonetheme/nuplone/skin/templates/error_generic.pt:10
+msgid "header_error_generic"
+msgstr "Ajjaj"
+
+#. Default: Something went wrong while trying to serve your request.
+#: plonetheme/nuplone/skin/templates/error_generic.pt:13
+msgid "message_error_generic"
+msgstr "A kérés teljesítése során valami rosszul sikerült."
+
+#. Default: Not found
+#: plonetheme/nuplone/skin/templates/error_notfound.pt:10
+msgid "header_error_notfound"
+msgstr "Nem található"
+
+#. Default: The object you were looking for does not exist on this server.
+#. Please check your spelling, or use the site search to find the item.
+#: plonetheme/nuplone/skin/templates/error_notfound.pt:13
+msgid "message_error_notfound"
+msgstr ""
+"A keresett objektum ezen a szerveren nem található. Ellenőrizze, hogy nincs-"
+"e gépelési hiba, illetve használja a keresőt az elem megkereséséhez."
+
+#. Default: Login
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
+msgid "header_login"
+msgstr "Bejelentkezés"
+
+#. Default: Unauthorized
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
+msgid "header_error_unauthorized"
+msgstr "Nem engedélyezett"
+
+#. Default: I am afraid you are not authorised to do this.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:18
+msgid "message_error_unauthorized"
+msgstr "Sajnos nincs jogosultsága ehhez."
+
+#. Default: You need to be logged in to access this page.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:23
+msgid "message_error_not_logged_in"
+msgstr "Az oldal megnyitásához be kell jelentkezni."
+
+#. Default: Credentials
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:29
+#: plonetheme/nuplone/skin/templates/login.pt:22
+msgid "legend_credentials"
+msgstr "Személyes adatok"
+
+#. Default: Login
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:38
+#: plonetheme/nuplone/skin/templates/login.pt:32
+msgid "button_login"
+msgstr "Bejelentkezés"
+
+#. Default: request an account
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
+#: plonetheme/nuplone/skin/templates/login.pt:36
+msgid "message_no_account_request_account"
+msgstr "igényeljen felhasználói fiókot"
+
+#. Default: No account? Please ${request_account}.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
+#: plonetheme/nuplone/skin/templates/login.pt:36
+msgid "message_no_account"
+msgstr "Nincs felhasználói fiókja? kérjük, ${request_account}."
+
+#. Default: request a password reset
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
+#: plonetheme/nuplone/skin/templates/login.pt:17
+#: plonetheme/nuplone/skin/templates/login.pt:37
+msgid "reset_password"
+msgstr "igényelje a jelszó visszaállítását"
+
+#. Default: If you forgot your password you can ${reset_password}.
+#: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
+#: plonetheme/nuplone/skin/templates/login.pt:37
+msgid "message_reset_password"
+msgstr "Ha elfelejtette a jelszavát, ${reset_password}."
+
+#: plonetheme/nuplone/skin/templates/layout.pt:21
+msgid "Change order of items by dragging the handle"
+msgstr "A fogantyú elhúzásával megváltoztathatja az elemek sorrendjét"
+
+#: plonetheme/nuplone/skin/templates/layout.pt:43
+msgid "Can not open site menu."
+msgstr "Az oldal menüje nem nyitható meg."
+
+#. Default: Login
+#: plonetheme/nuplone/skin/templates/login.pt:12
+msgid "title_login"
+msgstr "Bejelentkezés"
+
+#. Default: You are already logged in. Please logout first before trying to
+#. login again.
+#: plonetheme/nuplone/skin/templates/login.pt:14
+msgid "message_already_logged_in"
+msgstr ""
+"Már bejelentkezett. Előbb jelentkezzen ki, mielőtt megpróbál megint "
+"bejelentkezni."
+
+#. Default: Invalid login. If you forgot your password you can
+#. ${reset_password}.
+#: plonetheme/nuplone/skin/templates/login.pt:16
+msgid "message_invalid_login"
+msgstr ""
+"Érvénytelen bejelentkezés. Ha elfelejtette a jelszavát, ${reset_password}."
+
+#. Default: Dear user,
+#: plonetheme/nuplone/skin/templates/pwreset-email.pt:6
+msgid "reminder_email_header"
+msgstr "Tisztelt Felhasználónk!"
+
+#. Default: a password reset for the account '${login}' has been requested. To
+#. reset your password please visit this URL:
+#: plonetheme/nuplone/skin/templates/pwreset-email.pt:8
+msgid "password_reset_intro"
+msgstr ""
+"a '${login}' felhasználói fiókhoz a jelszó visszaállítását igényelték. A "
+"jelszó visszaállításához látogasson el erre az URL-re:"
+
+#. Default: If you did not request a password reset or have found your password
+#. please ignore this email. Your password will not be changed.
+#: plonetheme/nuplone/skin/templates/pwreset-email.pt:13
+msgid "password_reset_epilogue"
+msgstr ""
+"Ha nem kérte a jelszó visszaállítását, illetve rájött a jelszóra, tekintse "
+"semmisnek ezt az e-mailt. Így a jelszava nem változik meg."
+
+#. Default: Please note that this is an automated email. You can not reply to
+#. it.
+#: plonetheme/nuplone/skin/templates/pwreset-email.pt:16
+msgid "automated_email"
+msgstr "Ne feledje, hogy ez egy automatikus e-mail. Nem válaszolhat rá."
+
+#. Default: Site menu
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:17
+msgid "title_site_menu"
+msgstr "Oldal menüje"
+
+#. Default: Login
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:23
+msgid "menu_login"
+msgstr "Bejelentkezés"
+
+#. Default: Log out
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:31
+msgid "menu_logout"
+msgstr "Kijelentkezés"
+
+#. Default: Settings
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:34
+msgid "menu_settings"
+msgstr "Beállítások"
+
+#. Default: Edit
+#: plonetheme/nuplone/skin/templates/sitemenu.pt:52
+msgid "menu_edit"
+msgstr "Szerkesztés"
+
+#. Default: Languages
+#: plonetheme/nuplone/tiles/templates/language.pt:10
+msgid "portlet_languages"
+msgstr "Nyelvek"
+
+#. Default: Search
+#: plonetheme/nuplone/tiles/templates/tabs.pt:16
+msgid "menu_search"
+msgstr "Keresés"
+
+#. Default: Submit
+#: plonetheme/nuplone/tiles/templates/tabs.pt:16
+msgid "button_submit"
+msgstr "Elküld"
+
+#. Default: URL
+#: plonetheme/nuplone/z3cform/wysiwyg.py:11
+msgid "label_url"
+msgstr "URL"
+
+#. Default: Title
+#: plonetheme/nuplone/z3cform/wysiwyg.py:15
+msgid "label_title"
+msgstr "Cím"
+
+#. Default: Open link in new window
+#: plonetheme/nuplone/z3cform/wysiwyg.py:19
+msgid "label_new_window"
+msgstr "Hivatkozás megnyitása új ablakban"
+
+#: plonetheme/nuplone/z3cform/templates/checkbox_input.pt:15
+#: plonetheme/nuplone/z3cform/templates/checkboxlist_input.pt:8
+#: plonetheme/nuplone/z3cform/templates/date_input.pt:7
+#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:7
+#: plonetheme/nuplone/z3cform/templates/multi_input.pt:7
+#: plonetheme/nuplone/z3cform/templates/namedfile_input.pt:11
+#: plonetheme/nuplone/z3cform/templates/namedimage_input.pt:10
+#: plonetheme/nuplone/z3cform/templates/object_input.pt:7
+#: plonetheme/nuplone/z3cform/templates/password_input.pt:9
+#: plonetheme/nuplone/z3cform/templates/passwordconfirm_input.pt:9
+#: plonetheme/nuplone/z3cform/templates/radio_input.pt:7
+#: plonetheme/nuplone/z3cform/templates/select_input.pt:12
+#: plonetheme/nuplone/z3cform/templates/text_input.pt:12
+#: plonetheme/nuplone/z3cform/templates/textarea_input.pt:12
+#: plonetheme/nuplone/z3cform/templates/textlines_input.pt:10
+#: plonetheme/nuplone/z3cform/templates/wysiwyg_input.pt:11
+msgid "Information"
+msgstr "Információ"
+
+#. Default: Day
+#: plonetheme/nuplone/z3cform/templates/date_input.pt:9
+#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:9
+msgid "label_day"
+msgstr "Nap"
+
+#. Default: Month
+#: plonetheme/nuplone/z3cform/templates/date_input.pt:11
+#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:11
+msgid "label_month"
+msgstr "Hónap"
+
+#. Default: Year
+#: plonetheme/nuplone/z3cform/templates/date_input.pt:15
+#: plonetheme/nuplone/z3cform/templates/datetime_input.pt:15
+msgid "label_year"
+msgstr "Év"
+
+#. Default: Place a Link
+#: plonetheme/nuplone/z3cform/templates/editlink.pt:15
+msgid "header_place_link"
+msgstr "Hivatkozás elhelyezése"
+
+#. Default: Save changes
+#: plonetheme/nuplone/z3cform/templates/editlink.pt:25
+msgid "button_save_changes"
+msgstr "Változások elmentése"
+
+#: plonetheme/nuplone/z3cform/templates/multi_input.pt:10
+msgid "Add new"
+msgstr ""
+
+#: plonetheme/nuplone/z3cform/templates/namedimage_input.pt:14
+msgid "Remove image"
+msgstr "Kép eltávolítása"
+
+#: plonetheme/nuplone/z3cform/templates/object_input.pt:10
+msgid "Remove"
+msgstr ""
+
+#: plonetheme/nuplone/z3cform/templates/passwordconfirm_input.pt:10
+msgid "Confirm password"
+msgstr "Jelszó megerősítése"
+
+#: plonetheme/nuplone/z3cform/templates/wysiwyg_input.pt:17
+msgid "Please enter text here"
+msgstr "Kérjük, itt adja meg a szöveget"
