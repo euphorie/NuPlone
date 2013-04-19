@@ -368,7 +368,7 @@ msgstr "Neturite paskyros? Pateikite ${request_account}."
 #: plonetheme/nuplone/skin/templates/login.pt:17
 #: plonetheme/nuplone/skin/templates/login.pt:37
 msgid "reset_password"
-msgstr "slaptažodžio atkūrimo užklausa"
+msgstr "pasinaudoti slaptažodžio atkūrimo užklausa"
 
 #. Default: If you forgot your password you can ${reset_password}.
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:43
