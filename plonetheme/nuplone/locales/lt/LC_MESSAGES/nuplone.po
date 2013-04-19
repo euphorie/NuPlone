@@ -154,7 +154,7 @@ msgstr "Jūs jau esate išsiregistravę."
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:31
 #: plonetheme/nuplone/skin/templates/login.pt:25
 msgid "label_login"
-msgstr "Prisijungimas"
+msgstr "Prisijungimo vardas"
 
 #. Default: Password
 #: plonetheme/nuplone/skin/pwreminder.py:36
@@ -322,7 +322,7 @@ msgstr ""
 #. Default: Login
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
 msgid "header_login"
-msgstr "Prisijungimas"
+msgstr "Prisijungimo vardas"
 
 #. Default: Unauthorized
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:14
@@ -343,13 +343,13 @@ msgstr "Norėdami patekti į šį puslapį, prisijunkite."
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:29
 #: plonetheme/nuplone/skin/templates/login.pt:22
 msgid "legend_credentials"
-msgstr "Kredencialai"
+msgstr "Prisijungimo duomenys"
 
 #. Default: Login
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:38
 #: plonetheme/nuplone/skin/templates/login.pt:32
 msgid "button_login"
-msgstr "Prisijungimas"
+msgstr "Prisijungimo vardas"
 
 #. Default: request an account
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:42
@@ -387,7 +387,7 @@ msgstr "Svetainės meniu atidaryti nepavyko."
 #. Default: Login
 #: plonetheme/nuplone/skin/templates/login.pt:12
 msgid "title_login"
-msgstr "Prisijungimas"
+msgstr "Prisijungimo vardas"
 
 #. Default: You are already logged in. Please logout first before trying to
 #. login again.
@@ -442,7 +442,7 @@ msgstr "Svetainės meniu"
 #. Default: Login
 #: plonetheme/nuplone/skin/templates/sitemenu.pt:23
 msgid "menu_login"
-msgstr "Prisijungimas"
+msgstr "Prisijungimo vardas"
 
 #. Default: Log out
 #: plonetheme/nuplone/skin/templates/sitemenu.pt:31
