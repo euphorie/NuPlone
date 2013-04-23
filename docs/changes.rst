@@ -5,7 +5,7 @@ Changelog
 ---------------------
 
 - Added translation to Hungarian [pysailor]
-- Textual corrections for Lithianian [pysailor]
+- Textual corrections for Lithuanian [pysailor]
 
 
 1.3.2 - April 4, 2013
