@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.3.3 - Unreleased
----------------------
+1.3.3 (2013-04-23)
+------------------
 
 - Added translation to Hungarian [pysailor]
 - Textual corrections for Lithuanian [pysailor]
