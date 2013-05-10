@@ -4,14 +4,17 @@ Changelog
 1.3.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Enable 'depends' form directive also for schema extended fields.
+  [jcbrand]
 
 
 1.3.3 (2013-04-23)
 ------------------
 
-- Added translation to Hungarian [pysailor]
-- Textual corrections for Lithuanian [pysailor]
+- Added translation to Hungarian
+  [pysailor]
+- Textual corrections for Lithuanian
+  [pysailor]
 
 
 1.3.2 - April 4, 2013

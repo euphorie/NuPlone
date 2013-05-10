@@ -3,6 +3,7 @@ import martian
 from five import grok
 from zope.interface import Interface
 from zope.publisher.interfaces.browser import IBrowserView
+from zope import component
 from z3c.form.interfaces import IGroup
 from z3c.form.interfaces import IWidget
 from z3c.form.browser.checkbox import CheckBoxWidget
@@ -12,11 +13,14 @@ from plone.directives.form.schema import Schema
 from plone.directives.form.schema import TEMP_KEY
 from plone.supermodel.interfaces import FIELDSETS_KEY
 from plone.supermodel.utils import mergedTaggedValueList
+from plone.dexterity.interfaces import IDexterityFTI
+from plone.behavior.interfaces import IBehavior
 import plone.z3cform.fieldsets.interfaces
 
 Dependency = collections.namedtuple("Dependency", "name field op value action")
 DEPENDENCY_KEY = "plonetheme.nuplone.z3cform.dependency"
 LAYOUT_KEY = "plonetheme.nuplone.z3cform.layout"
+
 
 class depends(martian.Directive):
     """Directive used to declare a dependency on other field values."""
@@ -46,7 +50,7 @@ class FormSchemaGrokker(martian.InstanceGrokker):
         if directiveSupplied is not None:
             for key, tgv in directiveSupplied.items():
                 existingValue = interface.queryTaggedValue(key, None)
-            
+
                 if existingValue is not None:
                     if type(existingValue) != type(tgv):
                         # Don't overwrite if we have a different type
@@ -57,20 +61,17 @@ class FormSchemaGrokker(martian.InstanceGrokker):
                     elif isinstance(existingValue, dict):
                         existingValue.update(tgv)
                         tgv = existingValue
-                    
+
                 interface.setTaggedValue(key, tgv)
-        
+
             interface.setTaggedValue(TEMP_KEY, None)
-
         return True
-
 
 
 class FormDependencyExtender(grok.MultiAdapter):
     grok.adapts(Interface, Interface, AutoExtensibleForm)
     grok.implements(plone.z3cform.fieldsets.interfaces.IFormExtender)
     grok.name("plonetheme.nuplone.dependency")
-
     order = 0
 
     def __init__(self, context, request, form):
@@ -79,8 +80,20 @@ class FormDependencyExtender(grok.MultiAdapter):
         self.form=form
 
     def update(self):
-        directives=mergedTaggedValueList(self.form.schema, DEPENDENCY_KEY)
-        dependencies={}
+        schemas = [self.form.schema]
+        fti = component.getUtility(
+            IDexterityFTI,
+            name=self.context.portal_type)
+        for name in fti.behaviors:
+            behavior = component.queryUtility(IBehavior, name=name)
+            if behavior.interface.extends(Schema):
+                schemas.append(behavior.interface)
+
+        directives = []
+        for schema in schemas:
+            directives += mergedTaggedValueList(schema, DEPENDENCY_KEY)
+
+        dependencies = {}
         for directive in directives:
             dependencies.setdefault(directive.name, []).append(directive)
 
