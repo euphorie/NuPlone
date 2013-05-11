@@ -86,7 +86,7 @@ class FormDependencyExtender(grok.MultiAdapter):
             name=self.context.portal_type)
         for name in fti.behaviors:
             behavior = component.queryUtility(IBehavior, name=name)
-            if behavior.interface.extends(Schema):
+            if behavior and behavior.interface.extends(Schema):
                 schemas.append(behavior.interface)
 
         directives = []
