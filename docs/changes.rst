@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.3.4 (unreleased)
+1.3.4 (2013-06-03)
 ------------------
 
 - Enable 'depends' form directive also for schema extended fields.
