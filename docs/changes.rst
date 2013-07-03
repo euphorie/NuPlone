@@ -4,8 +4,7 @@ Changelog
 1.3.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Changed a sring in the Greek translation [pyailor]
 
 1.3.4 (2013-06-03)
 ------------------

@@ -347,7 +347,7 @@ msgstr ""
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:29
 #: plonetheme/nuplone/skin/templates/login.pt:22
 msgid "legend_credentials"
-msgstr "Διαπιστευτήρια"
+msgstr "Έλεγχος πρόσβασης"
 
 #. Default: Login
 #: plonetheme/nuplone/skin/templates/error_unauthorized.pt:38
