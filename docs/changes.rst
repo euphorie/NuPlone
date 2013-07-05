@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.3.5 (unreleased)
+1.3.5 (2013-07-05)
 ------------------
 
 - Changed 2 strings in the Greek translation [pyailor]
