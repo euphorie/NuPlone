@@ -4,7 +4,7 @@ Changelog
 1.3.5 (unreleased)
 ------------------
 
-- Changed a sring in the Greek translation [pyailor]
+- Changed 2 strings in the Greek translation [pyailor]
 
 1.3.4 (2013-06-03)
 ------------------
