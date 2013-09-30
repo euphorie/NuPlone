@@ -1,6 +1,7 @@
 from AccessControl import getSecurityManager
 from five import grok
 from zope import schema
+from zope.globalrequest import getRequest
 from zope.schema.interfaces import IField
 from zope.schema.interfaces import IPassword
 from plone.directives import form
@@ -10,6 +11,7 @@ from z3c.form.interfaces import NO_VALUE
 from Products.PluggableAuthService.interfaces.authservice import IPropertiedUser
 from Products.CMFCore.interfaces import ISiteRoot
 from Products.CMFCore.utils import getToolByName
+from Products.statusmessages.interfaces import IStatusMessage
 
 class ISettings(form.Schema):
     fullname = schema.TextLine(
@@ -76,8 +78,19 @@ class UserPasswordDataManager(grok.MultiAdapter):
         return default
 
     def set(self, value):
-        mt=getToolByName(self.user, "portal_membership")
-        mt.setPassword(value)
+        if value is None:
+            return IStatusMessage(getRequest()).add(
+                _('Password not updated, none was specified.'),
+                type='error')
+
+        try:
+            mt = getToolByName(self.user, "portal_membership")
+        except AttributeError:
+            return IStatusMessage(getRequest()).add(
+                _('Cannot change password for Zope users, only Plone'),
+                type='error')
+        else:
+            mt.setPassword(value)
 
     def canAccess(self):
         return False
