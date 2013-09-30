@@ -14,6 +14,7 @@ from plone.directives.form.schema import TEMP_KEY
 from plone.supermodel.interfaces import FIELDSETS_KEY
 from plone.supermodel.utils import mergedTaggedValueList
 from plone.dexterity.interfaces import IDexterityFTI
+from plone.dexterity.interfaces import IDexterityContent
 from plone.behavior.interfaces import IBehavior
 import plone.z3cform.fieldsets.interfaces
 
@@ -81,13 +82,15 @@ class FormDependencyExtender(grok.MultiAdapter):
 
     def update(self):
         schemas = [self.form.schema]
-        fti = component.getUtility(
-            IDexterityFTI,
-            name=self.context.portal_type)
-        for name in fti.behaviors:
-            behavior = component.queryUtility(IBehavior, name=name)
-            if behavior and behavior.interface.extends(Schema):
-                schemas.append(behavior.interface)
+
+        if IDexterityContent.providedBy(self.context):
+            fti = component.getUtility(
+                IDexterityFTI,
+                name=self.context.portal_type)
+            for name in fti.behaviors:
+                behavior = component.queryUtility(IBehavior, name=name)
+                if behavior and behavior.interface.extends(Schema):
+                    schemas.append(behavior.interface)
 
         directives = []
         for schema in schemas:
