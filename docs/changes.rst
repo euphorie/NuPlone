@@ -1,26 +1,27 @@
 Changelog
 =========
 
-1.3.6 (unreleased)
+1.3.6 - Unreleased
 ------------------
 
 - Nothing changed yet.
 
 
-1.3.5 (2013-07-05)
-------------------
+1.3.5 - July 5, 2013
+--------------------
 
 - Changed 2 strings in the Greek translation [pyailor]
 
-1.3.4 (2013-06-03)
-------------------
+
+1.3.4 - July 3, 2013
+--------------------
 
 - Enable 'depends' form directive also for schema extended fields.
   [jcbrand]
 
 
-1.3.3 (2013-04-23)
-------------------
+1.3.3 - April 23, 2013
+----------------------
 
 - Added translation to Hungarian
   [pysailor]
