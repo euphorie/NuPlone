@@ -4,6 +4,8 @@ Changelog
 1.3.6 - Unreleased
 ------------------
 
+- Modify internal buildout to use the latets buildout and Pillow releases.
+
 - Remove stray space in readonly-attribute for named file widgets. This caused
   IE to treat all file widgets as read-only.
 
