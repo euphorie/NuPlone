@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.3.6 - Unreleased
-------------------
+1.3.6 - October 7, 2013
+-----------------------
 
 - Modify internal buildout to use the latets buildout and Pillow releases.
 
