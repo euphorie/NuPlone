@@ -4,7 +4,8 @@ Changelog
 1.3.6 - Unreleased
 ------------------
 
-- Nothing changed yet.
+- Remove stray space in readonly-attribute for named file widgets. This caused
+  IE to treat all file widgets as read-only.
 
 
 1.3.5 - July 5, 2013
@@ -25,6 +26,7 @@ Changelog
 
 - Added translation to Hungarian
   [pysailor]
+
 - Textual corrections for Lithuanian
   [pysailor]
 
