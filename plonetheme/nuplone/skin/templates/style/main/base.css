@@ -3314,6 +3314,12 @@ fieldset.condensed fieldset p.legend {
 	margin: 3px 5px 0 -18px !important;
 }
 
+.radioList label input[type="file"] {
+	clear: both;
+	padding-left: 0;
+	margin: 5px 5px 0 0px !important;
+}
+
 .portlet .radioList label input {
 	margin-top: 2px !important;
 }
