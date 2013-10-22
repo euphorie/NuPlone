@@ -285,8 +285,129 @@
     <script type="text/javascript" src="behaviour/behaviour.js"> </script>
     <script type="text/javascript" src="../plonetheme/nuplone/z3cform/tiny_mce/tiny_mce_src.js"> </script>
     <script type="text/javascript" src="../plonetheme/nuplone/z3cform/templates/behaviour.js"> </script>
+    <script type="text/javascript" src="libraries/farbtastic.js"></script>
     <script type="text/javascript">
-      $(".accordion").accordion({autoHeight: false});
+// <![CDATA[
+function IsBright(hsl) {
+    return hsl[2]>0.50;
+}
+
+function MatchColour(hsl, l1, l2, s1) {
+    var h=hsl[0], s=hsl[1], l=hsl[2];
+
+    if (s1!==undefined) {
+      s=s*s1;
+    }
+
+    if ((0.16<h && h<0.33) || (l>0.49)) {
+        l=l1;
+    } else {
+         l=l2;
+    }
+
+    return [h,s,l];
+}
+
+function UpdatePreview(fb) {
+    var frame=$("#client-preview").get(0),
+        style=$("head style:last", frame.contentDocument),
+        body=$("body", frame.contentDocument),
+        buffer,
+
+        colour_1 = $("#colour-1").val(),
+        colour_2 = $("#colour-2").val(),
+
+        main_background = colour_1 ? colour_1 : "${main_bg_colour}",
+        main_background_hsl = fb.RGBToHSL(fb.unpack(main_background)),
+        main_foreground = fb.pack(fb.HSLToRGB(MatchColour(main_background_hsl, 0.0, 0.60, 0.3))),
+                                   
+        support_background = colour_2 ? colour_2 : "${support_bg_colour}",
+        support_background_hsl = fb.RGBToHSL(fb.unpack(support_background)),
+        support_foreground = fb.pack(fb.HSLToRGB(MatchColour(support_background_hsl, 0.2, 0.65)));
+
+    buffer ="#navigation li a { color: " + main_foreground + "; background-color: " + main_background + "; }\n";
+    buffer+="h1 {background-color: " + main_background + "; }\n";
+    buffer+="#steps li.complete, #steps li.current { color: " + support_foreground + "; background-color: " + support_background + "; }\n";
+    buffer+="#steps li.complete a, #steps li.current a { color: " + support_foreground + "; }\n";
+    buffer+="#steps li a, #steps li a:hover { color: " + main_foreground + "; }\n";
+
+    // .text (or similar) doesn't work with <style> tags in IE
+    if ($.browser.msie && $.browser.version < 9) {
+        var doc = window.frames[0].document,
+            iestyle = doc.createElement('style');
+            head = doc.getElementsByTagName('head')[0],
+            styles = doc.getElementsByTagName('style'),
+            laststyle = styles[styles.length-1];
+            rules = doc.createTextNode(buffer);
+
+        iestyle.type = 'text/css';
+        iestyle.styleSheet.cssText = rules.nodeValue;
+
+        head.removeChild(laststyle);
+        head.appendChild(iestyle);
+    }
+    else style.text(buffer); // Works in all other browsers
+
+    if (colour_1 || colour_2) {
+        body.addClass("deCornae");
+    } else {
+        body.removeClass("deCornae");
+    }
+
+    if (IsBright(main_background_hsl)) {
+        body.addClass("brightMainColour")
+            .removeClass("darkMainColour");
+    } else {
+        body.removeClass("brightMainColour")
+            .addClass("darkMainColour");
+    }
+
+    if (IsBright(support_background_hsl)) {
+        body.addClass("brightSupportColour")
+            .removeClass("darkSupportColour");
+    } else {
+        body.removeClass("brightSupportColour")
+            .addClass("darkSupportColour");
+    }
+}
+
+function MainColourChanged(colour) {
+    $("#colour-1").val(colour);
+    UpdatePreview(this);
+}
+
+function SupportColourChanged(colour) {
+    $("#colour-2").val(colour).data("hsl", this.hsl);
+    UpdatePreview(this);
+}
+
+$("#resetColours").live("click", function() {
+    var frame=$("#client-preview").get(0),
+        style=$("head style:last", frame.contentDocument),
+        body=$("body", frame.contentDocument);
+
+    $.farbtastic("#picker-main").setColor("${main_colour}");
+    $.farbtastic("#picker-support").setColor("${support_colour}");
+
+    body.removeClass("brightMainColour")
+      .removeClass("darkMainColour")
+      .removeClass("brightSupportColour")
+      .removeClass("brightMainColour");
+
+    $("#colour-1").val("${main_colour}");
+    $("#colour-2").val("${support_colour}");
+});
+
+$(document).ready(function() {
+    var fb = $.farbtastic("#picker-main", MainColourChanged).setColor($("#colour-1").val());
+    $.farbtastic("#picker-support", SupportColourChanged).setColor($("#colour-2").val());
+    $(".accordion").accordion({autoHeight: false});
+
+    $("#client-preview").load(function() {
+        UpdatePreview(fb);
+    });
+});
+// ]]>
     </script>
 
   </body>
