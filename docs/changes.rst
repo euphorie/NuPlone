@@ -4,7 +4,7 @@ Changelog
 1.4 - Unreleased
 -----------------------
 
-- ...
+- New translations: Italian (IT) and Icelandic (IS)
 
 
 1.3.6 - October 7, 2013
