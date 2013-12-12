@@ -6,6 +6,12 @@ Changelog
 
 - New translations: Italian (IT) and Icelandic (IS)
 
+- Fixed issue with file browse button
+
+- Setup accordian for prototype settings page.
+
+- Hook up farbtastic in settings page.
+
 
 1.3.6 - October 7, 2013
 -----------------------
