@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.4 - Unreleased
------------------------
+1.3.7 (2013-12-12)
+------------------
 
 - New translations: Italian (IT) and Icelandic (IS)
 
