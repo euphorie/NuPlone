@@ -4,7 +4,7 @@ Changelog
 1.4 - Unreleased
 ----------------
 
-- ...
+- New translation: Maltese (MT)
 
 
 1.3.7 - December 12, 2013
