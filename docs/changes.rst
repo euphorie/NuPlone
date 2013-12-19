@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.4 - Unreleased
-----------------
+1.3.8 - December 29, 2013
+-------------------------
 
 - Fix comaptibility with Chameleon 1.14.
 
