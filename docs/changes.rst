@@ -4,6 +4,8 @@ Changelog
 1.4 - Unreleased
 ----------------
 
+- Fix comaptibility with Chameleon 1.14.
+
 - New translation: Maltese (MT)
 
 
@@ -15,8 +17,6 @@ Changelog
 - Fixed issue with file browse button
 
 - Setup accordian for prototype settings page.
-
-- Hook up farbtastic in settings page.
 
 
 1.3.6 - October 7, 2013

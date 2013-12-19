@@ -2,7 +2,7 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       tal:omit-tag=""
-      tal:define="tree nothing">
+      tal:define="tree python:[]">
   <ul id="navigation" class="navigation" tal:condition="view/tree" tal:define="tree view/tree"><metal:block use-macro="template/macros/showchildren"/></ul>
   <tal:block metal:define-macro="showchildren">
     <li tal:repeat="node tree" tal:attributes="class node/class">
