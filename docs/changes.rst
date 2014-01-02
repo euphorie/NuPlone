@@ -4,7 +4,7 @@ Changelog
 1.3.9 - Unreleased
 -------------------------
 
-- ...
+- Add prototype page for osha library page.
 
 
 1.3.8 - December 29, 2013

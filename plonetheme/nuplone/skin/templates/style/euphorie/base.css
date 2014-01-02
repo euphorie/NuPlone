@@ -1295,3 +1295,28 @@ span#siteTitle {
 
 
 /* @end */
+
+/* @group Survey library */
+
+ul.library,
+ul.library ul {
+	list-style-type: none;
+	padding-left: 10px;
+}
+
+.library li {
+	border: 1px solid transparent;
+	clear: both;
+}
+
+.library li.disabled > p {
+	opacity: 0.6;
+	color: gray;
+}
+
+.library li.focus {
+	background-color: #fdfdc8;
+	color: #6f5a44;
+	border: 1px solid #d3d4a7;
+}
+/* @end */
