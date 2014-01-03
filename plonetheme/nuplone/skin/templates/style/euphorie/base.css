@@ -1309,9 +1309,8 @@ ul.library ul {
 	clear: both;
 }
 
-.library li.disabled > p {
+.library a.disabled {
 	opacity: 0.6;
-	color: gray;
 }
 
 .library li.focus {
