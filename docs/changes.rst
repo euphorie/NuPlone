@@ -1,13 +1,13 @@
 Changelog
 =========
 
-1.3.9 - Unreleased
--------------------------
+1.3.9 - January 3, 2014
+-----------------------
 
 - Add prototype page for osha library page.
 
 
-1.3.8 - December 29, 2013
+1.3.8 - December 19, 2013
 -------------------------
 
 - Fix comaptibility with Chameleon 1.14.
