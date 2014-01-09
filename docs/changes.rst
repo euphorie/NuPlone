@@ -4,6 +4,8 @@ Changelog
 1.4.0 - Unreleased
 ------------------------
 
+- Add an API to the analytics tile to trigger extra (virtual) page views.
+
 - Change analyatics tile to send the authentication status (*anonymous* or
   *authenticated* instead of the users login name.
 

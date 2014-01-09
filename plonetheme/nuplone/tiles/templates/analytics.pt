@@ -7,10 +7,10 @@
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', '${view/account}']);
-<tal:span condition="view/domain"> _gaq.push(['_setDomainName', '${view/domain}']);</tal:span>
+  <tal:domain condition="view/domain"> _gaq.push(['_setDomainName', '${view/domain}']);</tal:domain>
   _gaq.push(['_setCustomVar', 1, 'AuthStatus', '${view/auth_status}', 3]);
+  <tal:gaq repeat="uri view/ga_queue">_gaq.push(['_trackPageview', '${uri}']);</tal:gaq>
   _gaq.push(['_trackPageview']);
-
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
