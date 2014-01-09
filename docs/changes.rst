@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.4.0 - Unreleased
-------------------------
+1.4.0 - January 9, 2014
+-----------------------
 
 - Add an API to the analytics tile to trigger extra (virtual) page views.
 
