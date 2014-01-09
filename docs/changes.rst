@@ -1,10 +1,11 @@
 Changelog
 =========
 
-1.3.10 - Unreleased
+1.4.0 - Unreleased
 ------------------------
 
-- ...
+- Change analyatics tile to send the authentication status (*anonymous* or
+  *authenticated* instead of the users login name.
 
 
 1.3.9 - January 3, 2014

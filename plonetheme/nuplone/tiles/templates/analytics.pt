@@ -8,7 +8,7 @@
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', '${view/account}']);
 <tal:span condition="view/domain"> _gaq.push(['_setDomainName', '${view/domain}']);</tal:span>
-  _gaq.push(['_setCustomVar', 1, 'account', '${view/login}', 3]);
+  _gaq.push(['_setCustomVar', 1, 'AuthStatus', '${view/auth_status}', 3]);
   _gaq.push(['_trackPageview']);
 
   (function() {
