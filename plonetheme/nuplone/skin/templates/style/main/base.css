@@ -1010,7 +1010,7 @@ object#siteMenu {
 	top: 0;
 	right: 0;
 	border-style: none;
-	height: 30px;
+	height: 100%;
 	overflow: hidden;
 	width: 500px;
 	z-index: 2000;
