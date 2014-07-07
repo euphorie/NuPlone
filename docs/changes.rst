@@ -1,16 +1,17 @@
 Changelog
 =========
 
-1.4.2 (unreleased)
+1.4.2 (2014-07-07)
 ------------------
 
-- Nothing changed yet.
+- Revert IE 11 CSS fix, has unintented consequences.
 
 
 1.4.1 (2014-07-07)
 ------------------
 
 - Update a translation in IT
+- CSS fix for IE 11.
 
 1.4.0 - January 9, 2014
 -----------------------
