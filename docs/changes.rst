@@ -4,7 +4,7 @@ Changelog
 1.4.1 - Unreleased
 -----------------------
 
-- ...
+- Update a translation in IT
 
 1.4.0 - January 9, 2014
 -----------------------
