@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.4.1 - Unreleased
------------------------
+1.4.1 (2014-07-07)
+------------------
 
 - Update a translation in IT
 
