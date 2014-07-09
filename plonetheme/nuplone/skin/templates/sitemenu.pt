@@ -85,8 +85,8 @@ var sitemenu = {
         }
 
         sitemenu.timer = setTimeout(function() {
-            sitemenu.getIframeElement().css("height", null);
-            }, 1000);
+            sitemenu.getIframeElement().css("height", '');
+            }, 500);
     },
 
     init: function() {

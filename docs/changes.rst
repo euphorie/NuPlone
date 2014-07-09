@@ -4,7 +4,7 @@ Changelog
 1.4.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Bugfix. Site Menu dropdown prevents clicking on certain page elements. (OSHA #10390)
 
 
 1.4.2 (2014-07-07)
