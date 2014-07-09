@@ -5,6 +5,7 @@ Changelog
 ------------------
 
 - Bugfix. Site Menu dropdown prevents clicking on certain page elements. (OSHA #10390)
+- Bugfix. Site Menu dropdowns truncated in IE. (OSHA #10329)
 
 
 1.4.2 (2014-07-07)

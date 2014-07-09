@@ -67,9 +67,7 @@ var sitemenu = {
     timer: null,
 
     getIframeElement: function() {
-        var contentDoc = window.frameElement.ownerDocument,
-            $iframe = $("#siteMenu", contentDoc);
-        return $iframe;
+        return window.parent.$("#siteMenu")
     },
 
     clearTimer: function() {
