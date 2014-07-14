@@ -9,7 +9,7 @@ from z3c.form.interfaces import IWidget
 from z3c.form.browser.checkbox import CheckBoxWidget
 from plone.autoform.form import AutoExtensibleForm
 from plone.directives.form.schema import FormMetadataListStorage
-from plone.directives.form.schema import Schema
+from plone.directives.form import Schema
 from plone.directives.form.schema import TEMP_KEY
 from plone.supermodel.interfaces import FIELDSETS_KEY
 from plone.supermodel.utils import mergedTaggedValueList
