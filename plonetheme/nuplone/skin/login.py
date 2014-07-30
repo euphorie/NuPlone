@@ -30,11 +30,12 @@ class Login(grok.View):
 
     def update(self):
         user=getSecurityManager().getUser()
+        self.came_from = self.request.get('came_from')
+        if not self.came_from:
+            self.came_from = self.request.environ.get("HTTP_REFERER")
+        elif '@@reset-password' in self.came_from:
+            self.came_from = None
 
-        if "came_from" in self.request:
-            self.came_from=self.request.came_from
-        else:
-            self.came_from=self.request.environ.get("HTTP_REFERER")
         if self.came_from:
             if ":" not in self.came_from:
                 # Mostly for mechanize/testbrowser which starts with a bogus 'localhost' as referer.
