@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.4.4 (unreleased)
+1.4.4 (2014-08-11)
 ------------------
 
-- Nothing changed yet.
-
+- Add support for Plone 4.3.3.
 
 1.4.3 (2014-07-09)
 ------------------
