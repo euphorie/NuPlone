@@ -152,7 +152,15 @@ class PasswordReset(form.SchemaForm):
         pas=getToolByName(self.context, "acl_users")
         ppr=getToolByName(self.context, "portal_password_reset")
         user=pas.getUser(data["login"])
-        ppr.resetPassword(user.getId(), self.randomstring, data["password"])
+        if user is None:
+            flash(_("user_name_wrong", u"The login name you have provided does not match the username from the password-reset email. Please check your spelling."), "error")
+            return
+        try:
+            ppr.resetPassword(user.getId(), self.randomstring, data["password"])
+        except InvalidRequestError:
+            flash(_("user_name_wrong", u"The login name you have provided does not match the username from the password-reset email. Please check your spelling."), "error")
+            return
+
 
         flash(_("password_reset", u"Your password has been reset."), "success")
         portal_url=aq_inner(self.context).absolute_url()
