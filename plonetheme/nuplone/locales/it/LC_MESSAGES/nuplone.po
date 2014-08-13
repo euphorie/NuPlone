@@ -287,7 +287,7 @@ msgstr "Cancella"
 #: plonetheme/nuplone/skin/templates/delete.pt:23
 #: plonetheme/nuplone/z3cform/templates/editlink.pt:26
 msgid "button_cancel"
-msgstr "Cancella"
+msgstr "Annulla"
 
 #: plonetheme/nuplone/skin/templates/dexterity.pt:12
 msgid "Default fieldset"
