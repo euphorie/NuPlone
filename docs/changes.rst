@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.4.5 (unreleased)
+1.4.5 (2014-08-29)
 ------------------
 
 - On the PW reset form, catch errors caused by wrong user name and show
