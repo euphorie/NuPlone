@@ -4,8 +4,10 @@ Changelog
 1.4.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- On the PW reset form, catch errors caused by wrong user name and show
+  meaningful error message instead of 'Ooops'
+- fixed Italian translation for button_cancel (was the same as button_delete),
+  OSHA ref #10522
 
 1.4.4 (2014-08-11)
 ------------------
