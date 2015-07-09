@@ -1,6 +1,5 @@
 from Acquisition import aq_inner
 from five import grok
-from plone.tiles import Tile
 from plone.folder.interfaces import IExplicitOrdering
 from plone.folder.interfaces import IOrderableFolder
 from plonetheme.nuplone.skin.interfaces import NuPloneSkin
@@ -23,11 +22,3 @@ class UpdateOrder(grok.View):
             orderer.moveObjectToPosition(id, pos)
 
         return
-
-
-class OrderingTile(Tile):
-    def __call__(self):
-        if not IOrderableFolder.providedBy(self.context):
-            return None
-        return self.index()
-

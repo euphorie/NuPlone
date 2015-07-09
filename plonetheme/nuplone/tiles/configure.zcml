@@ -40,15 +40,6 @@
     />
 
   <plone:tile
-    name="ordering"
-    title="Easy ordering support for folders"
-    add_permission="cmf.ManagePortal"
-    class=".ordering.OrderingTile"
-    template="templates/ordering.pt"
-    permission="cmf.ModifyPortalContent"
-    />
-
-  <plone:tile
     name="static"
     title="Static content tile"
     add_permission="cmf.ManagePortal"
