@@ -95,9 +95,9 @@ var editlink = {
     },
 
     init: function() {
-        $("button.cancel").live("click", editlink.hide);
+        $("button.cancel").on("click", editlink.hide);
 
-        $("button.save").live("click", function() {
+        $("button.save").on("click", function() {
             var form = this.form,
                 link = form["form.widgets.URL"].value,
                 title = form["form.widgets.title"].value,

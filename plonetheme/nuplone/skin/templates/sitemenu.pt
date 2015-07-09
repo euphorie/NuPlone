@@ -54,7 +54,8 @@
       </tal:block>
     </ul>
 
-  <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery-1.4.4.js"></script>
+  <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery.browser.min.js"></script>
   <script type="text/javascript" src="${tools/portal/++resource++NuPlone.behaviour}/behaviour.js"></script>
   <script tal:define="menu view/actions; url menu/url|nothing" tal:condition="not: url" type="text/javascript" meta:interpolation="false">
         $("a.contextActions").click(function(event) {
@@ -88,13 +89,13 @@ var sitemenu = {
     },
 
     init: function() {
-        $("#siteMenu").live("mouseover", function(e) {
+        $("#siteMenu").on("mouseover", function(e) {
             if (!sitemenu.clearTimer()) {
                 sitemenu.getIframeElement().css("height", "100%");
             }
         });
 
-        $("#siteMenu").live("mouseout", function(e) {
+        $("#siteMenu").on("mouseout", function(e) {
             sitemenu.clearTimer();
             sitemenu.setTimer();
         });

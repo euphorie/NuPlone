@@ -35,7 +35,8 @@
         </fieldset>
       </div>
     </div>
-    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery-1.4.4.js"></script>
+    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery.browser.min.js"></script>
     <script type="text/javascript">
       var plone = { portal_url : '${tools/portal/absolute_url}',
                     context_url : '${context/absolute_url}' };
@@ -55,28 +56,28 @@
           $("button").hide();
       }
 
-      $("#editorFunctions .strong").live("click", function() {
+      $("#editorFunctions .strong").on("click", function() {
           getTiny().execCommand("Bold"); return false; });
-      $("#editorFunctions .emphasised").live("click", function() {
+      $("#editorFunctions .emphasised").on("click", function() {
           getTiny().execCommand("italic"); return false; });
 
-      $("#editorFunctions .unorderedList").live("click", function() {
+      $("#editorFunctions .unorderedList").on("click", function() {
           getTiny().execCommand("InsertUnorderedList"); return false; });
-      $("#editorFunctions .orderedList").live("click", function() {
+      $("#editorFunctions .orderedList").on("click", function() {
           getTiny().execCommand("InsertOrderedList"); return false; });
 
-      $("#editorFunctions .subscript").live("click", function() {
+      $("#editorFunctions .subscript").on("click", function() {
           getTiny().execCommand("Subscript"); return false; });
-      $("#editorFunctions .superscript").live("click", function() {
+      $("#editorFunctions .superscript").on("click", function() {
           getTiny().execCommand("Superscript"); return false; });
 
-      $("#editorFunctions .link").live("click", function() {
+      $("#editorFunctions .link").on("click", function() {
           var topDoc = window.frameElement.ownerDocument,
               $linkFrame = $("#linkFrame", topDoc);
 
           $linkFrame.get(0).contentWindow.show();
       });
-      $("#editorFunctions .unlink").live("click", function() {
+      $("#editorFunctions .unlink").on("click", function() {
           var topDoc = window.frameElement.ownerDocument,
               $linkFrame = $("#linkFrame", topDoc);
 
