@@ -7,7 +7,7 @@
 
 /* This CSS is written by Cornae. www.cornae.com */
 
-/* Colour scheme 
+/* Colour scheme
 
 Orange warnings/accents:	ff8100 / white
 Red for system errors:		red / white
@@ -197,7 +197,7 @@ img {
  * Simple and fancy lightbox alternative
  *
  * Examples and documentation at: http://fancybox.net
- * 
+ *
  * Copyright (c) 2008 - 2010 Janis Skarnelis
  *
  * Version: 1.3.1 (05/03/2010)
@@ -500,7 +500,7 @@ img {
 	bottom: -20px;
 	right: -20px;
 	background-image: url('fancybox/fancybox.png');
-	background-position: -40px -182px; 
+	background-position: -40px -182px;
 }
 
 #fancy-bg-s {
@@ -821,7 +821,7 @@ em.sample.published {
   width: 17px;
   height: 17px;
   margin: -8px 0 0 -8px;
-  overflow: hidden; 
+  overflow: hidden;
   background: url(marker.png) no-repeat;
 }
 
@@ -885,7 +885,7 @@ em.sample.published {
 
 .countries li.at,
 p.country.at {
-	
+
 }
 
 .countries li.be,
@@ -1075,7 +1075,7 @@ p.country.si {
 
 .countries li.at,
 p.country.at {
-	
+
 }
 
 .countries li.be,
