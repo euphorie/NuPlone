@@ -24,6 +24,10 @@ body {
 	font-weight: normal;
 }
 
+.introduction strong {
+	font-weight: bold;
+}
+
 #tabs {
 	background: #031c48 url(header.png) right 0;
 	overflow: visible;
