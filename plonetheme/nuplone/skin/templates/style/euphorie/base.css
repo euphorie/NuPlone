@@ -1322,4 +1322,8 @@ ul.library ul {
 	color: #6f5a44;
 	border: 1px solid #d3d4a7;
 }
+
+.filefield .floatAfter {
+	margin-right: 20px;
+}
 /* @end */
