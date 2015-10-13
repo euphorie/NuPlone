@@ -1,11 +1,16 @@
 Changelog
 =========
 
-1.4.6 (unreleased)
+1.5.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Update JS libraries
+  jquery from 1.4.4 to 1.11.3
+  jquery.ui from 1.8 to 1.11.4
+  Add jquery.browser (which adds functionality removed from jquery core)
 
+- Include the new JS libraries and update code to handle them.
+  Specifically, the .live method is no longer available and .on must be used.
 
 1.4.5 (2014-08-29)
 ------------------
