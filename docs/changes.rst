@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.5.0 (unreleased)
+1.5.0 (2015-10-13)
 ------------------
 
 - Update JS libraries
