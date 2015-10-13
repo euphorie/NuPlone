@@ -98,13 +98,13 @@ var sitemenu = {
     },
 
     init: function() {
-        $("#siteMenu").live("mouseover", function(e) {
+        $("#siteMenu").on("mouseover", function(e) {
             if (!sitemenu.clearTimer()) {
                 sitemenu.getIframeElement().css("height", "100%");
             }
         });
 
-        $("#siteMenu").live("mouseout", function(e) {
+        $("#siteMenu").on("mouseout", function(e) {
             sitemenu.clearTimer();
             sitemenu.setTimer();
         });

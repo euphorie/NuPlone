@@ -277,11 +277,11 @@ var mapal = {
         $(".jsOnly", root).show();
 
         $("legend", root).each(function() {
-            var p = $('<p>'+$(this).html()+'</p>')
+            var p = $('<p>'+$(this).html()+'</p>');
             $(this).replaceWith(p);
 
             // Copy over its attributes
-            $.each($(this).get(0).attributes, function(i, a) {p.attr(a.nodeName, a.nodeValue)});
+            $.each($(this).get(0).attributes, function(i, a) {p.attr(a.nodeName, a.nodeValue);});
             if (p.attr('class')) {
                 p.attr('class', p.attr('class') + ' legend');
             }
@@ -372,7 +372,7 @@ var mapal = {
 
     // Enable DOM-injection from anchors
     initDomInjection: function () {
-        $("a[rel^=#]").live("click.mapal", function (e) {
+        $("a[rel^=#]").on("click.mapal", function (e) {
             var $a = $(this),
                 parts = $a.attr("href").split("#", 2),
                 target = $a.attr("rel").slice(1);
@@ -433,7 +433,7 @@ var mapal = {
 
     // Load (part of a) page and open it in a modal panel
     initPanels: function() {
-        $("a.openPanel[href*=#], button.openPanel[name*=#]").live("click.mapal", function (e) {
+        $("a.openPanel[href*=#], button.openPanel[name*=#]").on("click.mapal", function (e) {
             var $trigger = $(this),
                 href = this.tagName.toLowerCase()==="a" ? $trigger.attr("href") : $trigger.attr("name"),
                 parts = href.split("#", 2),
@@ -554,13 +554,14 @@ var mapal = {
                 return;
         }
 
-        $("form button[type=submit]").live("click", function() {
+        $("form button[type=submit]").on("click", function() {
             var name = this.name,
                 $el = $("<input/>"),
                 value = this.attributes.getNamedItem("value");
 
-            if (value == undefined)
-                return
+            if (typeof value == "undefined") {
+                return;
+            }
 
             $el.attr("type", "hidden")
                .attr("name", name)

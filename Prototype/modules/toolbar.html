@@ -46,22 +46,22 @@
           $("button").hide();
       }
 
-      $("#editorFunctions .strong").live("click", function() {
+      $("#editorFunctions .strong").on("click", function() {
           getTiny().execCommand("Bold"); return false; });
-      $("#editorFunctions .emphasised").live("click", function() {
+      $("#editorFunctions .emphasised").on("click", function() {
           getTiny().execCommand("italic"); return false; });
 
-      $("#editorFunctions .unorderedList").live("click", function() {
+      $("#editorFunctions .unorderedList").on("click", function() {
           getTiny().execCommand("InsertUnorderedList"); return false; });
-      $("#editorFunctions .orderedList").live("click", function() {
+      $("#editorFunctions .orderedList").on("click", function() {
           getTiny().execCommand("InsertOrderedList"); return false; });
 
-      $("#editorFunctions .subscript").live("click", function() {
+      $("#editorFunctions .subscript").on("click", function() {
           getTiny().execCommand("Subscript"); return false; });
-      $("#editorFunctions .superscript").live("click", function() {
+      $("#editorFunctions .superscript").on("click", function() {
           getTiny().execCommand("Superscript"); return false; });
 
-      $("#editorFunctions .link").live("click", function() {
+      $("#editorFunctions .link").on("click", function() {
           var topDoc = window.frameElement.ownerDocument,
               $linkFrame = $("#linkFrame", topDoc);
 

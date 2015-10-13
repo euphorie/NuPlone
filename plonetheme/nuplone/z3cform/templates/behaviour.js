@@ -71,7 +71,7 @@ var z3cform = {
     },
 
     initialiseMultiwidget: function() {
-        $(".multiWidget > button.add").live("click", function() {
+        $(".multiWidget > button.add").on("click", function() {
             var $button = $(this),
                 url = $button.val();
             $.get(url, function(data, status) {
@@ -81,7 +81,7 @@ var z3cform = {
             });
         });
 
-        $(".multiWidget > fieldset > button.remove").live("click", function() {
+        $(".multiWidget > fieldset > button.remove").on("click", function() {
             var $button = $(this),
                 $fieldset = $button.parent(),
                 $root = $fieldset.parent();
