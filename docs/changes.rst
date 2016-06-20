@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.5.1 (unreleased)
+1.5.1 (2016-06-20)
 ------------------
 
 - Fix markup in z3c.form input fields: replace `<div>` around label and input
