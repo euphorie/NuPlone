@@ -4,8 +4,8 @@ Changelog
 1.5.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Fix markup in z3c.form input fields: replace `<div>` around label and input
+  with a `<span>` and only show it if it is needed to add dependency classes.
 
 1.5.0 (2015-10-13)
 ------------------
