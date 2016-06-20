@@ -3,13 +3,13 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="nuplone"
       tal:omit-tag="">
-<div class="z3cFieldContainer ${view/@@dependencies}">
+<span class="${view/@@dependencies}" tal:omit-tag="not:view/@@dependencies">
   <label class="${python:'error' if view.error is not None else None}">${view/label} <sup tal:condition="view/required" class="required">*</sup>
       <input type="text" id="${view/id}" name="${view/name}" value="${view/value}"
              class="${view/klass}" disabled="${view/disabled}"
              readonly="${view/readonly}" size="${view/size}"
              maxlength="${view/maxlength}"/><tal:error condition="view/error" replace="structure view/error/render|nothing"/></label>
      <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description">${description}</dfn>
-</div>
+</span>
 </html>
 
