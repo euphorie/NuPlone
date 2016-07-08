@@ -15,7 +15,9 @@ from z3c.form.browser.file import FileWidget
 from z3c.form.browser.radio import RadioWidget
 from z3c.form.browser.select import SelectWidget
 from plone.namedfile.interfaces import INamedImageField
+from plone.namedfile.interfaces import INamedFileField
 from plone.formwidget.namedfile.widget import NamedImageWidget
+from plone.formwidget.namedfile.widget import NamedFileWidget
 
 class SingleRadioWidget(RadioWidget):
     """Variant of the z3c.form radio widget which does not pretend a radio
@@ -33,7 +35,7 @@ class SingleRadioWidget(RadioWidget):
             item["name"]=item["name"].split(":list", 1)[0]
 
 
-    
+
 @adapter(IChoice, INuPloneFormLayer)
 @implementer(IFieldWidget)
 def ChoiceWidgetFactory(field, request):
@@ -82,3 +84,27 @@ def NamedImageWidgetFactory(field, request):
     return FieldWidget(field, NicerNamedImageWidget(request))
 
 
+class NicerNamedFileWidget(NamedFileWidget):
+    def extract(self, default=NOVALUE):
+        action = self.request.get("%s.action" % self.name, None)
+        if action == 'remove':
+            return None
+
+        value = FileWidget.extract(self, default)
+
+        if value is NOVALUE or \
+                (isinstance(value, FileUpload) and not value.filename):
+            if self.ignoreContext:
+                return default
+
+            dm = getMultiAdapter((self.context, self.field,), IDataManager)
+            return dm.get()
+
+        # Note that we allow the user to upload an empty file.
+        return value
+
+
+@adapter(INamedFileField, INuPloneFormLayer)
+@implementer(IFieldWidget)
+def NamedFileWidgetFactory(field, request):
+    return FieldWidget(field, NicerNamedFileWidget(request))

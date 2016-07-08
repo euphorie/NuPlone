@@ -145,6 +145,15 @@
         />
   </class>
 
+  <adapter factory=".widget.NamedFileWidgetFactory" />
+
+  <class class=".widget.NicerNamedFileWidget">
+    <require
+        permission="zope.Public"
+        interface="z3c.form.interfaces.IFileWidget"
+        />
+  </class>
+
   <z3c:widgetTemplate
     mode="input"
     widget="plone.formwidget.namedfile.interfaces.INamedFileWidget"
