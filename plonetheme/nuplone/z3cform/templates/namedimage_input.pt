@@ -6,7 +6,7 @@
       i18n:domain="nuplone"
       tal:define="download_url view/download_url;"
       class="comprehensive filefield ${view/@@dependencies}">
-<span class="${view/@@dependencies}" tal:omit-tag="not:view/@@dependencies">
+<div class="z3cFieldContainer ${view/@@dependencies}">
   <legend>${view/label}<sup tal:condition="view/required" class="required">*</sup></legend>
   <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description">${description}</dfn>
   <tal:has-image condition="view/allow_nochange"><img class="floatAfter"
@@ -16,5 +16,5 @@
   </tal:has-image>
   <input type="file" id="${view/id}" name="${view/name}" class="${view/klass}"
       disabled="${view/disabled}" readonly="${view/readonly}"/> <tal:error condition="view/error" replace="structure view/error/render|nothing"/>
-</span>
+</div>
 </fieldset>

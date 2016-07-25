@@ -4,7 +4,7 @@
       i18n:domain="nuplone"
       tal:omit-tag=""
       tal:define="item python:view.items[0]">
-<span class="${view/@@dependencies}" tal:omit-tag="not:view/@@dependencies">
+<div class="z3cFieldContainer ${view/@@dependencies}">
   <label class="${python:'error' if view.error is not None else None}" ><tal:span replace="item/label">Widget label</tal:span> <sup tal:condition="view/required" class="required">*</sup>
     <input type="checkbox" tal:define="checked item/checked" id="${view/id}"
            name="${item/name}" value="${item/value}"
@@ -13,5 +13,5 @@
            readonly="${view/readonly}"/><tal:error condition="view/error" replace="structure view/error/render|nothing"/></label>
     <input type="hidden" value="1" name="${view/name}-empty-marker" />
     <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description">${description}</dfn>
-</span>
+</div>
 </html>
