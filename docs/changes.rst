@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.5.2 (unreleased)
+1.5.2 (2016-09-29)
 ------------------
 
 - Streamline File and Image input
