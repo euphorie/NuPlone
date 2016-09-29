@@ -4,8 +4,9 @@ Changelog
 1.5.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Streamline File and Image input
+- Mostly revert markup change of 1.5.1, since the `<div>` is required
+  for making infoBubbles render correctly
 
 1.5.1 (2016-06-20)
 ------------------
