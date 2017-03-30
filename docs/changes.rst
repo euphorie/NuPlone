@@ -4,7 +4,8 @@ Changelog
 1.5.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Also show the "stupid" div again on text_input, but only if the field
+  has a description
 
 
 1.5.2 (2016-09-29)
