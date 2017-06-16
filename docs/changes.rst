@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.5.4 (unreleased)
+1.5.4 (2017-06-16)
 ------------------
 
 - Add translation file for Croatioan (hr), currently with one translation
