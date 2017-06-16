@@ -4,8 +4,7 @@ Changelog
 1.5.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Add translation file for Croatioan (hr), currently with one translation
 
 1.5.3 (2017-04-03)
 ------------------
