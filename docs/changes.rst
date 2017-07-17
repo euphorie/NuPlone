@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.5.5 (unreleased)
+1.5.5 (2017-07-17)
 ------------------
 
 - Make re-ordering more robust
