@@ -4,8 +4,7 @@ Changelog
 1.5.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Make re-ordering more robust
 
 1.5.4 (2017-06-16)
 ------------------
