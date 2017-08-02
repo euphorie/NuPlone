@@ -4,8 +4,8 @@ Changelog
 1.5.6 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- In the File and Image widgets (z3cform), add a safeguard that prevents
+  a user-facing error when a blob file is missing
 
 1.5.5 (2017-07-17)
 ------------------

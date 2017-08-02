@@ -13,6 +13,7 @@ from z3c.form.interfaces import IFieldWidget
 from z3c.form.interfaces import IMultiWidget
 from z3c.form.interfaces import NOVALUE
 from z3c.form.widget import FieldWidget
+from ZODB.POSException import POSKeyError
 from zope.component import adapter
 from zope.component import getMultiAdapter
 from zope.interface import implementer
@@ -57,6 +58,19 @@ class NewMultiWidgetEntry(grok.View):
 
 
 class NicerNamedImageWidget(NamedImageWidget):
+
+    @property
+    def allow_nochange(self):
+        # Prevent errors caused by missing blob file
+        if self.value != self.field.missing_value:
+            try:
+                blob = getattr(self.value, "_blob", None)
+                if blob:
+                    blob.__repr__()
+            except POSKeyError:
+                return False
+        return super(NicerNamedImageWidget, self).allow_nochange
+
     def extract(self, default=NOVALUE):
         action = self.request.get("%s.action" % self.name, None)
         if action == 'remove':
@@ -83,6 +97,19 @@ def NamedImageWidgetFactory(field, request):
 
 
 class NicerNamedFileWidget(NamedFileWidget):
+
+    @property
+    def allow_nochange(self):
+        # Prevent errors caused by missing blob file
+        if self.value != self.field.missing_value:
+            try:
+                blob = getattr(self.value, "_blob", None)
+                if blob:
+                    blob.__repr__()
+            except POSKeyError:
+                return False
+        return super(NicerNamedFileWidget, self).allow_nochange
+
     def extract(self, default=NOVALUE):
         action = self.request.get("%s.action" % self.name, None)
         if action == 'remove':
