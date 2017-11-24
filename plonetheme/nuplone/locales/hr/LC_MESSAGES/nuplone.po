@@ -441,17 +441,17 @@ msgstr ""
 #. Default: Languages
 #: plonetheme/nuplone/tiles/templates/language.pt:10
 msgid "portlet_languages"
-msgstr ""
+msgstr "Jezik"
 
 #. Default: Search
 #: plonetheme/nuplone/tiles/templates/tabs.pt:16
 msgid "menu_search"
-msgstr ""
+msgstr "Pretraživanje"
 
 #. Default: Submit
 #: plonetheme/nuplone/tiles/templates/tabs.pt:16
 msgid "button_submit"
-msgstr ""
+msgstr "Podnesi"
 
 #. Default: URL
 #: plonetheme/nuplone/z3cform/wysiwyg.py:11
@@ -485,7 +485,7 @@ msgstr ""
 #: plonetheme/nuplone/z3cform/templates/textlines_input.pt:10
 #: plonetheme/nuplone/z3cform/templates/wysiwyg_input.pt:11
 msgid "Information"
-msgstr ""
+msgstr "Informacija"
 
 #. Default: Day
 #: plonetheme/nuplone/z3cform/templates/date_input.pt:9

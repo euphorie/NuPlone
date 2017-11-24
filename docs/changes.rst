@@ -6,6 +6,7 @@ Changelog
 
 - In the File and Image widgets (z3cform), add a safeguard that prevents
   a user-facing error when a blob file is missing
+- Updated translations for Croatian (HR)
 
 1.5.5 (2017-07-17)
 ------------------
