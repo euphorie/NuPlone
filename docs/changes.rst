@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.5.6 (unreleased)
+1.5.6 (2017-11-27)
 ------------------
 
 - In the File and Image widgets (z3cform), add a safeguard that prevents
