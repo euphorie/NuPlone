@@ -17,11 +17,14 @@
     <link rel="icon" type="image/png" href="media/favicon.png" /><!--[if IE]>
       <link rel="shortcut icon" type="image/x-icon" href="media/favicon-pink.ico" />
     <![endif]-->
-    <script type="text/javascript" src="libraries/jquery-1.4.4.js"> </script>
+    <script type="text/javascript" src="oira.cms.js"> </script>
+    <!--
+    <script type="text/javascript" src="libraries/jquery-1.11.3.min.js"> </script>
     <script type="text/javascript" src="libraries/jquery.tools.min.js"> </script>
     <script type="text/javascript" src="libraries/ui-1.8/jquery-ui.js"> </script>
     <script type="text/javascript" src="libraries/css_browser_selector.js"> </script>
     <script type="text/javascript" src="behaviour/behaviour.js"> </script>
+  -->
     <!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
   </head>
   <body>
@@ -38,14 +41,14 @@
           <fieldset>
             <label >Title <sup class="required">*</sup>
               <input type="text" id="form-widgets-title" name="form.widgets.title" value="Viskarren" class="span-7 required textline-field" /></label>
-    
+
             <label >Question <sup class="required">*</sup>
               <input type="text" id="form-widgets-question" name="form.widgets.question" value="Doet u aan mobiele verkoop?" class="span-7 required textline-field" /></label>
             <dfn class="infoPanel" title="Information">This question must ask users if this profile applies to them.</dfn>
 
             <label >Multiple item question <sup class="required">*</sup>
               <input type="text" id="form-widgets-label_multiple_present" name="form.widgets.label_multiple_present" value="Heeft u meer dan dan één viskar?" class="span-7 required textline-field" /></label>
-      
+
             <label >Single occurrence prompt <sup class="required">*</sup>
               <input type="text" id="form-widgets-label_single_occurance" name="form.widgets.label_single_occurance" value="Waar staat u viskar?" class="span-7 required textline-field" /></label>
             <dfn class="infoPanel" title="Information">This must ask to user for the name of the relevant location.</dfn>
@@ -55,12 +58,12 @@
             <dfn class="infoPanel" title="Information">This must ask to user for the names of all relevant locations.</dfn>
           </fieldset>
         <fieldset>
-      
+
         <fieldset class="richInput">
           <legend lang="en">Description<sup class="required">*</sup></legend>
           <dfn class="infoPanel"          title="Information">Include any relevant information that may be helpful for the end-user.</dfn>
           <label for="form-widgets-description" class="superImpose">Please enter text here</label>
-          <textarea class="rich" id="form-widgets-description" name="form.widgets.description"><p>Meer informatie is te vinden op XYZ.</p></textarea> 
+          <textarea class="rich" id="form-widgets-description" name="form.widgets.description"><p>Meer informatie is te vinden op XYZ.</p></textarea>
         </fieldset>
     </fieldset>
 
@@ -75,28 +78,28 @@
     	<div id="simulation">
     		<h1>Fine dining</h1>
     		      <section>
-    		
+
     		    	<h2 class="example-title">Commercial manned guarding</h2>
-    		
+
     		    	<p>
     		    	  Curabitur gravida fermentum sapien lacinia tempus. Fusce congue gravida
     		    	  leo non luctus. Morbi quis turpis neque, a tincidunt mi. Integer
     		    	  scelerisque consectetur odio, nec sagittis turpis porttitor at. Fusce
     		    	  porta posuere accumsan.
     		    	</p>
-    		
+
     		    	<fieldset class="comprehensive radioList">
     		    		<legend class="example-question">Does your organisation provide mobile patrolling?</legend>
     		    		<label><input type="radio" name="profilequestion" value="yes" checked="checked"/> Yes</label>
     		    		<label><input type="radio" name="profilequestion" value="no" /> No</label>
     		    	</fieldset>
-    		
+
     				<fieldset class="comprehensive radioList dependsOn-profilequestion-equals-yes">
     					<legend class="example-label_multiple_present">Do you offer this service in multiple locations?</legend>
     					<label><input type="radio" name="profilequestiona" value="yes" /> Yes</label>
     					<label><input type="radio" name="profilequestiona" checked="checked" value="no" /> No</label>
     				</fieldset>
-    		
+
     				<fieldset class="comprehensive dependsOn-profilequestion-equals-yes dependsOn-profilequestiona">
     			        <legend>
     			        	<span class="dependsOn-profilequestiona-equals-no example-label_single_occurance">Name of location you would like to assess</span>
@@ -109,9 +112,9 @@
     			        	<button class="small" type="button">Add another item</button>
     			        </p>
     		      	</fieldset>
-    		
+
     		      </section>
-    		
+
     		      	<button class="floatAfter" type="button">Continue</button>
     	</div>
       <ul id="navigation" class="navigation">
@@ -214,7 +217,7 @@
         </p>
       </object>
     </p>
-	  
+
       <p id="appendix">
         <a href="#">Link to sector organisation</a> | <a href="#">Disclaimer</a> | Design by <a href="http://www.cornae.com">Cornae</a>
       </p>

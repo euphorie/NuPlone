@@ -16,7 +16,9 @@
     <link rel="icon" type="image/png" href="media/favicon.png" /><!--[if IE]>
       <link rel="shortcut icon" type="image/x-icon" href="media/favicon-pink.ico" />
     <![endif]-->
-    <script type="text/javascript" src="libraries/jquery-1.4.4.js">
+    <script type="text/javascript" src="oira.cms.js"> </script>
+    <!--
+    <script type="text/javascript" src="libraries/jquery-1.11.3.min.js">
 </script>
     <script type="text/javascript" src="libraries/jquery.tools.min.js">
 </script>
@@ -25,7 +27,8 @@
     <script type="text/javascript" src="libraries/css_browser_selector.js">
 </script>
     <script type="text/javascript" src="behaviour/behaviour.js">
-</script><!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+</script>
+--><!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
   </head>
   <body>
   	<div id="content">
@@ -108,7 +111,7 @@
           <a href="sk">Slovakia</a>
 
         </li>
-      </ul>  
+      </ul>
 
         <!-- InstanceEndEditable -->
       </div>
@@ -213,8 +216,8 @@
       </object>
     </p>
     <div id="portlets" class="sortable">
-   	
-       
+
+
       <div class="portlet contextual collapsible" id="portletVersioning">
       	<h3>Survey versions</h3>
           <div class="portletContent">
@@ -231,7 +234,7 @@
                  </li>
               </ul>
               </fieldset>
-              
+
             	<fieldset class="version">
             	<legend>Survey 2009</legend>
               <fieldset class="headerButtons">
@@ -265,19 +268,19 @@
              </div>
           </div>
       </div>
-     	
-	  
+
+
 	  </div>
   <form id="workflowState" action="#" class="draft">
         <fieldset class="radioList">
           <p class="currentState">
             Draft
           </p>
-          <label><input type="radio" name="workflow" checked="checked" /> Leave retracted</label> 
+          <label><input type="radio" name="workflow" checked="checked" /> Leave retracted</label>
           <label><input type="radio" name="workflow" /> Published</label>
         </fieldset>
         <fieldset>
-          <label for="revisionNote" class="superImpose">Write a revision note.</label> 
+          <label for="revisionNote" class="superImpose">Write a revision note.</label>
           <textarea rows="3" cols="20" id="revisionNote">
   </textarea> <button type="submit">Apply</button> <label><input type="checkbox" name="notify" /> Notify</label>
         </fieldset>

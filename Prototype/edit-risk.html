@@ -16,11 +16,14 @@
     <link rel="icon" type="image/png" href="media/favicon.png" /><!--[if IE]>
       <link rel="shortcut icon" type="image/x-icon" href="media/favicon-pink.ico" />
     <![endif]-->
-    <script type="text/javascript" src="libraries/jquery-1.4.4.js"> </script>
+    <script type="text/javascript" src="oira.cms.js"> </script>
+    <!--
+    <script type="text/javascript" src="libraries/jquery-1.11.3.min.js"> </script>
     <script type="text/javascript" src="libraries/jquery.tools.min.js"> </script>
     <script type="text/javascript" src="libraries/ui-1.8/jquery-ui.js"> </script>
     <script type="text/javascript" src="libraries/css_browser_selector.js"> </script>
     <script type="text/javascript" src="behaviour/behaviour.js"> </script>
+  -->
     <script type="text/javascript">
       var plone = {portal_url: "./",
                    context_url: location.href.replace("edit-risk.html", "modules") };
@@ -39,8 +42,8 @@
           <!-- InstanceBeginEditable name="Introduction" -->
           <!-- InstanceEndEditable -->
         </div><!-- InstanceBeginEditable name="Main content" -->
-       
-    <form class="concise" action="spuitlansen-decorated.html" id="lorem">    
+
+    <form class="concise" action="spuitlansen-decorated.html" id="lorem">
       <fieldset>
         <legend>Content</legend>
 
@@ -50,20 +53,20 @@
 
           <label>Problem description <sup class="required">*</sup>
           <dfn class="infoPanel" title="Information">This is the inverse of the statement: a short description of current (bad) situation.</dfn> <textarea id="form-widgets-problem_description" name="form.widgets.problem_description" class="textarea-widget required textline-field" rows="4"></textarea> </label>
-        
+
         <fieldset class="richInput condensed">
           <legend>Description<sup class="required">*</sup></legend>
           <label class="superImpose" for="form-widgets-description">Please enter text here</label>
-          <dfn class="infoPanel" title="Information">Describe the risk. Include any relevant information that may be helpful for users.</dfn>  
+          <dfn class="infoPanel" title="Information">Describe the risk. Include any relevant information that may be helpful for users.</dfn>
           <div id="form-widgets-description" class="rich input" contenteditable="true">
             <p>Maak aan alle (nieuwe) medewerkers bekend dat gebruik gemaakt kan worden van het arbeidsomstandighedenspreekuur.</p>
           </div>
         </fieldset>
-        
+
         <fieldset class="richInput condensed">
           <legend>Legal and policy references.</legend>
           <label class="superImpose" for="form-widgets-legal_reference">Please enter text here</label>
-          <div id="form-widgets-legal_reference" class="rich input" contenteditable="true"></div><input type="hidden" name="form-widgets-legal_reference"> 
+          <div id="form-widgets-legal_reference" class="rich input" contenteditable="true"></div><input type="hidden" name="form-widgets-legal_reference">
         </fieldset>
 
 
@@ -71,7 +74,7 @@
             <legend>Main image</legend>
             <p class="discrete">The main image will get a more prominent position in the client than the other images</p>
             <label>Image file <input type="file" id="form-widgets-image" name="form.widgets.image" class="named-image-widget namedblobimage-field"> </label>
-            <label>Image caption 
+            <label>Image caption
 
           <textarea></textarea> </label>
           </fieldset>
@@ -82,23 +85,23 @@
                 <h5>Secondary image 1</h5>
                 <label>Image file <input type="file" id="form-widgets-image4" name="form.widgets.image4" class="named-image-widget namedblobimage-field"> </label>
 
-                <label>Image caption 
+                <label>Image caption
                 <textarea></textarea> </label>
               </fieldset>
-              
+
                 <fieldset>
                   <h5>Secondary image 2</h5>
                   <label>Image file <input type="file" id="form-widgets-image4" name="form.widgets.image4" class="named-image-widget namedblobimage-field"> </label>
 
-                  <label>Image caption 
+                  <label>Image caption
                   <textarea></textarea> </label>
                 </fieldset>
-                
+
             <fieldset>
               <h5>Secondary image 3</h5>
               <label>Image file <input type="file" id="form-widgets-image4" name="form.widgets.image4" class="named-image-widget namedblobimage-field"> </label>
 
-              <label>Image caption 
+              <label>Image caption
               <textarea></textarea> </label>
             </fieldset>
             </fieldset>
@@ -211,8 +214,8 @@
       </object>
     </p>
     <div id="portlets" class="sortable">
-   	
-       
+
+
       <div class="portlet contextual collapsible" id="portletVersioning">
       	<h3>Survey versions</h3>
           <div class="portletContent">
@@ -229,7 +232,7 @@
                  </li>
               </ul>
               </fieldset>
-              
+
             	<fieldset class="version">
             	<legend>Survey 2009</legend>
               <fieldset class="headerButtons">
@@ -263,19 +266,19 @@
              </div>
           </div>
       </div>
-     	
-	  
+
+
 	  </div>
   <form id="workflowState" action="#" class="draft">
         <fieldset class="radioList">
           <p class="currentState">
             Draft
           </p>
-          <label><input type="radio" name="workflow" checked="checked" /> Leave retracted</label> 
+          <label><input type="radio" name="workflow" checked="checked" /> Leave retracted</label>
           <label><input type="radio" name="workflow" /> Published</label>
         </fieldset>
         <fieldset>
-          <label for="revisionNote" class="superImpose">Write a revision note.</label> 
+          <label for="revisionNote" class="superImpose">Write a revision note.</label>
           <textarea rows="3" cols="20" id="revisionNote">
   </textarea> <button type="submit">Apply</button> <label><input type="checkbox" name="notify" /> Notify</label>
         </fieldset>

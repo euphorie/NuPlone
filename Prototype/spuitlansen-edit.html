@@ -16,11 +16,14 @@
     <link rel="icon" type="image/png" href="media/favicon.png" /><!--[if IE]>
       <link rel="shortcut icon" type="image/x-icon" href="media/favicon-pink.ico" />
     <![endif]-->
-    <script type="text/javascript" src="libraries/jquery-1.4.4.js"> </script>
+    <script type="text/javascript" src="oira.cms.js"> </script>
+    <!--
+    <script type="text/javascript" src="libraries/jquery-1.11.3.min.js"> </script>
     <script type="text/javascript" src="libraries/jquery.tools.min.js"> </script>
     <script type="text/javascript" src="libraries/ui-1.8/jquery-ui.js"> </script>
     <script type="text/javascript" src="libraries/css_browser_selector.js"> </script>
     <script type="text/javascript" src="behaviour/behaviour.js"></script>
+  -->
     <!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
   </head>
   <body>
@@ -35,9 +38,9 @@
              Van belang is dat de spuitlans de juiste lengte heeft om rechtopstaand te werken. Een gebogen spuitlans geeft een hogere polsbelasting en wordt daarom afgeraden.</p>
       <p>Zie <a href="http://www.fytostat.nl/" rel="nofollow" target="_blank">www.fytostat.nl</a>.</p><!-- InstanceEndEditable -->
         </div><!-- InstanceBeginEditable name="Main content" -->
-       
-    <form class="concise" action="spuitlansen-decorated.html" id="lorem">    
-        
+
+    <form class="concise" action="spuitlansen-decorated.html" id="lorem">
+
       <fieldset>
         <legend>Date test</legend>
         <fieldset class="comprehensive date-eu">
@@ -58,64 +61,64 @@
         </fieldset>
        </fieldset>
       <fieldset>
-        <legend>Separation title</legend> 
+        <legend>Separation title</legend>
         <label>Statement<sup class="required">*</sup>
           <dfn class="infoPanel " title="Information">This is a short statement about a possible risk. <a href="www.cornae.com">Read more…</a></dfn>
           <textarea class="span-5" rows="7" cols="35" name="form.widgets.title">Er kan gebruik worden gemaakt van rechte spuitlansen van verschillende lengte</textarea>
-        </label> 
+        </label>
         <label>
           Problem description<sup class="required">*</sup>
           <textarea class="span-5" rows="7" cols="35">Er kan geen gebruik worden gemaakt van rechte spuitlansen van verschillende lengte</textarea>
-        </label> 
+        </label>
         <fieldset class="comprehensive radioList dependsOn-risktype-equals-risk">
-          <legend>Show 'not applicable identification' option<sup class="required">*</sup></legend> 
+          <legend>Show 'not applicable identification' option<sup class="required">*</sup></legend>
           <dfn class="infoPanel" title="Information">This is a short statement about a possible risk</dfn>
-          <label><input type="radio" name="form.widgets.show_na" value="yes"/> Yes</label> 
-          <label><input type="radio" name="form.widgets.show_na" value="no" checked="checked"  /> No</label> 
+          <label><input type="radio" name="form.widgets.show_na" value="yes"/> Yes</label>
+          <label><input type="radio" name="form.widgets.show_na" value="no" checked="checked"  /> No</label>
         </fieldset>
         <label>Risk type <select id="risktype" name="risktype" class="select-widget required choice-field" size="1">
         <option id="form-widgets-type-0" value="risk" selected="selected">Risk</option>
         <option id="form-widgets-type-1" value="policy">Policy</option>
         <option id="form-widgets-type-2" value="top-5">Top 5 risk</option>
         </select></label>
-        
+
         <fieldset class="comprehensive radioList dependsOn-risktype-equals-risk">
-          <legend>Evaluation method<sup class="required">*</sup></legend> 
+          <legend>Evaluation method<sup class="required">*</sup></legend>
           <dfn class="infoPanel" title="Information">This is a short statement about a possible risk </dfn>
           <label><input type="radio" name="evaluation" value="calculated" checked="checked" /> Calculated</label>
-          <label><input type="radio" name="evaluation" value="direct" /> Estimated</label> 
+          <label><input type="radio" name="evaluation" value="direct" /> Estimated</label>
         </fieldset>
         <fieldset class="comprehensive radioList dependsOn-risktype-equals-risk dependsOn-evaluation-equals-calculated">
-          <legend>Default probability<sup class="required">*</sup></legend> 
+          <legend>Default probability<sup class="required">*</sup></legend>
           <dfn class="infoPanel" title="Information">This is a short statement about a possible risk </dfn>
-          <label><input type="radio" name="probability" checked="checked" /> No default</label> 
-          <label><input type="radio" name="probability" /> Small</label> 
-          <label><input type="radio" name="probability" /> Medium</label> 
-          <label><input type="radio" name="probability" /> Big</label> 
+          <label><input type="radio" name="probability" checked="checked" /> No default</label>
+          <label><input type="radio" name="probability" /> Small</label>
+          <label><input type="radio" name="probability" /> Medium</label>
+          <label><input type="radio" name="probability" /> Big</label>
         </fieldset>
         <fieldset class="comprehensive radioList dependsOn-risktype-equals-risk dependsOn-evaluation-equals-calculated">
-          <legend>Default frequency<sup class="required">*</sup></legend> 
+          <legend>Default frequency<sup class="required">*</sup></legend>
           <dfn class="infoPanel" title="Information">This is a short statement about a possible risk </dfn>
-          <label><input type="radio" name="frequency" checked="checked" /> No default</label> 
-          <label><input type="radio" name="frequency" /> Almost never</label> 
-          <label><input type="radio" name="frequency" /> Regularly</label> 
-          <label><input type="radio" name="frequency" /> Constantly</label> 
+          <label><input type="radio" name="frequency" checked="checked" /> No default</label>
+          <label><input type="radio" name="frequency" /> Almost never</label>
+          <label><input type="radio" name="frequency" /> Regularly</label>
+          <label><input type="radio" name="frequency" /> Constantly</label>
         </fieldset>
         <fieldset class="comprehensive radioList dependsOn-risktype-equals-risk dependsOn-evaluation-equals-calculated">
-          <legend>Default sevirity<sup class="required">*</sup></legend> 
+          <legend>Default sevirity<sup class="required">*</sup></legend>
           <dfn class="infoPanel" title="Information">This is a short statement about a possible risk </dfn>
-          <label><input type="radio" name="sevirity" checked="checked" /> No default</label> 
-          <label><input type="radio" name="sevirity" /> Weak severity</label> 
-          <label><input type="radio" name="sevirity" /> Significant severity</label> 
-          <label><input type="radio" name="sevirity" /> High/very high severity</label> 
+          <label><input type="radio" name="sevirity" checked="checked" /> No default</label>
+          <label><input type="radio" name="sevirity" /> Weak severity</label>
+          <label><input type="radio" name="sevirity" /> Significant severity</label>
+          <label><input type="radio" name="sevirity" /> High/very high severity</label>
         </fieldset>
         <fieldset class="comprehensive radioList dependsOn-risktype-equals-risk dependsOn-evaluation-equals-direct">
-          <legend>Default evaluation<sup class="required">*</sup></legend> 
+          <legend>Default evaluation<sup class="required">*</sup></legend>
           <dfn class="infoPanel" title="Information">This is a short statement about how to select a default evaluation</dfn>
-          <label><input type="radio" name="frequency" checked="checked" /> No default</label> 
-          <label><input type="radio" name="frequency" /> Low</label> 
-          <label><input type="radio" name="frequency" /> Average</label> 
-          <label><input type="radio" name="frequency" /> High</label> 
+          <label><input type="radio" name="frequency" checked="checked" /> No default</label>
+          <label><input type="radio" name="frequency" /> Low</label>
+          <label><input type="radio" name="frequency" /> Average</label>
+          <label><input type="radio" name="frequency" /> High</label>
         </fieldset>
         <label>Image <input type="file" /></label>
       </fieldset>
@@ -131,18 +134,18 @@
           <dfn class="infoPanel" title="Information">This is a short statement about a possible risk.</dfn>
           <input type="checkbox" id="form-widgets-test" />
         </label>
-            
+
         <label>Problem description <sup class="required">*</sup>
           <dfn class="infoPanel" title="Information">This is the inverse of the statement: a short description of current (bad) situation.</dfn> <textarea id="form-widgets-problem_description" name="form.widgets.problem_description" class="textarea-widget required textline-field" rows="4"></textarea> </label>
 
         <fieldset>
           <p class="legend">Description<sup class="required">*</sup></p> <dfn class="infoPanel" title="Information">Describe the risk. Include any relevant information that may be helpful for users.</dfn>
-          <div id="form-widgets-description" class="rich input" style="display: block; " contenteditable="true"><p>Maak aan alle (nieuwe) medewerkers bekend dat gebruik gemaakt kan worden van het arbeidsomstandighedenspreekuur.</p></div><input type="hidden" name="form-widgets-description"> 
+          <div id="form-widgets-description" class="rich input" style="display: block; " contenteditable="true"><p>Maak aan alle (nieuwe) medewerkers bekend dat gebruik gemaakt kan worden van het arbeidsomstandighedenspreekuur.</p></div><input type="hidden" name="form-widgets-description">
         </fieldset>
 
         <fieldset>
-          <p class="legend">Legal and policy references.</p> 
-          <div id="form-widgets-legal_reference" class="rich input" style="display: block; " contenteditable="true"><p>Please enter text here</p></div><input type="hidden" name="form-widgets-legal_reference"> 
+          <p class="legend">Legal and policy references.</p>
+          <div id="form-widgets-legal_reference" class="rich input" style="display: block; " contenteditable="true"><p>Please enter text here</p></div><input type="hidden" name="form-widgets-legal_reference">
         </fieldset>
 
 
@@ -150,7 +153,7 @@
             <legend>Main image</legend>
             <p class="discrete">The main image will get a more prominent position in the client than the other images</p>
             <label>Image file <input type="file" id="form-widgets-image" name="form.widgets.image" class="named-image-widget namedblobimage-field"> </label>
-            <label>Image caption 
+            <label>Image caption
 
           <textarea></textarea> </label>
           </fieldset>
@@ -161,23 +164,23 @@
                 <h5>Secondary image 1</h5>
                 <label>Image file <input type="file" id="form-widgets-image4" name="form.widgets.image4" class="named-image-widget namedblobimage-field"> </label>
 
-                <label>Image caption 
+                <label>Image caption
                 <textarea></textarea> </label>
               </fieldset>
-              
+
                 <fieldset>
                   <h5>Secondary image 2</h5>
                   <label>Image file <input type="file" id="form-widgets-image4" name="form.widgets.image4" class="named-image-widget namedblobimage-field"> </label>
 
-                  <label>Image caption 
+                  <label>Image caption
                   <textarea></textarea> </label>
                 </fieldset>
-                
+
             <fieldset>
               <h5>Secondary image 3</h5>
               <label>Image file <input type="file" id="form-widgets-image4" name="form.widgets.image4" class="named-image-widget namedblobimage-field"> </label>
 
-              <label>Image caption 
+              <label>Image caption
               <textarea></textarea> </label>
             </fieldset>
             </fieldset>
@@ -188,7 +191,7 @@
       </div>
     </form>
 	   <!-- InstanceEndEditable -->
-      
+
       <ul id="navigation" class="navigation">
         <li class="navTreeItem visualNoMarker navTreeItemInPath navTreeFolderish">
           <a href="#" class="state-missing-value navTreeItemInPath navTreeFolderish" title="">Varkenshouderij <em class="icon folder">(Folder)</em></a>
@@ -265,7 +268,7 @@
     	<h1>
     	      Stallen reinigen en spuiten
     	    </h1>
-    	   
+
     	      <fieldset class="radioList comprehensive">
                 <legend class="example-title">The temperature of all fridges is checked daily</legend>
                 <label><input type="radio" name="answer" value="yes" />Yes</label>
@@ -321,10 +324,10 @@
     	        </p>
     	      </div><!-- WTA: Information block ends here -->
     	      <fieldset class="condensed" id="comments">
-    	
+
     	        <textarea id="commentsField" name="comments" placeholder="Please leave any comments you may have on the question above in this field" cols="70" rows="5" class="span-15"></textarea>
     	      </fieldset>
-    	    
+
     </div>
     <ul id="tabs">
       <li class="current">
@@ -354,17 +357,17 @@
         </p>
       </object>
     </p>
-    
+
   <form id="workflowState" action="#" class="draft">
         <fieldset class="radioList">
           <p class="currentState">
             Draft
           </p>
-          <label><input type="radio" name="workflow" checked="checked" /> Leave retracted</label> 
+          <label><input type="radio" name="workflow" checked="checked" /> Leave retracted</label>
           <label><input type="radio" name="workflow" /> Published</label>
         </fieldset>
         <fieldset>
-          <label for="revisionNote" class="superImpose">Write a revision note.</label> 
+          <label for="revisionNote" class="superImpose">Write a revision note.</label>
           <textarea rows="3" cols="20" id="revisionNote">
   </textarea> <button type="submit">Apply</button> <label><input type="checkbox" name="notify" /> Notify</label>
         </fieldset>
