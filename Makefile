@@ -5,11 +5,25 @@ PO_FILES	= $(wildcard plonetheme/nuplone/locales/*/LC_MESSAGES/nuplone.po)
 MO_FILES	= $(PO_FILES:.po=.mo)
 
 TARGETS		= $(MO_FILES)
+BINDIR      ?= .bundle/bin
+BUNDLE      ?= $(BINDIR)/bundle
 
 all: ${TARGETS}
 
+bundle bundle.js bundles/oira.cms.js: stamp-npm
+	mkdir -p redactor
+	cp src/redactor/redactor.css redactor/
+	node_modules/.bin/grunt cssmin
+	npm run build
+
+stamp-npm: package.json
+	npm install
+	touch stamp-npm
+
+
 clean::
 	-rm ${TARGETS}
+	rm -rf stamp-npm node_modules bundles/*
 
 bin/buildout: bootstrap.py
 	$(PYTHON) bootstrap.py
