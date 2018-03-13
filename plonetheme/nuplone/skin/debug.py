@@ -7,6 +7,7 @@ from zope.interface import Interface
 import Globals
 
 
+
 class WhoAmI(grok.View):
     """Simple view to help debug authorisation problems. This view returns
     the id and login name of the current user and all his roles, both global

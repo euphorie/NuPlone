@@ -1,6 +1,8 @@
+# coding=utf-8
 from Acquisition import aq_inner
 from five import grok
 from OFS.interfaces import ICopyContainer
+from plone import api
 from plone.memoize.view import memoize_contextless
 from plonetheme.nuplone import MessageFactory as _
 from plonetheme.nuplone.skin.interfaces import NuPloneSkin
@@ -8,8 +10,8 @@ from plonetheme.nuplone.utils import getFactoriesInContext
 from Products.CMFCore.ActionInformation import ActionInfo
 from Products.CMFCore.interfaces import ISiteRoot
 from Products.CMFCore.utils import getToolByName
-from zope.component import getMultiAdapter
 from zope.interface import Interface
+
 
 grok.templatedir("templates")
 
@@ -23,10 +25,11 @@ class Sitemenu(grok.View):
     @property
     @memoize_contextless
     def tools_view(self):
-        return getMultiAdapter((
+        return api.content.get_view(
+            'tools',
             self.context,
             self.request,
-        ), name='tools')
+        )
 
     @property
     def settings_url(self):

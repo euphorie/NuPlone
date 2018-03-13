@@ -17,9 +17,6 @@ from zope.publisher.browser import TestRequest as TestRequestBase
 import Products.Five
 
 
-SiteLayer = layer.PloneSite
-
-
 class CookieMapper(RequestDataMapper):
     _mapname = '_cookies'
 
@@ -38,28 +35,8 @@ class TestRequest(TestRequestBase):
     cookies = RequestDataProperty(CookieMapper)
 
 
-class BaseLayer(SiteLayer):
-
-    @classmethod
-    def setUp(cls):
-        """ Set up the additional products required
-        """
-        PRODUCTS = [
-            'plonetheme.nuplone',
-        ]
-        ptc.setupPloneSite(products=PRODUCTS)
-
-        fiveconfigure.debug_mode = True
-        import plonetheme.nuplone
-        zcml.load_config('meta.zcml', Products.Five)
-        zcml.load_config('configure.zcml', Products.statusmessages)
-        zcml.load_config('configure.zcml', plonetheme.nuplone)
-        fiveconfigure.debug_mode = False
-        SiteLayer.setUp()
-
-
-class TestHTMLStatusMessages(ptc.PloneTestCase):
-    layer = BaseLayer
+class TestHTMLStatusMessages(TestCase):
+    layer = NUPLONE_INTEGRATION_TESTING
 
     def testAdapter(self):
         """ Test status messages

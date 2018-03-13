@@ -1,7 +1,9 @@
+# coding=utf-8
 from setuptools import find_packages
 from setuptools import setup
 
 import os
+
 
 version = '1.5.7.dev0'
 
@@ -38,6 +40,7 @@ setup(
         'five.pt >= 2.2.0',
         'five.grok',
         'z3c.pt >=1.1.2',
+        'plone.api',
         'plone.tiles',
         'plone.z3cform',
         'plone.app.z3cform >=0.4.10dev',
@@ -60,7 +63,8 @@ setup(
     extras_require={
         'tests': [
             'plone.testing',
-            'plone.app.testing',
+            'plone.app.robotframework',
+            'plone.app.testing [robot]',
         ],
     },
 )

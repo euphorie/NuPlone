@@ -1,3 +1,4 @@
+# coding=utf-8
 from AccessControl import getSecurityManager
 from Acquisition import aq_inner
 from five import grok
@@ -23,8 +24,9 @@ class Tools(grok.View):
     def __init__(self, *a):
         super(Tools, self).__init__(*a)
         self.user = getSecurityManager().getUser()
-        self.anonymous = self.user is None or self.user.getUserName(
-        ) == "Anonymous User"
+        self.anonymous = (
+            self.user is None or self.user.getUserName() == "Anonymous User"
+        )
         self.portal = utils.getPortal(self.context)
         self.portal_url = self.portal.absolute_url()
         self.navroot = utils.getNavigationRoot(self.context)

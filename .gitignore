@@ -9,6 +9,7 @@
 /develop-eggs
 /eggs
 /parts
+/var/
 /NuPlone.egg-info
 /.installed.cfg
 
