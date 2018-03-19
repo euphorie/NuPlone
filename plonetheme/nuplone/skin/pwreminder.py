@@ -7,8 +7,8 @@ from Products.CMFCore.interfaces import ISiteRoot
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.MailHost.MailHost import MailHostError
-from Products.PasswordResetTool.PasswordResetTool import ExpiredRequestError
-from Products.PasswordResetTool.PasswordResetTool import InvalidRequestError
+from Products.CMFPlone.PasswordResetTool import ExpiredRequestError
+from Products.CMFPlone.PasswordResetTool import InvalidRequestError
 from Products.statusmessages.interfaces import IStatusMessage
 from z3c.form.button import buttonAndHandler
 from zope import schema

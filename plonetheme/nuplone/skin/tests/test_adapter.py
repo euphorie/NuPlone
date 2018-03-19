@@ -2,19 +2,15 @@
 """ StatusMessage adapter tests.
 """
 from plonetheme.nuplone.skin.interfaces import NuPloneSkin
-from Products.Five import fiveconfigure
-from Products.Five import zcml
-from Products.PloneTestCase import PloneTestCase as ptc
-from Products.PloneTestCase import layer
+from plonetheme.nuplone.testing import NUPLONE_INTEGRATION_TESTING
 from Products.statusmessages.interfaces import IStatusMessage
+from unittest import TestCase
 from webhelpers.html.builder import literal
 from zope.annotation.interfaces import IAttributeAnnotatable
 from zope.interface import directlyProvides
 from zope.publisher.base import RequestDataMapper
 from zope.publisher.base import RequestDataProperty
 from zope.publisher.browser import TestRequest as TestRequestBase
-
-import Products.Five
 
 
 class CookieMapper(RequestDataMapper):
