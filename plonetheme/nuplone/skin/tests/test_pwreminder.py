@@ -1,7 +1,7 @@
 from plone.testing.z2 import Browser
 from plonetheme.nuplone.testing import NUPLONE_FUNCTIONAL_TESTING
 
-import unittest2 as unittest
+import unittest
 
 
 class PasswordResetTests(unittest.TestCase):
