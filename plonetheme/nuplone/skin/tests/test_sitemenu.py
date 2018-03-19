@@ -1,14 +1,35 @@
-import unittest2 as unittest
-import zope.component
-from zope.interface import alsoProvides
-from plone.testing import z2
 from plone.app.testing import login
-from plone.app.testing import TEST_USER_NAME
+from plone.app.testing import setRoles
 from plone.app.testing import SITE_OWNER_NAME
 from plone.app.testing import TEST_USER_ID
-from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_NAME
+from plone.testing import z2
 from plonetheme.nuplone.skin.interfaces import NuPloneSkin
 from plonetheme.nuplone.testing import NUPLONE_FUNCTIONAL_TESTING
+from plonetheme.nuplone.testing import NUPLONE_INTEGRATION_TESTING
+from zope.interface import alsoProvides
+
+import unittest2 as unittest
+import zope.component
+
+
+class SiteMenuIntegrationTests(unittest.TestCase):
+    layer = NUPLONE_INTEGRATION_TESTING
+
+    def setUp(self):
+        self.portal = self.layer["portal"]
+        self.request = self.portal.REQUEST
+        alsoProvides(self.request, NuPloneSkin)
+
+    def test_settings_url(self):
+        ''' Check that the sitemenu view provides a settings_url attribute
+        '''
+        view = zope.component.getMultiAdapter(
+            (self.portal, self.request),
+            name="sitemenu",
+        )
+        self.assertEqual(view.settings_url, 'http://nohost/plone/@@settings')
+
 
 class SiteMenuTests(unittest.TestCase):
     layer = NUPLONE_FUNCTIONAL_TESTING
