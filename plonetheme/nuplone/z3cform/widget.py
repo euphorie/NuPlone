@@ -83,7 +83,10 @@ class NicerNamedImageWidget(NamedImageWidget):
             if self.ignoreContext:
                 return default
 
-            dm = getMultiAdapter((self.context, self.field,), IDataManager)
+            dm = getMultiAdapter((
+                self.context,
+                self.field,
+            ), IDataManager)
             return dm.get()
 
         # Note that we allow the user to upload an empty file.
@@ -122,7 +125,10 @@ class NicerNamedFileWidget(NamedFileWidget):
             if self.ignoreContext:
                 return default
 
-            dm = getMultiAdapter((self.context, self.field,), IDataManager)
+            dm = getMultiAdapter((
+                self.context,
+                self.field,
+            ), IDataManager)
             return dm.get()
 
         # Note that we allow the user to upload an empty file.

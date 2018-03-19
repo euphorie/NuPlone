@@ -1,7 +1,7 @@
 from AccessControl import getSecurityManager
 from plonetheme.nuplone.tiles.tile import AppConfigTile
-from plonetheme.nuplone.utils import SimpleLiteral
 from plonetheme.nuplone.utils import isAnonymous
+from plonetheme.nuplone.utils import SimpleLiteral
 
 _GA_COOKIE = '_nuplone_ga'
 
@@ -21,6 +21,7 @@ def trigger_extra_pageview(request, url):
 
 
 class AnalyticsTile(AppConfigTile):
+
     def _pop_ga_queue(self):
         queue = _ga_queue(self.request)
         self.request.response.expireCookie(_GA_COOKIE, path='/')
@@ -32,6 +33,8 @@ class AnalyticsTile(AppConfigTile):
             return ''
         self.domain = self.data.get("domain", None)
         user = getSecurityManager().getUser()
-        self.auth_status = 'anonymous' if isAnonymous(user) else 'authenticated'
+        self.auth_status = 'anonymous' if isAnonymous(
+            user
+        ) else 'authenticated'
         self.ga_queue = self._pop_ga_queue()
         return SimpleLiteral(self.index())

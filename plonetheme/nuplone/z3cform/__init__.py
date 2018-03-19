@@ -5,5 +5,4 @@ if not _applied:
     # Zap the totally useless 'There were some errors' message.
     Form.formErrorsMessage = None
     del Form
-    _applied=True
-
+    _applied = True

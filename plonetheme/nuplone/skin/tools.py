@@ -1,12 +1,13 @@
-from Acquisition import aq_inner
 from AccessControl import getSecurityManager
-from zope.interface import Interface
-from zope.component import queryUtility
+from Acquisition import aq_inner
 from five import grok
-from z3c.appconfig.interfaces import IAppConfig
-from plonetheme.nuplone.skin.interfaces import NuPloneSkin
-from plonetheme.nuplone import utils
 from plonetheme.nuplone import MessageFactory as _
+from plonetheme.nuplone import utils
+from plonetheme.nuplone.skin.interfaces import NuPloneSkin
+from z3c.appconfig.interfaces import IAppConfig
+from zope.component import queryUtility
+from zope.interface import Interface
+
 
 class Tools(grok.View):
     """Basic view to expose utilties to templates."""
@@ -21,13 +22,14 @@ class Tools(grok.View):
 
     def __init__(self, *a):
         super(Tools, self).__init__(*a)
-        self.user=getSecurityManager().getUser()
-        self.anonymous=self.user is None or self.user.getUserName()=="Anonymous User"
-        self.portal=utils.getPortal(self.context)
-        self.portal_url=self.portal.absolute_url()
-        self.navroot=utils.getNavigationRoot(self.context)
-        self.navroot_url=self.navroot.absolute_url()
-        self.context_url=aq_inner(self.context).absolute_url()
+        self.user = getSecurityManager().getUser()
+        self.anonymous = self.user is None or self.user.getUserName(
+        ) == "Anonymous User"
+        self.portal = utils.getPortal(self.context)
+        self.portal_url = self.portal.absolute_url()
+        self.navroot = utils.getNavigationRoot(self.context)
+        self.navroot_url = self.navroot.absolute_url()
+        self.context_url = aq_inner(self.context).absolute_url()
 
     def render(self):
         """Little trick to make it easier to access this via from a TALES
@@ -43,8 +45,8 @@ class Tools(grok.View):
 
     @utils.reify
     def site_title(self):
-        config=self.appConfig
-        title=config.get("site", {}).get("title")
+        config = self.appConfig
+        title = config.get("site", {}).get("title")
         if title:
             return title
         else:
@@ -60,19 +62,20 @@ class Tools(grok.View):
         return utils.formatDateTime(self.request, timestamp, length)
 
     def formatDecimal(self, value, length=None):
-        return self.request.locale.numbers.getFormatter("decimal", length).format(value)
+        return self.request.locale.numbers.getFormatter("decimal",
+                                                        length).format(value)
 
     def formatPercentage(self, value, length=None):
-        return self.request.locale.numbers.getFormatter("percent", length).format(value)
+        return self.request.locale.numbers.getFormatter("percent",
+                                                        length).format(value)
 
     def countryName(self, code):
         return self.request.locale.displayNames.territories.get(code.upper())
 
     def languageName(self, code, default=None):
-        code=code.lower()
-        names=self.request.locale.displayNames.languages
+        code = code.lower()
+        names = self.request.locale.displayNames.languages
         return names.get(code, default)
 
     def checkPermission(self, permission):
         return utils.checkPermission(self.context, permission)
-

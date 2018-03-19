@@ -1,15 +1,17 @@
-import logging
-from zope.interface import implements
-from zope.interface import Interface
+from plone.tiles.interfaces import ITile
+from plone.tiles.interfaces import ITileDataManager
+from plone.tiles.tile import Tile
+from z3c.appconfig.interfaces import IAppConfig
 from zope.component import adapts
 from zope.component import getUtility
 from zope.component import queryMultiAdapter
-from plone.tiles.interfaces import ITileDataManager
-from plone.tiles.interfaces import ITile
-from plone.tiles.tile import Tile
-from z3c.appconfig.interfaces import IAppConfig
+from zope.interface import implements
+from zope.interface import Interface
+
+import logging
 
 log = logging.getLogger(__name__)
+
 
 class IAppConfigTile(ITile):
     """A tile with its configured stored in the application config."""
@@ -24,10 +26,10 @@ class AppConfigTileDataManager(object):
     adapts(IAppConfigTile)
 
     def __init__(self, tile):
-        self.tile=tile
+        self.tile = tile
 
     def get(self):
-        appconfig=getUtility(IAppConfig)
+        appconfig = getUtility(IAppConfig)
         return appconfig.get("tile:%s" % self.tile.id, {})
 
     def set(self, data):
@@ -35,18 +37,18 @@ class AppConfigTileDataManager(object):
 
 
 def getTile(context, request, name):
-    appconfig=getUtility(IAppConfig)
-    config=appconfig.get("tile:%s" % name, {})
-    type=config.get("type", name)
-    tile=queryMultiAdapter((context, request), Interface, name=type)
+    appconfig = getUtility(IAppConfig)
+    config = appconfig.get("tile:%s" % name, {})
+    type = config.get("type", name)
+    tile = queryMultiAdapter((context, request), Interface, name=type)
     if tile is None:
-        log.warn("Detected reference to non-existing tile '%s' for context %r",
-                 name, context)
+        log.warn(
+            "Detected reference to non-existing tile '%s' for context %r",
+            name, context
+        )
         return None
 
     if IAppConfigTile.providedBy(tile):
-        tile.id=name
+        tile.id = name
 
     return tile
-
-
