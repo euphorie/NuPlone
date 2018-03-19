@@ -1,23 +1,24 @@
 # -*- coding: UTF-8 -*-
 """ StatusMessage adapter tests.
 """
-from zope.annotation.interfaces import IAttributeAnnotatable
-from zope.interface import directlyProvides
-from zope.publisher.base import RequestDataProperty, RequestDataMapper
-from zope.publisher.browser import TestRequest as TestRequestBase
-
-from webhelpers.html.builder import literal
-
-import Products.Five
+from plonetheme.nuplone.skin.interfaces import NuPloneSkin
 from Products.Five import fiveconfigure
 from Products.Five import zcml
 from Products.PloneTestCase import PloneTestCase as ptc
-from Products.PloneTestCase import layer 
+from Products.PloneTestCase import layer
 from Products.statusmessages.interfaces import IStatusMessage
+from webhelpers.html.builder import literal
+from zope.annotation.interfaces import IAttributeAnnotatable
+from zope.interface import directlyProvides
+from zope.publisher.base import RequestDataMapper
+from zope.publisher.base import RequestDataProperty
+from zope.publisher.browser import TestRequest as TestRequestBase
 
-from plonetheme.nuplone.skin.interfaces import NuPloneSkin
+import Products.Five
+
 
 SiteLayer = layer.PloneSite
+
 
 class CookieMapper(RequestDataMapper):
     _mapname = '_cookies'
@@ -25,13 +26,15 @@ class CookieMapper(RequestDataMapper):
     def __setitem__(self, key, value):
         pass
 
+
 class TestRequest(TestRequestBase):
     """Zope 3's TestRequest doesn't support item assignment, but Zope 2's
     request does.
     """
+
     def __setitem__(self, key, value):
         pass
-        
+
     cookies = RequestDataProperty(CookieMapper)
 
 
@@ -42,8 +45,8 @@ class BaseLayer(SiteLayer):
         """ Set up the additional products required
         """
         PRODUCTS = [
-                'plonetheme.nuplone',
-                ]
+            'plonetheme.nuplone',
+        ]
         ptc.setupPloneSite(products=PRODUCTS)
 
         fiveconfigure.debug_mode = True
@@ -56,7 +59,7 @@ class BaseLayer(SiteLayer):
 
 
 class TestHTMLStatusMessages(ptc.PloneTestCase):
-    layer = BaseLayer 
+    layer = BaseLayer
 
     def testAdapter(self):
         """ Test status messages
@@ -69,7 +72,7 @@ class TestHTMLStatusMessages(ptc.PloneTestCase):
         # Now lets make sure we can actually adapt the request.
         status = IStatusMessage(self.request)
         self.assertEquals(IStatusMessage.providedBy(status), True)
-        assert(hasattr(status, 'addHTMLStatusMessage'))
+        assert (hasattr(status, 'addHTMLStatusMessage'))
 
         # We also need the request to be annotatable:
         directlyProvides(self.request, IAttributeAnnotatable)
@@ -89,7 +92,7 @@ class TestHTMLStatusMessages(ptc.PloneTestCase):
         # Make sure messages are removed
         self.assertEquals(len(status.show()), 0)
 
-        # Since we accessed the message prior to publishing the page, we must 
+        # Since we accessed the message prior to publishing the page, we must
         # ensure that the messages have been removed from the cookies
         self.assertEquals(len(status.show()), 0)
 
@@ -111,7 +114,7 @@ class TestHTMLStatusMessages(ptc.PloneTestCase):
         # Add two messages
         status.add(u'test', type=u'info')
         status.add(u'test1', u'warn')
-        
+
         # And check the results again
         messages = status.show()
         self.assertEquals(len(messages), 2)
@@ -144,12 +147,12 @@ class TestHTMLStatusMessages(ptc.PloneTestCase):
         self.assertEquals(len(messages), 1)
 
         test = messages[0]
-        assert(test.message == u'm' * 0x3FF)
-        assert(test.type == u't' * 0x1F)
+        assert (test.message == u'm' * 0x3FF)
+        assert (test.type == u't' * 0x1F)
 
         # Add one HTML messages
         status.addHTML(u'test', type=u'success')
-        
+
         # And check the results again
         messages = status.show()
         self.assertEquals(len(messages), 1)
@@ -161,7 +164,7 @@ class TestHTMLStatusMessages(ptc.PloneTestCase):
         # Add two HTML messages
         status.addHTML(u'test', type=u'info')
         status.addHTML(u'test1', u'warn')
-        
+
         # And check the results again
         messages = status.show()
         self.assertEquals(len(messages), 2)
@@ -194,14 +197,13 @@ class TestHTMLStatusMessages(ptc.PloneTestCase):
 
         test = messages[0]
         self.assertEquals(type(test.message), literal)
-        assert(test.message == '%s' % (u'm' * 0x3FF))
-        assert(test.type == u't' * 0x1F)
-
+        assert (test.message == '%s' % (u'm' * 0x3FF))
+        assert (test.type == u't' * 0x1F)
 
         # Add two mixed messages
         status.add(u'test', type=u'info')
         status.addHTML(u'test1', u'warn')
-        
+
         # And check the results again
         messages = status.show()
         self.assertEquals(len(messages), 2)
@@ -216,28 +218,39 @@ class TestHTMLStatusMessages(ptc.PloneTestCase):
         self.assertEquals(test.type, u'warn')
 
         # Add a more complicated html message
-        status.addHTML(u'You can go <a href="http://plone.org">here</a>.', type=u'success')
+        status.addHTML(
+            u'You can go <a href="http://plone.org">here</a>.',
+            type=u'success'
+        )
         messages = status.show()
         self.assertEquals(len(messages), 1)
         test = messages[0]
         self.assertEquals(test.type, u'success')
         self.assertEquals(
-            test.message, 
-            u'You can go <a href="http://plone.org" rel="nofollow" target="_blank">here</a>.')
+            test.message,
+            u'You can go <a href="http://plone.org" rel="nofollow" target="_blank">here</a>.'  # noqa: E501
+        )
         self.assertEquals(type(test.message), literal)
 
         # Add html message with disallowed tags
-        status.addHTML(u'<p>You can go <a href="http://plone.org">here</a>.</p>', type=u'success')
+        status.addHTML(
+            u'<p>You can go <a href="http://plone.org">here</a>.</p>',
+            type=u'success'
+        )
         messages = status.show()
         self.assertEquals(len(messages), 1)
         test = messages[0]
         self.assertEquals(test.type, u'success')
         self.assertEquals(
-            test.message, 
-            u'You can go <a href="http://plone.org" rel="nofollow" target="_blank">here</a>.')
+            test.message,
+            u'You can go <a href="http://plone.org" rel="nofollow" target="_blank">here</a>.'  # noqa: E501
+        )
         self.assertEquals(type(test.message), literal)
 
-        status.addHTML(u"<script type=\"javascript\">alert('hello')</script>", type=u'success')
+        status.addHTML(
+            u"<script type=\"javascript\">alert('hello')</script>",
+            type=u'success'
+        )
         messages = status.show()
         self.assertEquals(len(messages), 1)
         test = messages[0]
@@ -245,10 +258,13 @@ class TestHTMLStatusMessages(ptc.PloneTestCase):
         self.assertEquals(test.message, '')
         self.assertEquals(type(test.message), literal)
 
-        status.addHTML(u'<a href="data:text/html;base64,PHNjcmlwdD5hbGVydCgidGVzdCIpOzwvc2NyaXB0Pg==">click me</a>', type=u'success')
+        status.addHTML(
+            u'<a href="data:text/html;base64,PHNjcmlwdD5hbGVydCgidGVzdCIpOzwvc2NyaXB0Pg==">click me</a>',  # noqa: E501
+            type=u'success'
+        )
         messages = status.show()
         self.assertEquals(len(messages), 1)
         test = messages[0]
         self.assertEquals(test.type, u'success')
-        self.assertEquals( test.message, '<a href="">click me</a>')
+        self.assertEquals(test.message, '<a href="">click me</a>')
         self.assertEquals(type(test.message), literal)

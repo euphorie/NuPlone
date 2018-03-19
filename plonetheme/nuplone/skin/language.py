@@ -1,10 +1,10 @@
 from Acquisition import aq_inner
-from zope.interface import Interface
 from five import grok
 from plonetheme.nuplone import MessageFactory as _
 from plonetheme.nuplone.utils import getPortal
 from plonetheme.nuplone.utils import setLanguage
 from Products.statusmessages.interfaces import IStatusMessage
+from zope.interface import Interface
 
 
 class SwitchLanguage(grok.View):
@@ -15,11 +15,17 @@ class SwitchLanguage(grok.View):
     def render(self):
         flash = IStatusMessage(self.request).addStatusMessage
         if setLanguage(self.request, self.context):
-            flash(_('message_switch_language',
-                default=u'Language updated'), 'success')
+            flash(
+                _('message_switch_language', default=u'Language updated'),
+                'success'
+            )
         else:
-            flash(_('message_switch_language_error',
-                default=u'Failed to switch language'), 'error')
+            flash(
+                _(
+                    'message_switch_language_error',
+                    default=u'Failed to switch language'
+                ), 'error'
+            )
 
         next_url = self.request.get('came_from')
         if not next_url:

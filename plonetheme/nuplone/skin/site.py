@@ -1,8 +1,9 @@
-from Products.CMFPlone.interfaces import IPloneSiteRoot
-from plonetheme.nuplone.skin.interfaces import NuPloneSkin
 from five import grok
+from plonetheme.nuplone.skin.interfaces import NuPloneSkin
+from Products.CMFPlone.interfaces import IPloneSiteRoot
 
 grok.templatedir("templates")
+
 
 class Frontpage(grok.View):
     grok.context(IPloneSiteRoot)
@@ -10,4 +11,3 @@ class Frontpage(grok.View):
     grok.name("nuplone-view")
     grok.template("frontpage")
     grok.require("zope2.View")
-

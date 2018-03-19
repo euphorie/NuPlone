@@ -11,7 +11,6 @@ from Products.CMFCore.utils import getToolByName
 from zope.component import getMultiAdapter
 from zope.interface import Interface
 
-
 grok.templatedir("templates")
 
 
@@ -24,7 +23,10 @@ class Sitemenu(grok.View):
     @property
     @memoize_contextless
     def tools_view(self):
-        return getMultiAdapter((self.context, self.request,), name='tools')
+        return getMultiAdapter((
+            self.context,
+            self.request,
+        ), name='tools')
 
     @property
     def settings_url(self):
@@ -60,10 +62,11 @@ class Sitemenu(grok.View):
         actions = getFactoriesInContext(self.context)
         actions.sort(key=lambda x: x.title)
         for action in actions:
-            children.append({"title": action.title,
-                             "description": action.description,
-                             "url": action.url,
-                            })
+            children.append({
+                "title": action.title,
+                "description": action.description,
+                "url": action.url,
+            })
         if children:
             return menu
         else:
@@ -79,9 +82,11 @@ class Sitemenu(grok.View):
         context_url = context.absolute_url()
         is_root = ISiteRoot.providedBy(context)
         pa = getToolByName(context, 'portal_actions')
-        actions = pa.listActions(object=context,
-                                 categories=('folder_buttons',),
-                                 ignore_categories=None)
+        actions = pa.listActions(
+            object=context,
+            categories=('folder_buttons', ),
+            ignore_categories=None
+        )
         ec = pa._getExprContext(context)
         actions = [ActionInfo(action, ec) for action in actions]
 
@@ -92,12 +97,16 @@ class Sitemenu(grok.View):
                     and a['available'] and not is_root:
 
                 if a['id'] == 'copy' and context.cb_isCopyable():
-                    children.append({"title": _("menu_copy", default=u"Copy"),
-                                    "url": "%s/@@copy" % context_url})
+                    children.append({
+                        "title": _("menu_copy", default=u"Copy"),
+                        "url": "%s/@@copy" % context_url
+                    })
 
                 elif a['id'] == 'cut' and context.cb_isMoveable():
-                    children.append({"title": _("menu_cut", default=u"Cut"),
-                                    "url": "%s/@@cut" % context_url})
+                    children.append({
+                        "title": _("menu_cut", default=u"Cut"),
+                        "url": "%s/@@cut" % context_url
+                    })
 
                 elif a['id'] == 'paste' and ICopyContainer.providedBy(context):
                     children.append({

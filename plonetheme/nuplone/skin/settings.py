@@ -1,30 +1,31 @@
 from AccessControl import getSecurityManager
 from five import grok
+from plone.directives import form
+from plonetheme.nuplone import MessageFactory as _
+from Products.CMFCore.interfaces import ISiteRoot
+from Products.CMFCore.utils import getToolByName
+from Products.PluggableAuthService.interfaces.authservice import IPropertiedUser  # noqa: E501
+from Products.statusmessages.interfaces import IStatusMessage
+from z3c.form.interfaces import IDataManager
+from z3c.form.interfaces import NO_VALUE
 from zope import schema
 from zope.globalrequest import getRequest
 from zope.schema.interfaces import IField
 from zope.schema.interfaces import IPassword
-from plone.directives import form
-from plonetheme.nuplone import MessageFactory as _
-from z3c.form.interfaces import IDataManager
-from z3c.form.interfaces import NO_VALUE
-from Products.PluggableAuthService.interfaces.authservice import IPropertiedUser
-from Products.CMFCore.interfaces import ISiteRoot
-from Products.CMFCore.utils import getToolByName
-from Products.statusmessages.interfaces import IStatusMessage
+
 
 class ISettings(form.Schema):
     fullname = schema.TextLine(
-            title=_("label_fullname", default=u"Full name"),
-            required=True)
+        title=_("label_fullname", default=u"Full name"), required=True
+    )
 
     email = schema.ASCIILine(
-            title = _("label_email", default="Email address"),
-            required=True)
+        title=_("label_email", default="Email address"), required=True
+    )
 
     password = schema.Password(
-            title = _("label_password", default=u"Password"),
-            required = True)
+        title=_("label_password", default=u"Password"), required=True
+    )
 
 
 class UserPropertyDataManager(grok.MultiAdapter):
@@ -32,17 +33,16 @@ class UserPropertyDataManager(grok.MultiAdapter):
     grok.implements(IDataManager)
 
     def __init__(self, user, field):
-        self.user=user
-        self.field=field
-        self.propname=field.__name__
+        self.user = user
+        self.field = field
+        self.propname = field.__name__
         for sheet_id in user.listPropertysheets():
-            sheet=user.getPropertysheet(sheet_id)
+            sheet = user.getPropertysheet(sheet_id)
             if sheet.hasProperty(self.propname):
-                self.propertysheet=sheet
+                self.propertysheet = sheet
                 break
         else:
-            self.propname=None
-
+            self.propname = None
 
     def get(self):
         return self.propertysheet.getProperty(self.propname)
@@ -62,14 +62,13 @@ class UserPropertyDataManager(grok.MultiAdapter):
         return self.propname is not None
 
 
-
 class UserPasswordDataManager(grok.MultiAdapter):
     grok.adapts(IPropertiedUser, IPassword)
     grok.implements(IDataManager)
 
     def __init__(self, user, field):
-        self.user=user
-        self.field=field
+        self.user = user
+        self.field = field
 
     def get(self):
         raise AttributeError(self.field.__name__)
@@ -80,15 +79,16 @@ class UserPasswordDataManager(grok.MultiAdapter):
     def set(self, value):
         if value is None:
             return IStatusMessage(getRequest()).add(
-                _('Password not updated, none was specified.'),
-                type='error')
+                _('Password not updated, none was specified.'), type='error'
+            )
 
         try:
             mt = getToolByName(self.user, "portal_membership")
         except AttributeError:
             return IStatusMessage(getRequest()).add(
                 _('Cannot change password for Zope users, only Plone'),
-                type='error')
+                type='error'
+            )
         else:
             mt.setPassword(value)
 
@@ -107,5 +107,3 @@ class Settings(form.SchemaEditForm):
 
     def getContent(self):
         return getSecurityManager().getUser()
-
-

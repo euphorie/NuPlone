@@ -52,20 +52,20 @@ class SiteMenuTests(unittest.TestCase):
 
     def testActions(self):
         login(self.portal, TEST_USER_NAME)
-        setRoles(self.portal, TEST_USER_ID, ('Contributor',))
+        setRoles(self.portal, TEST_USER_ID, ('Contributor', ))
         # Copy the object
         cp = self.source_folder.manage_copyObjects(ids=['doc'])
         self.request['__cp'] = cp
 
         # We cannot paste the object in the site root
-        v = zope.component.getMultiAdapter(
-                                (self.portal, self.request), name="sitemenu")
+        v = zope.component.getMultiAdapter((self.portal, self.request),
+                                           name="sitemenu")
         self.assertIsNone(v.organise())
 
         # We can however paste the object in each of the folders
         for folder in [self.source_folder, self.dest_folder]:
-            v = zope.component.getMultiAdapter(
-                                (folder, self.request), name="sitemenu")
+            v = zope.component.getMultiAdapter((folder, self.request),
+                                               name="sitemenu")
             menu = v.organise()
             self.assertIsNotNone(menu)
             children_titles = [i['title'] for i in menu['children']]
@@ -73,10 +73,10 @@ class SiteMenuTests(unittest.TestCase):
 
         # Now when we give the user the Viewer role, they cannot paste anymore
         # so we should not see "Paste" as an available action.
-        setRoles(self.portal, TEST_USER_ID, ('Viewer',))
+        setRoles(self.portal, TEST_USER_ID, ('Viewer', ))
         for folder in [self.source_folder, self.dest_folder]:
-            v = zope.component.getMultiAdapter(
-                                (folder, self.request), name="sitemenu")
+            v = zope.component.getMultiAdapter((folder, self.request),
+                                               name="sitemenu")
             menu = v.organise()
             self.assertIsNotNone(menu)
             children_titles = [i['title'] for i in menu['children']]
