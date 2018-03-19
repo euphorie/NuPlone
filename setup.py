@@ -64,7 +64,7 @@ setup(
         'tests': [
             'plone.testing',
             'plone.app.robotframework',
-            'plone.app.testing [robot]',
+            'plone.app.testing',
         ],
     },
 )
