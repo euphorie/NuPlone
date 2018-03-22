@@ -74,8 +74,12 @@ def viewType(context, request):
     elif "/++add++" in current_url:
         return "add"
 
-    if current_url == aq_inner(context).absolute_url():
-        return "view"
+    try:
+        if current_url == aq_inner(context).absolute_url():
+            return "view"
+    except AttributeError:
+        # object has no absolute_url (None or Not Found)
+        pass
 
     return "other"
 
