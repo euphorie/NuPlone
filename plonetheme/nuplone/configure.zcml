@@ -15,14 +15,9 @@
     title="NuPlone [r]"
     directory="profiles/default"
     description="A new clean user interface for Plone"
-    provides="Products.GenericSetup.interfaces.EXTENSION" />
-
-  <genericsetup:importStep
-    name="plonetheme.nuplone.various"
-    title="NuPlone[r] extra installation steps"
-    description=""
-    handler=".setuphandlers.setupVarious"
-    />
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+    post_handler=".setuphandlers.post_install"
+  />
 
   <adapter
       for="plonetheme.nuplone.skin.interfaces.NuPloneSkin"

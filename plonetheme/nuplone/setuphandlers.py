@@ -1,18 +1,23 @@
+# coding=utf-8
+from plone import api
 from plonetheme.nuplone.auth import LoginChallenger
 
 import logging
 
+
 log = logging.getLogger(__name__)
 
 
-def setupVarious(context):
-    if context.readDataFile('plonetheme.nuplone.txt') is None:
-        return
-    addNuploneChallengerPlugin(context)
+def post_install(context):
+    addNuploneChallengerPlugin()
+    api.portal.set_registry_record(
+        'plone.app.theming.interfaces.IThemeSettings.enabled',
+        False,
+    )
 
 
-def addNuploneChallengerPlugin(context):
-    site = context.getSite()
+def addNuploneChallengerPlugin():
+    site = api.portal.get()
     pas = site.acl_users
     if not pas.objectIds([LoginChallenger.meta_type]):
         plugin = LoginChallenger(
