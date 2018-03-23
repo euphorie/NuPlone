@@ -8,10 +8,15 @@
       meta:interpolation="true"
       metal:define-macro="layout"
       i18n:domain="nuplone"
-      tal:define="tools context/@@tools">
-  <head tal:define="style_url tools/portal/++resource++NuPlone.style">
+      tal:condition="portal_url"
+      tal:define="
+        tools nocall:context/@@tools;
+        portal_url tools/portal_url|nothing;
+      "
+>
+  <head tal:define="style_url string:${portal_url}/++resource++NuPlone.style">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/css_browser_selector.js"></script>
+    <script type="text/javascript" src="${portal_url}/++resource++NuPlone.libraries/css_browser_selector.js"></script>
     <link rel="stylesheet" type="text/css" media="all" href="${style_url}/main/base.css" />
     <!--[if IE 6]> <link rel="stylesheet" type="text/css" media="all" href="${style_url}/main/base-ie6.css" /> <![endif]-->
     <!--[if IE 7]> <link rel="stylesheet" type="text/css" media="all" href="${style_url}/main/base-ie7.css" /> <![endif]-->
@@ -46,17 +51,16 @@
     <tal:block replace="tile:actions"/>
     <tal:block replace="tile:footer"/>
     <script type="text/javascript">
-      var plone = { portal_url : '${tools/portal/absolute_url}',
+      var plone = { portal_url : '${portal_url}',
                     context_url : '${context/absolute_url}' };
     </script>
-    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery.browser.min.js"></script>
-    <!-- <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/jquery.tools.min.js"></script> -->
-    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/ui-1.11.4/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.tinymce}/tiny_mce_src.js"></script>
-    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.z3cform.js}"></script>
-    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.behaviour}/behaviour.js"></script>
-    <script type="text/javascript" src="${tools/portal/++resource++NuPlone.libraries}/ordering.js"></script>
+    <script type="text/javascript" src="${portal_url}/++resource++NuPlone.libraries/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="${portal_url}/++resource++NuPlone.libraries/jquery.browser.min.js"></script>
+    <script type="text/javascript" src="${portal_url}/++resource++NuPlone.libraries/ui-1.11.4/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="${portal_url}/++resource++NuPlone.tinymce/tiny_mce_src.js"></script>
+    <script type="text/javascript" src="${portal_url}/++resource++NuPlone.z3cform.js"></script>
+    <script type="text/javascript" src="${portal_url}/++resource++NuPlone.behaviour/behaviour.js"></script>
+    <script type="text/javascript" src="${portal_url}/++resource++NuPlone.libraries/ordering.js"></script>
     <tal:block replace="tile:scripts"/>
     <metal:block define-slot="scripts"/>
   </body>
