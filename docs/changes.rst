@@ -4,7 +4,7 @@ Changelog
 1.5.7 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- More efficient and safe url definition in templates
 
 
 1.5.6 (2017-11-27)
