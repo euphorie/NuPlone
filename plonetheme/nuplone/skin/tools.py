@@ -2,6 +2,7 @@
 from AccessControl import getSecurityManager
 from Acquisition import aq_inner
 from five import grok
+from plone.memoize.view import memoize
 from plonetheme.nuplone import MessageFactory as _
 from plonetheme.nuplone import utils
 from plonetheme.nuplone.skin.interfaces import NuPloneSkin
@@ -21,17 +22,42 @@ class Tools(grok.View):
     # assumes there is a template variable
     template = None
 
-    def __init__(self, *a):
-        super(Tools, self).__init__(*a)
-        self.user = getSecurityManager().getUser()
-        self.anonymous = (
-            self.user is None or self.user.getUserName() == "Anonymous User"
+    @property
+    @memoize
+    def user(self):
+        return getSecurityManager().getUser()
+
+    @property
+    @memoize
+    def anonymous(self):
+        return (
+            self.user is None or self.user.getUserName() == 'Anonymous User'
         )
-        self.portal = utils.getPortal(self.context)
-        self.portal_url = self.portal.absolute_url()
-        self.navroot = utils.getNavigationRoot(self.context)
-        self.navroot_url = self.navroot.absolute_url()
-        self.context_url = aq_inner(self.context).absolute_url()
+
+    @property
+    @memoize
+    def portal(self):
+        return utils.getPortal(self.context)
+
+    @property
+    @memoize
+    def portal_url(self):
+        return self.portal.absolute_url()
+
+    @property
+    @memoize
+    def navroot(self):
+        return utils.getNavigationRoot(self.context)
+
+    @property
+    @memoize
+    def navroot_url(self):
+        return self.navroot.absolute_url()
+
+    @property
+    @memoize
+    def context_url(self):
+        return aq_inner(self.context).absolute_url()
 
     def render(self):
         """Little trick to make it easier to access this via from a TALES

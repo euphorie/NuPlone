@@ -14,6 +14,7 @@
 
   <plone:tile
     name="analytics"
+    for="*"
     title="Google Analytics"
     add_permission="cmf.ManagePortal"
     class=".analytics.AnalyticsTile"
@@ -23,6 +24,7 @@
 
   <plone:tile
     name="group"
+    for="*"
     title="Tile group"
     add_permission="cmf.ManagePortal"
     class=".group.GroupTile"
@@ -32,6 +34,7 @@
 
   <plone:tile
     name="language"
+    for="*"
     title="Language selector"
     add_permission="cmf.ManagePortal"
     class=".language.LanguageTile"
@@ -41,6 +44,7 @@
 
   <plone:tile
     name="static"
+    for="*"
     title="Static content tile"
     add_permission="cmf.ManagePortal"
     class=".static.StaticTile"
@@ -49,6 +53,7 @@
 
   <plone:tile
     name="navtree"
+    for="*"
     title="Navigation tree"
     add_permission="cmf.ManagePortal"
     class=".navigation.NavigationTile"
@@ -58,6 +63,7 @@
 
   <plone:tile
     name="tabs"
+    for="*"
     title="Secion tabs"
     add_permission="cmf.ManagePortal"
     class=".tabs.TabsTile"
@@ -67,6 +73,7 @@
 
   <plone:tile
     name="statusmessages"
+    for="*"
     title="Status messages"
     add_permission="cmf.ManagePortal"
     class=".messages.StatusmessagesTile"

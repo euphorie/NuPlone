@@ -6,6 +6,7 @@ from plonetheme.nuplone.utils import getNavigationRoot
 from plonetheme.nuplone.utils import IS_PLONE_5
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import typesToList
+from zExceptions import NotFound
 
 
 class TabsTile(Tile):
@@ -18,7 +19,6 @@ class TabsTile(Tile):
         contextUrl = context.absolute_url()
         navroot = self.getRoot()
         navrootPath = "/".join(navroot.getPhysicalPath())
-        portal_properties = getToolByName(self.context, "portal_properties")
         if IS_PLONE_5:
             use_view_types = api.portal.get_registry_record(
                 'plone.types_use_view_action_in_listings',
@@ -62,5 +62,7 @@ class TabsTile(Tile):
         self.home_url = navroot.absolute_url()
 
     def __call__(self):
+        if isinstance(self.context, NotFound):
+            return ''
         self.update()
         return self.index()

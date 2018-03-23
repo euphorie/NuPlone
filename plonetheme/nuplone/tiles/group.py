@@ -2,8 +2,10 @@ from Acquisition import aq_inner
 from plonetheme.nuplone.tiles.tile import AppConfigTile
 from plonetheme.nuplone.tiles.tile import getTile
 from plonetheme.nuplone.utils import viewType
+from zExceptions import NotFound
 
 import re
+
 
 _compiles = {}
 
@@ -42,6 +44,8 @@ class GroupTile(AppConfigTile):
             self.tiles.append(tile)
 
     def __call__(self):
+        if isinstance(self.context, NotFound):
+            return ''
         self.update()
         if not self.tiles:
             return u""
