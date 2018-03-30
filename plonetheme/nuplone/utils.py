@@ -108,10 +108,10 @@ def setLanguage(request, context, lang=None):
 
     lang = lang.lower()
     lt = getToolByName(context, "portal_languages")
-    res = lt.setLanguageCookie(lang=lang)
+    res = lt.setLanguageCookie(lang=lang, request=request)
     if res is None and "-" in lang:
         lang = lang.split("-")[0]
-        res = lt.setLanguageCookie(lang=lang)
+        res = lt.setLanguageCookie(lang=lang, request=request)
         if res is None:
             log.warn("Failed to switch language to %s", lang)
             return False
