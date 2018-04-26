@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.5.7 (unreleased)
+1.5.7 (2018-04-26)
 ------------------
 
 - More efficient and safe url definition in templates
