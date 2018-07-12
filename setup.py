@@ -39,7 +39,6 @@ setup(
         'Zope2 >=2.12.5',
         'five.pt >= 2.2.0',
         'five.grok',
-        'z3c.pt >=1.1.2',
         'plone.api',
         'plone.tiles',
         'plone.z3cform',
@@ -58,7 +57,6 @@ setup(
         'zope.i18n',
         'plone.dexterity',
         'z3c.zrtresource',
-        'lxml >=2.3.1',  # For security
     ],
     extras_require={
         'tests': [
