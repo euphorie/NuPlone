@@ -87,7 +87,7 @@ class Sitemenu(grok.View):
         pa = getToolByName(context, 'portal_actions')
         actions = pa.listActions(
             object=context,
-            categories=('folder_buttons', ),
+            categories=('object_buttons', ),
             ignore_categories=None
         )
         ec = pa._getExprContext(context)
