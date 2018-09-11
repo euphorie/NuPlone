@@ -5,6 +5,8 @@ Changelog
 ------------------
 
 - More efficient and safe url definition in templates
+- Textlines widget: be more in line with other widgets, use
+  `legend` for the field name.
 
 
 1.5.6 (2017-11-27)

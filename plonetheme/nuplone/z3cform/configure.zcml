@@ -100,6 +100,13 @@
     />
 
   <z3c:widgetTemplate
+      mode="display"
+      widget="z3c.form.interfaces.ITextLinesWidget"
+      layer=".interfaces.INuPloneFormLayer"
+      template="templates/textlines_display.pt"
+      />
+
+  <z3c:widgetTemplate
     mode="input"
     widget="z3c.form.interfaces.IMultiWidget"
     layer=".interfaces.INuPloneFormLayer"
