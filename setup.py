@@ -5,7 +5,7 @@ from setuptools import setup
 import os
 
 
-version = '1.5.7.dev0'
+version = '1.6.0.dev0'
 
 setup(
     name='NuPlone',
@@ -16,9 +16,7 @@ setup(
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
-        'Framework :: Plone :: 4.0',
-        'Framework :: Plone :: 4.1',
-        'Framework :: Plone :: 4.2',
+        'Framework :: Plone :: 5.1',
         'License :: OSI Approved :: GNU General Public License (GPL)',
         'Operating System :: OS Independent',
         'Programming Language :: JavaScript',

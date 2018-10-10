@@ -1,8 +1,10 @@
 Changelog
 =========
 
-1.5.7 (unreleased)
+1.6.0 (unreleased)
 ------------------
+
+This version is built for Plone 5.1 and higher!
 
 - More efficient and safe url definition in templates
 - Textlines widget: be more in line with other widgets, use

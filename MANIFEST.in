@@ -6,6 +6,7 @@ recursive-include plonetheme/nuplone/locales *.mo
 graft docs
 prune docs/.build
 prune Prototype
+prune bundles
 graft plonetheme/nuplone/profiles
 graft plonetheme/nuplone/skin/templates
 graft plonetheme/nuplone/tiles/templates
