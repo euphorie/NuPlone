@@ -5,7 +5,7 @@ from setuptools import setup
 import os
 
 
-version = '1.6.0.dev0'
+version = '1.6.0'
 
 setup(
     name='NuPlone',

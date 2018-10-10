@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.6.0 (unreleased)
+1.6.0 (2018-10-10)
 ------------------
 
 This version is built for Plone 5.1 and higher!
