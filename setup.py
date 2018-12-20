@@ -33,7 +33,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'setuptools',
-        'Plone >=4.0',
+        'Plone >=5.1',
         'Zope2 >=2.12.5',
         'five.pt >= 2.2.0',
         'five.grok',
@@ -53,6 +53,7 @@ setup(
         'WebHelpers',
         'htmllaundry >=2.0',
         'zope.i18n',
+        'plone.api',
         'plone.dexterity',
         'z3c.zrtresource',
     ],

@@ -1,14 +1,16 @@
+# coding=utf-8
 from Acquisition import aq_inner
 from five import grok
+from plone import api
 from plone.directives import form
 from plonetheme.nuplone import MessageFactory as _
 from plonetheme.nuplone.utils import createEmailTo
 from Products.CMFCore.interfaces import ISiteRoot
 from Products.CMFCore.utils import getToolByName
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.MailHost.MailHost import MailHostError
 from Products.CMFPlone.PasswordResetTool import ExpiredRequestError
 from Products.CMFPlone.PasswordResetTool import InvalidRequestError
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from Products.MailHost.MailHost import MailHostError
 from Products.statusmessages.interfaces import IStatusMessage
 from z3c.form.button import buttonAndHandler
 from zope import schema
@@ -56,6 +58,14 @@ class RequestPasswordForm(form.SchemaForm):
         u"you an email at the address you gave when you registered "
         u"to start the process of resetting your password."
     )
+
+    @property
+    def email_from_name(self):
+        return api.portal.get_registry_record('plone.email_from_name')
+
+    @property
+    def email_from_address(self):
+        return api.portal.get_registry_record('plone.email_from_address')
 
     @buttonAndHandler(_("button_send", default="Send"), name="send")
     def handleSend(self, action):
@@ -108,8 +118,12 @@ class RequestPasswordForm(form.SchemaForm):
         )
 
         email = createEmailTo(
-            self.context.email_from_name, self.context.email_from_address,
-            None, email_address, subject, body
+            self.email_from_name,
+            self.email_from_address,
+            None,
+            email_address,
+            subject,
+            body,
         )
 
         mh = getToolByName(self.context, "MailHost")
