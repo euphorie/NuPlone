@@ -143,6 +143,13 @@
       />
   </configure>
 
+  <z3c:widgetTemplate
+      mode="input"
+      widget="z3c.form.interfaces.IOrderedSelectWidget"
+      layer=".interfaces.INuPloneFormLayer"
+      template="templates/orderedselect_input.pt"
+      />
+
   <adapter factory=".widget.NamedImageWidgetFactory" />
 
   <class class=".widget.NicerNamedImageWidget">
