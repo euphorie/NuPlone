@@ -4,8 +4,7 @@ Changelog
 1.6.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Customised orderedselect_input.pt for IOrderedSelectWidget
 
 1.6.0 (2018-10-10)
 ------------------
