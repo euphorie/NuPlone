@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.6.1 (unreleased)
+1.6.1 (2019-01-11)
 ------------------
 
 - Fix getting the email settings for Plone 5
