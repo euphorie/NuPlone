@@ -4,6 +4,7 @@ Changelog
 1.6.1 (unreleased)
 ------------------
 
+- Fix getting the email settings for Plone 5
 - Customised orderedselect_input.pt for IOrderedSelectWidget
 
 1.6.0 (2018-10-10)
