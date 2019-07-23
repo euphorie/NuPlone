@@ -1,5 +1,6 @@
 from Acquisition import aq_inner
 from five import grok
+from plone import api
 from plone.directives import form
 from plonetheme.nuplone import MessageFactory as _
 from plonetheme.nuplone.utils import createEmailTo
@@ -60,6 +61,15 @@ class ContactForm(form.SchemaForm):
     label = _(u"header_contact", default="Contact")
     default_fieldset_label = None
 
+
+    @property
+    def email_from_name(self):
+        return api.portal.get_registry_record('plone.email_from_name')
+
+    @property
+    def email_from_address(self):
+        return api.portal.get_registry_record('plone.email_from_address')
+
     @buttonAndHandler(_("button_send", default="Send"), name="send")
     def handleSend(self, action):
         data, errors = self.extractData()
@@ -79,8 +89,8 @@ class ContactForm(form.SchemaForm):
 
         email = createEmailTo(
             data["name"], data["email"],
-            siteconfig.get("contact.name", self.context.email_from_name),
-            siteconfig.get("contact.email", self.context.email_from_address),
+            siteconfig.get("contact.name", self.email_from_name),
+            siteconfig.get("contact.email", self.email_from_address),
             subject, data["message"]
         )
         mh = getToolByName(self.context, "MailHost")
