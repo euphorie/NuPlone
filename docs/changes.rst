@@ -4,8 +4,7 @@ Changelog
 1.6.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Translation update (IS)
 
 1.6.1 (2019-01-11)
 ------------------

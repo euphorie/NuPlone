@@ -381,7 +381,9 @@ msgstr "Ef þú hefur gleymt lykilorðinu getur þú ${reset_password}."
 
 #: plonetheme/nuplone/skin/templates/layout.pt:21
 msgid "Change order of items by dragging the handle"
-msgstr "Breyta röð hluta með því að toga í handfangið"
+msgstr ""
+"Þú getur breytt röð atriða með því að velja þau með músinni og halda niðri "
+"vinstri músarhnappnum"
 
 #: plonetheme/nuplone/skin/templates/layout.pt:43
 msgid "Can not open site menu."
