@@ -10,6 +10,17 @@
      tal:condition="status"
      class="message ${python:'error' if view.widgets.errors else 'notice'}"
      i18n:domain="plone" i18n:translate="">${status}</p>
+  <tal:errors define="errors view/widgets/errors" condition="errors">
+      <tal:error repeat="error errors">
+          <p class="message field error"
+                  tal:condition="not:nocall:error/widget"
+                  tal:content="structure error/message"
+                  i18n:translate=""
+                  i18n:domain="plone">
+                  Error
+          </p>
+      </tal:error>
+  </tal:errors>
     <p class="discrete" tal:condition="python:getattr(view, 'description', None)">${view/description}</p>
   <form class="concise" action="${request/getURL}" enctype="${view/enctype}" method="${view/method}" id="${view/id}">
     <fieldset>

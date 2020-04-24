@@ -4,7 +4,7 @@ Changelog
 1.6.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Show validation errors that are not associated with a widget (like invariants).
 
 
 1.6.2 (2019-08-21)
