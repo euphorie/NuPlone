@@ -4,6 +4,7 @@ Changelog
 1.6.3 (unreleased)
 ------------------
 
+- Fix checkboxlist to show the field's title on the fieldset legend instead of the value of the first item.
 - Show validation errors that are not associated with a widget (like invariants).
 
 
