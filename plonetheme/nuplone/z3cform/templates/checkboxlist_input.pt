@@ -2,10 +2,9 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="nuplone"
-      tal:omit-tag=""
-      tal:define="item python:view.items[0]">
+      tal:omit-tag="">
   <fieldset class="comprehensive checkboxList ${view/@@dependencies}${python:' error' if view.error is not None else ''}">
-    <legend>${item/label} <sup tal:condition="view/required" class="required">*</sup></legend> <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description">${description}</dfn>
+    <legend>${view/label} <sup tal:condition="view/required" class="required">*</sup></legend> <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description">${description}</dfn>
 
     <label tal:repeat="item view/items"><input type="checkbox"
       tal:define="checked item/checked" id="${view/id}" name="${item/name}"
