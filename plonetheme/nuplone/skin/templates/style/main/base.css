@@ -3164,10 +3164,11 @@ fieldset.comprehensive label,
 form.comprehensive fieldset label,
 form.concise fieldset.comprehensive label,
 form.compact fieldset.comprehensive label {
+	display: block;
+	margin: 0.5em 0;
 	font-weight: normal;
 	font-style: normal;
 	position: static;
-	margin: 0;
 	border-style: none;
 	width: auto;
 	padding: 0;
@@ -3322,6 +3323,14 @@ fieldset.condensed fieldset p.legend {
 
 .portlet .radioList label input {
 	margin-top: 2px !important;
+}
+
+/* @end */
+
+/* @group Checkbox List */
+
+.checkboxList label input {
+	margin: 4px 5px 0 0 !important;
 }
 
 /* @end */
