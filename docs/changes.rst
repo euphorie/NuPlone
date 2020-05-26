@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.6.3 (unreleased)
+1.6.3 (2020-05-26)
 ------------------
 
 - Improve styles for list of checkboxes and labels by adding more spacing.
