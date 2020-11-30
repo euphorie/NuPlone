@@ -1,30 +1,18 @@
 from Acquisition import aq_inner
 from Acquisition import aq_parent
-from five import grok
 from OFS.CopySupport import CopyError
-from OFS.interfaces import ICopyContainer
-from OFS.interfaces import ICopySource
 from plonetheme.nuplone import MessageFactory as _
-from plonetheme.nuplone.skin.interfaces import NuPloneSkin
 from plonetheme.nuplone.utils import checkPermission
+from Products.Five import BrowserView
 from Products.statusmessages.interfaces import IStatusMessage
 from ZODB.POSException import ConflictError
 from zope.component import getMultiAdapter
-from zope.interface import Interface
 
 import zExceptions
 
 
-grok.templatedir("templates")
-
-
-class Copy(grok.View):
-    grok.context(ICopySource)
-    grok.layer(NuPloneSkin)
-    grok.require("zope2.CopyOrMove")
-    grok.name("copy")
-
-    def render(self):
+class Copy(BrowserView):
+    def __call__(self):
         context = aq_inner(self.context)
         container = aq_parent(context)
         if not context.cb_isCopyable():
@@ -36,13 +24,8 @@ class Copy(grok.View):
         self.request.response.redirect(context.absolute_url())
 
 
-class Cut(grok.View):
-    grok.context(ICopySource)
-    grok.layer(NuPloneSkin)
-    grok.require("zope2.CopyOrMove")
-    grok.name("cut")
-
-    def render(self):
+class Cut(BrowserView):
+    def __call__(self):
         context = aq_inner(self.context)
         container = aq_parent(context)
         flash = IStatusMessage(self.request).addStatusMessage
@@ -62,13 +45,8 @@ class Cut(grok.View):
         self.request.response.redirect(context.absolute_url())
 
 
-class Paste(grok.View):
-    grok.context(ICopyContainer)
-    grok.layer(NuPloneSkin)
-    grok.require("zope2.CopyOrMove")
-    grok.name("paste")
-
-    def render(self):
+class Paste(BrowserView):
+    def __call__(self):
         context = aq_inner(self.context)
         flash = IStatusMessage(self.request).addStatusMessage
         if not context.cb_dataValid():
@@ -109,11 +87,7 @@ class Paste(grok.View):
         self.request.response.redirect(context.absolute_url())
 
 
-class Delete(grok.View):
-    grok.context(Interface)
-    grok.name("delete")
-    grok.template("delete")
-
+class Delete(BrowserView):
     def verify(self, container, context):
         if not checkPermission(container, "Delete objects"):
             raise zExceptions.Unauthorized
@@ -140,13 +114,13 @@ class Delete(grok.View):
             flash(_("message_delete_success", default=u"Object removed"), "success")
             self.request.response.redirect(container.absolute_url())
 
-    def update(self):
+    def __call__(self):
         context = aq_inner(self.context)
         container = aq_parent(context)
 
         if not self.verify(container, context):
             return
 
-        super(Delete, self).update()
         if self.request.method == "POST":
-            self.post()
+            return self.post()
+        return super(Delete, self).__call__()

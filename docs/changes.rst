@@ -1,6 +1,12 @@
 Changelog
 =========
 
+2.0.x (unreleased)
+------------------
+
+- Remove the dependency from grok
+
+
 1.6.4 (unreleased)
 ------------------
 

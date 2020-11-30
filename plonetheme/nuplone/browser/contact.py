@@ -1,15 +1,16 @@
 from Acquisition import aq_inner
-from five import grok
 from plone import api
-from plone.directives import form
+from plone.autoform import directives
+from plone.autoform.form import AutoExtensibleForm
+from plone.supermodel import model
 from plonetheme.nuplone import MessageFactory as _
 from plonetheme.nuplone.utils import createEmailTo
 from plonetheme.nuplone.z3cform.form import FieldWidgetFactory
-from Products.CMFCore.interfaces import ISiteRoot
 from Products.CMFCore.utils import getToolByName
 from Products.MailHost.MailHost import MailHostError
 from Products.statusmessages.interfaces import IStatusMessage
 from z3c.appconfig.interfaces import IAppConfig
+from z3c.form import form
 from z3c.form.button import buttonAndHandler
 from zope import schema
 from zope.component import queryUtility
@@ -27,32 +28,29 @@ TextLines4Rows = FieldWidgetFactory(
 )
 
 
-class IContact(form.Schema):
+class IContact(model.Schema):
     name = schema.TextLine(
         title=_(u"label_your_name", default="Your name"), required=True
     )
-    form.widget(name="plonetheme.nuplone.skin.contact.TextSpan7")
+    directives.widget(name="plonetheme.nuplone.browser.contact.TextSpan7")
 
     email = schema.ASCIILine(
         title=_("label_email", default="Email address"), required=True
     )
-    form.widget(email="plonetheme.nuplone.skin.contact.TextSpan7")
+    directives.widget(email="plonetheme.nuplone.browser.contact.TextSpan7")
 
     subject = schema.TextLine(
         title=_(u"label_subject", default=u"Subject"), required=True
     )
-    form.widget(subject="plonetheme.nuplone.skin.contact.TextSpan7")
+    directives.widget(subject="plonetheme.nuplone.browser.contact.TextSpan7")
 
     message = schema.Text(
         title=_("label_contact_text", default="Your message"), required=True
     )
-    form.widget(message="plonetheme.nuplone.skin.contact.TextLines4Rows")
+    directives.widget(message="plonetheme.nuplone.browser.contact.TextLines4Rows")
 
 
-class ContactForm(form.SchemaForm):
-    grok.context(ISiteRoot)
-    grok.name("contact")
-    grok.require("zope2.Public")
+class ContactForm(AutoExtensibleForm, form.Form):
 
     ignoreContext = True
     schema = IContact

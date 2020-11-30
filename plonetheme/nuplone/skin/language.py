@@ -1,18 +1,13 @@
 from Acquisition import aq_inner
-from five import grok
 from plonetheme.nuplone import MessageFactory as _
 from plonetheme.nuplone.utils import getPortal
 from plonetheme.nuplone.utils import setLanguage
+from Products.Five import BrowserView
 from Products.statusmessages.interfaces import IStatusMessage
-from zope.interface import Interface
 
 
-class SwitchLanguage(grok.View):
-    grok.context(Interface)
-    grok.require("zope2.Public")
-    grok.name("switch-language")
-
-    def render(self):
+class SwitchLanguage(BrowserView):
+    def __call__(self):
         flash = IStatusMessage(self.request).addStatusMessage
         if setLanguage(self.request, self.context):
             flash(_("message_switch_language", default=u"Language updated"), "success")

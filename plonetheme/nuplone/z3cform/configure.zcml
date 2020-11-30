@@ -195,5 +195,26 @@
     template="templates/passwordconfirm_input.pt"
     />
 
-</configure>
+  <browser:page
+      name="new-entry"
+      for="z3c.form.interfaces.IMultiWidget"
+      permission="zope2.View"
+      class=".widget.NewMultiWidgetEntry"
+      />
 
+  <adapter
+      factory=".directives.WidgetDependencyView"
+      name="dependencies"
+      />
+
+  <adapter
+      factory=".directives.FormLayoutExtender"
+      name="plonetheme.nuplone.layout"
+      />
+
+  <adapter
+      factory=".directives.FormDependencyExtender"
+      name="plonetheme.nuplone.dependency"
+      />
+
+</configure>

@@ -2,8 +2,7 @@ from Acquisition import aq_base
 from Acquisition import aq_chain
 from Acquisition import aq_inner
 from Acquisition import aq_parent
-from five import grok
-from plonetheme.nuplone.skin.interfaces import NuPloneSkin
+from Products.Five import BrowserView
 from zope.browser.interfaces import IBrowserView
 
 import logging
@@ -12,15 +11,8 @@ import zExceptions
 
 log = logging.getLogger(__name__)
 
-grok.templatedir("templates")
 
-
-class Error(grok.View):
-    grok.context(Exception)
-    grok.layer(NuPloneSkin)
-    grok.name("index.html")
-    grok.template("error_generic")
-
+class Error(BrowserView):
     def update(self):
         self.exception = aq_inner(self.context)
         self.context = context = aq_parent(self)
@@ -32,16 +24,12 @@ class Error(grok.View):
         except zExceptions.Unauthorized:
             pass
 
-
-class NotFound(Error):
-    grok.context(zExceptions.NotFound)
-    grok.template("error_notfound")
+    def __call__(self):
+        self.update()
+        return super(Error, self).__call__()
 
 
 class Unauthorized(Error):
-    grok.context(zExceptions.Unauthorized)
-    grok.template("error_unauthorized")
-
     def authenticate(self):
         """Try to authenticate the user manually, since ZPublisher dropped the
         user whenn it failed to validate access."""

@@ -7,12 +7,10 @@ import unittest
 class PasswordResetTests(unittest.TestCase):
     layer = NUPLONE_FUNCTIONAL_TESTING
 
-    # XXX Disabled for now because grok-style views are not working in
-    # the plone.app.testing-based setup.
-    def XtestNoKey(self):
+    def testNoKey(self):
         browser = Browser(self.layer["app"])
         browser.open("%s/reset-password" % self.layer["portal"].absolute_url())
-        browser.getForm().submit()
+        browser.getForm("form").submit()
 
     def testInvalidKey(self):
         from zExceptions import NotFound

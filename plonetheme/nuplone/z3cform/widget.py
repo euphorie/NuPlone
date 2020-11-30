@@ -1,16 +1,15 @@
-from five import grok
 from plone.formwidget.namedfile.widget import NamedFileWidget
 from plone.formwidget.namedfile.widget import NamedImageWidget
 from plone.namedfile.interfaces import INamedFileField
 from plone.namedfile.interfaces import INamedImageField
 from plonetheme.nuplone.z3cform.interfaces import INuPloneFormLayer
 from plonetheme.nuplone.z3cform.utils import getVocabulary
+from Products.Five import BrowserView
 from z3c.form.browser.file import FileWidget
 from z3c.form.browser.radio import RadioWidget
 from z3c.form.browser.select import SelectWidget
 from z3c.form.interfaces import IDataManager
 from z3c.form.interfaces import IFieldWidget
-from z3c.form.interfaces import IMultiWidget
 from z3c.form.interfaces import NOVALUE
 from z3c.form.widget import FieldWidget
 from ZODB.POSException import POSKeyError
@@ -48,11 +47,8 @@ def ChoiceWidgetFactory(field, request):
     return FieldWidget(field, widget(request))
 
 
-class NewMultiWidgetEntry(grok.View):
-    grok.context(IMultiWidget)
-    grok.name("new-entry")
-
-    def render(self):
+class NewMultiWidgetEntry(BrowserView):
+    def __call__(self):
         widget = self.context.getWidget(0)
         return widget.render()
 

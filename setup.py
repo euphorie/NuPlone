@@ -5,7 +5,7 @@ from setuptools import setup
 import os
 
 
-version = "1.6.4.dev0"
+version = "2.0.0.dev0"
 
 setup(
     name="NuPlone",
@@ -37,7 +37,6 @@ setup(
         "Plone >=5.1",
         "Zope2 >=2.12.5",
         "five.pt >= 2.2.0",
-        "five.grok",
         "plone.api",
         "plone.tiles",
         "plone.z3cform",
@@ -46,7 +45,6 @@ setup(
         "plone.i18n",
         "plone.autoform",
         "plone.supermodel",
-        "plone.directives.form",
         "plone.formwidget.namedfile >1.0b4",
         "z3c.appconfig",
         "p01.widget.password",
