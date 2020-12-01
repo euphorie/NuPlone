@@ -1,4 +1,3 @@
-from five import grok
 from plone.formwidget.namedfile.widget import NamedFileWidget
 from plone.formwidget.namedfile.widget import NamedImageWidget
 from plone.namedfile.interfaces import INamedFileField
