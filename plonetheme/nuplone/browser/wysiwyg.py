@@ -1,10 +1,7 @@
-from five import grok
 from plone.directives import form
 from plonetheme.nuplone import MessageFactory as _
 from zope import schema
 from zope.interface import Interface
-
-grok.templatedir("templates")
 
 
 class ExternalLinkSchema(form.Schema):
@@ -21,10 +18,6 @@ class ExternalLinkSchema(form.Schema):
 
 
 class EditLink(form.SchemaForm):
-    grok.context(Interface)
-    grok.require("cmf.ModifyPortalContent")
-    grok.name("edit-link.html")
-    grok.template("editlink")
 
     ignoreContext = True
     schema = ExternalLinkSchema

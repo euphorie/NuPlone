@@ -1,0 +1,15 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    >
+
+  <browser:page
+      name="edit-link.html"
+      for="*"
+      permission="cmf.ModifyPortalContent"
+      class=".wysiwyg.EditLink"
+      template="templates/editlink.pt"
+      layer="euphorie.client.interfaces.IClientSkinLayer"
+      />
+
+</configure>
