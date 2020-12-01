@@ -195,5 +195,11 @@
     template="templates/passwordconfirm_input.pt"
     />
 
-</configure>
+  <browser:page
+      name="new-entry"
+      for="z3c.form.interfaces.IMultiWidget"
+      permission="zope2.View"
+      class=".widget.NewMultiWidgetEntry"
+      />
 
+</configure>

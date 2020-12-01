@@ -5,12 +5,12 @@ from plone.namedfile.interfaces import INamedFileField
 from plone.namedfile.interfaces import INamedImageField
 from plonetheme.nuplone.z3cform.interfaces import INuPloneFormLayer
 from plonetheme.nuplone.z3cform.utils import getVocabulary
+from Products.Five import BrowserView
 from z3c.form.browser.file import FileWidget
 from z3c.form.browser.radio import RadioWidget
 from z3c.form.browser.select import SelectWidget
 from z3c.form.interfaces import IDataManager
 from z3c.form.interfaces import IFieldWidget
-from z3c.form.interfaces import IMultiWidget
 from z3c.form.interfaces import NOVALUE
 from z3c.form.widget import FieldWidget
 from ZODB.POSException import POSKeyError
@@ -19,7 +19,6 @@ from zope.component import getMultiAdapter
 from zope.interface import implementer
 from zope.schema.interfaces import IChoice
 from ZPublisher.HTTPRequest import FileUpload
-
 
 class SingleRadioWidget(RadioWidget):
     """Variant of the z3c.form radio widget which does not pretend a radio
@@ -48,11 +47,9 @@ def ChoiceWidgetFactory(field, request):
     return FieldWidget(field, widget(request))
 
 
-class NewMultiWidgetEntry(grok.View):
-    grok.context(IMultiWidget)
-    grok.name("new-entry")
+class NewMultiWidgetEntry(BrowserView):
 
-    def render(self):
+    def __call__(self):
         widget = self.context.getWidget(0)
         return widget.render()
 
