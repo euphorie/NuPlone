@@ -28,6 +28,7 @@
   <include package="five.pt" />
   <include package="five.grok" />
   <include package="Products.CMFCore" />
+  <include package=".browser" />
   <include package=".skin" />
   <include package=".z3cform" />
   <include package=".tiles" />

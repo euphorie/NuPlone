@@ -9,7 +9,6 @@
       permission="cmf.ModifyPortalContent"
       class=".wysiwyg.EditLink"
       template="templates/editlink.pt"
-      layer="euphorie.client.interfaces.IClientSkinLayer"
       />
 
 </configure>
