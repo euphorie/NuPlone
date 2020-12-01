@@ -4,7 +4,6 @@ from OFS.CopySupport import CopyError
 from plonetheme.nuplone import MessageFactory as _
 from plonetheme.nuplone.utils import checkPermission
 from Products.Five import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.statusmessages.interfaces import IStatusMessage
 from ZODB.POSException import ConflictError
 from zope.component import getMultiAdapter
@@ -89,8 +88,6 @@ class Paste(BrowserView):
 
 class Delete(BrowserView):
 
-    template = ViewPageTemplateFile("templates/delete.pt")
-
     def verify(self, container, context):
         if not checkPermission(container, "Delete objects"):
             raise zExceptions.Unauthorized
@@ -131,4 +128,4 @@ class Delete(BrowserView):
 
         if self.request.method == "POST":
             return self.post()
-        return self.template()
+        return super(Delete, self).__call__()

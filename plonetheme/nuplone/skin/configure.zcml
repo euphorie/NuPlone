@@ -90,8 +90,8 @@
       for="zope.interface.Interface"
       layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
       class=".actions.Delete"
+      template="templates/delete.pt"
       permission="zope2.View"
       />
 
 </configure>
-
