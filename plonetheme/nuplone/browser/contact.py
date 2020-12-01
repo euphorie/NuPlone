@@ -1,5 +1,4 @@
 from Acquisition import aq_inner
-from five import grok
 from plone import api
 from plone.directives import form
 from plonetheme.nuplone import MessageFactory as _
@@ -51,10 +50,8 @@ class IContact(form.Schema):
     form.widget(message="plonetheme.nuplone.skin.contact.TextLines4Rows")
 
 
+
 class ContactForm(form.SchemaForm):
-    grok.context(ISiteRoot)
-    grok.name("contact")
-    grok.require("zope2.Public")
 
     ignoreContext = True
     schema = IContact

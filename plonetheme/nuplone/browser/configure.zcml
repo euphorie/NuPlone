@@ -11,4 +11,13 @@
       template="templates/editlink.pt"
       />
 
+  <browser:page
+      name="contact"
+      for="Products.CMFCore.interfaces.ISiteRoot"
+      permission="zope2.Public"
+      class=".contact.ContactForm"
+      />
+
+
+
 </configure>
