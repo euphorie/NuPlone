@@ -1,3 +1,6 @@
+/.coverage
+/downloads
+/htmlcov
 *.pt.py
 *.pyc
 *.pyo

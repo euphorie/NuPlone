@@ -45,6 +45,5 @@ jobs:
       - name: Test
         run: |
           bin/code-analysis
-          bin/test
-#          bin/createcoverage
-#          bin/coverage report
+          bin/coverage run bin/test
+          bin/coverage report --fail-under=31
