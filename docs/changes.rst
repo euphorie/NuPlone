@@ -4,7 +4,7 @@ Changelog
 1.6.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Removed the update-order tile
 
 
 1.6.3 (2020-05-26)
