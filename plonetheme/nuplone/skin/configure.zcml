@@ -94,4 +94,12 @@
       permission="zope2.View"
       />
 
+  <browser:page
+      name="tools"
+      for="*"
+      permission="zope2.Public"
+      class=".tools.Tools"
+      layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
+      />
+
 </configure>
