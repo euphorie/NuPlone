@@ -1,5 +1,2 @@
-[report]
-include =
-    plonetheme/nuplone
-omit =
-    */test*
+[run]
+include = */plonetheme/nuplone/*
