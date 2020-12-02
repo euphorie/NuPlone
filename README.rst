@@ -1,6 +1,11 @@
 Introduction
 ============
 
+
+.. image:: https://github.com/euphorie/NuPlone/workflows/tests/badge.svg
+    :target: https://github.com/euphorie/NuPlone/actions?query=workflow%3Atests
+
+
 This package implements a new user interface for `Plone <http://plone.org/>`_.
 The design goals for this user interface are:
 
