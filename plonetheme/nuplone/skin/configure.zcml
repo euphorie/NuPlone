@@ -110,4 +110,12 @@
       template="templates/frontpage.pt"
       />
 
+  <browser:page
+      name="nuplone-view"
+      for="plone.dexterity.interfaces.IDexterityContainer"
+      permission="zope2.View"
+      layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
+      template="templates/frontpage.pt"
+      />
+
 </configure>
