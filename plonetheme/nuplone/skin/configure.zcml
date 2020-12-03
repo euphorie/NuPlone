@@ -102,4 +102,12 @@
       layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
       />
 
+  <browser:page
+      name="nuplone-view"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      permission="zope2.View"
+      layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
+      template="templates/frontpage.pt"
+      />
+
 </configure>
