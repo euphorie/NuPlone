@@ -26,10 +26,11 @@ class Sitemenu(BrowserView):
     def settings_url(self):
         return "%s/@@settings" % self.tools_view.navroot_url
 
-    def update(self):
-        self.view_type = self.request.get("view_type", "view")
-        self.actions = self.actions()
+    @property
+    def view_type(self):
+        return self.request.get("view_type", "view")
 
+    @property
     def actions(self):
         """Helper method to generate the contents for the actions menu.
         """
