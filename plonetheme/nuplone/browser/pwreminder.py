@@ -1,11 +1,9 @@
 # coding=utf-8
 from Acquisition import aq_inner
-from five import grok
 from plone import api
 from plone.directives import form
 from plonetheme.nuplone import MessageFactory as _
 from plonetheme.nuplone.utils import createEmailTo
-from Products.CMFCore.interfaces import ISiteRoot
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.PasswordResetTool import ExpiredRequestError
 from Products.CMFPlone.PasswordResetTool import InvalidRequestError
@@ -40,9 +38,6 @@ class IPasswordReset(form.Schema):
 
 
 class RequestPasswordForm(form.SchemaForm):
-    grok.context(ISiteRoot)
-    grok.name("request-password-reset")
-    grok.require("zope2.Public")
 
     email_template = ViewPageTemplateFile("templates/pwreset-email.pt")
 
@@ -164,9 +159,6 @@ class RequestPasswordForm(form.SchemaForm):
 
 
 class PasswordReset(form.SchemaForm):
-    grok.context(ISiteRoot)
-    grok.name("reset-password")
-    grok.require("zope2.Public")
 
     randomstring = None
 
