@@ -118,4 +118,31 @@
       template="templates/frontpage.pt"
       />
 
+  <browser:page
+      name="index.html"
+      for="Exception"
+      class=".error.Error"
+      permission="zope2.View"
+      layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
+      template="templates/error_generic.pt"
+      />
+
+  <browser:page
+      name="index.html"
+      for="zExceptions.NotFound"
+      class=".error.Error"
+      permission="zope2.View"
+      layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
+      template="templates/error_notfound.pt"
+      />
+
+  <browser:page
+      name="index.html"
+      for="zExceptions.Unauthorized"
+      class=".error.Unauthorized"
+      permission="zope2.Public"
+      layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
+      template="templates/error_unauthorized.pt"
+      />
+
 </configure>
