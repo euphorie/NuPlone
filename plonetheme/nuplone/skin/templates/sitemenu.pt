@@ -48,7 +48,7 @@
             </li>
           </ul>
         </li>
-        <li tal:condition="permission:Modify portal content">
+        <li tal:condition="python:tools.checkPermission('Modify portal content')">
           <a href="${context/absolute_url}/@@edit" i18n:translate="menu_edit">Edit</a>
         </li>
       </tal:block>
