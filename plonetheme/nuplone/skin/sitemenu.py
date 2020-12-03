@@ -1,26 +1,17 @@
 # coding=utf-8
 from Acquisition import aq_inner
-from five import grok
 from OFS.interfaces import ICopyContainer
 from plone import api
 from plone.memoize.view import memoize_contextless
 from plonetheme.nuplone import MessageFactory as _
-from plonetheme.nuplone.skin.interfaces import NuPloneSkin
 from plonetheme.nuplone.utils import getFactoriesInContext
 from Products.CMFCore.ActionInformation import ActionInfo
 from Products.CMFCore.interfaces import ISiteRoot
 from Products.CMFCore.utils import getToolByName
-from zope.interface import Interface
+from Products.Five import BrowserView
 
 
-grok.templatedir("templates")
-
-
-class Sitemenu(grok.View):
-    grok.context(Interface)
-    grok.name("sitemenu")
-    grok.layer(NuPloneSkin)
-    grok.template("sitemenu")
+class Sitemenu(BrowserView):
 
     @property
     @memoize_contextless

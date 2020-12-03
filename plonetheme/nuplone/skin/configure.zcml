@@ -161,4 +161,13 @@
       template="templates/layout.pt"
       />
 
+  <browser:page
+      name="sitemenu"
+      for="*"
+      class=".sitemenu.Sitemenu"
+      layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
+      permission="zope2.Public"
+      template="templates/sitemenu.pt"
+      />
+
 </configure>
