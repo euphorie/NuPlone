@@ -1,5 +1,4 @@
 from Acquisition import aq_inner
-from five import grok
 from plonetheme.nuplone import MessageFactory as _
 from plonetheme.nuplone.utils import getPortal
 from plonetheme.nuplone.utils import setLanguage
