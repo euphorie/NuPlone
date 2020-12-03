@@ -145,4 +145,11 @@
       template="templates/error_unauthorized.pt"
       />
 
+  <browser:page
+      name="switch-language"
+      for="*"
+      class=".language.SwitchLanguage"
+      permission="zope2.Public"
+      />
+
 </configure>
