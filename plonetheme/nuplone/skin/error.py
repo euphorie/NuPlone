@@ -3,7 +3,6 @@ from Acquisition import aq_chain
 from Acquisition import aq_inner
 from Acquisition import aq_parent
 from Products.Five import BrowserView
-from plonetheme.nuplone.skin.interfaces import NuPloneSkin
 from zope.browser.interfaces import IBrowserView
 
 import logging
