@@ -32,7 +32,6 @@
   <include package=".skin" />
   <include package=".z3cform" />
   <include package=".tiles" />
-  <grok:grok package=".skin" />
   <grok:grok package=".z3cform" />
 
 </configure>
