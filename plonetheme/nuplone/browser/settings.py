@@ -1,5 +1,4 @@
 from AccessControl import getSecurityManager
-from five import grok
 from plone.directives import form
 from plonetheme.nuplone import MessageFactory as _
 from Products.CMFCore.interfaces import ISiteRoot
@@ -10,6 +9,8 @@ from z3c.form.interfaces import IDataManager
 from z3c.form.interfaces import NO_VALUE
 from zope import schema
 from zope.globalrequest import getRequest
+from zope.component import adapter
+from zope.interface import implementer
 from zope.schema.interfaces import IField
 from zope.schema.interfaces import IPassword
 
@@ -27,10 +28,9 @@ class ISettings(form.Schema):
         title=_("label_password", default=u"Password"), required=True
     )
 
-
-class UserPropertyDataManager(grok.MultiAdapter):
-    grok.adapts(IPropertiedUser, IField)
-    grok.implements(IDataManager)
+@adapter(IPropertiedUser, IField)
+@implementer(IDataManager)
+class UserPropertyDataManager(object):
 
     def __init__(self, user, field):
         self.user = user
@@ -62,9 +62,9 @@ class UserPropertyDataManager(grok.MultiAdapter):
         return self.propname is not None
 
 
-class UserPasswordDataManager(grok.MultiAdapter):
-    grok.adapts(IPropertiedUser, IPassword)
-    grok.implements(IDataManager)
+@adapter(IPropertiedUser, IPassword)
+@implementer(IDataManager)
+class UserPasswordDataManager(object):
 
     def __init__(self, user, field):
         self.user = user
@@ -100,8 +100,6 @@ class UserPasswordDataManager(grok.MultiAdapter):
 
 
 class Settings(form.SchemaEditForm):
-    grok.context(ISiteRoot)
-    grok.name("settings")
 
     schema = ISettings
 

@@ -49,4 +49,15 @@
       layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
       />
 
+  <adapter factory=".settings.UserPasswordDataManager" />
+
+  <adapter factory=".settings.UserPropertyDataManager" />
+
+  <browser:page
+      name="settings"
+      for="Products.CMFCore.interfaces.ISiteRoot"
+      permission="zope2.View"
+      class=".settings.Settings"
+      />
+
 </configure>
