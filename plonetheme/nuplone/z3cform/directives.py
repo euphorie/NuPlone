@@ -1,4 +1,3 @@
-from five import grok
 from plone.autoform.form import AutoExtensibleForm
 from plone.behavior.interfaces import IBehavior
 from plone.dexterity.interfaces import IDexterityContent
@@ -11,7 +10,10 @@ from plone.supermodel.utils import mergedTaggedValueList
 from z3c.form.browser.checkbox import CheckBoxWidget
 from z3c.form.interfaces import IGroup
 from z3c.form.interfaces import IWidget
-from zope import component
+from zope.component import adapter
+from zope.component import getUtility
+from zope.component import queryUtility
+from zope.interface import implementer
 from zope.interface import Interface
 from zope.publisher.interfaces.browser import IBrowserView
 
@@ -71,10 +73,10 @@ class FormSchemaGrokker(martian.InstanceGrokker):
         return True
 
 
-class FormDependencyExtender(grok.MultiAdapter):
-    grok.adapts(Interface, Interface, AutoExtensibleForm)
-    grok.implements(plone.z3cform.fieldsets.interfaces.IFormExtender)
-    grok.name("plonetheme.nuplone.dependency")
+@adapter(Interface, Interface, AutoExtensibleForm)
+@implementer(plone.z3cform.fieldsets.interfaces.IFormExtender)
+class FormDependencyExtender(object):
+
     order = 0
 
     def __init__(self, context, request, form):
@@ -86,11 +88,11 @@ class FormDependencyExtender(grok.MultiAdapter):
         schemas = [self.form.schema]
 
         if IDexterityContent.providedBy(self.context):
-            fti = component.getUtility(
+            fti = getUtility(
                 IDexterityFTI, name=self.context.portal_type
             )
             for name in fti.behaviors:
-                behavior = component.queryUtility(IBehavior, name=name)
+                behavior = queryUtility(IBehavior, name=name)
                 if behavior and behavior.interface.extends(Schema):
                     schemas.append(behavior.interface)
 
@@ -113,11 +115,9 @@ class FormDependencyExtender(grok.MultiAdapter):
                     continue
                 field.field._dependencies = depends
 
-
-class WidgetDependencyView(grok.MultiAdapter):
-    grok.adapts(IWidget, Interface)
-    grok.implements(IBrowserView)
-    grok.name("dependencies")
+@adapter(IWidget, Interface)
+@implementer(IBrowserView)
+class WidgetDependencyView(object):
 
     def __init__(self, widget, request):
         self.widget = widget
@@ -151,10 +151,9 @@ class WidgetDependencyView(grok.MultiAdapter):
         return " ".join(classes) if classes else None
 
 
-class FormLayoutExtender(grok.MultiAdapter):
-    grok.adapts(Interface, Interface, AutoExtensibleForm)
-    grok.implements(plone.z3cform.fieldsets.interfaces.IFormExtender)
-    grok.name("plonetheme.nuplone.layout")
+@adapter(Interface, Interface, AutoExtensibleForm)
+@implementer(plone.z3cform.fieldsets.interfaces.IFormExtender)
+class FormLayoutExtender(object):
 
     order = 10
 

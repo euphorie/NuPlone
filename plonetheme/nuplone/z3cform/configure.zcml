@@ -202,4 +202,19 @@
       class=".widget.NewMultiWidgetEntry"
       />
 
+  <adapter
+      factory=".directives.WidgetDependencyView"
+      name="dependencies"
+      />
+
+  <adapter
+      factory=".directives.FormLayoutExtender"
+      name="plonetheme.nuplone.layout"
+      />
+
+  <adapter
+      factory=".directives.FormDependencyExtender"
+      name="plonetheme.nuplone.dependency"
+      />
+
 </configure>
