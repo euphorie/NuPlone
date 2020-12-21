@@ -167,7 +167,6 @@
       class=".sitemenu.Sitemenu"
       layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
       permission="zope2.Public"
-      template="templates/sitemenu.pt"
       />
 
 </configure>

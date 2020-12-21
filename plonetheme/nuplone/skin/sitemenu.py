@@ -9,9 +9,12 @@ from Products.CMFCore.ActionInformation import ActionInfo
 from Products.CMFCore.interfaces import ISiteRoot
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 
 class Sitemenu(BrowserView):
+
+    template = ViewPageTemplateFile("templates/sitemenu.pt")
 
     @property
     @memoize_contextless
@@ -115,3 +118,6 @@ class Sitemenu(BrowserView):
                     })
         if children:
             return menu
+
+    def __call__(self):
+        return self.template()
