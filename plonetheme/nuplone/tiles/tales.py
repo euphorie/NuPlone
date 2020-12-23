@@ -5,7 +5,6 @@ from chameleon.tales import StringExpr
 from plonetheme.nuplone.tiles.tile import getTile
 from plonetheme.nuplone.utils import SimpleLiteral
 
-import five.pt.engine
 import logging
 
 
@@ -34,7 +33,3 @@ class TileExpression(StringExpr):
             target=target,
             render_tile=self.render_tile
         )
-
-
-five.pt.engine.Program.secure_expression_types['tile'] = TileExpression
-five.pt.engine.Program.expression_types['tile'] = TileExpression

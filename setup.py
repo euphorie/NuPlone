@@ -35,7 +35,7 @@ setup(
         'setuptools',
         'Plone >=5.1',
         'Zope2 >=2.12.5',
-        'five.pt >= 2.2.0',
+#        'five.pt >= 2.2.0',
         'five.grok',
         'plone.api',
         'plone.tiles',
