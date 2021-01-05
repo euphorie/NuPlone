@@ -42,8 +42,9 @@ jobs:
           bin/pip install -r requirements-${{ matrix.config[2] }}.txt
           bin/buildout -c .github.cfg annotate
           bin/buildout -c .github.cfg
-      - name: Pre commit
-        uses: pre-commit/action@v2.0.0
+# Requires Python3
+#      - name: Pre commit
+#        uses: pre-commit/action@v2.0.0
       - name: Test
         run: |
           bin/code-analysis
