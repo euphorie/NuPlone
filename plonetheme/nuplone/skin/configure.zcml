@@ -155,7 +155,7 @@
   <browser:page
       name="layout"
       for="*"
-      class=".language.SwitchLanguage"
+      class=".layout.Layout"
       layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
       permission="zope2.Public"
       template="templates/layout.pt"
