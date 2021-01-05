@@ -9,6 +9,7 @@ from zope.browser.interfaces import IBrowserView
 import logging
 import zExceptions
 
+
 log = logging.getLogger(__name__)
 
 grok.templatedir("templates")

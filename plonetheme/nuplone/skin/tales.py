@@ -7,15 +7,14 @@ import five.pt.engine
 
 
 class PermissionExpr(StringExpr):
-
     def __call__(self, target, engine):
         assignment = super(PermissionExpr, self).__call__(target, engine)
         return assignment + template(
-            'target = check_permission(context, target)',
+            "target = check_permission(context, target)",
             target=target,
-            check_permission=Symbol(checkPermission)
+            check_permission=Symbol(checkPermission),
         )
 
 
-five.pt.engine.Program.secure_expression_types['permission'] = PermissionExpr
-five.pt.engine.Program.expression_types['permission'] = PermissionExpr
+five.pt.engine.Program.secure_expression_types["permission"] = PermissionExpr
+five.pt.engine.Program.expression_types["permission"] = PermissionExpr

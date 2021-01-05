@@ -4,7 +4,7 @@ from plone.directives import form
 from plonetheme.nuplone import MessageFactory as _
 from Products.CMFCore.interfaces import ISiteRoot
 from Products.CMFCore.utils import getToolByName
-from Products.PluggableAuthService.interfaces.authservice import IPropertiedUser  # noqa: E501
+from Products.PluggableAuthService.interfaces.authservice import IPropertiedUser
 from Products.statusmessages.interfaces import IStatusMessage
 from z3c.form.interfaces import IDataManager
 from z3c.form.interfaces import NO_VALUE
@@ -79,15 +79,14 @@ class UserPasswordDataManager(grok.MultiAdapter):
     def set(self, value):
         if value is None:
             return IStatusMessage(getRequest()).add(
-                _('Password not updated, none was specified.'), type='error'
+                _("Password not updated, none was specified."), type="error"
             )
 
         try:
             mt = getToolByName(self.user, "portal_membership")
         except AttributeError:
             return IStatusMessage(getRequest()).add(
-                _('Cannot change password for Zope users, only Plone'),
-                type='error'
+                _("Cannot change password for Zope users, only Plone"), type="error"
             )
         else:
             mt.setPassword(value)

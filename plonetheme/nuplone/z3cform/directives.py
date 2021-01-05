@@ -27,6 +27,7 @@ LAYOUT_KEY = "plonetheme.nuplone.z3cform.layout"
 
 class depends(martian.Directive):
     """Directive used to declare a dependency on other field values."""
+
     scope = martian.CLASS
     store = FormMetadataListStorage()
     key = DEPENDENCY_KEY
@@ -41,6 +42,7 @@ class depends(martian.Directive):
 
 class FormSchemaGrokker(martian.InstanceGrokker):
     """Grok form schema hints."""
+
     martian.component(Schema.__class__)
     martian.directive(depends)
 
@@ -86,9 +88,7 @@ class FormDependencyExtender(grok.MultiAdapter):
         schemas = [self.form.schema]
 
         if IDexterityContent.providedBy(self.context):
-            fti = component.getUtility(
-                IDexterityFTI, name=self.context.portal_type
-            )
+            fti = component.getUtility(IDexterityFTI, name=self.context.portal_type)
             for name in fti.behaviors:
                 behavior = component.queryUtility(IBehavior, name=name)
                 if behavior and behavior.interface.extends(Schema):
@@ -138,13 +138,9 @@ class WidgetDependencyView(grok.MultiAdapter):
             if dependency.op in ["on", "off"]:
                 classes.append("dependsOn-%s-%s" % (name, dependency.op))
             elif dependency.op == "==":
-                classes.append(
-                    "dependsOn-%s-equals-%s" % (name, dependency.value)
-                )
+                classes.append("dependsOn-%s-equals-%s" % (name, dependency.value))
             elif dependency.op == "!=":
-                classes.append(
-                    "dependsOn-%s-notEquals-%s" % (name, dependency.value)
-                )
+                classes.append("dependsOn-%s-notEquals-%s" % (name, dependency.value))
 
             classes.append("dependsAction-%s" % dependency.action)
 
@@ -167,9 +163,12 @@ class FormLayoutExtender(grok.MultiAdapter):
         fieldsets = mergedTaggedValueList(self.form.schema, FIELDSETS_KEY)
         if not isinstance(self.form.groups, list):
             self.form.groups = list(self.form.groups)
-        groups = dict([(group.__name__,
-                        (index, group))
-                       for (index, group) in enumerate(self.form.groups)])
+        groups = dict(
+            [
+                (group.__name__, (index, group))
+                for (index, group) in enumerate(self.form.groups)
+            ]
+        )
         for fieldset in fieldsets:
             layout = getattr(fieldset, "layout", None)
             if layout is None:

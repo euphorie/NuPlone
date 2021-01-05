@@ -4,12 +4,10 @@ from Products.CMFCore.utils import getToolByName
 
 
 class LanguageTile(Tile):
-
     def update(self):
         lt = getToolByName(self.context, "portal_languages")
         languages = [
-            l for l in lt.getAvailableLanguageInformation().values()
-            if l["selected"]
+            _ for _ in lt.getAvailableLanguageInformation().values() if _["selected"]
         ]
         languages.sort(key=lambda l: l.get("native", l["name"]))
         self.languages = languages

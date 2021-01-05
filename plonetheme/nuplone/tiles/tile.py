@@ -10,6 +10,7 @@ from zope.interface import Interface
 
 import logging
 
+
 log = logging.getLogger(__name__)
 
 
@@ -43,8 +44,7 @@ def getTile(context, request, name):
     tile = queryMultiAdapter((context, request), Interface, name=type)
     if tile is None:
         log.warn(
-            "Detected reference to non-existing tile '%s' for context %r",
-            name, context
+            "Detected reference to non-existing tile '%s' for context %r", name, context
         )
         return None
 
