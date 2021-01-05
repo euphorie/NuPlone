@@ -16,6 +16,7 @@ class PasswordResetTests(unittest.TestCase):
 
     def testInvalidKey(self):
         from zExceptions import NotFound
+
         browser = Browser(self.layer["app"])
         browser.handleErrors = False
         url = "%s/reset-password/bogus" % self.layer["portal"].absolute_url()
@@ -23,6 +24,7 @@ class PasswordResetTests(unittest.TestCase):
 
     def testDoubleKeys(self):
         from zExceptions import NotFound
+
         browser = Browser(self.layer["app"])
         browser.handleErrors = False
         url = "%s/reset-password/one/two" % self.layer["portal"].absolute_url()

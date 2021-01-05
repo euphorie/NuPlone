@@ -14,6 +14,7 @@ from zope.interface import Interface
 
 import zExceptions
 
+
 grok.templatedir("templates")
 
 
@@ -53,8 +54,9 @@ class Cut(grok.View):
             flash(
                 _(
                     "message_cut_invalid",
-                    default=u"It is not possible to move this object."
-                ), "error"
+                    default=u"It is not possible to move this object.",
+                ),
+                "error",
             )
 
         self.request.response.redirect(context.absolute_url())
@@ -81,15 +83,17 @@ class Paste(grok.View):
             flash(
                 _(
                     "message_paste_valueerror",
-                    default=u"You can not paste the copied data here."
-                ), "error"
+                    default=u"You can not paste the copied data here.",
+                ),
+                "error",
             )
         except zExceptions.Unauthorized:
             flash(
                 _(
                     "message_paste_unauthorized",
-                    default=u"You are not allowed to paste here."
-                ), "error"
+                    default=u"You are not allowed to paste here.",
+                ),
+                "error",
             )
         except CopyError as e:
             if "Insufficient Privileges" in e.message:
@@ -97,8 +101,9 @@ class Paste(grok.View):
             flash(
                 _(
                     "message_paste_generic",
-                    default=u"No valid data found in the clipboard."
-                ), "error"
+                    default=u"No valid data found in the clipboard.",
+                ),
+                "error",
             )
 
         self.request.response.redirect(context.absolute_url())
@@ -121,23 +126,18 @@ class Delete(grok.View):
         flash = IStatusMessage(self.request).addStatusMessage
 
         if action == "cancel":
-            flash(
-                _("message_delete_cancel", default=u"Deletion cancelled"),
-                "notice"
-            )
+            flash(_("message_delete_cancel", default=u"Deletion cancelled"), "notice")
             self.request.response.redirect(context.absolute_url())
         elif action == "delete":
-            authenticator = getMultiAdapter((self.context, self.request),
-                                            name=u"authenticator")
+            authenticator = getMultiAdapter(
+                (self.context, self.request), name=u"authenticator"
+            )
             if not authenticator.verify():
                 raise zExceptions.Unauthorized
 
             container = aq_parent(context)
             container.manage_delObjects([context.getId()])
-            flash(
-                _("message_delete_success", default=u"Object removed"),
-                "success"
-            )
+            flash(_("message_delete_success", default=u"Object removed"), "success")
             self.request.response.redirect(container.absolute_url())
 
     def update(self):

@@ -24,15 +24,11 @@ log = logging.getLogger(__name__)
 
 
 class IRequestPasswordReset(form.Schema):
-    login = schema.TextLine(
-        title=_("label_login", default=u"Login"), required=True
-    )
+    login = schema.TextLine(title=_("label_login", default=u"Login"), required=True)
 
 
 class IPasswordReset(form.Schema):
-    login = schema.TextLine(
-        title=_("label_login", default=u"Login"), required=True
-    )
+    login = schema.TextLine(title=_("label_login", default=u"Login"), required=True)
 
     password = schema.Password(
         title=_("label_password", default=u"Password"), required=True
@@ -56,16 +52,16 @@ class RequestPasswordForm(form.SchemaForm):
         u"and cannot mail it to you. If you would like to reset "
         u"your password, fill out the form below and we will send "
         u"you an email at the address you gave when you registered "
-        u"to start the process of resetting your password."
+        u"to start the process of resetting your password.",
     )
 
     @property
     def email_from_name(self):
-        return api.portal.get_registry_record('plone.email_from_name')
+        return api.portal.get_registry_record("plone.email_from_name")
 
     @property
     def email_from_address(self):
-        return api.portal.get_registry_record('plone.email_from_address')
+        return api.portal.get_registry_record("plone.email_from_address")
 
     @buttonAndHandler(_("button_send", default="Send"), name="send")
     def handleSend(self, action):
@@ -79,12 +75,9 @@ class RequestPasswordForm(form.SchemaForm):
         mt = getToolByName(self.context, "portal_membership")
         user = pas.getUser(data["login"])
         if user is None:
-            log.info(
-                "Password reset request for unknown user %s" % data["login"]
-            )
+            log.info("Password reset request for unknown user %s" % data["login"])
             flash(
-                _("error_pwreset_unknown_user", default=u"Unknown username."),
-                "error"
+                _("error_pwreset_unknown_user", default=u"Unknown username."), "error"
             )
             return
 
@@ -94,23 +87,22 @@ class RequestPasswordForm(form.SchemaForm):
             flash(
                 _(
                     "error_pwreset_no_email",
-                    default=u"No known email address for this user."
-                ), "error"
+                    default=u"No known email address for this user.",
+                ),
+                "error",
             )
             return
 
         ppr = getToolByName(self.context, "portal_password_reset")
         reset = ppr.requestReset(user.getId())
         portal_url = aq_inner(self.context).absolute_url()
-        reset_url = "%s/@@reset-password/%s" % (
-            portal_url, reset["randomstring"]
-        )
+        reset_url = "%s/@@reset-password/%s" % (portal_url, reset["randomstring"])
 
         data["site"] = self.context.title
         subject = _(
             u"password_reset_subject",
             default=u"Password reset for ${site}",
-            mapping=data
+            mapping=data,
         )
         subject = translate(subject, context=self.request)
         body = self.email_template(
@@ -131,34 +123,35 @@ class RequestPasswordForm(form.SchemaForm):
             mh.send(email)
         except MailHostError as e:
             log.error(
-                "MailHost error sending password reset form to %s: %s",
-                email_address, e
+                "MailHost error sending password reset form to %s: %s", email_address, e
             )
             flash(
                 _(
                     u"error_contactmail",
-                    u"An error occured while processing your contact request. Please try again later."  # noqa: E501
-                ), "error"
+                    u"An error occured while processing your contact request. Please try again later.",  # noqa: E501
+                ),
+                "error",
             )
             return
         except socket.error as e:
             log.error(
-                "Socket error sending password reset form to: %s",
-                email_address, e[1]
+                "Socket error sending password reset form to: %s", email_address, e[1]
             )
             flash(
                 _(
                     u"error_contactmail",
-                    u"An error occured while processing your contact request. Please try again later."  # noqa: E501
-                ), "error"
+                    u"An error occured while processing your contact request. Please try again later.",  # noqa: E501
+                ),
+                "error",
             )
             return
 
         flash(
             _(
                 "info_pwrest_mail_sent",
-                default=u"An email with instructions for resetting your password has been sent."  # noqa: E501
-            ), "success"
+                default=u"An email with instructions for resetting your password has been sent.",  # noqa: E501
+            ),
+            "success",
         )
         self.request.response.redirect(portal_url)
 
@@ -175,7 +168,7 @@ class PasswordReset(form.SchemaForm):
     label = _(u"header_password_reset", default=u"Reset password")
     description = _(
         u"intro_password_reset",
-        default=u"Please fill out the form below to set your password."
+        default=u"Please fill out the form below to set your password.",
     )
     default_fieldset_label = None
 
@@ -207,20 +200,20 @@ class PasswordReset(form.SchemaForm):
             flash(
                 _(
                     "user_name_wrong",
-                    u"The login name you have provided does not match the username from the password-reset email. Please check your spelling."  # noqa: E501
-                ), "error"
+                    u"The login name you have provided does not match the username from the password-reset email. Please check your spelling.",  # noqa: E501
+                ),
+                "error",
             )
             return
         try:
-            ppr.resetPassword(
-                user.getId(), self.randomstring, data["password"]
-            )
+            ppr.resetPassword(user.getId(), self.randomstring, data["password"])
         except InvalidRequestError:
             flash(
                 _(
                     "user_name_wrong",
-                    u"The login name you have provided does not match the username from the password-reset email. Please check your spelling."  # noqa: E501
-                ), "error"
+                    u"The login name you have provided does not match the username from the password-reset email. Please check your spelling.",  # noqa: E501
+                ),
+                "error",
             )
             return
 

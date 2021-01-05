@@ -2,6 +2,7 @@ from five import grok
 from plonetheme.nuplone.skin.interfaces import NuPloneSkin
 from zope.interface import Interface
 
+
 grok.templatedir("templates")
 
 

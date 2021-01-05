@@ -26,7 +26,6 @@ class INavtreeFactory(Interface):
 
 
 class CatalogNavTree(object):
-
     def __init__(self, context, request):
         self.build(context, request)
 
@@ -35,22 +34,18 @@ class CatalogNavTree(object):
 
         # If we are at a default page use the folder as context for the navtree
         container = aq_parent(context)
-        isp = queryMultiAdapter((container, request),
-                                name="default_page",
-                                default=None)
+        isp = queryMultiAdapter((container, request), name="default_page", default=None)
         if isp is not None and isp.isDefaultPage(context):
             context = container
 
         contextPath = "/".join(context.getPhysicalPath())
         contextPathLen = len(contextPath)
-        parentDepth = (contextPath.count("/") - 1)
+        parentDepth = contextPath.count("/") - 1
         navrootPath = "/".join(getNavigationRoot(context).getPhysicalPath())
 
         query = {}
         query["path"] = dict(
-            query=contextPath,
-            navtree=True,
-            navtree_start=navrootPath.count("/")
+            query=contextPath, navtree=True, navtree_start=navrootPath.count("/")
         )
         query["portal_type"] = typesToList(context)
         query["sort_on"] = "getObjPositionInParent"
@@ -59,11 +54,7 @@ class CatalogNavTree(object):
         catalog = getToolByName(context, "portal_catalog")
         results = catalog.searchResults(query)
         cache = {}
-        cache[navrootPath] = {
-            "current": False,
-            "currentParent": True,
-            "children": []
-        }
+        cache[navrootPath] = {"current": False, "currentParent": True, "children": []}
         for brain in results:
             path = brain.getPath()
             pathLen = len(path)
@@ -84,7 +75,7 @@ class CatalogNavTree(object):
                 "path": path,
                 "current": current,
                 "currentParent": currentParent,
-                "ancestor": ancestor
+                "ancestor": ancestor,
             }
 
             oldNode = cache.get(path, None)
@@ -134,7 +125,7 @@ class CatalogNavTree(object):
         queue = collections.deque([self.root])
         while queue:
             node = queue.popleft()
-            action = (yield node)
+            action = yield node
             if action == "purge":
                 node["parent"]["children"].remove(node)
                 continue
@@ -161,27 +152,25 @@ class TreeFactory(object):
 
 
 class NavigationTile(Tile):
-
     def update(self):
         portal_types = getToolByName(self.context, "portal_types")
-        type_titles = dict([(fti.getId(), fti.Title())
-                            for fti in portal_types.listTypeInfo()])
+        type_titles = dict(
+            [(fti.getId(), fti.Title()) for fti in portal_types.listTypeInfo()]
+        )
 
         if IS_PLONE_5:
             use_view_types = api.portal.get_registry_record(
-                'plone.types_use_view_action_in_listings',
-                default=[]
+                "plone.types_use_view_action_in_listings", default=[]
             )
         else:
-            portal_properties = api.portal.get_tool('portal_properties')
+            portal_properties = api.portal.get_tool("portal_properties")
             site_properties = portal_properties.site_properties
             use_view_types = site_properties.getProperty(
-                'typesUseViewActionInListings',
+                "typesUseViewActionInListings",
                 [],
             )
         normalize = getUtility(IIDNormalizer).normalize
-        treefactory = getMultiAdapter((self.context, self.request),
-                                      INavtreeFactory)
+        treefactory = getMultiAdapter((self.context, self.request), INavtreeFactory)
         tree = treefactory()
 
         for node in tree.iter():
@@ -194,19 +183,27 @@ class NavigationTile(Tile):
             node["portal_type_title"] = type_titles.get(
                 brain.portal_type, brain.portal_type
             )
-            node["url"] = "%s/view" % brain.getURL(
-            ) if brain.portal_type in use_view_types else brain.getURL()
+            node["url"] = (
+                "%s/view" % brain.getURL()
+                if brain.portal_type in use_view_types
+                else brain.getURL()
+            )
             node["review_state"] = normalize(brain.review_state)
             node["folderish"] = brain.is_folderish
-            node["class"] = " ".join(
-                filter(
-                    None,
-                    [
-                        "active" if node["current"] or node["currentParent"]
-                        else None, "current" if node["current"] else None
-                    ]
+            node["class"] = (
+                " ".join(
+                    filter(
+                        None,
+                        [
+                            "active"
+                            if node["current"] or node["currentParent"]
+                            else None,
+                            "current" if node["current"] else None,
+                        ],
+                    )
                 )
-            ) or None
+                or None
+            )
 
         if "brain" in tree.root:
             self.tree = [tree.root]

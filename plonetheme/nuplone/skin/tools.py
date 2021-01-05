@@ -30,9 +30,7 @@ class Tools(grok.View):
     @property
     @memoize
     def anonymous(self):
-        return (
-            self.user is None or self.user.getUserName() == 'Anonymous User'
-        )
+        return self.user is None or self.user.getUserName() == "Anonymous User"
 
     @property
     @memoize
@@ -90,12 +88,10 @@ class Tools(grok.View):
         return utils.formatDateTime(self.request, timestamp, length)
 
     def formatDecimal(self, value, length=None):
-        return self.request.locale.numbers.getFormatter("decimal",
-                                                        length).format(value)
+        return self.request.locale.numbers.getFormatter("decimal", length).format(value)
 
     def formatPercentage(self, value, length=None):
-        return self.request.locale.numbers.getFormatter("percent",
-                                                        length).format(value)
+        return self.request.locale.numbers.getFormatter("percent", length).format(value)
 
     def countryName(self, code):
         return self.request.locale.displayNames.territories.get(code.upper())

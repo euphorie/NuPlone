@@ -11,6 +11,7 @@ from zope.interface import Interface
 
 import logging
 
+
 log = logging.getLogger(__name__)
 
 grok.templatedir("templates")
@@ -23,17 +24,16 @@ class Login(grok.View):
     grok.template("login")
 
     def homeUrl(self, user):
-        """Return a suitable `home' for a user if came_from is unset or invalid.
-        """
+        """Return a suitable `home' for a user if came_from is unset or invalid."""
         put = getToolByName(self.context, "portal_url")
         return put.getPortalObject().absolute_url()
 
     def update(self):
         user = getSecurityManager().getUser()
-        self.came_from = self.request.get('came_from')
+        self.came_from = self.request.get("came_from")
         if not self.came_from:
             self.came_from = self.request.environ.get("HTTP_REFERER")
-        elif '@@reset-password' in self.came_from:
+        elif "@@reset-password" in self.came_from:
             self.came_from = None
 
         if self.came_from:
@@ -52,8 +52,7 @@ class Login(grok.View):
         if not self.anonymous and "login_attempt" in self.request:
             flash = IStatusMessage(self.request).addStatusMessage
             flash(
-                _(u"message_logged_in", default=u"You have been logged in."),
-                "success"
+                _(u"message_logged_in", default=u"You have been logged in."), "success"
             )
             mt = getToolByName(self.context, "portal_membership")
             mt.loginUser(self.request)
@@ -75,15 +74,14 @@ class Logout(grok.View):
             mt.logoutUser(self.request)
             flash(
                 _(u"message_logged_out", default=u"You have been logged out."),
-                "success"
+                "success",
             )
         else:
             flash(
                 _(
                     u"message_already_logged_out",
-                    default=u"You were already logged out."
-                ), "notice"
+                    default=u"You were already logged out.",
+                ),
+                "notice",
             )
-        return self.request.response.redirect(
-            aq_inner(self.context).absolute_url()
-        )
+        return self.request.response.redirect(aq_inner(self.context).absolute_url())

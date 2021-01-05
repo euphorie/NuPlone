@@ -9,28 +9,22 @@ from z3c.form.interfaces import IForm
 import os.path
 
 
-TEMPLATE_DIR = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), "templates"
-)
+TEMPLATE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "templates")
 
 layout_factory = ZopeTwoFormTemplateFactory(
     os.path.join(TEMPLATE_DIR, "layout.pt"),
     form=IFormWrapper,
-    request=INuPloneFormLayer
+    request=INuPloneFormLayer,
 )
 
 wrapped_form_factory = FormTemplateFactory(
     os.path.join(TEMPLATE_DIR, "wrappedform.pt"),
     form=IWrappedForm,
-    request=INuPloneFormLayer
+    request=INuPloneFormLayer,
 )
 
 form_factory = ZopeTwoFormTemplateFactory(
-    os.path.join(TEMPLATE_DIR, "form.pt"),
-    form=IForm,
-    request=INuPloneFormLayer
+    os.path.join(TEMPLATE_DIR, "form.pt"), form=IForm, request=INuPloneFormLayer
 )
 
-ErrorViewTemplate = ErrorViewTemplateFactory(
-    os.path.join(TEMPLATE_DIR, "error.pt")
-)
+ErrorViewTemplate = ErrorViewTemplateFactory(os.path.join(TEMPLATE_DIR, "error.pt"))

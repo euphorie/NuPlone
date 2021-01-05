@@ -58,7 +58,6 @@ class NewMultiWidgetEntry(grok.View):
 
 
 class NicerNamedImageWidget(NamedImageWidget):
-
     @property
     def allow_nochange(self):
         # Prevent errors caused by missing blob file
@@ -73,20 +72,22 @@ class NicerNamedImageWidget(NamedImageWidget):
 
     def extract(self, default=NOVALUE):
         action = self.request.get("%s.action" % self.name, None)
-        if action == 'remove':
+        if action == "remove":
             return None
 
         value = FileWidget.extract(self, default)
 
-        if value is NOVALUE or \
-                (isinstance(value, FileUpload) and not value.filename):
+        if value is NOVALUE or (isinstance(value, FileUpload) and not value.filename):
             if self.ignoreContext:
                 return default
 
-            dm = getMultiAdapter((
-                self.context,
-                self.field,
-            ), IDataManager)
+            dm = getMultiAdapter(
+                (
+                    self.context,
+                    self.field,
+                ),
+                IDataManager,
+            )
             return dm.get()
 
         # Note that we allow the user to upload an empty file.
@@ -100,7 +101,6 @@ def NamedImageWidgetFactory(field, request):
 
 
 class NicerNamedFileWidget(NamedFileWidget):
-
     @property
     def allow_nochange(self):
         # Prevent errors caused by missing blob file
@@ -115,20 +115,22 @@ class NicerNamedFileWidget(NamedFileWidget):
 
     def extract(self, default=NOVALUE):
         action = self.request.get("%s.action" % self.name, None)
-        if action == 'remove':
+        if action == "remove":
             return None
 
         value = FileWidget.extract(self, default)
 
-        if value is NOVALUE or \
-                (isinstance(value, FileUpload) and not value.filename):
+        if value is NOVALUE or (isinstance(value, FileUpload) and not value.filename):
             if self.ignoreContext:
                 return default
 
-            dm = getMultiAdapter((
-                self.context,
-                self.field,
-            ), IDataManager)
+            dm = getMultiAdapter(
+                (
+                    self.context,
+                    self.field,
+                ),
+                IDataManager,
+            )
             return dm.get()
 
         # Note that we allow the user to upload an empty file.

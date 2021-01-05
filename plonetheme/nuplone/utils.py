@@ -16,11 +16,12 @@ from z3c.form.interfaces import IEditForm
 import collections
 import email.utils as emailutils
 import logging
+import six
 
 
 log = logging.getLogger(__name__)
 
-IS_PLONE_5 = api.env.plone_version().startswith('5')
+IS_PLONE_5 = api.env.plone_version().startswith("5")
 
 
 def getPortal(context):
@@ -84,10 +85,9 @@ def viewType(context, request):
     return "other"
 
 
-class SimpleLiteral(unicode):
-
+class SimpleLiteral(six.text_type):
     def __html__(self):
-        return unicode(self)
+        return six.text_type(self)
 
 
 def setLanguage(request, context, lang=None):
@@ -145,8 +145,10 @@ def getFactoriesInContext(context):
         FactoryInfo(
             action.get("id"),
             action.get("title") or action.get("id"),
-            action.get("description") or None, action["url"]
-        ) for action in actions
+            action.get("description") or None,
+            action["url"],
+        )
+        for action in actions
     ]
     return actions
 
@@ -158,13 +160,13 @@ def createEmailTo(
     recipient_email,
     subject,
     body,
-    format="plain"
+    format="plain",
 ):
     """Create an :obj:`email.MIMEText.MIMEtext` instance for an email. This
     method will take care of adding addings a date header and message ID
     to the email, as well as quoting of non-ASCII content.
     """
-    if isinstance(body, unicode):
+    if isinstance(body, six.text_type):
         mail = MIMEText(body.encode("utf-8"), format, "utf-8")
     else:
         mail = MIMEText(body, format)
@@ -186,7 +188,7 @@ def createEmailTo(
 
 
 class reify(object):
-    """ Put the result of a method which uses this (non-data)
+    """Put the result of a method which uses this (non-data)
     descriptor decorator in the instance dict after the first call,
     effectively replacing the decorator with an instance variable."""
 
@@ -226,8 +228,7 @@ def formatDatetime(request, timestamp, length="long"):
             default="${date} at ${time}",
             mapping=dict(
                 date=formatDate(request, timestamp, "long"),
-                time=formatTime(request, timestamp, "short")
-            )
+                time=formatTime(request, timestamp, "short"),
+            ),
         )
-    return request.locale.dates.getFormatter("dateTime",
-                                             length).format(timestamp)
+    return request.locale.dates.getFormatter("dateTime", length).format(timestamp)

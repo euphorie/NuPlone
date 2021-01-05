@@ -11,7 +11,7 @@ _compiles = {}
 
 
 class GroupTile(AppConfigTile):
-    TILE_EXPR = re.compile("(?P<name>\S+)\s*(?:\[(?P<condition>.*)\])?")
+    TILE_EXPR = re.compile(r"(?P<name>\S+)\s*(?:\[(?P<condition>.*)\])?")
     tiles = []
 
     def update(self):
@@ -36,7 +36,7 @@ class GroupTile(AppConfigTile):
                     globals = dict(
                         context=context,
                         request=request,
-                        view_type=viewType(context, request)
+                        view_type=viewType(context, request),
                     )
                 if not eval(compiled, globals):
                     continue
@@ -45,7 +45,7 @@ class GroupTile(AppConfigTile):
 
     def __call__(self):
         if isinstance(self.context, NotFound):
-            return ''
+            return ""
         self.update()
         if not self.tiles:
             return u""

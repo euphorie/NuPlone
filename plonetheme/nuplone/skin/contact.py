@@ -21,9 +21,7 @@ import socket
 
 log = logging.getLogger(__name__)
 
-TextSpan7 = FieldWidgetFactory(
-    "z3c.form.browser.text.TextFieldWidget", klass="span-7"
-)
+TextSpan7 = FieldWidgetFactory("z3c.form.browser.text.TextFieldWidget", klass="span-7")
 TextLines4Rows = FieldWidgetFactory(
     "z3c.form.browser.textlines.TextLinesFieldWidget", rows=4
 )
@@ -61,14 +59,13 @@ class ContactForm(form.SchemaForm):
     label = _(u"header_contact", default="Contact")
     default_fieldset_label = None
 
-
     @property
     def email_from_name(self):
-        return api.portal.get_registry_record('plone.email_from_name')
+        return api.portal.get_registry_record("plone.email_from_name")
 
     @property
     def email_from_address(self):
-        return api.portal.get_registry_record('plone.email_from_address')
+        return api.portal.get_registry_record("plone.email_from_address")
 
     @buttonAndHandler(_("button_send", default="Send"), name="send")
     def handleSend(self, action):
@@ -83,15 +80,17 @@ class ContactForm(form.SchemaForm):
         subject = _(
             u"contact_mail_subject",
             default=u"Contact request: ${subject}",
-            mapping=data
+            mapping=data,
         )
         subject = translate(subject, context=self.request)
 
         email = createEmailTo(
-            data["name"], data["email"],
+            data["name"],
+            data["email"],
             siteconfig.get("contact.name", self.email_from_name),
             siteconfig.get("contact.email", self.email_from_address),
-            subject, data["message"]
+            subject,
+            data["message"],
         )
         mh = getToolByName(self.context, "MailHost")
         flash = IStatusMessage(self.request).addStatusMessage
@@ -99,26 +98,26 @@ class ContactForm(form.SchemaForm):
             mh.send(email)
         except MailHostError as e:
             log.error(
-                "MailHost error sending contact form for %s: %s",
-                data["email"], e
+                "MailHost error sending contact form for %s: %s", data["email"], e
             )
             flash(
                 _(
                     u"error_contactmail",
-                    u"An error occured while processing your contact request. Please try again later."  # noqa: E501
-                ), "error"
+                    u"An error occured while processing your contact request. Please try again later.",  # noqa: E501
+                ),
+                "error",
             )
             return
         except socket.error as e:
             log.error(
-                "Socket error sending contact form for %s: %s", data["email"],
-                e[1]
+                "Socket error sending contact form for %s: %s", data["email"], e[1]
             )
             flash(
                 _(
                     u"error_contactmail",
-                    u"An error occured while processing your contact request. Please try again later."  # noqa: E501
-                ), "error"
+                    u"An error occured while processing your contact request. Please try again later.",  # noqa: E501
+                ),
+                "error",
             )
             return
 

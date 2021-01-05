@@ -10,7 +10,6 @@ from zExceptions import NotFound
 
 
 class TabsTile(Tile):
-
     def getRoot(self):
         return getNavigationRoot(self.context)
 
@@ -21,14 +20,13 @@ class TabsTile(Tile):
         navrootPath = "/".join(navroot.getPhysicalPath())
         if IS_PLONE_5:
             use_view_types = api.portal.get_registry_record(
-                'plone.types_use_view_action_in_listings',
-                default=[]
+                "plone.types_use_view_action_in_listings", default=[]
             )
         else:
-            portal_properties = api.portal.get_tool('portal_properties')
+            portal_properties = api.portal.get_tool("portal_properties")
             site_properties = portal_properties.site_properties
             use_view_types = site_properties.getProperty(
-                'typesUseViewActionInListings',
+                "typesUseViewActionInListings",
                 [],
             )
         query = {}
@@ -39,18 +37,25 @@ class TabsTile(Tile):
         query["is_default_page"] = False
 
         catalog = getToolByName(context, "portal_catalog")
-        results = [{
-            "id": brain.id,
-            "title": brain.Title,
-            "url": "%s/view" % brain.getURL()
-            if brain.portal_type in use_view_types else brain.getURL(),
-            "class": None
-        }
-                   for brain in catalog.searchResults(query)
-                   if not brain.exclude_from_nav]
-        current = sorted([(len(result["url"]), result["id"])
-                          for result in results
-                          if contextUrl.startswith(result["url"])])
+        results = [
+            {
+                "id": brain.id,
+                "title": brain.Title,
+                "url": "%s/view" % brain.getURL()
+                if brain.portal_type in use_view_types
+                else brain.getURL(),
+                "class": None,
+            }
+            for brain in catalog.searchResults(query)
+            if not brain.exclude_from_nav
+        ]
+        current = sorted(
+            [
+                (len(result["url"]), result["id"])
+                for result in results
+                if contextUrl.startswith(result["url"])
+            ]
+        )
         if current:
             current = current[0][1]
             for result in results:
@@ -63,6 +68,6 @@ class TabsTile(Tile):
 
     def __call__(self):
         if isinstance(self.context, NotFound):
-            return ''
+            return ""
         self.update()
         return self.index()
