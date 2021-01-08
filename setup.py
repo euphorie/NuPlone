@@ -46,7 +46,6 @@ setup(
         "plone.autoform",
         "plone.supermodel",
         "plone.formwidget.namedfile >1.0b4",
-        "z3c.appconfig",
         "p01.widget.password",
         "Products.statusmessages",
         "WebHelpers",

@@ -37,3 +37,17 @@ Although the name of this package may suggest otherwise there is little relation
 between this package and the old `NuPlone
 <http://pypi.python.org/pypi/Products.NuPlone>`_ plone theme. 
 
+
+Compatibility
+=============
+
+Upgrade to NuPlone 2.x
+----------------------
+
+NuPlone 2.x no longer uses the ``z3c.appconfig``.
+The configuration is now stored in the registry:
+
+- instead of ``appconfig["site"]["contact.email"]``, please use the registry record ``plone.email_from_address``.
+- instead of ``appconfig["site"]["contact.name"]``, please use the registry record ``plone.email_from_name``.
+- instead of ``appconfig["site"]["title"]``, please use the registry record ``plone.site_title``.
+- instead of ``appconfig["tile:$TILE_ID"]``, please use the registry record ``plonetheme.nuplone.appconfigtile_$TILE_ID`` (they are expected to contain json).

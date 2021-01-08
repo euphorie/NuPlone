@@ -5,6 +5,7 @@ Changelog
 ------------------
 
 - Remove the dependency from grok
+- Remove z3c.appconfig
 
 
 1.6.4 (unreleased)
