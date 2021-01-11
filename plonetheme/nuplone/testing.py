@@ -8,6 +8,7 @@ import plonetheme.nuplone
 
 
 FIXTURE = PloneWithPackageLayer(
+    bases=(PLONE_APP_CONTENTTYPES_FIXTURE,),
     zcml_filename="configure.zcml",
     zcml_package=plonetheme.nuplone,
     gs_profile_id="plonetheme.nuplone:default",
@@ -21,15 +22,6 @@ NUPLONE_INTEGRATION_TESTING = IntegrationTesting(
 
 NUPLONE_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(FIXTURE,), name="NuPlone:Functional"
-)
-
-
-NUPLONE_FUNCTIONAL_WITH_PAC_TESTING = FunctionalTesting(
-    bases=(
-        PLONE_APP_CONTENTTYPES_FIXTURE,
-        FIXTURE,
-    ),
-    name="NuPlone:FunctionalWithPAC",
 )
 
 

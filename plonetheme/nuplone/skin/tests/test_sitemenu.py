@@ -6,7 +6,7 @@ from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME
 from plone.testing import z2
 from plonetheme.nuplone.skin.interfaces import NuPloneSkin
-from plonetheme.nuplone.testing import NUPLONE_FUNCTIONAL_WITH_PAC_TESTING
+from plonetheme.nuplone.testing import NUPLONE_FUNCTIONAL_TESTING
 from plonetheme.nuplone.testing import NUPLONE_INTEGRATION_TESTING
 from zope.interface import alsoProvides
 
@@ -32,7 +32,7 @@ class SiteMenuIntegrationTests(unittest.TestCase):
 
 
 class SiteMenuTests(unittest.TestCase):
-    layer = NUPLONE_FUNCTIONAL_WITH_PAC_TESTING
+    layer = NUPLONE_FUNCTIONAL_TESTING
 
     def setUp(self):
         self.portal = self.layer["portal"]
