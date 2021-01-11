@@ -24,7 +24,6 @@
       factory=".adapter.StatusMessage"
       />
 
-  <include package="five.pt" />
   <include package="Products.CMFCore" />
   <include package=".browser" />
   <include package=".skin" />

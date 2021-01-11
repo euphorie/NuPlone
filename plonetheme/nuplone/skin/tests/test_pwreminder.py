@@ -1,4 +1,4 @@
-from plone.testing.z2 import Browser
+from plone.testing.zope import Browser
 from plonetheme.nuplone.testing import NUPLONE_FUNCTIONAL_TESTING
 
 import unittest
