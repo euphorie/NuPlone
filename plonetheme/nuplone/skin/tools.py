@@ -1,12 +1,10 @@
 # coding=utf-8
 from AccessControl import getSecurityManager
 from Acquisition import aq_inner
+from plone import api
 from plone.memoize.view import memoize
-from plonetheme.nuplone import MessageFactory as _
 from plonetheme.nuplone import utils
 from Products.Five import BrowserView
-from z3c.appconfig.interfaces import IAppConfig
-from zope.component import queryUtility
 
 
 class Tools(BrowserView):
@@ -52,21 +50,11 @@ class Tools(BrowserView):
         expression."""
         return self
 
-    @utils.reify
-    def appConfig(self):
-        return queryUtility(IAppConfig) or {}
-
     def view_type(self):
         return utils.viewType(self.context, self.request)
 
-    @utils.reify
     def site_title(self):
-        config = self.appConfig
-        title = config.get("site", {}).get("title")
-        if title:
-            return title
-        else:
-            return _("default_site_title", default=u"Plone")
+        return api.portal.get_registry_record("plone.site_title")
 
     def formatDate(self, date, length="long"):
         return utils.formatDate(self.request, date, length)

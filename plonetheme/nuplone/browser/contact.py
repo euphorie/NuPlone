@@ -9,11 +9,9 @@ from plonetheme.nuplone.z3cform.form import FieldWidgetFactory
 from Products.CMFCore.utils import getToolByName
 from Products.MailHost.MailHost import MailHostError
 from Products.statusmessages.interfaces import IStatusMessage
-from z3c.appconfig.interfaces import IAppConfig
 from z3c.form import form
 from z3c.form.button import buttonAndHandler
 from zope import schema
-from zope.component import queryUtility
 from zope.i18n import translate
 
 import logging
@@ -72,9 +70,6 @@ class ContactForm(AutoExtensibleForm, form.Form):
             self.status = self.formErrorsMessage
             return
 
-        appconfig = queryUtility(IAppConfig) or {}
-        siteconfig = appconfig.get("site", {})
-
         subject = _(
             u"contact_mail_subject",
             default=u"Contact request: ${subject}",
@@ -85,8 +80,8 @@ class ContactForm(AutoExtensibleForm, form.Form):
         email = createEmailTo(
             data["name"],
             data["email"],
-            siteconfig.get("contact.name", self.email_from_name),
-            siteconfig.get("contact.email", self.email_from_address),
+            self.email_from_name,
+            self.email_from_address,
             subject,
             data["message"],
         )

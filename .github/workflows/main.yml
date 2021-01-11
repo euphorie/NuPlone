@@ -49,4 +49,4 @@ jobs:
         run: |
           bin/code-analysis
           bin/coverage run bin/test
-          bin/coverage report --fail-under=55
+          bin/coverage report --fail-under=59

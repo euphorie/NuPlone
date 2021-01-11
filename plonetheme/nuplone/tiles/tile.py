@@ -1,13 +1,13 @@
+from plone import api
 from plone.tiles.interfaces import ITile
 from plone.tiles.interfaces import ITileDataManager
 from plone.tiles.tile import Tile
-from z3c.appconfig.interfaces import IAppConfig
 from zope.component import adapts
-from zope.component import getUtility
 from zope.component import queryMultiAdapter
 from zope.interface import implements
 from zope.interface import Interface
 
+import json
 import logging
 
 
@@ -30,16 +30,28 @@ class AppConfigTileDataManager(object):
         self.tile = tile
 
     def get(self):
-        appconfig = getUtility(IAppConfig)
-        return appconfig.get("tile:%s" % self.tile.id, {})
+        try:
+            return json.loads(
+                api.portal.get_registry_record(
+                    "plonetheme.nuplone.appconfigtile_{}".format(self.tile.id),
+                    default="{}",
+                )
+            )
+        except Exception:
+            log.exception("Cannot get configuration for %r", self.tile.id)
+            return {}
 
     def set(self, data):
         raise NotImplementedError
 
 
 def getTile(context, request, name):
-    appconfig = getUtility(IAppConfig)
-    config = appconfig.get("tile:%s" % name, {})
+    config = json.loads(
+        api.portal.get_registry_record(
+            "plonetheme.nuplone.appconfigtile_{}".format(name), default="{}"
+        )
+        or "{}"
+    )
     type = config.get("type", name)
     tile = queryMultiAdapter((context, request), Interface, name=type)
     if tile is None:
