@@ -53,7 +53,6 @@ setup(
         "zope.i18n",
         "plone.api",
         "plone.dexterity",
-        "z3c.zrtresource",
     ],
     extras_require={
         "tests": [
