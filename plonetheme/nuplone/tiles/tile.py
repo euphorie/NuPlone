@@ -55,7 +55,7 @@ def getTile(context, request, name):
     type = config.get("type", name)
     tile = queryMultiAdapter((context, request), Interface, name=type)
     if tile is None:
-        log.warn(
+        log.warning(
             "Detected reference to non-existing tile '%s' for context %r", name, context
         )
         return None
