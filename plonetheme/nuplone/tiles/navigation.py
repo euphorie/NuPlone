@@ -7,11 +7,11 @@ from plone.tiles import Tile
 from plonetheme.nuplone.utils import getNavigationRoot
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import typesToList
-from zope.component import adapts
+from zope.component import adapter
 from zope.component import getMultiAdapter
 from zope.component import getUtility
 from zope.component import queryMultiAdapter
-from zope.interface import implements
+from zope.interface import implementer
 from zope.interface import Interface
 
 import collections
@@ -138,10 +138,9 @@ class CatalogNavTree(object):
     iter = __iter__
 
 
+@implementer(INavtreeFactory)
+@adapter(Interface, Interface)
 class TreeFactory(object):
-    implements(INavtreeFactory)
-    adapts(Interface, Interface)
-
     def __init__(self, context, request):
         self.context = context
         self.request = request

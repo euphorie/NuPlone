@@ -2,9 +2,9 @@ from plone import api
 from plone.tiles.interfaces import ITile
 from plone.tiles.interfaces import ITileDataManager
 from plone.tiles.tile import Tile
-from zope.component import adapts
+from zope.component import adapter
 from zope.component import queryMultiAdapter
-from zope.interface import implements
+from zope.interface import implementer
 from zope.interface import Interface
 
 import json
@@ -18,14 +18,14 @@ class IAppConfigTile(ITile):
     """A tile with its configured stored in the application config."""
 
 
+@implementer(IAppConfigTile)
 class AppConfigTile(Tile):
-    implements(IAppConfigTile)
+    pass
 
 
+@implementer(ITileDataManager)
+@adapter(IAppConfigTile)
 class AppConfigTileDataManager(object):
-    implements(ITileDataManager)
-    adapts(IAppConfigTile)
-
     def __init__(self, tile):
         self.tile = tile
 
