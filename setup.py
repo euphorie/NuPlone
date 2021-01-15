@@ -47,8 +47,6 @@ setup(
         "plone.formwidget.namedfile >1.0b4",
         "p01.widget.password",
         "Products.statusmessages",
-        "WebHelpers",
-        "htmllaundry >=2.0",
         "zope.i18n",
         "plone.api",
         "plone.dexterity",
