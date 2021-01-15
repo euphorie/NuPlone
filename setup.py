@@ -45,7 +45,6 @@ setup(
         "plone.autoform",
         "plone.supermodel",
         "plone.formwidget.namedfile >1.0b4",
-        "p01.widget.password",
         "Products.statusmessages",
         "zope.i18n",
         "plone.api",

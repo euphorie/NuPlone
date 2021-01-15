@@ -6,7 +6,6 @@
 
   <include package="plone.z3cform" />
   <include package="plone.app.z3cform" />
-  <include package="p01.widget.password" />
 
   <adapter factory=".widget.ChoiceWidgetFactory" />
   <adapter factory=".templates.layout_factory" />
@@ -180,19 +179,6 @@
     widget="plone.formwidget.namedfile.interfaces.INamedImageWidget"
     layer=".interfaces.INuPloneFormLayer"
     template="templates/namedimage_input.pt"
-    />
-
-  <adapter
-    factory="p01.widget.password.PasswordConfirmationFieldWidget"
-    for="zope.schema.interfaces.IPassword
-         .interfaces.INuPloneFormLayer"
-    />
-
-  <z3c:widgetTemplate
-    mode="input"
-    widget="p01.widget.password.interfaces.IPasswordConfirmationWidget"
-    layer=".interfaces.INuPloneFormLayer"
-    template="templates/passwordconfirm_input.pt"
     />
 
   <browser:page
