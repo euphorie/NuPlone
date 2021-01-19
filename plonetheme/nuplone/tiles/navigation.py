@@ -103,13 +103,13 @@ class CatalogNavTree(object):
 
         >>> tree=CatalogNavTree(context, request)
         >>> g=tree.iter()
-        >>> value=g.next()
+        >>> value=next(g)
         >>> try:
         ...     while True:
         ...        if value.portal_type=="Collection":
         ...            value=g.send("prune")
         ...        else:
-        ...            value=g.next()
+        ...            value=next(g)
         ... except StopIteration:
         ...     pass
 
