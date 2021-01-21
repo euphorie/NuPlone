@@ -2,8 +2,8 @@
 from AccessControl import getSecurityManager
 from Acquisition import aq_chain
 from Acquisition import aq_inner
-from email.Header import Header
-from email.MIMEText import MIMEText
+from email.header import Header
+from email.mime.text import MIMEText
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from plonetheme.nuplone import MessageFactory as _
 from Products.CMFCore.ActionInformation import ActionInfo
@@ -110,7 +110,7 @@ def setLanguage(request, context, lang=None):
         lang = lang.split("-")[0]
         res = lt.setLanguageCookie(lang=lang, request=request)
         if res is None:
-            log.warn("Failed to switch language to %s", lang)
+            log.warning("Failed to switch language to %s", lang)
             return False
 
     # In addition to setting the cookie also update the PTS language.

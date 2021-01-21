@@ -40,7 +40,7 @@ between this package and the old `NuPlone <http://pypi.python.org/pypi/Products.
 Compatibility
 =============
 
-NuPlone 2.x is meant to be used with Plone 5.2 and Python 2.7.
+NuPlone 2.x is meant to be used with Plone 5.2.
 
 Upgrade to NuPlone 2.x
 ----------------------

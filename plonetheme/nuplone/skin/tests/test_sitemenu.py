@@ -4,7 +4,6 @@ from plone.app.testing import setRoles
 from plone.app.testing import SITE_OWNER_NAME
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME
-from plone.testing import z2
 from plonetheme.nuplone.skin.interfaces import NuPloneSkin
 from plonetheme.nuplone.testing import NUPLONE_FUNCTIONAL_TESTING
 from plonetheme.nuplone.testing import NUPLONE_INTEGRATION_TESTING
@@ -38,7 +37,7 @@ class SiteMenuTests(unittest.TestCase):
         self.portal = self.layer["portal"]
         self.request = self.portal.REQUEST
         alsoProvides(self.request, NuPloneSkin)
-        z2.login(self.layer["app"]["acl_users"], SITE_OWNER_NAME)
+        login(self.layer["app"], SITE_OWNER_NAME)
 
         # Create two folders
         self.portal.invokeFactory("Folder", "source_folder")
