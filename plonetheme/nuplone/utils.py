@@ -4,7 +4,6 @@ from Acquisition import aq_chain
 from Acquisition import aq_inner
 from email.Header import Header
 from email.MIMEText import MIMEText
-from plone import api
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from plonetheme.nuplone import MessageFactory as _
 from Products.CMFCore.ActionInformation import ActionInfo
@@ -20,8 +19,6 @@ import six
 
 
 log = logging.getLogger(__name__)
-
-IS_PLONE_5 = api.env.plone_version().startswith("5")
 
 
 def getPortal(context):

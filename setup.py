@@ -17,7 +17,7 @@ setup(
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",
-        "Framework :: Plone :: 5.1",
+        "Framework :: Plone :: 5.2",
         "License :: OSI Approved :: GNU General Public License (GPL)",
         "Operating System :: OS Independent",
         "Programming Language :: JavaScript",
@@ -36,7 +36,6 @@ setup(
         "setuptools",
         "Plone >=5.1",
         "Zope2 >=2.12.5",
-        "five.pt >= 2.2.0",
         "plone.api",
         "plone.tiles",
         "plone.z3cform",
