@@ -177,7 +177,6 @@ def createEmailTo(
     else:
         mail["To"] = recipient_email
     mail["Subject"] = Header(subject.encode("utf-8"), "utf-8")
-    mail["Message-Id"] = emailutils.make_msgid()
     mail["Date"] = emailutils.formatdate(localtime=True)
     mail.set_param("charset", "utf-8")
 
