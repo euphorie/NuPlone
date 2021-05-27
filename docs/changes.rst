@@ -1,8 +1,11 @@
 Changelog
 =========
 
-2.0.x (unreleased)
+2.0.0 (unreleased)
 ------------------
+
+BREAKING CHANGES:
+Update to Plone 5.2
 
 - Remove the dependency from grok
 - Remove z3c.appconfig
