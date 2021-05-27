@@ -2,6 +2,7 @@ include *.cfg
 include *.rst
 include *.txt
 recursive-include plonetheme *.zcml
+recursive-include plonetheme *.pt
 recursive-include plonetheme/nuplone/locales *.po
 recursive-include plonetheme/nuplone/locales *.mo
 graft docs
