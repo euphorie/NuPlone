@@ -34,6 +34,14 @@
       layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
       />
 
+  <browser:page
+      name="update-order"
+      for="plone.folder.interfaces.IOrderableFolder"
+      permission="cmf.ModifyPortalContent"
+      class=".ordering.UpdateOrder"
+      layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
+      />
+
   <!--
     We have two login registrations because Plone 5.2 registers the @@login view
     only for INavigationRoot, and to override it we need to do the same,
