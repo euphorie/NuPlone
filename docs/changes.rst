@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0.1 (unreleased)
+2.0.1 (2021-06-02)
 ------------------
 
 - Restore ordering support that accidentally got lost in #20
