@@ -10,6 +10,11 @@ class UpdateOrder(BrowserView):
         if not order or not isinstance(order, list):
             return
 
+        # If we get an empty element in between, it means we're in some sort
+        # of interim state. Skip, so that we avoid ConflictError
+        if order.count("") > 1:
+            return
+
         orderer = IExplicitOrdering(aq_inner(self.context))
         for (pos, id) in enumerate(order):
             if id == "" or "-" not in id:
