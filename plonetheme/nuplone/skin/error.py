@@ -32,7 +32,7 @@ class Error(BrowserView):
 class Unauthorized(Error):
     def authenticate(self):
         """Try to authenticate the user manually, since ZPublisher dropped the
-        user whenn it failed to validate access."""
+        user when it failed to validate access."""
         for parent in aq_chain(aq_inner(self.context)):
             if hasattr(aq_base(parent), "acl_users"):
                 uf = parent.acl_users
