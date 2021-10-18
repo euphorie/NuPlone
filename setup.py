@@ -5,7 +5,7 @@ from setuptools import setup
 import os
 
 
-version = "1.6.4.dev0"
+version = "2.0.2.dev0"
 
 setup(
     name="NuPlone",
@@ -17,11 +17,18 @@ setup(
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",
-        "Framework :: Plone :: 5.1",
+        "Framework :: Plone",
+        "Framework :: Plone :: 5.2",
+        "Framework :: Zope",
+        "Framework :: Zope :: 4",
         "License :: OSI Approved :: GNU General Public License (GPL)",
         "Operating System :: OS Independent",
         "Programming Language :: JavaScript",
-        "Programming Language :: Python :: 2 :: Only",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
     ],
     keywords="",
     author="Cornelis Kolbach and Wichert Akkerman",
@@ -36,8 +43,6 @@ setup(
         "setuptools",
         "Plone >=5.1",
         "Zope2 >=2.12.5",
-        "five.pt >= 2.2.0",
-        "five.grok",
         "plone.api",
         "plone.tiles",
         "plone.z3cform",
@@ -46,17 +51,11 @@ setup(
         "plone.i18n",
         "plone.autoform",
         "plone.supermodel",
-        "plone.directives.form",
         "plone.formwidget.namedfile >1.0b4",
-        "z3c.appconfig",
-        "p01.widget.password",
         "Products.statusmessages",
-        "WebHelpers",
-        "htmllaundry >=2.0",
         "zope.i18n",
         "plone.api",
         "plone.dexterity",
-        "z3c.zrtresource",
     ],
     extras_require={
         "tests": [

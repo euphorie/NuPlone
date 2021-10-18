@@ -5,14 +5,13 @@ from plone import api
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 from plone.tiles import Tile
 from plonetheme.nuplone.utils import getNavigationRoot
-from plonetheme.nuplone.utils import IS_PLONE_5
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import typesToList
-from zope.component import adapts
+from zope.component import adapter
 from zope.component import getMultiAdapter
 from zope.component import getUtility
 from zope.component import queryMultiAdapter
-from zope.interface import implements
+from zope.interface import implementer
 from zope.interface import Interface
 
 import collections
@@ -104,13 +103,13 @@ class CatalogNavTree(object):
 
         >>> tree=CatalogNavTree(context, request)
         >>> g=tree.iter()
-        >>> value=g.next()
+        >>> value=next(g)
         >>> try:
         ...     while True:
         ...        if value.portal_type=="Collection":
         ...            value=g.send("prune")
         ...        else:
-        ...            value=g.next()
+        ...            value=next(g)
         ... except StopIteration:
         ...     pass
 
@@ -139,10 +138,9 @@ class CatalogNavTree(object):
     iter = __iter__
 
 
+@implementer(INavtreeFactory)
+@adapter(Interface, Interface)
 class TreeFactory(object):
-    implements(INavtreeFactory)
-    adapts(Interface, Interface)
-
     def __init__(self, context, request):
         self.context = context
         self.request = request
@@ -158,17 +156,9 @@ class NavigationTile(Tile):
             [(fti.getId(), fti.Title()) for fti in portal_types.listTypeInfo()]
         )
 
-        if IS_PLONE_5:
-            use_view_types = api.portal.get_registry_record(
-                "plone.types_use_view_action_in_listings", default=[]
-            )
-        else:
-            portal_properties = api.portal.get_tool("portal_properties")
-            site_properties = portal_properties.site_properties
-            use_view_types = site_properties.getProperty(
-                "typesUseViewActionInListings",
-                [],
-            )
+        use_view_types = api.portal.get_registry_record(
+            "plone.types_use_view_action_in_listings", default=[]
+        )
         normalize = getUtility(IIDNormalizer).normalize
         treefactory = getMultiAdapter((self.context, self.request), INavtreeFactory)
         tree = treefactory()

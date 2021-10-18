@@ -1,28 +1,18 @@
 from AccessControl import getSecurityManager
 from Acquisition import aq_inner
-from five import grok
 from plonetheme.nuplone import MessageFactory as _
-from plonetheme.nuplone.skin.interfaces import NuPloneSkin
 from plonetheme.nuplone.utils import isAnonymous
-from Products.CMFCore.interfaces import ISiteRoot
 from Products.CMFCore.utils import getToolByName
+from Products.Five import BrowserView
 from Products.statusmessages.interfaces import IStatusMessage
-from zope.interface import Interface
 
 import logging
 
 
 log = logging.getLogger(__name__)
 
-grok.templatedir("templates")
 
-
-class Login(grok.View):
-    grok.context(Interface)
-    grok.layer(NuPloneSkin)
-    grok.name("login")
-    grok.template("login")
-
+class Login(BrowserView):
     def homeUrl(self, user):
         """Return a suitable `home' for a user if came_from is unset or invalid."""
         put = getToolByName(self.context, "portal_url")
@@ -61,13 +51,13 @@ class Login(grok.View):
 
         self.failed = self.anonymous and "login_attempt" in self.request
 
+    def __call__(self):
+        self.update()
+        return super(Login, self).__call__()
 
-class Logout(grok.View):
-    grok.context(ISiteRoot)
-    grok.layer(NuPloneSkin)
-    grok.name("logout")
 
-    def render(self):
+class Logout(BrowserView):
+    def __call__(self):
         flash = IStatusMessage(self.request).addStatusMessage
         if not isAnonymous():
             mt = getToolByName(self.context, "portal_membership")

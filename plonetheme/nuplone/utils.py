@@ -2,9 +2,8 @@
 from AccessControl import getSecurityManager
 from Acquisition import aq_chain
 from Acquisition import aq_inner
-from email.Header import Header
-from email.MIMEText import MIMEText
-from plone import api
+from email.header import Header
+from email.mime.text import MIMEText
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from plonetheme.nuplone import MessageFactory as _
 from Products.CMFCore.ActionInformation import ActionInfo
@@ -20,8 +19,6 @@ import six
 
 
 log = logging.getLogger(__name__)
-
-IS_PLONE_5 = api.env.plone_version().startswith("5")
 
 
 def getPortal(context):
@@ -113,7 +110,7 @@ def setLanguage(request, context, lang=None):
         lang = lang.split("-")[0]
         res = lt.setLanguageCookie(lang=lang, request=request)
         if res is None:
-            log.warn("Failed to switch language to %s", lang)
+            log.warning("Failed to switch language to %s", lang)
             return False
 
     # In addition to setting the cookie also update the PTS language.
@@ -180,27 +177,10 @@ def createEmailTo(
     else:
         mail["To"] = recipient_email
     mail["Subject"] = Header(subject.encode("utf-8"), "utf-8")
-    mail["Message-Id"] = emailutils.make_msgid()
     mail["Date"] = emailutils.formatdate(localtime=True)
     mail.set_param("charset", "utf-8")
 
     return mail
-
-
-class reify(object):
-    """Put the result of a method which uses this (non-data)
-    descriptor decorator in the instance dict after the first call,
-    effectively replacing the decorator with an instance variable."""
-
-    def __init__(self, wrapped):
-        self.wrapped = wrapped
-
-    def __get__(self, inst, objtype=None):
-        if inst is None:
-            return self
-        val = self.wrapped(inst)
-        setattr(inst, self.wrapped.__name__, val)
-        return val
 
 
 def formatDate(request, date, length="long"):

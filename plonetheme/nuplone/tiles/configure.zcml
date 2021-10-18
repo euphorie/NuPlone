@@ -4,7 +4,6 @@
 
   <include package="plone.tiles" file="meta.zcml" />
   <include package="plone.tiles" />
-  <include package="z3c.appconfig" file="meta.zcml" />
 
   <adapter
     factory=".navigation.TreeFactory" />

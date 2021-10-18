@@ -1,6 +1,28 @@
 Changelog
 =========
 
+2.0.2 (unreleased)
+------------------
+
+- Nothing changed yet.
+
+
+2.0.1 (2021-06-02)
+------------------
+
+- Restore ordering support that accidentally got lost in #20
+
+2.0.0 (2021-05-27)
+------------------
+
+BREAKING CHANGES:
+Update to Plone 5.2
+
+- Remove the dependency from grok
+- Remove z3c.appconfig
+- Remove z3c.zrtresource
+
+
 1.6.4 (unreleased)
 ------------------
 

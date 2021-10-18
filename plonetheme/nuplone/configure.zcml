@@ -2,7 +2,6 @@
   xmlns="http://namespaces.zope.org/zope"
   xmlns:i18n="http://namespaces.zope.org/i18n"
   xmlns:five="http://namespaces.zope.org/five"
-  xmlns:grok="http://namespaces.zope.org/grok"
   xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
   i18n_domain="plone">
 
@@ -19,18 +18,10 @@
     post_handler=".setuphandlers.post_install"
   />
 
-  <adapter
-      for="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
-      provides="Products.statusmessages.interfaces.IStatusMessage"
-      factory=".adapter.StatusMessage"
-      />
-
-  <include package="five.pt" />
-  <include package="five.grok" />
   <include package="Products.CMFCore" />
+  <include package=".browser" />
   <include package=".skin" />
   <include package=".z3cform" />
   <include package=".tiles" />
-  <grok:grok package="." />
 
 </configure>

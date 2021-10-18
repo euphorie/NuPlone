@@ -6,7 +6,6 @@
 
   <include package="plone.z3cform" />
   <include package="plone.app.z3cform" />
-  <include package="p01.widget.password" />
 
   <adapter factory=".widget.ChoiceWidgetFactory" />
   <adapter factory=".templates.layout_factory" />
@@ -182,18 +181,26 @@
     template="templates/namedimage_input.pt"
     />
 
-  <adapter
-    factory="p01.widget.password.PasswordConfirmationFieldWidget"
-    for="zope.schema.interfaces.IPassword
-         .interfaces.INuPloneFormLayer"
-    />
+  <browser:page
+      name="new-entry"
+      for="z3c.form.interfaces.IMultiWidget"
+      permission="zope2.View"
+      class=".widget.NewMultiWidgetEntry"
+      />
 
-  <z3c:widgetTemplate
-    mode="input"
-    widget="p01.widget.password.interfaces.IPasswordConfirmationWidget"
-    layer=".interfaces.INuPloneFormLayer"
-    template="templates/passwordconfirm_input.pt"
-    />
+  <adapter
+      factory=".directives.WidgetDependencyView"
+      name="dependencies"
+      />
+
+  <adapter
+      factory=".directives.FormLayoutExtender"
+      name="plonetheme.nuplone.layout"
+      />
+
+  <adapter
+      factory=".directives.FormDependencyExtender"
+      name="plonetheme.nuplone.dependency"
+      />
 
 </configure>
-

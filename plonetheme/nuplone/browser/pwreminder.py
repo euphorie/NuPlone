@@ -1,17 +1,17 @@
 # coding=utf-8
 from Acquisition import aq_inner
-from five import grok
 from plone import api
-from plone.directives import form
+from plone.autoform.form import AutoExtensibleForm
+from plone.supermodel import model
 from plonetheme.nuplone import MessageFactory as _
 from plonetheme.nuplone.utils import createEmailTo
-from Products.CMFCore.interfaces import ISiteRoot
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.PasswordResetTool import ExpiredRequestError
 from Products.CMFPlone.PasswordResetTool import InvalidRequestError
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.MailHost.MailHost import MailHostError
 from Products.statusmessages.interfaces import IStatusMessage
+from z3c.form import form
 from z3c.form.button import buttonAndHandler
 from zope import schema
 from zope.i18n import translate
@@ -23,11 +23,11 @@ import socket
 log = logging.getLogger(__name__)
 
 
-class IRequestPasswordReset(form.Schema):
+class IRequestPasswordReset(model.Schema):
     login = schema.TextLine(title=_("label_login", default=u"Login"), required=True)
 
 
-class IPasswordReset(form.Schema):
+class IPasswordReset(model.Schema):
     login = schema.TextLine(title=_("label_login", default=u"Login"), required=True)
 
     password = schema.Password(
@@ -35,10 +35,7 @@ class IPasswordReset(form.Schema):
     )
 
 
-class RequestPasswordForm(form.SchemaForm):
-    grok.context(ISiteRoot)
-    grok.name("request-password-reset")
-    grok.require("zope2.Public")
+class RequestPasswordForm(AutoExtensibleForm, form.Form):
 
     email_template = ViewPageTemplateFile("templates/pwreset-email.pt")
 
@@ -156,10 +153,7 @@ class RequestPasswordForm(form.SchemaForm):
         self.request.response.redirect(portal_url)
 
 
-class PasswordReset(form.SchemaForm):
-    grok.context(ISiteRoot)
-    grok.name("reset-password")
-    grok.require("zope2.Public")
+class PasswordReset(AutoExtensibleForm, form.Form):
 
     randomstring = None
 

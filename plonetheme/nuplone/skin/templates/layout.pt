@@ -18,18 +18,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="text/javascript" src="${portal_url}/++resource++NuPlone.libraries/css_browser_selector.js"></script>
     <link rel="stylesheet" type="text/css" media="all" href="${style_url}/main/base.css" />
-    <!--[if IE 6]> <link rel="stylesheet" type="text/css" media="all" href="${style_url}/main/base-ie6.css" /> <![endif]-->
-    <!--[if IE 7]> <link rel="stylesheet" type="text/css" media="all" href="${style_url}/main/base-ie7.css" /> <![endif]-->
-    <!--[if IE 8]> <link rel="stylesheet" type="text/css" media="all" href="${style_url}/main/base-ie8.css" /> <![endif]-->
     <style type="text/css" media="all">
       ol.sortable:after {
           content: "<tal:span i18n:translate="">Change order of items by dragging the handle</tal:span>";
        }
     </style>
     <link rel="stylesheet" type="text/css" media="all" href="${style_url}/euphorie/base.css" />
-    <!--[if IE 6]> <link rel="stylesheet" type="text/css" media="all" href="${style_url}/euphorie/base-ie6.css" /> <![endif]-->
-    <!--[if IE 7]> <link rel="stylesheet" type="text/css" media="all" href="${style_url}/euphorie/base-ie7.css" /> <![endif]-->
-    <!--[if IE 8]> <link rel="stylesheet" type="text/css" media="all" href="${style_url}/euphorie/base-ie8.css" /> <![endif]-->
     <title><metal:title define-slot="title">Page Title</metal:title> — ${tools/site_title}</title>
   </head>
   <body>

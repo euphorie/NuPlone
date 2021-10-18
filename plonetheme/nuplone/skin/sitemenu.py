@@ -1,27 +1,17 @@
 # coding=utf-8
 from Acquisition import aq_inner
-from five import grok
 from OFS.interfaces import ICopyContainer
 from plone import api
 from plone.memoize.view import memoize_contextless
 from plonetheme.nuplone import MessageFactory as _
-from plonetheme.nuplone.skin.interfaces import NuPloneSkin
 from plonetheme.nuplone.utils import getFactoriesInContext
 from Products.CMFCore.ActionInformation import ActionInfo
 from Products.CMFCore.interfaces import ISiteRoot
 from Products.CMFCore.utils import getToolByName
-from zope.interface import Interface
+from Products.Five import BrowserView
 
 
-grok.templatedir("templates")
-
-
-class Sitemenu(grok.View):
-    grok.context(Interface)
-    grok.name("sitemenu")
-    grok.layer(NuPloneSkin)
-    grok.template("sitemenu")
-
+class Sitemenu(BrowserView):
     @property
     @memoize_contextless
     def tools_view(self):
@@ -35,10 +25,11 @@ class Sitemenu(grok.View):
     def settings_url(self):
         return "%s/@@settings" % self.tools_view.navroot_url
 
-    def update(self):
-        self.view_type = self.request.get("view_type", "view")
-        self.actions = self.actions()
+    @property
+    def view_type(self):
+        return self.request.get("view_type", "view")
 
+    @property
     def actions(self):
         """Helper method to generate the contents for the actions menu."""
         menu = {"title": _("menu_actions", default=u"Actions")}

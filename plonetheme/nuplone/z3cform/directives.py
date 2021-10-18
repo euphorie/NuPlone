@@ -1,22 +1,22 @@
-from five import grok
 from plone.autoform.form import AutoExtensibleForm
 from plone.behavior.interfaces import IBehavior
 from plone.dexterity.interfaces import IDexterityContent
 from plone.dexterity.interfaces import IDexterityFTI
-from plone.directives.form import Schema
-from plone.directives.form.schema import FormMetadataListStorage
-from plone.directives.form.schema import TEMP_KEY
+from plone.supermodel import model
+from plone.supermodel.directives import MetadataListDirective
 from plone.supermodel.interfaces import FIELDSETS_KEY
 from plone.supermodel.utils import mergedTaggedValueList
 from z3c.form.browser.checkbox import CheckBoxWidget
 from z3c.form.interfaces import IGroup
 from z3c.form.interfaces import IWidget
-from zope import component
+from zope.component import adapter
+from zope.component import getUtility
+from zope.component import queryUtility
+from zope.interface import implementer
 from zope.interface import Interface
 from zope.publisher.interfaces.browser import IBrowserView
 
 import collections
-import martian
 import plone.z3cform.fieldsets.interfaces
 
 
@@ -25,11 +25,9 @@ DEPENDENCY_KEY = "plonetheme.nuplone.z3cform.dependency"
 LAYOUT_KEY = "plonetheme.nuplone.z3cform.layout"
 
 
-class depends(martian.Directive):
+class depends(MetadataListDirective):
     """Directive used to declare a dependency on other field values."""
 
-    scope = martian.CLASS
-    store = FormMetadataListStorage()
     key = DEPENDENCY_KEY
 
     def factory(self, field, name, op="on", value=None, action="show"):
@@ -40,43 +38,10 @@ class depends(martian.Directive):
         return [Dependency(field, name, op, value, action)]
 
 
-class FormSchemaGrokker(martian.InstanceGrokker):
-    """Grok form schema hints."""
+@adapter(Interface, Interface, AutoExtensibleForm)
+@implementer(plone.z3cform.fieldsets.interfaces.IFormExtender)
+class FormDependencyExtender(object):
 
-    martian.component(Schema.__class__)
-    martian.directive(depends)
-
-    def execute(self, interface, config, **kw):
-        if not interface.extends(Schema):
-            return False
-
-        # Copy from temporary to real value
-        directiveSupplied = interface.queryTaggedValue(TEMP_KEY, None)
-        if directiveSupplied is not None:
-            for key, tgv in directiveSupplied.items():
-                existingValue = interface.queryTaggedValue(key, None)
-
-                if existingValue is not None:
-                    if not isinstance(existingValue, type(tgv)):
-                        # Don't overwrite if we have a different type
-                        continue
-                    elif isinstance(existingValue, list):
-                        existingValue.extend(tgv)
-                        tgv = existingValue
-                    elif isinstance(existingValue, dict):
-                        existingValue.update(tgv)
-                        tgv = existingValue
-
-                interface.setTaggedValue(key, tgv)
-
-            interface.setTaggedValue(TEMP_KEY, None)
-        return True
-
-
-class FormDependencyExtender(grok.MultiAdapter):
-    grok.adapts(Interface, Interface, AutoExtensibleForm)
-    grok.implements(plone.z3cform.fieldsets.interfaces.IFormExtender)
-    grok.name("plonetheme.nuplone.dependency")
     order = 0
 
     def __init__(self, context, request, form):
@@ -88,10 +53,10 @@ class FormDependencyExtender(grok.MultiAdapter):
         schemas = [self.form.schema]
 
         if IDexterityContent.providedBy(self.context):
-            fti = component.getUtility(IDexterityFTI, name=self.context.portal_type)
+            fti = getUtility(IDexterityFTI, name=self.context.portal_type)
             for name in fti.behaviors:
-                behavior = component.queryUtility(IBehavior, name=name)
-                if behavior and behavior.interface.extends(Schema):
+                behavior = queryUtility(IBehavior, name=name)
+                if behavior and behavior.interface.extends(model.Schema):
                     schemas.append(behavior.interface)
 
         directives = []
@@ -114,11 +79,9 @@ class FormDependencyExtender(grok.MultiAdapter):
                 field.field._dependencies = depends
 
 
-class WidgetDependencyView(grok.MultiAdapter):
-    grok.adapts(IWidget, Interface)
-    grok.implements(IBrowserView)
-    grok.name("dependencies")
-
+@adapter(IWidget, Interface)
+@implementer(IBrowserView)
+class WidgetDependencyView(object):
     def __init__(self, widget, request):
         self.widget = widget
         self.request = request
@@ -147,10 +110,9 @@ class WidgetDependencyView(grok.MultiAdapter):
         return " ".join(classes) if classes else None
 
 
-class FormLayoutExtender(grok.MultiAdapter):
-    grok.adapts(Interface, Interface, AutoExtensibleForm)
-    grok.implements(plone.z3cform.fieldsets.interfaces.IFormExtender)
-    grok.name("plonetheme.nuplone.layout")
+@adapter(Interface, Interface, AutoExtensibleForm)
+@implementer(plone.z3cform.fieldsets.interfaces.IFormExtender)
+class FormLayoutExtender(object):
 
     order = 10
 

@@ -1,14 +1,11 @@
-from five import grok
-from plone.directives import form
+from plone.autoform.form import AutoExtensibleForm
+from plone.supermodel import model
 from plonetheme.nuplone import MessageFactory as _
+from z3c.form import form
 from zope import schema
-from zope.interface import Interface
 
 
-grok.templatedir("templates")
-
-
-class ExternalLinkSchema(form.Schema):
+class ExternalLinkSchema(model.Schema):
     URL = schema.URI(title=_("label_url", default=u"URL"), required=True)
 
     title = schema.TextLine(title=_("label_title", default=u"Title"), required=False)
@@ -18,11 +15,7 @@ class ExternalLinkSchema(form.Schema):
     )
 
 
-class EditLink(form.SchemaForm):
-    grok.context(Interface)
-    grok.require("cmf.ModifyPortalContent")
-    grok.name("edit-link.html")
-    grok.template("editlink")
+class EditLink(AutoExtensibleForm, form.EditForm):
 
     ignoreContext = True
     schema = ExternalLinkSchema

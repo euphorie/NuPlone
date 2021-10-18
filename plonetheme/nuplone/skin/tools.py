@@ -1,26 +1,14 @@
 # coding=utf-8
 from AccessControl import getSecurityManager
 from Acquisition import aq_inner
-from five import grok
+from plone import api
 from plone.memoize.view import memoize
-from plonetheme.nuplone import MessageFactory as _
 from plonetheme.nuplone import utils
-from plonetheme.nuplone.skin.interfaces import NuPloneSkin
-from z3c.appconfig.interfaces import IAppConfig
-from zope.component import queryUtility
-from zope.interface import Interface
+from Products.Five import BrowserView
 
 
-class Tools(grok.View):
+class Tools(BrowserView):
     """Basic view to expose utilties to templates."""
-
-    grok.context(Interface)
-    grok.name("tools")
-    grok.layer(NuPloneSkin)
-
-    # Workaround for grok weirdness: it puts a __getitem__ on a view which
-    # assumes there is a template variable
-    template = None
 
     @property
     @memoize
@@ -62,21 +50,11 @@ class Tools(grok.View):
         expression."""
         return self
 
-    @utils.reify
-    def appConfig(self):
-        return queryUtility(IAppConfig) or {}
-
     def view_type(self):
         return utils.viewType(self.context, self.request)
 
-    @utils.reify
     def site_title(self):
-        config = self.appConfig
-        title = config.get("site", {}).get("title")
-        if title:
-            return title
-        else:
-            return _("default_site_title", default=u"Plone")
+        return api.portal.get_registry_record("plone.site_title")
 
     def formatDate(self, date, length="long"):
         return utils.formatDate(self.request, date, length)

@@ -4,5 +4,5 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       meta:interpolation="true"
       tal:omit-tag="">
-  <p tal:repeat="message view/messages" class="message ${message/type}">${message/message}</p>
+  <p tal:repeat="message view/messages" class="message ${message/type}"><tal:message replace="structure message/message" /></p>
 </div>

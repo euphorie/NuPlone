@@ -32,13 +32,6 @@
      name="nuplone-view"
      />
 
-   <include package="z3c.zrtresource" file="meta.zcml" />
-
-   <browser:zrt-resource
-       name="client.screen-ie6.css"
-       file="templates/style/client/screen-ie6.css"
-       />
-
    <browser:resourceDirectory
      name="NuPlone.style"
      directory="templates/style"
@@ -63,5 +56,110 @@
      permission="zope2.View"
      />
 
-</configure>
+  <!-- Actions -->
+  <browser:page
+      name="copy"
+      for="OFS.interfaces.ICopySource"
+      layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
+      class=".actions.Copy"
+      permission="zope2.CopyOrMove"
+      />
+  <browser:page
+      name="cut"
+      for="OFS.interfaces.ICopySource"
+      layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
+      class=".actions.Cut"
+      permission="zope2.CopyOrMove"
+      />
+  <browser:page
+      name="paste"
+      for="OFS.interfaces.ICopyContainer"
+      layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
+      class=".actions.Paste"
+      permission="zope2.CopyOrMove"
+      />
+  <browser:page
+      name="delete"
+      for="zope.interface.Interface"
+      layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
+      class=".actions.Delete"
+      template="templates/delete.pt"
+      permission="zope2.View"
+      />
 
+  <browser:page
+      name="tools"
+      for="*"
+      permission="zope2.Public"
+      class=".tools.Tools"
+      layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
+      />
+
+  <browser:page
+      name="nuplone-view"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      permission="zope2.View"
+      layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
+      template="templates/frontpage.pt"
+      />
+
+  <browser:page
+      name="nuplone-view"
+      for="plone.dexterity.interfaces.IDexterityContainer"
+      permission="zope2.View"
+      layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
+      template="templates/frontpage.pt"
+      />
+
+  <browser:page
+      name="index.html"
+      for="Exception"
+      class=".error.Error"
+      permission="zope2.View"
+      layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
+      template="templates/error_generic.pt"
+      />
+
+  <browser:page
+      name="index.html"
+      for="zExceptions.NotFound"
+      class=".error.Error"
+      permission="zope2.View"
+      layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
+      template="templates/error_notfound.pt"
+      />
+
+  <browser:page
+      name="index.html"
+      for="zExceptions.Unauthorized"
+      class=".error.Unauthorized"
+      permission="zope2.Public"
+      layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
+      template="templates/error_unauthorized.pt"
+      />
+
+  <browser:page
+      name="switch-language"
+      for="*"
+      class=".language.SwitchLanguage"
+      permission="zope2.Public"
+      />
+
+  <browser:page
+      name="layout"
+      for="*"
+      layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
+      permission="zope2.Public"
+      template="templates/layout.pt"
+      />
+
+  <browser:page
+      name="sitemenu"
+      for="*"
+      class=".sitemenu.Sitemenu"
+      layer="plonetheme.nuplone.skin.interfaces.NuPloneSkin"
+      permission="zope2.Public"
+      template="templates/sitemenu.pt"
+      />
+
+</configure>

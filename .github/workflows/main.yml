@@ -12,11 +12,10 @@ jobs:
     strategy:
       matrix:
         config:
-          - ["Py2.7-Plone5.1", "2.7", "5.1"]
-#          - ["Py2.7-Plone5.2", "2.7", "5.2"]
-#          - ["Py3.6-Plone5.2", "3.6", "5.2"]
-#          - ["Py3.7-Plone5.2", "3.7", "5.2"]
-#          - ["Py3.8-Plone5.2", "3.8", "5.2"]
+          - ["Py2.7-Plone5.2", "2.7"]
+          - ["Py3.6-Plone5.2", "3.6"]
+          - ["Py3.7-Plone5.2", "3.7"]
+          - ["Py3.8-Plone5.2", "3.8"]
     runs-on: ubuntu-latest
     name: ${{ matrix.config[0] }}
     steps:
@@ -39,14 +38,14 @@ jobs:
         run: |
           pip install virtualenv
           virtualenv -p `which python` .
-          bin/pip install -r requirements-${{ matrix.config[2] }}.txt
+          bin/pip install -r requirements.txt
           bin/buildout -c .github.cfg annotate
           bin/buildout -c .github.cfg
-# Requires Python3
-#      - name: Pre commit
-#        uses: pre-commit/action@v2.0.0
+      - name: Pre commit
+        uses: pre-commit/action@v2.0.0
+        if: ${{ matrix.config[1] == '3.8' }}
       - name: Test
         run: |
           bin/code-analysis
           bin/coverage run bin/test
-          bin/coverage report --fail-under=55
+          bin/coverage report --fail-under=56
