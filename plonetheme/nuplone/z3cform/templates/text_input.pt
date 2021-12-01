@@ -6,7 +6,7 @@
 <div class="z3cFieldContainer" tal:omit-tag="not:view/field/description">
 <span class="${view/@@dependencies}" tal:omit-tag="not:view/@@dependencies">
   <label class="${python:'error' if view.error is not None else None}">${view/label} <sup tal:condition="view/required" class="required">*</sup>
-      <input type="text" id="${view/id}" name="${view/name}" value="${view/value}"
+      <input type="${view/type|string:text}" id="${view/id}" name="${view/name}" value="${view/value}"
              class="${view/klass}" disabled="${view/disabled}"
              readonly="${view/readonly}" size="${view/size}"
              maxlength="${view/maxlength}"/><tal:error condition="view/error" replace="structure view/error/render|nothing"/></label>
