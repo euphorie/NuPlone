@@ -19,10 +19,7 @@ class Error(BrowserView):
         if IBrowserView.providedBy(context):
             # NotFound errors can have extra aq wrapping
             self.context = context = aq_parent(context)
-        try:
-            log.exception("Error at %s", repr(context))
-        except zExceptions.Unauthorized:
-            pass
+        log.debug("%r -> %r", self.exception, context)
 
     def __call__(self):
         self.update()
