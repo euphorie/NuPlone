@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0.2 (unreleased)
+2.0.2 (2021-12-08)
 ------------------
 
 - Text input: Take type from widget if available
