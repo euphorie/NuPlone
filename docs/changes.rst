@@ -4,8 +4,8 @@ Changelog
 2.0.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Text input: Take type from widget if available
+- Decrease log verbosity
 
 2.0.1 (2021-06-02)
 ------------------
