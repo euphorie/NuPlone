@@ -15,9 +15,6 @@
   <head tal:define="style_url tools/portal/++resource++NuPlone.style">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" media="all" href="${style_url}/main/base.css" />
-    <!--[if IE 6]> <link rel="stylesheet" type="text/css" media="screen" href="${style_url}/main/base-ie6.css" /> <![endif]-->
-    <!--[if IE 7]> <link rel="stylesheet" type="text/css" media="screen" href="${style_url}/main/base-ie7.css" /> <![endif]-->
-    <!--[if IE 8]> <link rel="stylesheet" type="text/css" media="screen" href="${style_url}/main/base-ie8.css" /> <![endif]-->
     <title i18n:translate="title_site_menu">Site menu</title>
     <base target="_parent"/>
     <script src="${portal_url}/++resource++euphorie.resources/cms/oira.cms.min.js?t=${resources_timestamp}"></script>
