@@ -13,9 +13,7 @@
     "dependencies": {
         "@patternslib/pat-redactor": "^6.0.1",
         "@patternslib/patternslib": "^7.4.0",
-        "css-browser-selector": "^0.6.5",
         "jquery-ui-dist": "^1.13.1",
-        "jquery.browser": "^0.1.0",
         "redactor": "git+ssh://git@github.com/syslabcom/redactor.git#master"
     },
     "devDependencies": {

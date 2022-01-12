@@ -16,7 +16,6 @@ import "jquery-ui-dist/jquery-ui.css";
 import "jquery-ui-dist/jquery-ui.theme.css";
 
 // Other dependencies
-import "css-browser-selector";
 import "./src/nuplone_components/behaviour";
 import "./src/nuplone_components/editlink";
 import "./src/nuplone_components/ordering";

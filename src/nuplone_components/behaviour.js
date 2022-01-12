@@ -3,7 +3,6 @@
  * Copyright 2009-2011 W. Akkerman
  */
 import $ from "jquery";
-import "jquery.browser/dist/jquery.browser";
 
 const mapal = {
     widthClasses: {},
@@ -543,32 +542,6 @@ const mapal = {
         });
     },
 
-    // Older IE versions need extra help to handle buttons.
-    initIEButtons: function() {
-        if ($.browser.msie ) {
-            var version = Number( $.browser.version.split(".", 2).join(""));
-            if (version>80)
-                return;
-        }
-
-        $("form button[type=submit]").on("click", function() {
-            var name = this.name,
-                $el = $("<input/>"),
-                value = this.attributes.getNamedItem("value");
-
-            if (typeof value == "undefined") {
-                return;
-            }
-
-            $el.attr("type", "hidden")
-               .attr("name", name)
-               .val(value.nodeValue)
-               .appendTo(this.form);
-            $("button[type=submit]", this.form).attr("name", "_buttonfix");
-        });
-
-    },
-
     // Setup a DOM tree.
     initContent: function(root) {
         mapal.initTransforms(root);
@@ -578,14 +551,6 @@ const mapal = {
         mapal.initSuperImpose(root);
         mapal.initTooltip(root);
         mapal.initMenu(root);
-        // Replace objects with iframes for IE 8 and older.
-        if ($.browser.msie ) {
-            var version = Number( $.browser.version.split(".", 2).join(""));
-            if (version<=90) {
-                mapal.initIframes(root);
-            }
-        }
-
         $(root).trigger("newContent", root);
     },
 
@@ -595,7 +560,6 @@ const mapal = {
         mapal.initWidthClasses();
         mapal.initDomInjection();
         mapal.initPanels();
-        mapal.initIEButtons();
     }
 };
 
