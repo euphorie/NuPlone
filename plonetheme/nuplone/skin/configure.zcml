@@ -37,16 +37,6 @@
      directory="templates/style"
      />
 
-   <browser:resourceDirectory
-     name="NuPlone.libraries"
-     directory="templates/libraries"
-     />
-
-   <browser:resourceDirectory
-     name="NuPlone.behaviour"
-     directory="templates/behaviour"
-     />
-
    <browser:page
      for="plone.dexterity.interfaces.IDexterityItem"
      name="view"
