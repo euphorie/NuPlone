@@ -1,6 +1,6 @@
-define('nuplone-editlink', ["jquery", "jquery.browser"], function($) {
+import $ from "jquery";
 
-var editlink = {
+const editlink = {
     // Define these here since IE does not have Node constants
     ELEMENT_NODE: 1,
     TEXT_NODE: 3,
@@ -11,7 +11,7 @@ var editlink = {
         $("#external form")[0].reset();
         $("em.message.warning").remove();
     },
-    
+
     hide: function() {
         var topDoc = window.frameElement.ownerDocument;
         $("#linkFrame", topDoc).css({top: "-2000px"});
@@ -89,8 +89,9 @@ var editlink = {
                 editlink.current_range.surroundContents(link);
             }
         }
-        if (url.indexOf(":")===-1 && url[0]!=="/")
+        if (url && url.indexOf(":")===-1 && url[0]!=="/") {
             url = "http://"+url;
+        }
         link.href = url;
         link.target = newwindow ? "_blank" : "";
         link.title = title || "";
@@ -108,14 +109,12 @@ var editlink = {
             editlink.hide();
         });
     }
-
 };
 
-hide = editlink.hide;
-show = editlink.show;
-removeLink = editlink.removeLink;
-editlink.init();
+const hide = editlink.hide;
+const show = editlink.show;
+const removeLink = editlink.removeLink;
 
+$(document).ready(function() {
+    editlink.init();
 });
-
-/*jslint browser: true, onevar: true, undef: true, regexp: true */

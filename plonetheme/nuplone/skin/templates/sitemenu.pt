@@ -6,7 +6,12 @@
       xmlns:meta="http://xml.zope.org/namespaces/meta"
       meta:interpolation="true"
       i18n:domain="nuplone"
-      tal:define="tools context/@@tools; factories view/factories; portal_url tools/portal_url|nothing;">
+      tal:define="
+        tools context/@@tools;
+        factories view/factories;
+        portal_url tools/portal_url|nothing;
+        resources_timestamp here/@@refresh-resources-timestamp/resources_timestamp;
+      ">
   <head tal:define="style_url tools/portal/++resource++NuPlone.style">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" media="all" href="${style_url}/main/base.css" />
@@ -15,6 +20,7 @@
     <!--[if IE 8]> <link rel="stylesheet" type="text/css" media="screen" href="${style_url}/main/base-ie8.css" /> <![endif]-->
     <title i18n:translate="title_site_menu">Site menu</title>
     <base target="_parent"/>
+    <script src="${portal_url}/++resource++euphorie.resources/cms/oira.cms.min.js?t=${resources_timestamp}"></script>
   </head>
   <body class="siteMenu">
     <ul class="menu" id="siteMenu">

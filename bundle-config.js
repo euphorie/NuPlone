@@ -1,30 +1,26 @@
-/* Patterns bundle configuration.
- *
- * This file is used to tell r.js which Patterns to load when it generates a
- * bundle. This is only used when generating a full Patterns bundle, or when
- * you want a simple way to include all patterns in your own project. If you
- * only want to use selected patterns you will need to pull in the patterns
- * directly in your RequireJS configuration.
- */
-define([
-    "pat-registry", // Keep separate as first argument to callback
-    "jquery.browser",
-    "jquery.ui",
-    "nuplone-behaviour",
-    "nuplone-css-browser-selector",
-    "nuplone-editlink",
-    "nuplone-ordering",
-    "nuplone-z3cform",
-    "pat-redactor"
-], function(registry) {
-    window.patterns = registry;
+/* Patterns bundle configuration. */
+import "@patternslib/patternslib/src/public_path"; // first import
 
-    // workaround this MSIE bug :
-    // https://dev.plone.org/plone/ticket/10894
-    if ($.browser.msie) { $("#settings").remove(); }
-    window.Browser = {};
-    window.Browser.onUploadComplete = function () {};
+// Core
+import jquery from "jquery";
+import registry from "@patternslib/patternslib/src/core/registry";
 
-    registry.init();
-    return registry;
-});
+// Pattern imports
+import "@patternslib/pat-redactor/src/pat-redactor";
+import "redactor/src/redactor.css";
+
+// Jquery UI
+// Includes: core.js, widget.js, mouse.js, position.js, draggable.js, droppable.js, resizable.js, selectable.js, sortable.js, accordion.js, autocomplete.js, button.js, datepicker.js, dialog.js, menu.js, progressbar.js, selectmenu.js, slider.js, spinner.js, tabs.js, tooltip.js
+import "jquery-ui-dist/jquery-ui";
+import "jquery-ui-dist/jquery-ui.css";
+import "jquery-ui-dist/jquery-ui.theme.css";
+
+// Other dependencies
+import "css-browser-selector";
+import "./src/nuplone_components/behaviour";
+import "./src/nuplone_components/editlink";
+import "./src/nuplone_components/ordering";
+import "./src/nuplone_components/z3cform";
+
+window.jQuery = jquery;
+registry.init();

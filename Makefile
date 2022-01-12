@@ -7,23 +7,59 @@ MO_FILES	= $(PO_FILES:.po=.mo)
 TARGETS		= $(MO_FILES)
 BINDIR      ?= .bundle/bin
 BUNDLE      ?= $(BINDIR)/bundle
+YARN		?= npx yarn
 
 all: ${TARGETS}
 
-bundle bundle.js bundles/oira.cms.js: stamp-npm
-	mkdir -p redactor
-	cp src/redactor/redactor.css redactor/
-	node_modules/.bin/grunt cssmin
+bundle bundle.js bundles/oira.cms.js: stamp-yarn
 	npm run build
 
-stamp-npm: package.json
-	npm install
-	touch stamp-npm
 
-
+.PHONY: clean
 clean::
 	-rm ${TARGETS}
-	rm -rf stamp-npm node_modules bundles/*
+	rm -rf stamp-yarn node_modules bundles/*
+
+
+##
+# PATTERNSLIB
+##
+
+
+# Install patternslib
+stamp-yarn:
+	$(YARN) install
+	touch stamp-yarn
+
+
+# Build JavaScript bundle
+.PHONY: bundle
+bundle: stamp-yarn
+
+	-$(YARN) unlink @patternslib/pat-redactor
+	-$(YARN) unlink @patternslib/patternslib
+	$(YARN) install --force
+	$(YARN) build
+
+
+# Watch JavaScript for changes
+.PHONY: watch
+watch: stamp-yarn
+	$(YARN) watch
+
+
+.PHONY: devln
+devln:
+	$(YARN) link "@patternslib/patternslib"
+
+
+.PHONY: undevln
+undevln:
+	$(YARN) unlink "@patternslib/patternslib"
+
+
+# OTHER
+
 
 bin/buildout: bootstrap.py
 	$(PYTHON) bootstrap.py
@@ -52,7 +88,7 @@ pot: bin/pybabel
 		--msgid-bugs-address='euphorie@lists.wiggy.net' \
 		--charset=utf-8 \
 		plonetheme > $(POT)~
-	mv $(POT)~ $(POT)	
+	mv $(POT)~ $(POT)
 	$(MAKE) $(MFLAGS) $(PO_FILES)
 
 $(PO_FILES): $(POT)
@@ -61,6 +97,6 @@ $(PO_FILES): $(POT)
 .po.mo:
 	msgfmt -c --statistics -o $@~ $< && mv $@~ $@
 
-.PHONY: all clean docs jenkins pot
+.PHONY: all docs jenkins pot
 .SUFFIXES:
 .SUFFIXES: .po .mo .css .min.css
