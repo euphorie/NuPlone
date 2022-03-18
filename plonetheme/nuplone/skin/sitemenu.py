@@ -3,6 +3,7 @@ from Acquisition import aq_inner
 from OFS.interfaces import ICopyContainer
 from plone import api
 from plone.memoize.view import memoize_contextless
+from plone.protect.utils import addTokenToUrl
 from plonetheme.nuplone import MessageFactory as _
 from plonetheme.nuplone.utils import getFactoriesInContext
 from Products.CMFCore.ActionInformation import ActionInfo
@@ -105,10 +106,11 @@ class Sitemenu(BrowserView):
                     )
 
                 elif a["id"] == "paste" and ICopyContainer.providedBy(context):
+                    url = addTokenToUrl("%s/@@paste" % context_url)
                     children.append(
                         {
                             "title": _("menu_paste", default=u"Paste"),
-                            "url": "%s/@@paste" % context_url,
+                            "url": url,
                         }
                     )
                 elif a["id"] == "delete":
