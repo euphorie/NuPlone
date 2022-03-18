@@ -105,6 +105,10 @@ a:hover em.icon,
 	background-position: -224px 0;
 }
 
+.icon.euphorie-training_question {
+	background-position: -446px 0;
+}
+
 .active em.icon.euphorie-risk {
 	background-position: -784px -16px;
 }
