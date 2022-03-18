@@ -4,7 +4,7 @@ Changelog
 2.0.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fixed CSRF issue with copy & paste.
 
 
 2.0.2 (2021-12-08)
