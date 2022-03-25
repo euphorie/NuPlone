@@ -16,7 +16,6 @@ graft plonetheme/nuplone/profiles
 graft plonetheme/nuplone/skin/templates
 graft plonetheme/nuplone/tiles/templates
 graft plonetheme/nuplone/z3cform/templates
-graft plonetheme/nuplone/z3cform/tiny_mce
 prune Makefile
 prune *.json
 

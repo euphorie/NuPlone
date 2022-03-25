@@ -6,17 +6,8 @@
     <title>Document title goes here</title>
     <!-- InstanceEndEditable -->
     <link rel="stylesheet" type="text/css" media="screen" href="style/main/base.css" />
-    <!--[if lte IE 6]> <link rel="stylesheet" type="text/css" media="screen" href="style/main/base-ie6.css" /> <![endif]-->
-    <!--[if IE 7]> <link rel="stylesheet" type="text/css" media="screen" href="style/main/base-ie7.css" /> <![endif]-->
-    <!--[if IE 8]> <link rel="stylesheet" type="text/css" media="screen" href="style/main/base-ie8.css" /> <![endif]-->
     <link rel="stylesheet" type="text/css" media="screen" href="style/euphorie/base.css" />
-    <!--[if lte IE 6]> <link rel="stylesheet" type="text/css" media="screen" href="style/euphorie/base-ie6.css" /> <![endif]-->
-    <!--[if IE 7]> <link rel="stylesheet" type="text/css" media="screen" href="style/euphorie/base-ie7.css" /> <![endif]-->
-    <!--[if IE 8]> <link rel="stylesheet" type="text/css" media="screen" href="style/euphorie/base-ie8.css" /> <![endif]-->
-    <link rel="icon" type="image/png" href="media/favicon.png" /><!--[if IE]>
-      <link rel="shortcut icon" type="image/x-icon" href="media/favicon-pink.ico" />
-    <![endif]-->
-    <script type="text/javascript" src="libraries/css_browser_selector.js"> </script>
+    <link rel="icon" type="image/png" href="media/favicon.png" />
   </head>
   <body>
   	<div id="content">
@@ -27,7 +18,7 @@
         <div class="introduction">
           <!-- InstanceBeginEditable name="Introduction" --><!-- InstanceEndEditable -->
         </div><!-- InstanceBeginEditable name="Main content" -->
-        
+
         <form action="">
         <fieldset class="condensed">
           <label>Please provide a description of your sector <textarea class="span-13" rows="5"></textarea></label>
@@ -97,13 +88,13 @@
                 </fieldset>
               </dd>
           </dl>
-      
+
           <div class="buttonBar">
             <button type="submit">Save changes</button>
           </div>
         </form>
 
-        
+
         <!-- InstanceEndEditable -->
       </div>
       <ul id="navigation" class="navigation">
@@ -207,8 +198,8 @@
       </object>
     </p>
     <div id="portlets" class="sortable">
-   	
-       
+
+
       <div class="portlet contextual collapsible" id="portletVersioning">
       	<h3>Survey versions</h3>
           <div class="portletContent">
@@ -225,7 +216,7 @@
                  </li>
               </ul>
               </fieldset>
-              
+
             	<fieldset class="version">
             	<legend>Survey 2009</legend>
               <fieldset class="headerButtons">
@@ -259,19 +250,19 @@
              </div>
           </div>
       </div>
-     	
-	  
+
+
 	  </div>
   <form id="workflowState" action="#" class="draft">
         <fieldset class="radioList">
           <p class="currentState">
             Draft
           </p>
-          <label><input type="radio" name="workflow" checked="checked" /> Leave retracted</label> 
+          <label><input type="radio" name="workflow" checked="checked" /> Leave retracted</label>
           <label><input type="radio" name="workflow" /> Published</label>
         </fieldset>
         <fieldset>
-          <label for="revisionNote" class="superImpose">Write a revision note.</label> 
+          <label for="revisionNote" class="superImpose">Write a revision note.</label>
           <textarea rows="3" cols="20" id="revisionNote">
   </textarea> <button type="submit">Apply</button> <label><input type="checkbox" name="notify" /> Notify</label>
         </fieldset>
@@ -279,13 +270,7 @@
       <p id="appendix">
         <a href="#">Link to sector organisation</a> | <a href="#">Disclaimer</a> | Design by <a href="http://www.cornae.com">Cornae</a>
       </p>
-    <script type="text/javascript" src="libraries/jquery-1.4.4.js"></script>
-    <script type="text/javascript" src="libraries/jquery.tools.min.js"></script>
-    <script type="text/javascript" src="libraries/ui-1.8/jquery-ui.js"> </script>
-    <script type="text/javascript" src="behaviour/behaviour.js"> </script>
-    <script type="text/javascript" src="../plonetheme/nuplone/z3cform/tiny_mce/tiny_mce_src.js"> </script>
-    <script type="text/javascript" src="../plonetheme/nuplone/z3cform/templates/behaviour.js"> </script>
-    <script type="text/javascript" src="libraries/farbtastic.js"></script>
+    <script type="text/javascript" src="oira.cms.js"> </script>
     <script type="text/javascript">
 // <![CDATA[
 function IsBright(hsl) {
@@ -320,7 +305,7 @@ function UpdatePreview(fb) {
         main_background = colour_1 ? colour_1 : "${main_bg_colour}",
         main_background_hsl = fb.RGBToHSL(fb.unpack(main_background)),
         main_foreground = fb.pack(fb.HSLToRGB(MatchColour(main_background_hsl, 0.0, 0.60, 0.3))),
-                                   
+
         support_background = colour_2 ? colour_2 : "${support_bg_colour}",
         support_background_hsl = fb.RGBToHSL(fb.unpack(support_background)),
         support_foreground = fb.pack(fb.HSLToRGB(MatchColour(support_background_hsl, 0.2, 0.65)));
@@ -331,22 +316,7 @@ function UpdatePreview(fb) {
     buffer+="#steps li.complete a, #steps li.current a { color: " + support_foreground + "; }\n";
     buffer+="#steps li a, #steps li a:hover { color: " + main_foreground + "; }\n";
 
-    // .text (or similar) doesn't work with <style> tags in IE
-    if ($.browser.msie && $.browser.version < 9) {
-        var doc = window.frames[0].document,
-            iestyle = doc.createElement('style');
-            head = doc.getElementsByTagName('head')[0],
-            styles = doc.getElementsByTagName('style'),
-            laststyle = styles[styles.length-1];
-            rules = doc.createTextNode(buffer);
-
-        iestyle.type = 'text/css';
-        iestyle.styleSheet.cssText = rules.nodeValue;
-
-        head.removeChild(laststyle);
-        head.appendChild(iestyle);
-    }
-    else style.text(buffer); // Works in all other browsers
+    style.text(buffer); // Works in all other browsers
 
     if (colour_1 || colour_2) {
         body.addClass("deCornae");

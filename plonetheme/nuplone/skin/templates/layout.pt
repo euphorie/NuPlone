@@ -16,7 +16,6 @@
 >
   <head tal:define="style_url string:${portal_url}/++resource++NuPlone.style">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="text/javascript" src="${portal_url}/++resource++NuPlone.libraries/css_browser_selector.js"></script>
     <link rel="stylesheet" type="text/css" media="all" href="${style_url}/main/base.css" />
     <style type="text/css" media="all">
       ol.sortable:after {
@@ -25,6 +24,7 @@
     </style>
     <link rel="stylesheet" type="text/css" media="all" href="${style_url}/euphorie/base.css" />
     <title><metal:title define-slot="title">Page Title</metal:title> — ${tools/site_title}</title>
+    <script src="${portal_url}/++resource++NuPlone.bundle/oira.cms.min.js?t=${here/@@nuplone-version}"></script>
   </head>
   <body>
     <div id="content">
@@ -48,13 +48,6 @@
       var plone = { portal_url : '${portal_url}',
                     context_url : '${context/absolute_url}' };
     </script>
-    <script type="text/javascript" src="${portal_url}/++resource++NuPlone.libraries/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="${portal_url}/++resource++NuPlone.libraries/jquery.browser.min.js"></script>
-    <script type="text/javascript" src="${portal_url}/++resource++NuPlone.libraries/ui-1.11.4/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="${portal_url}/++resource++NuPlone.tinymce/tiny_mce_src.js"></script>
-    <script type="text/javascript" src="${portal_url}/++resource++NuPlone.z3cform.js"></script>
-    <script type="text/javascript" src="${portal_url}/++resource++NuPlone.behaviour/behaviour.js"></script>
-    <script type="text/javascript" src="${portal_url}/++resource++NuPlone.libraries/ordering.js"></script>
     <tal:block replace="tile:scripts"/>
     <metal:block define-slot="scripts"/>
   </body>

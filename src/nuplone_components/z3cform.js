@@ -1,6 +1,6 @@
-define('nuplone-z3cform', ["jquery", "jquery.browser"], function($) {
+import $ from "jquery";
 
-var z3cform = {
+const z3cform = {
     getText: function(node) {
         var text="";
 
@@ -273,7 +273,7 @@ var z3cform = {
 
     initContent: function(root) {
         z3cform.doTransforms();
-        $(window).load(function() {
+        $(window).on("load", function() {
             z3cform.initialiseRichTextEditor(root);
         });
     },
@@ -285,11 +285,7 @@ var z3cform = {
 };
 
 
-z3cform.init();
 $(document).ready(function() {
+    z3cform.init();
     z3cform.initContent();
 });
-
-});
-/*jslint browser: true, onevar: true, undef: true, regexp: true */
-

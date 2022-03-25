@@ -2,12 +2,9 @@
  *
  * Copyright 2009-2011 W. Akkerman
  */
+import $ from "jquery";
 
-/*jslint browser: true, undef: true, eqeqeq: true, regexp: true */
-
-define('nuplone-behaviour', ["jquery", "jquery.browser"], function($) {
-
-var mapal = {
+const mapal = {
     widthClasses: {},
 
     // Utility methods
@@ -57,14 +54,14 @@ var mapal = {
     // A simple autocomplete pattern
     initAutocomplete: function(root) {
           $("input.autocomplete", root).each(function() {
-              var $input = $(this), 
+              var $input = $(this),
                   name = $input.attr("name"),
                   $storage;
               $input.attr("name", "_"+name);
               $storage=$("<input type='hidden'/>").attr("name", name).insertBefore($input);
               $input.autocomplete({source: $input.attr("src"),
                                    minLength: 2,
-                                   select: function(event, ui) { 
+                                   select: function(event, ui) {
                                         $storage.val(ui.item.value);
                                         $input.val(ui.item.label);
                                         return false;
@@ -78,7 +75,7 @@ var mapal = {
     verifyDependencies: function($slave, command) {
         var result=[],
             $form = $slave.closest("form"),
-            $input, i, value, parts; 
+            $input, i, value, parts;
 
         if (!$form.length) {
             $form=$(document);
@@ -112,7 +109,7 @@ var mapal = {
                     result.push(false);
                     continue;
                 }
-            } 
+            }
             result.push(true);
         }
 
@@ -230,7 +227,7 @@ var mapal = {
     },
 
 
-    // check if an input element has a value. 
+    // check if an input element has a value.
     hasContent: function($el) {
         if ($el.is(":input")) {
             return $el.val();
@@ -310,7 +307,7 @@ var mapal = {
             };
 
             closeMenu = function($li) {
-                $li.find("li.open").andSelf().removeClass("open").addClass("closed");
+                $li.find("li.open").addBack().removeClass("open").addClass("closed");
             };
 
             mouseOverHandler = function() {
@@ -363,7 +360,7 @@ var mapal = {
             callback($target);
         }
 
-        $target.animate({opacity: 0}, "slow", function() { 
+        $target.animate({opacity: 0}, "slow", function() {
             url = url + " #" + selector;
             $factory.load(url, htmlLoaded);
         });
@@ -371,7 +368,7 @@ var mapal = {
 
     // Enable DOM-injection from anchors
     initDomInjection: function () {
-        $("a[rel^=#]").on("click.mapal", function (e) {
+        $("a[rel^='#']").on("click.mapal", function (e) {
             var $a = $(this),
                 parts = $a.attr("href").split("#", 2),
                 target = $a.attr("rel").slice(1);
@@ -432,7 +429,7 @@ var mapal = {
 
     // Load (part of a) page and open it in a modal panel
     initPanels: function() {
-        $("a.openPanel[href*=#], button.openPanel[name*=#]").on("click.mapal", function (e) {
+        $("a.openPanel[href*='#'], button.openPanel[name*='#']").on("click.mapal", function (e) {
             var $trigger = $(this),
                 href = this.tagName.toLowerCase()==="a" ? $trigger.attr("href") : $trigger.attr("name"),
                 parts = href.split("#", 2),
@@ -528,7 +525,7 @@ var mapal = {
 
 
     // No browser supports all DOM methods to get from an object to its
-    // parent window and document and back again, so we convert all 
+    // parent window and document and back again, so we convert all
     // html objects to iframes.
     initIframes: function(root) {
         $("object[type=text/html]", root).each(function() {
@@ -545,32 +542,6 @@ var mapal = {
         });
     },
 
-    // Older IE versions need extra help to handle buttons.
-    initIEButtons: function() {
-        if ($.browser.msie ) {
-            var version = Number( $.browser.version.split(".", 2).join(""));
-            if (version>80)
-                return;
-        }
-
-        $("form button[type=submit]").on("click", function() {
-            var name = this.name,
-                $el = $("<input/>"),
-                value = this.attributes.getNamedItem("value");
-
-            if (typeof value == "undefined") {
-                return;
-            }
-
-            $el.attr("type", "hidden")
-               .attr("name", name)
-               .val(value.nodeValue)
-               .appendTo(this.form);
-            $("button[type=submit]", this.form).attr("name", "_buttonfix");
-        });
-
-    },
-
     // Setup a DOM tree.
     initContent: function(root) {
         mapal.initTransforms(root);
@@ -580,14 +551,6 @@ var mapal = {
         mapal.initSuperImpose(root);
         mapal.initTooltip(root);
         mapal.initMenu(root);
-        // Replace objects with iframes for IE 8 and older.
-        if ($.browser.msie ) {
-            var version = Number( $.browser.version.split(".", 2).join(""));
-            if (version<=90) {
-                mapal.initIframes(root);
-            }
-        }
-
         $(root).trigger("newContent", root);
     },
 
@@ -597,7 +560,6 @@ var mapal = {
         mapal.initWidthClasses();
         mapal.initDomInjection();
         mapal.initPanels();
-        mapal.initIEButtons();
     }
 };
 
@@ -609,6 +571,4 @@ $(document).ready(function() {
     mapal.init();
     mapal.initContent(document.body);
     $(document).trigger("setupFinished", document);
-});
-
 });

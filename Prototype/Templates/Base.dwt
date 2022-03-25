@@ -7,26 +7,10 @@
       Document title goes here
     </title><!-- TemplateEndEditable -->
     <link rel="stylesheet" type="text/css" media="screen" href="../style/main/base.css" />
-    <!--[if lte IE 6]> <link rel="stylesheet" type="text/css" media="screen" href="style/main/base-ie6.css" /> <![endif]-->
-    <!--[if IE 7]> <link rel="stylesheet" type="text/css" media="screen" href="style/main/base-ie7.css" /> <![endif]-->
-    <!--[if IE 8]> <link rel="stylesheet" type="text/css" media="screen" href="style/main/base-ie8.css" /> <![endif]-->
     <link rel="stylesheet" type="text/css" media="screen" href="../style/euphorie/base.css" />
-    <!--[if lte IE 6]> <link rel="stylesheet" type="text/css" media="screen" href="style/euphorie/base-ie6.css" /> <![endif]-->
-    <!--[if IE 7]> <link rel="stylesheet" type="text/css" media="screen" href="style/euphorie/base-ie7.css" /> <![endif]-->
-    <!--[if IE 8]> <link rel="stylesheet" type="text/css" media="screen" href="style/euphorie/base-ie8.css" /> <![endif]-->
-    <link rel="icon" type="image/png" href="../media/favicon.png" /><!--[if IE]>
-      <link rel="shortcut icon" type="image/x-icon" href="media/favicon-pink.ico" />
-    <![endif]-->
-    <script type="text/javascript" src="../libraries/jquery-1.4.3.js">
-</script>
-    <script type="text/javascript" src="../libraries/jquery.tools.min.js">
-</script>
-    <script type="text/javascript" src="../libraries/ui-1.8rc2/jquery-ui-1.8rc2.custom.js">
-</script>
-    <script type="text/javascript" src="../libraries/css_browser_selector.js">
-</script>
-    <script type="text/javascript" src="../behaviour/behaviour.js">
-</script><!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
+    <link rel="icon" type="image/png" href="../media/favicon.png" />
+    <script type="text/javascript" src="oira.cms.js"> </script>
+    <!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
   </head>
   <body>
   	<div id="content">
@@ -146,7 +130,7 @@
     </p>
     <div id="portlets" class="sortable">
    	<!-- TemplateBeginEditable name="Contextual portlets" -->
-      
+
 	  <!-- TemplateEndEditable -->
 	  </div>
   <form id="workflowState" action="#" class="draft">
@@ -154,11 +138,11 @@
           <p class="currentState">
             Draft
           </p>
-          <label><input type="radio" name="workflow" checked="checked" /> Leave retracted</label> 
+          <label><input type="radio" name="workflow" checked="checked" /> Leave retracted</label>
           <label><input type="radio" name="workflow" /> Published</label>
         </fieldset>
         <fieldset>
-          <label for="revisionNote" class="superImpose">Write a revision note.</label> 
+          <label for="revisionNote" class="superImpose">Write a revision note.</label>
           <textarea rows="3" cols="20" id="revisionNote">
   </textarea> <button type="submit">Apply</button> <label><input type="checkbox" name="notify" /> Notify</label>
         </fieldset>

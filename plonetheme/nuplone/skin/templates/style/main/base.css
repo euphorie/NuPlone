@@ -2,7 +2,7 @@
 
 /* This CSS is written by Cornae. www.cornae.com */
 
-/* Colour scheme 
+/* Colour scheme
 
 Orange warnings/accents:	ff8100 / white
 Red for system errors:		red / white
@@ -200,7 +200,7 @@ dl.accordion dt:hover button {
 }
 
 dl.accordion dt.ui-state-active button {
-	opacity: 1;	
+	opacity: 1;
 }
 
 dl.accordion dd dfn.infoPanel {
@@ -221,7 +221,7 @@ dl.accordion dd dfn.infoPanel {
 }
 
 * {
-	
+
 }
 
 div.z3cFieldContainer {
@@ -254,7 +254,7 @@ div.input.rich:focus,
 	margin-bottom: -1px;
 }
 
-.comprehensive.empty div.input.rich:focus {	
+.comprehensive.empty div.input.rich:focus {
 	margin-bottom: 1px;
 }
 
@@ -284,13 +284,13 @@ div.input.rich:focus,
 /* @group Blueprint */
 
 /* @group Grid */
-div.span-1, div.span-2, div.span-3, div.span-4, div.span-5, 
-div.span-6, div.span-7, div.span-8, div.span-9, div.span-10, 
-div.span-11, div.span-12, div.span-13, div.span-14, div.span-15, 
-div.span-16, div.span-17, div.span-18, div.span-19, div.span-20, 
+div.span-1, div.span-2, div.span-3, div.span-4, div.span-5,
+div.span-6, div.span-7, div.span-8, div.span-9, div.span-10,
+div.span-11, div.span-12, div.span-13, div.span-14, div.span-15,
+div.span-16, div.span-17, div.span-18, div.span-19, div.span-20,
 div.span-21, div.span-22, div.span-23, div.span-24 {
 	float: left;
-	margin-right: 10px; 
+	margin-right: 10px;
 }
 
 /* The last column in a row needs this class. */
@@ -320,60 +320,60 @@ div.last { margin-right: 0; }
 .span-21 { width: 830px; }
 .span-22 { width: 870px; }
 .span-23 { width: 910px; }
-.span-24, div.span-24 { 
-	margin: 0; 
-	width: 950px; 
+.span-24, div.span-24 {
+	margin: 0;
+	width: 950px;
 }
 
 /* Add these to a column to append empty cols. */
-.append-1  { padding-right: 40px; }  
-.append-2  { padding-right: 80px; } 
-.append-3  { padding-right: 120px; } 
-.append-4  { padding-right: 160px; } 
-.append-5  { padding-right: 200px; } 
-.append-6  { padding-right: 240px; } 
-.append-7  { padding-right: 280px; } 
-.append-8  { padding-right: 320px; } 
-.append-9  { padding-right: 360px; } 
-.append-10 { padding-right: 400px; } 
-.append-11 { padding-right: 440px; } 
-.append-12 { padding-right: 480px; } 
-.append-13 { padding-right: 520px; } 
-.append-14 { padding-right: 560px; } 
-.append-15 { padding-right: 600px; } 
-.append-16 { padding-right: 640px; } 
-.append-17 { padding-right: 680px; } 
-.append-18 { padding-right: 720px; } 
-.append-19 { padding-right: 760px; } 
-.append-20 { padding-right: 800px; } 
-.append-21 { padding-right: 840px; } 
-.append-22 { padding-right: 880px; } 
-.append-23 { padding-right: 920px; } 
+.append-1  { padding-right: 40px; }
+.append-2  { padding-right: 80px; }
+.append-3  { padding-right: 120px; }
+.append-4  { padding-right: 160px; }
+.append-5  { padding-right: 200px; }
+.append-6  { padding-right: 240px; }
+.append-7  { padding-right: 280px; }
+.append-8  { padding-right: 320px; }
+.append-9  { padding-right: 360px; }
+.append-10 { padding-right: 400px; }
+.append-11 { padding-right: 440px; }
+.append-12 { padding-right: 480px; }
+.append-13 { padding-right: 520px; }
+.append-14 { padding-right: 560px; }
+.append-15 { padding-right: 600px; }
+.append-16 { padding-right: 640px; }
+.append-17 { padding-right: 680px; }
+.append-18 { padding-right: 720px; }
+.append-19 { padding-right: 760px; }
+.append-20 { padding-right: 800px; }
+.append-21 { padding-right: 840px; }
+.append-22 { padding-right: 880px; }
+.append-23 { padding-right: 920px; }
 
 /* Add these to a column to prepend empty cols. */
-.prepend-1  { padding-left: 40px; }  
-.prepend-2  { padding-left: 80px; } 
-.prepend-3  { padding-left: 120px; } 
-.prepend-4  { padding-left: 160px; } 
-.prepend-5  { padding-left: 200px; } 
-.prepend-6  { padding-left: 240px; } 
-.prepend-7  { padding-left: 280px; } 
-.prepend-8  { padding-left: 320px; } 
-.prepend-9  { padding-left: 360px; } 
-.prepend-10 { padding-left: 400px; } 
-.prepend-11 { padding-left: 440px; } 
-.prepend-12 { padding-left: 480px; } 
-.prepend-13 { padding-left: 520px; } 
-.prepend-14 { padding-left: 560px; } 
-.prepend-15 { padding-left: 600px; } 
-.prepend-16 { padding-left: 640px; } 
-.prepend-17 { padding-left: 680px; } 
-.prepend-18 { padding-left: 720px; } 
-.prepend-19 { padding-left: 760px; } 
-.prepend-20 { padding-left: 800px; } 
-.prepend-21 { padding-left: 840px; } 
-.prepend-22 { padding-left: 880px; } 
-.prepend-23 { padding-left: 920px; } 
+.prepend-1  { padding-left: 40px; }
+.prepend-2  { padding-left: 80px; }
+.prepend-3  { padding-left: 120px; }
+.prepend-4  { padding-left: 160px; }
+.prepend-5  { padding-left: 200px; }
+.prepend-6  { padding-left: 240px; }
+.prepend-7  { padding-left: 280px; }
+.prepend-8  { padding-left: 320px; }
+.prepend-9  { padding-left: 360px; }
+.prepend-10 { padding-left: 400px; }
+.prepend-11 { padding-left: 440px; }
+.prepend-12 { padding-left: 480px; }
+.prepend-13 { padding-left: 520px; }
+.prepend-14 { padding-left: 560px; }
+.prepend-15 { padding-left: 600px; }
+.prepend-16 { padding-left: 640px; }
+.prepend-17 { padding-left: 680px; }
+.prepend-18 { padding-left: 720px; }
+.prepend-19 { padding-left: 760px; }
+.prepend-20 { padding-left: 800px; }
+.prepend-21 { padding-left: 840px; }
+.prepend-22 { padding-left: 880px; }
+.prepend-23 { padding-left: 920px; }
 
 
 /* Border on right hand side of a column. */
@@ -391,7 +391,7 @@ div.colborder {
 }
 
 
-/* Use these classes on an element to push it into the 
+/* Use these classes on an element to push it into the
    next column, or to pull it into the previous column.  */
 
 .pull-1 { margin-left: -40px; }
@@ -400,7 +400,7 @@ div.colborder {
 .pull-4 { margin-left: -160px; }
 .pull-5 { margin-left: -200px; }
 
-.pull-1, .pull-2, .pull-3, 
+.pull-1, .pull-2, .pull-3,
 .pull-4, .pull-5, .pull-5 {
 	float:left;
 	position:relative;
@@ -412,8 +412,8 @@ div.colborder {
 .push-4 { margin: 0 -160px 1.5em 160px; }
 .push-5 { margin: 0 -200px 1.5em 200px; }
 
-.push-0, .push-1, .push-2, 
-.push-3, .push-4, .push-5 { 
+.push-0, .push-1, .push-2,
+.push-3, .push-4, .push-5 {
 	float: right;
 	position:relative;
 }
@@ -515,7 +515,7 @@ body {
 #simulation {
 	zoom: 67%;
 }
-	
+
 }
 
 @media only screen and (min-width: 1350px) {
@@ -523,7 +523,7 @@ body {
 #simulation {
 	zoom: 100%;
 }
-	
+
 }
 
 #simulation h1 {
@@ -1217,7 +1217,7 @@ h5 {
 	margin-top: 0;
 }
 
-h1 img, h2 img, h3 img, 
+h1 img, h2 img, h3 img,
 h4 img, h5 img, h6 img {
 	margin: 0;
 }
@@ -1259,7 +1259,7 @@ p img.right {
 	margin: 1.5em 0 1.5em 1.5em;
 }
 
-a:focus, 
+a:focus,
 a:hover {
 	color: #007fb1;
 	text-decoration: underline;
@@ -1353,7 +1353,7 @@ h3 sup {
 	color: gray;
 }
 
-abbr, 
+abbr,
 acronym {
 	border-bottom: 1px dotted #666;
 }
@@ -1378,7 +1378,7 @@ pre {
 	margin-bottom: 20px;
 }
 
-pre,code {	
+pre,code {
 	white-space: pre;
 	background-color: #efefef;
 }
@@ -1405,7 +1405,7 @@ em.unknown {
 
 /* @group Lists */
 
-li ul, 
+li ul,
 li ol {
 	margin: 0 0 0 20px;
 }
@@ -1430,8 +1430,8 @@ ul li {
 	padding-left: 0;
 }
 
-ol { 
-	counter-reset: numsection; 
+ol {
+	counter-reset: numsection;
 	list-style-type: none;
 	margin-left: 0;
 	padding-left: 0;
@@ -1524,7 +1524,7 @@ tr.current td {
 
 tr.current td a {
 	font-weight: bold;
-	color: #6f5a44;		
+	color: #6f5a44;
 }
 
 tfoot {
@@ -3129,7 +3129,7 @@ form.concise fieldset label select {
 	top: 1px;
 }
 
-.concise textarea {
+.concise textarea:not(.pat-redactor) {
 	width: 170%;
 }
 
@@ -3833,8 +3833,8 @@ input[type="button"],
 	background-color: transparent;
 }
 
-button::-moz-focus-inner { 
-	border: 0; 
+button::-moz-focus-inner {
+	border: 0;
 }
 
 a.button.small,
@@ -4220,7 +4220,7 @@ dfn.infoPanel.open span.title {
 
 dfn.infoPanel.bottom {
 	top: 22px;
-} 
+}
 /* @end */
 
 /* @group Separators */

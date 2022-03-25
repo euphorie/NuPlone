@@ -12,23 +12,6 @@
   <adapter factory=".templates.wrapped_form_factory" />
   <adapter factory=".templates.form_factory" />
 
-  <browser:page
-    name="tiny-controls.html"
-    for="*"
-    permission="zope2.Public"
-    template="templates/toolbar.pt"
-    />
-
-  <browser:resource
-    name="NuPlone.z3cform.js"
-    file="templates/behaviour.js"
-    />
-
-  <browser:resourceDirectory
-    name="NuPlone.tinymce"
-    directory="tiny_mce"
-    />
-
   <adapter
     factory=".templates.ErrorViewTemplate"
     for="z3c.form.interfaces.IErrorViewSnippet .interfaces.INuPloneFormLayer"

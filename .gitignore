@@ -22,3 +22,5 @@ Prototype/.DS_Store
 node_modules
 cache/
 stamp-npm
+stamp-yarn
+bundles/
