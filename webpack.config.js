@@ -12,7 +12,10 @@ module.exports = async (env, argv) => {
     };
 
     config = patternslib_config(env, argv, config);
-    config.output.path = path.resolve(__dirname, "bundles");
+    config.output.path = path.resolve(
+        __dirname,
+        "plonetheme/nuplone/static/bundle"
+    );
 
     if (process.env.NODE_ENV === "development") {
         // Make sure we're using only one patternslib instance.
