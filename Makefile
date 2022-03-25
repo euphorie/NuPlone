@@ -42,6 +42,12 @@ bundle: stamp-yarn
 	$(YARN) build
 
 
+.PHONY: bundledev
+bundledev: stamp-yarn
+
+	$(YARN) builddev
+
+
 # Watch JavaScript for changes
 .PHONY: watch
 watch: stamp-yarn
