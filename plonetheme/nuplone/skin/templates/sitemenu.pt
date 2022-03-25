@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" media="all" href="${style_url}/main/base.css" />
     <title i18n:translate="title_site_menu">Site menu</title>
     <base target="_parent"/>
-    <script src="${portal_url}/++resource++euphorie.resources/cms/oira.cms.min.js?t=${resources_timestamp}"></script>
+    <script src="${portal_url}/++resource++NuPlone.bundle/oira.cms.min.js?t=${resources_timestamp}"></script>
   </head>
   <body class="siteMenu">
     <ul class="menu" id="siteMenu">
