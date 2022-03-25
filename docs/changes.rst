@@ -4,6 +4,17 @@ Changelog
 2.0.3 (unreleased)
 ------------------
 
+- Add a ``@@nuplone-version`` view which can be used to break caching of resources.
+
+- Add a new ``NuPlone.bundle`` resource directory and deliver the bundle directly from NuPlone.
+
+- Update all JavaScript resources to use latest Patternslib (7.4.0).
+  Fixes a number of security problems with old JavaScript.
+
+- Remove Support for IE<11.
+
+- Cleanup resources.
+
 - Fixed CSRF issue with copy & paste.
 
 
@@ -224,7 +235,7 @@ This version is built for Plone 5.1 and higher!
 - Fix a syntax error in template for the select form widget.
 
 
-1.3 - February 14, 2013 
+1.3 - February 14, 2013
 -----------------------
 
 - Prevent the *Paste* action from being show in places where paste was
@@ -253,7 +264,7 @@ This version is built for Plone 5.1 and higher!
 
 - Update TinyMCE to version 3.5.6.
 
-- Configure HTML cleanup code to strip data: attributes. 
+- Configure HTML cleanup code to strip data: attributes.
 
 
 1.1 - December 20, 2011
@@ -345,7 +356,7 @@ This version is built for Plone 5.1 and higher!
   [jcbrand]
 
 - Bugfix. Prevent clicking on the "Actions" site menu action if it doesn't have
-  a URL to go to. 
+  a URL to go to.
   [jcbrand]
 
 
@@ -387,7 +398,7 @@ This version is built for Plone 5.1 and higher!
 -------------------------
 
 - zope.i18n is not capable of rendering pre-1900 dates. To prevent site errors
-  detect this and return an textual error instead. 
+  detect this and return an textual error instead.
   [wichert]
 
 - Do not load the TinyMCE linesfield plugin. It is not needed, and it triggered
