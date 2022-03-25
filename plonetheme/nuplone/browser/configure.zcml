@@ -84,4 +84,11 @@
       class=".settings.Settings"
       />
 
+  <browser:page
+      name="nuplone-version"
+      for="*"
+      permission="zope2.View"
+      class=".helper.NuPloneVersionView"
+      />
+
 </configure>

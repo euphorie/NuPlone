@@ -12,7 +12,6 @@
       tal:define="
         tools nocall:context/@@tools;
         portal_url tools/portal_url|nothing;
-        resources_timestamp here/@@refresh-resources-timestamp/resources_timestamp;
       "
 >
   <head tal:define="style_url string:${portal_url}/++resource++NuPlone.style">
@@ -25,7 +24,7 @@
     </style>
     <link rel="stylesheet" type="text/css" media="all" href="${style_url}/euphorie/base.css" />
     <title><metal:title define-slot="title">Page Title</metal:title> — ${tools/site_title}</title>
-    <script src="${portal_url}/++resource++NuPlone.bundle/oira.cms.min.js?t=${resources_timestamp}"></script>
+    <script src="${portal_url}/++resource++NuPlone.bundle/oira.cms.min.js?t=${here/@@nuplone-version}"></script>
   </head>
   <body>
     <div id="content">
