@@ -5,6 +5,9 @@ recursive-include plonetheme *.zcml
 recursive-include plonetheme *.pt
 recursive-include plonetheme/nuplone/locales *.po
 recursive-include plonetheme/nuplone/locales *.mo
+recursive-include plonetheme *.js
+recursive-include plonetheme *.map
+recursive-include plonetheme *.png
 graft docs
 prune docs/.build
 prune Prototype

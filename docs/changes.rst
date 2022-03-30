@@ -4,8 +4,7 @@ Changelog
 2.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Fix brown-bag release that was missing the bundle
 
 2.1.0 (2022-03-30)
 ------------------
