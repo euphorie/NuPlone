@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0.3 (unreleased)
+2.1.0 (2022-03-30)
 ------------------
 
 - Add a ``@@nuplone-version`` view which can be used to break caching of resources.
