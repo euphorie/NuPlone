@@ -10,12 +10,12 @@ class SwitchLanguage(BrowserView):
     def __call__(self):
         flash = IStatusMessage(self.request).addStatusMessage
         if setLanguage(self.request, self.context):
-            flash(_("message_switch_language", default=u"Language updated"), "success")
+            flash(_("message_switch_language", default="Language updated"), "success")
         else:
             flash(
                 _(
                     "message_switch_language_error",
-                    default=u"Failed to switch language",
+                    default="Failed to switch language",
                 ),
                 "error",
             )

@@ -24,14 +24,14 @@ log = logging.getLogger(__name__)
 
 
 class IRequestPasswordReset(model.Schema):
-    login = schema.TextLine(title=_("label_login", default=u"Login"), required=True)
+    login = schema.TextLine(title=_("label_login", default="Login"), required=True)
 
 
 class IPasswordReset(model.Schema):
-    login = schema.TextLine(title=_("label_login", default=u"Login"), required=True)
+    login = schema.TextLine(title=_("label_login", default="Login"), required=True)
 
     password = schema.Password(
-        title=_("label_password", default=u"Password"), required=True
+        title=_("label_password", default="Password"), required=True
     )
 
 
@@ -41,15 +41,15 @@ class RequestPasswordForm(AutoExtensibleForm, form.Form):
 
     ignoreContext = True
     schema = IRequestPasswordReset
-    label = _(u"header_password_reset_request", default="Reset password")
+    label = _("header_password_reset_request", default="Reset password")
     default_fieldset_label = None
     description = _(
-        u"intro_password_reset_request",
-        default=u"For security reasons, we store your password encrypted, "
-        u"and cannot mail it to you. If you would like to reset "
-        u"your password, fill out the form below and we will send "
-        u"you an email at the address you gave when you registered "
-        u"to start the process of resetting your password.",
+        "intro_password_reset_request",
+        default="For security reasons, we store your password encrypted, "
+        "and cannot mail it to you. If you would like to reset "
+        "your password, fill out the form below and we will send "
+        "you an email at the address you gave when you registered "
+        "to start the process of resetting your password.",
     )
 
     @property
@@ -73,9 +73,7 @@ class RequestPasswordForm(AutoExtensibleForm, form.Form):
         user = pas.getUser(data["login"])
         if user is None:
             log.info("Password reset request for unknown user %s" % data["login"])
-            flash(
-                _("error_pwreset_unknown_user", default=u"Unknown username."), "error"
-            )
+            flash(_("error_pwreset_unknown_user", default="Unknown username."), "error")
             return
 
         member = mt.getMemberById(user.getId())
@@ -84,7 +82,7 @@ class RequestPasswordForm(AutoExtensibleForm, form.Form):
             flash(
                 _(
                     "error_pwreset_no_email",
-                    default=u"No known email address for this user.",
+                    default="No known email address for this user.",
                 ),
                 "error",
             )
@@ -97,8 +95,8 @@ class RequestPasswordForm(AutoExtensibleForm, form.Form):
 
         data["site"] = self.context.title
         subject = _(
-            u"password_reset_subject",
-            default=u"Password reset for ${site}",
+            "password_reset_subject",
+            default="Password reset for ${site}",
             mapping=data,
         )
         subject = translate(subject, context=self.request)
@@ -124,8 +122,8 @@ class RequestPasswordForm(AutoExtensibleForm, form.Form):
             )
             flash(
                 _(
-                    u"error_contactmail",
-                    u"An error occured while processing your contact request. Please try again later.",  # noqa: E501
+                    "error_contactmail",
+                    "An error occured while processing your contact request. Please try again later.",  # noqa: E501
                 ),
                 "error",
             )
@@ -136,8 +134,8 @@ class RequestPasswordForm(AutoExtensibleForm, form.Form):
             )
             flash(
                 _(
-                    u"error_contactmail",
-                    u"An error occured while processing your contact request. Please try again later.",  # noqa: E501
+                    "error_contactmail",
+                    "An error occured while processing your contact request. Please try again later.",  # noqa: E501
                 ),
                 "error",
             )
@@ -146,7 +144,7 @@ class RequestPasswordForm(AutoExtensibleForm, form.Form):
         flash(
             _(
                 "info_pwrest_mail_sent",
-                default=u"An email with instructions for resetting your password has been sent.",  # noqa: E501
+                default="An email with instructions for resetting your password has been sent.",  # noqa: E501
             ),
             "success",
         )
@@ -159,10 +157,10 @@ class PasswordReset(AutoExtensibleForm, form.Form):
 
     ignoreContext = True
     schema = IPasswordReset
-    label = _(u"header_password_reset", default=u"Reset password")
+    label = _("header_password_reset", default="Reset password")
     description = _(
-        u"intro_password_reset",
-        default=u"Please fill out the form below to set your password.",
+        "intro_password_reset",
+        default="Please fill out the form below to set your password.",
     )
     default_fieldset_label = None
 
@@ -194,7 +192,7 @@ class PasswordReset(AutoExtensibleForm, form.Form):
             flash(
                 _(
                     "user_name_wrong",
-                    u"The login name you have provided does not match the username from the password-reset email. Please check your spelling.",  # noqa: E501
+                    "The login name you have provided does not match the username from the password-reset email. Please check your spelling.",  # noqa: E501
                 ),
                 "error",
             )
@@ -205,12 +203,12 @@ class PasswordReset(AutoExtensibleForm, form.Form):
             flash(
                 _(
                     "user_name_wrong",
-                    u"The login name you have provided does not match the username from the password-reset email. Please check your spelling.",  # noqa: E501
+                    "The login name you have provided does not match the username from the password-reset email. Please check your spelling.",  # noqa: E501
                 ),
                 "error",
             )
             return
 
-        flash(_("password_reset", u"Your password has been reset."), "success")
+        flash(_("password_reset", "Your password has been reset."), "success")
         portal_url = aq_inner(self.context).absolute_url()
         self.request.response.redirect("%s/@@login" % portal_url)

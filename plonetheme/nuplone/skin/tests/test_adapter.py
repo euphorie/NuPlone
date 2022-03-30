@@ -25,13 +25,13 @@ class TestHTMLStatusMessages(TestCase):
         self.assertEqual(len(status.show()), 0)
 
         # Add one message
-        status.add(u"test", type=u"info")
+        status.add("test", type="info")
 
         # Now check the results
         messages = status.show()
         self.assertEqual(len(messages), 1)
-        self.assertEqual(messages[0].message, u"test")
-        self.assertEqual(messages[0].type, u"info")
+        self.assertEqual(messages[0].message, "test")
+        self.assertEqual(messages[0].type, "info")
 
         # Make sure messages are removed
         self.assertEqual(len(status.show()), 0)
@@ -44,96 +44,96 @@ class TestHTMLStatusMessages(TestCase):
         # retrieving the messages
 
         # Add one message
-        status.add(u"test", type=u"info")
+        status.add("test", type="info")
 
         # Now check the results
         messages = status.show()
         self.assertEqual(len(messages), 1)
-        self.assertEqual(messages[0].message, u"test")
-        self.assertEqual(messages[0].type, u"info")
+        self.assertEqual(messages[0].message, "test")
+        self.assertEqual(messages[0].type, "info")
 
         # Make sure messages are removed
         self.assertEqual(len(status.show()), 0)
 
         # Add two messages
-        status.add(u"test", type=u"info")
-        status.add(u"test1", u"warn")
+        status.add("test", type="info")
+        status.add("test1", "warn")
 
         # And check the results again
         messages = status.show()
         self.assertEqual(len(messages), 2)
         test = messages[1]
-        self.assertEqual(test.message, u"test1")
-        self.assertEqual(test.type, u"warn")
+        self.assertEqual(test.message, "test1")
+        self.assertEqual(test.type, "warn")
 
         # Make sure messages are removed again
         self.assertEqual(len(status.show()), 0)
 
         # Add two identical messages
-        status.add(u"test", type=u"info")
-        status.add(u"test", type=u"info")
+        status.add("test", type="info")
+        status.add("test", type="info")
 
         # And check the results again
         messages = status.show()
         self.assertEqual(len(messages), 1)
         test = messages[0]
-        self.assertEqual(test.message, u"test")
-        self.assertEqual(test.type, u"info")
+        self.assertEqual(test.message, "test")
+        self.assertEqual(test.type, "info")
 
         # Make sure messages are removed again
         self.assertEqual(len(status.show()), 0)
 
         # Test incredibly long messages:
-        status.add(u"m" * 0x400, type=u"t" * 0x20)
+        status.add("m" * 0x400, type="t" * 0x20)
 
         # And check the results again
         messages = status.show()
         self.assertEqual(len(messages), 1)
 
         test = messages[0]
-        assert test.message == u"m" * 0x3FF
-        assert test.type == u"t" * 0x1F
+        assert test.message == "m" * 0x3FF
+        assert test.type == "t" * 0x1F
 
         # Add one HTML messages
-        status.add(u"test", type=u"success")
+        status.add("test", type="success")
 
         # And check the results again
         messages = status.show()
         self.assertEqual(len(messages), 1)
         test = messages[0]
-        self.assertEqual(test.type, u"success")
-        self.assertEqual(test.message, u"test")
+        self.assertEqual(test.type, "success")
+        self.assertEqual(test.message, "test")
         self.assertIsInstance(test.message, six.text_type)
 
         # Add two HTML messages
-        status.add(u"test", type=u"info")
-        status.add(u"test1", u"warn")
+        status.add("test", type="info")
+        status.add("test1", "warn")
 
         # And check the results again
         messages = status.show()
         self.assertEqual(len(messages), 2)
         test = messages[1]
-        self.assertEqual(test.message, u"test1")
+        self.assertEqual(test.message, "test1")
         self.assertIsInstance(test.message, six.text_type)
-        self.assertEqual(test.type, u"warn")
+        self.assertEqual(test.type, "warn")
 
         # add two identical messages
-        status.add(u"test", type=u"info")
-        status.add(u"test", type=u"info")
+        status.add("test", type="info")
+        status.add("test", type="info")
 
         # And check the results again
         messages = status.show()
         self.assertEqual(len(messages), 1)
         test = messages[0]
-        self.assertEqual(test.message, u"test")
+        self.assertEqual(test.message, "test")
         self.assertIsInstance(test.message, six.text_type)
-        self.assertEqual(test.type, u"info")
+        self.assertEqual(test.type, "info")
 
         # Make sure messages are removed again
         self.assertEqual(len(status.show()), 0)
 
         # Test incredibly long messages:
-        status.add(u"m" * 0x400, type=u"t" * 0x20)
+        status.add("m" * 0x400, type="t" * 0x20)
 
         # And check the results again
         messages = status.show()
@@ -141,34 +141,34 @@ class TestHTMLStatusMessages(TestCase):
 
         test = messages[0]
         self.assertIsInstance(test.message, six.text_type)
-        assert test.message == "%s" % (u"m" * 0x3FF)
-        assert test.type == u"t" * 0x1F
+        assert test.message == "%s" % ("m" * 0x3FF)
+        assert test.type == "t" * 0x1F
 
         # Add two mixed messages
-        status.add(u"test", type=u"info")
-        status.add(u"test1", u"warn")
+        status.add("test", type="info")
+        status.add("test1", "warn")
 
         # And check the results again
         messages = status.show()
         self.assertEqual(len(messages), 2)
         test = messages[0]
-        self.assertEqual(test.message, u"test")
+        self.assertEqual(test.message, "test")
         self.assertIsInstance(test.message, six.text_type)
-        self.assertEqual(test.type, u"info")
+        self.assertEqual(test.type, "info")
 
         test = messages[1]
-        self.assertEqual(test.message, u"test1")
+        self.assertEqual(test.message, "test1")
         self.assertIsInstance(test.message, six.text_type)
-        self.assertEqual(test.type, u"warn")
+        self.assertEqual(test.type, "warn")
 
         # Add a more complicated html message
-        status.add(u'You can go <a href="http://plone.org">here</a>.', type=u"success")
+        status.add('You can go <a href="http://plone.org">here</a>.', type="success")
         messages = status.show()
         self.assertEqual(len(messages), 1)
         test = messages[0]
-        self.assertEqual(test.type, u"success")
+        self.assertEqual(test.type, "success")
         self.assertEqual(
             test.message,
-            u'You can go <a href="http://plone.org">here</a>.',  # noqa: E501
+            'You can go <a href="http://plone.org">here</a>.',  # noqa: E501
         )
         self.assertIsInstance(test.message, six.text_type)

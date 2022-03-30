@@ -6,12 +6,12 @@ from zope import schema
 
 
 class ExternalLinkSchema(model.Schema):
-    URL = schema.URI(title=_("label_url", default=u"URL"), required=True)
+    URL = schema.URI(title=_("label_url", default="URL"), required=True)
 
-    title = schema.TextLine(title=_("label_title", default=u"Title"), required=False)
+    title = schema.TextLine(title=_("label_title", default="Title"), required=False)
 
     new_window = schema.Bool(
-        title=_("label_new_window", default=u"Open link in new window"), default=True
+        title=_("label_new_window", default="Open link in new window"), default=True
     )
 
 

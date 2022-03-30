@@ -188,7 +188,7 @@ def formatDate(request, date, length="long"):
     pre-1900 dates.
     """
     if date.year < 1900:
-        return _("date_to_early", default=u"<pre-1900-date>")
+        return _("date_to_early", default="<pre-1900-date>")
     return request.locale.dates.getFormatter("date", length).format(date)
 
 
@@ -201,7 +201,7 @@ def formatDatetime(request, timestamp, length="long"):
     pre-1900 dates.
     """
     if timestamp.year < 1900:
-        return _("date_to_early", default=u"<pre-1900-date>")
+        return _("date_to_early", default="<pre-1900-date>")
     if length == "long":
         return _(
             "format_datetime",

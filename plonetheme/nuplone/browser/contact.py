@@ -28,7 +28,7 @@ TextLines4Rows = FieldWidgetFactory(
 
 class IContact(model.Schema):
     name = schema.TextLine(
-        title=_(u"label_your_name", default="Your name"), required=True
+        title=_("label_your_name", default="Your name"), required=True
     )
     directives.widget(name="plonetheme.nuplone.browser.contact.TextSpan7")
 
@@ -38,7 +38,7 @@ class IContact(model.Schema):
     directives.widget(email="plonetheme.nuplone.browser.contact.TextSpan7")
 
     subject = schema.TextLine(
-        title=_(u"label_subject", default=u"Subject"), required=True
+        title=_("label_subject", default="Subject"), required=True
     )
     directives.widget(subject="plonetheme.nuplone.browser.contact.TextSpan7")
 
@@ -52,7 +52,7 @@ class ContactForm(AutoExtensibleForm, form.Form):
 
     ignoreContext = True
     schema = IContact
-    label = _(u"header_contact", default="Contact")
+    label = _("header_contact", default="Contact")
     default_fieldset_label = None
 
     @property
@@ -71,8 +71,8 @@ class ContactForm(AutoExtensibleForm, form.Form):
             return
 
         subject = _(
-            u"contact_mail_subject",
-            default=u"Contact request: ${subject}",
+            "contact_mail_subject",
+            default="Contact request: ${subject}",
             mapping=data,
         )
         subject = translate(subject, context=self.request)
@@ -95,8 +95,8 @@ class ContactForm(AutoExtensibleForm, form.Form):
             )
             flash(
                 _(
-                    u"error_contactmail",
-                    u"An error occured while processing your contact request. Please try again later.",  # noqa: E501
+                    "error_contactmail",
+                    "An error occured while processing your contact request. Please try again later.",  # noqa: E501
                 ),
                 "error",
             )
@@ -107,12 +107,12 @@ class ContactForm(AutoExtensibleForm, form.Form):
             )
             flash(
                 _(
-                    u"error_contactmail",
-                    u"An error occured while processing your contact request. Please try again later.",  # noqa: E501
+                    "error_contactmail",
+                    "An error occured while processing your contact request. Please try again later.",  # noqa: E501
                 ),
                 "error",
             )
             return
 
-        flash(_(u"Message sent"), "success")
+        flash(_("Message sent"), "success")
         self.request.response.redirect(aq_inner(self.context).absolute_url())

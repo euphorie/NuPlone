@@ -41,9 +41,7 @@ class Login(BrowserView):
 
         if not self.anonymous and "login_attempt" in self.request:
             flash = IStatusMessage(self.request).addStatusMessage
-            flash(
-                _(u"message_logged_in", default=u"You have been logged in."), "success"
-            )
+            flash(_("message_logged_in", default="You have been logged in."), "success")
             mt = getToolByName(self.context, "portal_membership")
             mt.loginUser(self.request)
             next = self.came_from or self.homeUrl(user)
@@ -63,14 +61,14 @@ class Logout(BrowserView):
             mt = getToolByName(self.context, "portal_membership")
             mt.logoutUser(self.request)
             flash(
-                _(u"message_logged_out", default=u"You have been logged out."),
+                _("message_logged_out", default="You have been logged out."),
                 "success",
             )
         else:
             flash(
                 _(
-                    u"message_already_logged_out",
-                    default=u"You were already logged out.",
+                    "message_already_logged_out",
+                    default="You were already logged out.",
                 ),
                 "notice",
             )

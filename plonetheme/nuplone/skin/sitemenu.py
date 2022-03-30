@@ -33,7 +33,7 @@ class Sitemenu(BrowserView):
     @property
     def actions(self):
         """Helper method to generate the contents for the actions menu."""
-        menu = {"title": _("menu_actions", default=u"Actions")}
+        menu = {"title": _("menu_actions", default="Actions")}
         children = menu["children"] = []
         submenu = self.factories()
         if submenu:
@@ -51,7 +51,7 @@ class Sitemenu(BrowserView):
         """Helper method to generate the menu items for creating new content.
         If no content can be created None is returned.
         """
-        menu = {"title": _("menu_add_new", default=u"Add new")}
+        menu = {"title": _("menu_add_new", default="Add new")}
         children = menu["children"] = []
         actions = getFactoriesInContext(self.context)
         actions.sort(key=lambda x: x.title)
@@ -84,7 +84,7 @@ class Sitemenu(BrowserView):
         ec = pa._getExprContext(context)
         actions = [ActionInfo(action, ec) for action in actions]
 
-        menu = {"title": _("menu_organise", default=u"Organise")}
+        menu = {"title": _("menu_organise", default="Organise")}
         children = menu["children"] = []
         for a in actions:
             if a["visible"] and a["allowed"] and a["available"] and not is_root:
@@ -92,7 +92,7 @@ class Sitemenu(BrowserView):
                 if a["id"] == "copy" and context.cb_isCopyable():
                     children.append(
                         {
-                            "title": _("menu_copy", default=u"Copy"),
+                            "title": _("menu_copy", default="Copy"),
                             "url": "%s/@@copy" % context_url,
                         }
                     )
@@ -100,7 +100,7 @@ class Sitemenu(BrowserView):
                 elif a["id"] == "cut" and context.cb_isMoveable():
                     children.append(
                         {
-                            "title": _("menu_cut", default=u"Cut"),
+                            "title": _("menu_cut", default="Cut"),
                             "url": "%s/@@cut" % context_url,
                         }
                     )
@@ -109,14 +109,14 @@ class Sitemenu(BrowserView):
                     url = addTokenToUrl("%s/@@paste" % context_url)
                     children.append(
                         {
-                            "title": _("menu_paste", default=u"Paste"),
+                            "title": _("menu_paste", default="Paste"),
                             "url": url,
                         }
                     )
                 elif a["id"] == "delete":
                     children.append(
                         {
-                            "title": _("menu_delete", default=u"Delete"),
+                            "title": _("menu_delete", default="Delete"),
                             "url": "%s/@@delete" % context_url,
                         }
                     )

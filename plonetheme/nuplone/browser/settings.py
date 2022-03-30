@@ -18,7 +18,7 @@ from zope.schema.interfaces import IPassword
 
 class ISettings(model.Schema):
     fullname = schema.TextLine(
-        title=_("label_fullname", default=u"Full name"), required=True
+        title=_("label_fullname", default="Full name"), required=True
     )
 
     email = schema.ASCIILine(
@@ -26,7 +26,7 @@ class ISettings(model.Schema):
     )
 
     password = schema.Password(
-        title=_("label_password", default=u"Password"), required=True
+        title=_("label_password", default="Password"), required=True
     )
 
 

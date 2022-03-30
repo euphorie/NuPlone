@@ -20,7 +20,7 @@ class Copy(BrowserView):
 
         container.manage_copyObjects(context.getId(), self.request)
         flash = IStatusMessage(self.request).addStatusMessage
-        flash(_(u"message_copy_sucess", default=u"Copied"), "notice")
+        flash(_("message_copy_sucess", default="Copied"), "notice")
         self.request.response.redirect(context.absolute_url())
 
 
@@ -32,12 +32,12 @@ class Cut(BrowserView):
 
         try:
             container.manage_cutObjects(context.getId(), self.request)
-            flash(_("message_cut_success", default=u"Cut."), "notice")
+            flash(_("message_cut_success", default="Cut."), "notice")
         except CopyError:
             flash(
                 _(
                     "message_cut_invalid",
-                    default=u"It is not possible to move this object.",
+                    default="It is not possible to move this object.",
                 ),
                 "error",
             )
@@ -54,14 +54,14 @@ class Paste(BrowserView):
 
         try:
             context.manage_pasteObjects(REQUEST=self.request)
-            flash(_("message_paste_succes", default=u"Pasted"), "success")
+            flash(_("message_paste_succes", default="Pasted"), "success")
         except ConflictError:
             raise
         except ValueError:
             flash(
                 _(
                     "message_paste_valueerror",
-                    default=u"You can not paste the copied data here.",
+                    default="You can not paste the copied data here.",
                 ),
                 "error",
             )
@@ -69,7 +69,7 @@ class Paste(BrowserView):
             flash(
                 _(
                     "message_paste_unauthorized",
-                    default=u"You are not allowed to paste here.",
+                    default="You are not allowed to paste here.",
                 ),
                 "error",
             )
@@ -79,7 +79,7 @@ class Paste(BrowserView):
             flash(
                 _(
                     "message_paste_generic",
-                    default=u"No valid data found in the clipboard.",
+                    default="No valid data found in the clipboard.",
                 ),
                 "error",
             )
@@ -100,18 +100,18 @@ class Delete(BrowserView):
         flash = IStatusMessage(self.request).addStatusMessage
 
         if action == "cancel":
-            flash(_("message_delete_cancel", default=u"Deletion cancelled"), "notice")
+            flash(_("message_delete_cancel", default="Deletion cancelled"), "notice")
             self.request.response.redirect(context.absolute_url())
         elif action == "delete":
             authenticator = getMultiAdapter(
-                (self.context, self.request), name=u"authenticator"
+                (self.context, self.request), name="authenticator"
             )
             if not authenticator.verify():
                 raise zExceptions.Unauthorized
 
             container = aq_parent(context)
             container.manage_delObjects([context.getId()])
-            flash(_("message_delete_success", default=u"Object removed"), "success")
+            flash(_("message_delete_success", default="Object removed"), "success")
             self.request.response.redirect(container.absolute_url())
 
     def __call__(self):

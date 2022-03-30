@@ -48,20 +48,20 @@ class GroupTile(AppConfigTile):
             return ""
         self.update()
         if not self.tiles:
-            return u""
+            return ""
         result = self.index()
         if not result.strip():
-            return u""
+            return ""
         config = self.data
         wrapper = config.get("wrapper")
         if wrapper:
-            prefix = [u"<%s" % wrapper]
+            prefix = ["<%s" % wrapper]
             if config.get("id"):
-                prefix.append(u' id="%s"' % config["id"])
+                prefix.append(' id="%s"' % config["id"])
             if config.get("class"):
-                prefix.append(u' class="%s"' % config["class"])
-            prefix.append(u">")
-            prefix = u"".join(prefix)
-            postfix = u"</%s>" % wrapper
-            result = u"%s%s%s" % (prefix, result, postfix)
+                prefix.append(' class="%s"' % config["class"])
+            prefix.append(">")
+            prefix = "".join(prefix)
+            postfix = "</%s>" % wrapper
+            result = "%s%s%s" % (prefix, result, postfix)
         return result

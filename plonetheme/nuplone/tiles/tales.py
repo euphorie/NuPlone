@@ -18,7 +18,7 @@ class TileExpression(StringExpr):
         tile = getTile(context, request, name)
         if tile is None:  # XXX Use custom exception?
             log.warning("Request for unknown tile %s", name)
-            return u""
+            return ""
         return Markup(tile())
 
 
