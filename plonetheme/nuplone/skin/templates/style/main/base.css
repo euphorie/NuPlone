@@ -3726,6 +3726,11 @@ a:hover .toggleNode{
 	margin: 0;
 }
 
+#portal-footer-signature {
+  clear: both;
+  text-align: center;
+}
+
 /* @end */
 
 /* @group Contextual Portlet */
@@ -4237,4 +4242,3 @@ hr.clear {
 
 
 /* @end */
-
