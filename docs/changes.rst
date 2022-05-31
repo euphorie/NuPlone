@@ -4,7 +4,7 @@ Changelog
 2.1.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix the position of the footer (fixes `#59 <https://github.com/euphorie/NuPlone/issues/39>`_) [ale-rt]
 
 
 2.1.1 (2022-03-30)
