@@ -1,4 +1,4 @@
-from App.class_init import default__class_init__ as InitializeClass
+from AccessControl.class_init import InitializeClass
 from plonetheme.nuplone.skin.interfaces import NuPloneSkin
 from Products.PluggableAuthService.interfaces.plugins import IChallengePlugin
 from Products.PluggableAuthService.plugins.BasePlugin import BasePlugin

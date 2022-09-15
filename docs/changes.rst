@@ -4,7 +4,8 @@ Changelog
 2.1.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Update a deprecated import
+  [ale-rt]
 
 
 2.1.2 (2022-06-06)
