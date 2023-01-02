@@ -78,3 +78,39 @@ class SiteMenuTests(unittest.TestCase):
             self.assertIsNotNone(menu)
             children_titles = [i["title"] for i in menu["children"]]
             self.assertFalse("menu_paste" in children_titles)
+
+    def test_adding_to_same_category(self):
+        from plonetheme.nuplone.skin.sitemenu import Sitemenu
+
+        sitemenu = Sitemenu(None, None)
+        sitemenu.factories = lambda: {
+            "title": "cat1",
+            "children": [{"title": "sub1.1"}, {"title": "sub1.2"}],
+        }
+        sitemenu.organise = lambda: {"title": "cat1", "children": [{"title": "sub1.3"}]}
+
+        menu = sitemenu.actions
+        self.assertEqual(len(menu["children"]), 1)
+        self.assertEqual(menu["children"][0]["title"], "cat1")
+        self.assertEqual(len(menu["children"][0]["children"]), 3)
+        self.assertEqual(menu["children"][0]["children"][0]["title"], "sub1.1")
+        self.assertEqual(menu["children"][0]["children"][1]["title"], "sub1.2")
+        self.assertEqual(menu["children"][0]["children"][2]["title"], "sub1.3")
+
+    def test_add_submenu(self):
+        from plonetheme.nuplone.skin.sitemenu import Sitemenu
+
+        sitemenu = Sitemenu(None, None)
+        menu = [
+            {"title": "cat1", "children": [{"title": "sub1.1"}]},
+            {"title": "cat2", "children": [{"title": "sub2.1"}]},
+        ]
+        sitemenu.add_submenu(menu, {"title": "cat1", "children": [{"title": "sub1.2"}]})
+        self.assertEqual(len(menu), 2)
+        self.assertEqual(menu[0]["title"], "cat1")
+        self.assertEqual(len(menu[0]["children"]), 2)
+        self.assertEqual(menu[0]["children"][0]["title"], "sub1.1")
+        self.assertEqual(menu[0]["children"][1]["title"], "sub1.2")
+        self.assertEqual(menu[1]["title"], "cat2")
+        self.assertEqual(len(menu[1]["children"]), 1)
+        self.assertEqual(menu[1]["children"][0]["title"], "sub2.1")

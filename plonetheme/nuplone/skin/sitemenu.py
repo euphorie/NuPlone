@@ -30,6 +30,14 @@ class Sitemenu(BrowserView):
     def view_type(self):
         return self.request.get("view_type", "view")
 
+    def add_submenu(self, menu, submenu):
+        """Add a submenu to the menu by extending or adding a category."""
+        for item in menu:
+            if item["title"] == submenu["title"]:
+                item["children"].extend(submenu["children"])
+                return
+        menu.append(submenu)
+
     @property
     def actions(self):
         """Helper method to generate the contents for the actions menu."""
@@ -37,10 +45,10 @@ class Sitemenu(BrowserView):
         children = menu["children"] = []
         submenu = self.factories()
         if submenu:
-            children.append(submenu)
+            self.add_submenu(children, submenu)
         submenu = self.organise()
         if submenu:
-            children.append(submenu)
+            self.add_submenu(children, submenu)
 
         if children:
             return menu
