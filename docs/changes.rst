@@ -4,7 +4,8 @@ Changelog
 2.1.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Update buildout, test and CI infrastructure.
+  [thet]
 
 
 2.1.3 (2022-09-15)
