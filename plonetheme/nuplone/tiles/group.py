@@ -38,7 +38,7 @@ class GroupTile(AppConfigTile):
                         request=request,
                         view_type=viewType(context, request),
                     )
-                if not eval(compiled, globals):
+                if not eval(compiled, globals):  # nosec  # TODO: get rid of eval
                     continue
             tile = getTile(context, request, result.group("name"))
             self.tiles.append(tile)

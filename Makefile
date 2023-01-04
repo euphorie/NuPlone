@@ -90,8 +90,6 @@ clean::
 
 pot: bin/pybabel
 	bin/pybabel extract -F babel.cfg \
-		--copyright-holder='Simplon B.V. - Wichert Akkerman' \
-		--msgid-bugs-address='euphorie@lists.wiggy.net' \
 		--charset=utf-8 \
 		plonetheme > $(POT)~
 	mv $(POT)~ $(POT)

@@ -9,7 +9,7 @@ class LanguageTile(Tile):
         languages = [
             _ for _ in lt.getAvailableLanguageInformation().values() if _["selected"]
         ]
-        languages.sort(key=lambda l: l.get("native", l["name"]))
+        languages.sort(key=lambda lang: lang.get("native", lang["name"]))
         self.languages = languages
         self.current_language = lt.getPreferredLanguage()
 
