@@ -3,5 +3,11 @@ prune Prototype
 recursive-include plonetheme *
 recursive-include docs *
 recursive-include src *
-include *.rst pyproject.toml
+include *.rst
+include MANIFEST.in
+include pyproject.toml
+include requirements.txt
+include setup.cfg
+include setup.py
+include versions.cfg
 global-exclude *.pyc
