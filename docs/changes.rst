@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.1.4 (unreleased)
+2.1.4 (2023-01-04)
 ------------------
 
 - Sitemenu: Add a helper method to add submenus to existing categories.
