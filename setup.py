@@ -29,7 +29,7 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
     ],
-    keywords="",
+    keywords="web zope plone theme",
     author="Cornelis Kolbach, Wichert Akkerman and Syslab.com",
     author_email="info@syslab.com",
     url="https://github.com/euphorie/NuPlone",
