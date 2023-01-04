@@ -4,6 +4,8 @@ Changelog
 2.1.4 (unreleased)
 ------------------
 
+- Sitemenu: Add a helper method to add submenus to existing categories.
+  [thet]
 - Update pre-commit config.
   [thet]
 - Update buildout, test and CI infrastructure.
