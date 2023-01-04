@@ -4,6 +4,8 @@ Changelog
 2.1.4 (unreleased)
 ------------------
 
+- Update pre-commit config.
+  [thet]
 - Update buildout, test and CI infrastructure.
   [thet]
 
