@@ -1,27 +1,7 @@
-include *.cfg
-include *.rst
-include *.txt
-recursive-include plonetheme *.zcml
-recursive-include plonetheme *.pt
-recursive-include plonetheme/nuplone/locales *.po
-recursive-include plonetheme/nuplone/locales *.mo
-recursive-include plonetheme *.js
-recursive-include plonetheme *.map
-recursive-include plonetheme *.png
-graft docs
-prune docs/.build
+exclude *
 prune Prototype
-prune bundles
-prune redactor
-prune webpack
-prune src
-graft plonetheme/nuplone/profiles
-graft plonetheme/nuplone/skin/templates
-graft plonetheme/nuplone/tiles/templates
-graft plonetheme/nuplone/z3cform/templates
-prune Makefile
-prune *.json
-
-# added by check_manifest.py
-include *.py
-recursive-include plonetheme *.pot
+recursive-include plonetheme *
+recursive-include docs *
+recursive-include src *
+include *.rst pyproject.toml
+global-exclude *.pyc
