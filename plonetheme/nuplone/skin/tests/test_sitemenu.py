@@ -1,4 +1,3 @@
-# coding=utf-8
 from plone.app.testing import login
 from plone.app.testing import setRoles
 from plone.app.testing import SITE_OWNER_NAME
@@ -22,7 +21,7 @@ class SiteMenuIntegrationTests(unittest.TestCase):
         alsoProvides(self.request, NuPloneSkin)
 
     def test_settings_url(self):
-        """Check that the sitemenu view provides a settings_url attribute"""
+        """Check that the sitemenu view provides a settings_url attribute."""
         view = zope.component.getMultiAdapter(
             (self.portal, self.request),
             name="sitemenu",

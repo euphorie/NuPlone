@@ -11,7 +11,7 @@ log = logging.getLogger(__name__)
 
 class TileExpression(StringExpr):
     def __call__(self, econtext):
-        name = super(TileExpression, self).__call__(econtext)
+        name = super().__call__(econtext)
         context = econtext.vars["context"]
         request = econtext.vars["request"]
 

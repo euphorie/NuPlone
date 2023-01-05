@@ -1,4 +1,3 @@
-# coding=utf-8
 from Acquisition import aq_inner
 from OFS.interfaces import ICopyContainer
 from plone import api
@@ -57,6 +56,7 @@ class Sitemenu(BrowserView):
 
     def factories(self):
         """Helper method to generate the menu items for creating new content.
+
         If no content can be created None is returned.
         """
         menu = {"title": _("menu_add_new", default="Add new")}

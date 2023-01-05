@@ -32,7 +32,7 @@ class ISettings(model.Schema):
 
 @adapter(IPropertiedUser, IField)
 @implementer(IDataManager)
-class UserPropertyDataManager(object):
+class UserPropertyDataManager:
     def __init__(self, user, field):
         self.user = user
         self.field = field
@@ -65,7 +65,7 @@ class UserPropertyDataManager(object):
 
 @adapter(IPropertiedUser, IPassword)
 @implementer(IDataManager)
-class UserPasswordDataManager(object):
+class UserPasswordDataManager:
     def __init__(self, user, field):
         self.user = user
         self.field = field
@@ -99,7 +99,6 @@ class UserPasswordDataManager(object):
 
 
 class Settings(AutoExtensibleForm, form.EditForm):
-
     schema = ISettings
 
     def getContent(self):

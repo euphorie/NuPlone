@@ -1,20 +1,14 @@
-# -*- coding: UTF-8 -*-
-""" StatusMessage adapter tests.
-"""
+"""StatusMessage adapter tests."""
 from plonetheme.nuplone.testing import NUPLONE_INTEGRATION_TESTING
 from Products.statusmessages.interfaces import IStatusMessage
 from unittest import TestCase
-
-import six
 
 
 class TestHTMLStatusMessages(TestCase):
     layer = NUPLONE_INTEGRATION_TESTING
 
     def testAdapter(self):
-        """Test status messages
-        First some boilerplate.
-        """
+        """Test status messages First some boilerplate."""
         request = self.layer["request"].clone()
 
         # Now lets make sure we can actually adapt the request.
@@ -103,7 +97,7 @@ class TestHTMLStatusMessages(TestCase):
         test = messages[0]
         self.assertEqual(test.type, "success")
         self.assertEqual(test.message, "test")
-        self.assertIsInstance(test.message, six.text_type)
+        self.assertIsInstance(test.message, str)
 
         # Add two HTML messages
         status.add("test", type="info")
@@ -114,7 +108,7 @@ class TestHTMLStatusMessages(TestCase):
         self.assertEqual(len(messages), 2)
         test = messages[1]
         self.assertEqual(test.message, "test1")
-        self.assertIsInstance(test.message, six.text_type)
+        self.assertIsInstance(test.message, str)
         self.assertEqual(test.type, "warn")
 
         # add two identical messages
@@ -126,7 +120,7 @@ class TestHTMLStatusMessages(TestCase):
         self.assertEqual(len(messages), 1)
         test = messages[0]
         self.assertEqual(test.message, "test")
-        self.assertIsInstance(test.message, six.text_type)
+        self.assertIsInstance(test.message, str)
         self.assertEqual(test.type, "info")
 
         # Make sure messages are removed again
@@ -140,7 +134,7 @@ class TestHTMLStatusMessages(TestCase):
         self.assertEqual(len(messages), 1)
 
         test = messages[0]
-        self.assertIsInstance(test.message, six.text_type)
+        self.assertIsInstance(test.message, str)
         assert test.message == "%s" % ("m" * 0x3FF)
         assert test.type == "t" * 0x1F
 
@@ -153,12 +147,12 @@ class TestHTMLStatusMessages(TestCase):
         self.assertEqual(len(messages), 2)
         test = messages[0]
         self.assertEqual(test.message, "test")
-        self.assertIsInstance(test.message, six.text_type)
+        self.assertIsInstance(test.message, str)
         self.assertEqual(test.type, "info")
 
         test = messages[1]
         self.assertEqual(test.message, "test1")
-        self.assertIsInstance(test.message, six.text_type)
+        self.assertIsInstance(test.message, str)
         self.assertEqual(test.type, "warn")
 
         # Add a more complicated html message
@@ -171,4 +165,4 @@ class TestHTMLStatusMessages(TestCase):
             test.message,
             'You can go <a href="http://plone.org">here</a>.',  # noqa: E501
         )
-        self.assertIsInstance(test.message, six.text_type)
+        self.assertIsInstance(test.message, str)

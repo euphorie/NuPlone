@@ -1,4 +1,3 @@
-# coding=utf-8
 from AccessControl import getSecurityManager
 from Acquisition import aq_chain
 from Acquisition import aq_inner
@@ -15,7 +14,6 @@ from z3c.form.interfaces import IEditForm
 import collections
 import email.utils as emailutils
 import logging
-import six
 
 
 log = logging.getLogger(__name__)
@@ -45,10 +43,12 @@ def isAnonymous(user=None):
 
 
 def viewType(context, request):
-    """Determine what type of view the user is looking at. This returns
-    one of three options: ``view`` for normal object views, ``add``
-    for add forms, ``edit`` for edit forms, and ``other`` for all other
-    types."""
+    """Determine what type of view the user is looking at.
+
+    This returns one of three options: ``view`` for normal object views,
+    ``add`` for add forms, ``edit`` for edit forms, and ``other`` for
+    all other types.
+    """
 
     view = request.other.get("PUBLISHED")
     if view is not None:
@@ -82,17 +82,17 @@ def viewType(context, request):
     return "other"
 
 
-class SimpleLiteral(six.text_type):
+class SimpleLiteral(str):
     def __html__(self):
-        return six.text_type(self)
+        return str(self)
 
 
 def setLanguage(request, context, lang=None):
-    """Switch Plone to another language. If no language is given via the
-    `lang` parameter the language is taken from a `language`
-    request parameter. If a dialect was chosen but is not available the main
-    language is used instead. If the main language is also not available
-    nothing is done and ``False`` is returned.
+    """Switch Plone to another language. If no language is given via the `lang`
+    parameter the language is taken from a `language` request parameter. If a
+    dialect was chosen but is not available the main language is used instead.
+    If the main language is also not available nothing is done and ``False`` is
+    returned.
 
     It is safe to call this method before rendering a template: it will
     immediately switch the current language. That means there is no need
@@ -128,8 +128,8 @@ FactoryInfo = collections.namedtuple("FactoryInfo", "id title description url")
 
 
 def getFactoriesInContext(context):
-    """Return a list of all factories available to the current user at
-    the given location."""
+    """Return a list of all factories available to the current user at the
+    given location."""
     context = aq_inner(context)
     ftis = context.allowedContentTypes()
     if not ftis:
@@ -159,11 +159,12 @@ def createEmailTo(
     body,
     format="plain",
 ):
-    """Create an :obj:`email.MIMEText.MIMEtext` instance for an email. This
-    method will take care of adding addings a date header and message ID
-    to the email, as well as quoting of non-ASCII content.
+    """Create an :obj:`email.MIMEText.MIMEtext` instance for an email.
+
+    This method will take care of adding addings a date header and
+    message ID to the email, as well as quoting of non-ASCII content.
     """
-    if isinstance(body, six.text_type):
+    if isinstance(body, str):
         mail = MIMEText(body.encode("utf-8"), format, "utf-8")
     else:
         mail = MIMEText(body, format)
@@ -185,8 +186,7 @@ def createEmailTo(
 
 def formatDate(request, date, length="long"):
     """Wrapper aound the zope.i18n date formatter which does not abort on
-    pre-1900 dates.
-    """
+    pre-1900 dates."""
     if date.year < 1900:
         return _("date_to_early", default="<pre-1900-date>")
     return request.locale.dates.getFormatter("date", length).format(date)
@@ -198,8 +198,7 @@ def formatTime(request, time, length=None):
 
 def formatDatetime(request, timestamp, length="long"):
     """Wrapper aound the zope.i18n datetime formatter which does not abort on
-    pre-1900 dates.
-    """
+    pre-1900 dates."""
     if timestamp.year < 1900:
         return _("date_to_early", default="<pre-1900-date>")
     if length == "long":

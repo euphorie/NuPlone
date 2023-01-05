@@ -14,7 +14,8 @@ log = logging.getLogger(__name__)
 
 class Login(BrowserView):
     def homeUrl(self, user):
-        """Return a suitable `home' for a user if came_from is unset or invalid."""
+        """Return a suitable `home' for a user if came_from is unset or
+        invalid."""
         put = getToolByName(self.context, "portal_url")
         return put.getPortalObject().absolute_url()
 
@@ -51,7 +52,7 @@ class Login(BrowserView):
 
     def __call__(self):
         self.update()
-        return super(Login, self).__call__()
+        return super().__call__()
 
 
 class Logout(BrowserView):

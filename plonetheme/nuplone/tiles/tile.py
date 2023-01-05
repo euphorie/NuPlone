@@ -25,7 +25,7 @@ class AppConfigTile(Tile):
 
 @implementer(ITileDataManager)
 @adapter(IAppConfigTile)
-class AppConfigTileDataManager(object):
+class AppConfigTileDataManager:
     def __init__(self, tile):
         self.tile = tile
 
@@ -33,7 +33,7 @@ class AppConfigTileDataManager(object):
         try:
             return json.loads(
                 api.portal.get_registry_record(
-                    "plonetheme.nuplone.appconfigtile_{}".format(self.tile.id),
+                    f"plonetheme.nuplone.appconfigtile_{self.tile.id}",
                     default="{}",
                 )
             )
@@ -48,7 +48,7 @@ class AppConfigTileDataManager(object):
 def getTile(context, request, name):
     config = json.loads(
         api.portal.get_registry_record(
-            "plonetheme.nuplone.appconfigtile_{}".format(name), default="{}"
+            f"plonetheme.nuplone.appconfigtile_{name}", default="{}"
         )
         or "{}"
     )

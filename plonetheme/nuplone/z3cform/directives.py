@@ -40,8 +40,7 @@ class depends(MetadataListDirective):
 
 @adapter(Interface, Interface, AutoExtensibleForm)
 @implementer(plone.z3cform.fieldsets.interfaces.IFormExtender)
-class FormDependencyExtender(object):
-
+class FormDependencyExtender:
     order = 0
 
     def __init__(self, context, request, form):
@@ -81,7 +80,7 @@ class FormDependencyExtender(object):
 
 @adapter(IWidget, Interface)
 @implementer(IBrowserView)
-class WidgetDependencyView(object):
+class WidgetDependencyView:
     def __init__(self, widget, request):
         self.widget = widget
         self.request = request
@@ -99,11 +98,11 @@ class WidgetDependencyView(object):
             if isinstance(widget, CheckBoxWidget):
                 name = "%s:list" % name
             if dependency.op in ["on", "off"]:
-                classes.append("dependsOn-%s-%s" % (name, dependency.op))
+                classes.append(f"dependsOn-{name}-{dependency.op}")
             elif dependency.op == "==":
-                classes.append("dependsOn-%s-equals-%s" % (name, dependency.value))
+                classes.append(f"dependsOn-{name}-equals-{dependency.value}")
             elif dependency.op == "!=":
-                classes.append("dependsOn-%s-notEquals-%s" % (name, dependency.value))
+                classes.append(f"dependsOn-{name}-notEquals-{dependency.value}")
 
             classes.append("dependsAction-%s" % dependency.action)
 
@@ -112,8 +111,7 @@ class WidgetDependencyView(object):
 
 @adapter(Interface, Interface, AutoExtensibleForm)
 @implementer(plone.z3cform.fieldsets.interfaces.IFormExtender)
-class FormLayoutExtender(object):
-
+class FormLayoutExtender:
     order = 10
 
     def __init__(self, context, request, form):
@@ -125,12 +123,10 @@ class FormLayoutExtender(object):
         fieldsets = mergedTaggedValueList(self.form.schema, FIELDSETS_KEY)
         if not isinstance(self.form.groups, list):
             self.form.groups = list(self.form.groups)
-        groups = dict(
-            [
-                (group.__name__, (index, group))
-                for (index, group) in enumerate(self.form.groups)
-            ]
-        )
+        groups = {
+            group.__name__: (index, group)
+            for (index, group) in enumerate(self.form.groups)
+        }
         for fieldset in fieldsets:
             layout = getattr(fieldset, "layout", None)
             if layout is None:

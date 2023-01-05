@@ -15,7 +15,6 @@ from zope import schema
 from zope.i18n import translate
 
 import logging
-import socket
 
 
 log = logging.getLogger(__name__)
@@ -49,7 +48,6 @@ class IContact(model.Schema):
 
 
 class ContactForm(AutoExtensibleForm, form.Form):
-
     ignoreContext = True
     schema = IContact
     label = _("header_contact", default="Contact")
@@ -101,7 +99,7 @@ class ContactForm(AutoExtensibleForm, form.Form):
                 "error",
             )
             return
-        except socket.error as e:
+        except OSError as e:
             log.error(
                 "Socket error sending contact form for %s: %s", data["email"], e[1]
             )

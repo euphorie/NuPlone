@@ -1,4 +1,3 @@
-# coding=utf-8
 from Acquisition import aq_inner
 from Acquisition import aq_parent
 from plone import api
@@ -24,7 +23,7 @@ class INavtreeFactory(Interface):
         """Return a CatalogNavTree instance."""
 
 
-class CatalogNavTree(object):
+class CatalogNavTree:
     def __init__(self, context, request):
         self.build(context, request)
 
@@ -96,10 +95,9 @@ class CatalogNavTree(object):
         self.root = cache[navrootPath]
 
     def __iter__(self):
-        """Breadth-first iterator for navtree nodes which allows
-        modifications of the tree during iteration. Modifications
-        are given by passing a command to the next() method of the
-        generator. For example:
+        """Breadth-first iterator for navtree nodes which allows modifications
+        of the tree during iteration. Modifications are given by passing a
+        command to the next() method of the generator. For example:
 
         >>> tree=CatalogNavTree(context, request)
         >>> g=tree.iter()
@@ -140,7 +138,7 @@ class CatalogNavTree(object):
 
 @implementer(INavtreeFactory)
 @adapter(Interface, Interface)
-class TreeFactory(object):
+class TreeFactory:
     def __init__(self, context, request):
         self.context = context
         self.request = request
@@ -152,9 +150,7 @@ class TreeFactory(object):
 class NavigationTile(Tile):
     def update(self):
         portal_types = getToolByName(self.context, "portal_types")
-        type_titles = dict(
-            [(fti.getId(), fti.Title()) for fti in portal_types.listTypeInfo()]
-        )
+        type_titles = {fti.getId(): fti.Title() for fti in portal_types.listTypeInfo()}
 
         use_view_types = api.portal.get_registry_record(
             "plone.types_use_view_action_in_listings", default=[]
