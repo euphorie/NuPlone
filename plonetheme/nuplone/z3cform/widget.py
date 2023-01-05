@@ -31,7 +31,7 @@ class SingleRadioWidget(RadioWidget):
     """
 
     def update(self):
-        super(SingleRadioWidget, self).update()
+        super().update()
         for item in self.items:
             item["name"] = item["name"].split(":list", 1)[0]
 
@@ -64,7 +64,7 @@ class NicerNamedImageWidget(NamedImageWidget):
                     blob.__repr__()
             except POSKeyError:
                 return False
-        return super(NicerNamedImageWidget, self).allow_nochange
+        return super().allow_nochange
 
     def extract(self, default=NOVALUE):
         action = self.request.get("%s.action" % self.name, None)
@@ -107,7 +107,7 @@ class NicerNamedFileWidget(NamedFileWidget):
                     blob.__repr__()
             except POSKeyError:
                 return False
-        return super(NicerNamedFileWidget, self).allow_nochange
+        return super().allow_nochange
 
     def extract(self, default=NOVALUE):
         action = self.request.get("%s.action" % self.name, None)

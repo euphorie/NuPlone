@@ -23,7 +23,7 @@ class Error(BrowserView):
 
     def __call__(self):
         self.update()
-        return super(Error, self).__call__()
+        return super().__call__()
 
 
 class Unauthorized(Error):
@@ -39,5 +39,5 @@ class Unauthorized(Error):
                     pass
 
     def update(self):
-        super(Unauthorized, self).update()
+        super().update()
         self.authenticate()

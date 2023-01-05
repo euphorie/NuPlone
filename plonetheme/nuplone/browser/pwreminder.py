@@ -1,4 +1,3 @@
-# coding=utf-8
 from Acquisition import aq_inner
 from plone import api
 from plone.autoform.form import AutoExtensibleForm
@@ -17,7 +16,6 @@ from zope import schema
 from zope.i18n import translate
 
 import logging
-import socket
 
 
 log = logging.getLogger(__name__)
@@ -36,7 +34,6 @@ class IPasswordReset(model.Schema):
 
 
 class RequestPasswordForm(AutoExtensibleForm, form.Form):
-
     email_template = ViewPageTemplateFile("templates/pwreset-email.pt")
 
     ignoreContext = True
@@ -91,7 +88,7 @@ class RequestPasswordForm(AutoExtensibleForm, form.Form):
         ppr = getToolByName(self.context, "portal_password_reset")
         reset = ppr.requestReset(user.getId())
         portal_url = aq_inner(self.context).absolute_url()
-        reset_url = "%s/@@reset-password/%s" % (portal_url, reset["randomstring"])
+        reset_url = "{}/@@reset-password/{}".format(portal_url, reset["randomstring"])
 
         data["site"] = self.context.title
         subject = _(
@@ -128,7 +125,7 @@ class RequestPasswordForm(AutoExtensibleForm, form.Form):
                 "error",
             )
             return
-        except socket.error as e:
+        except OSError as e:
             log.error(
                 "Socket error sending password reset form to: %s", email_address, e[1]
             )
@@ -152,7 +149,6 @@ class RequestPasswordForm(AutoExtensibleForm, form.Form):
 
 
 class PasswordReset(AutoExtensibleForm, form.Form):
-
     randomstring = None
 
     ignoreContext = True

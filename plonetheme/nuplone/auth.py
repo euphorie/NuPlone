@@ -7,9 +7,8 @@ from zope.interface import implementer
 
 @implementer(IChallengePlugin)
 class LoginChallenger(BasePlugin):
-    """Simple login challenger which does nothing, allowing the
-    Unauthorized exception view to be used instead.
-    """
+    """Simple login challenger which does nothing, allowing the Unauthorized
+    exception view to be used instead."""
 
     meta_type = "NuPlone Login Challenger"
     id = "nuplone-challenger"

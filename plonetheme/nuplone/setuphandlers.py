@@ -1,4 +1,3 @@
-# coding=utf-8
 from plone import api
 from plonetheme.nuplone.auth import LoginChallenger
 

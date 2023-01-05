@@ -63,5 +63,5 @@ class GroupTile(AppConfigTile):
             prefix.append(">")
             prefix = "".join(prefix)
             postfix = "</%s>" % wrapper
-            result = "%s%s%s" % (prefix, result, postfix)
+            result = f"{prefix}{result}{postfix}"
         return result

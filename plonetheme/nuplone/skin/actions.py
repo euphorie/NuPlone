@@ -123,4 +123,4 @@ class Delete(BrowserView):
 
         if self.request.method == "POST":
             return self.post()
-        return super(Delete, self).__call__()
+        return super().__call__()

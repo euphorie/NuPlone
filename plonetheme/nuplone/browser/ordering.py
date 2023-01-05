@@ -1,4 +1,3 @@
-# coding=utf-8
 from Acquisition import aq_inner
 from plone.folder.interfaces import IExplicitOrdering
 from Products.Five.browser import BrowserView

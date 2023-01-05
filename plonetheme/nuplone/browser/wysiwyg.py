@@ -16,6 +16,5 @@ class ExternalLinkSchema(model.Schema):
 
 
 class EditLink(AutoExtensibleForm, form.EditForm):
-
     ignoreContext = True
     schema = ExternalLinkSchema
