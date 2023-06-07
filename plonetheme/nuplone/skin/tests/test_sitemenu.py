@@ -4,7 +4,6 @@ from plone.app.testing import SITE_OWNER_NAME
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME
 from plonetheme.nuplone.skin.interfaces import NuPloneSkin
-from plonetheme.nuplone.testing import NUPLONE_FUNCTIONAL_TESTING
 from plonetheme.nuplone.testing import NUPLONE_INTEGRATION_TESTING
 from zope.interface import alsoProvides
 
@@ -30,7 +29,7 @@ class SiteMenuIntegrationTests(unittest.TestCase):
 
 
 class SiteMenuTests(unittest.TestCase):
-    layer = NUPLONE_FUNCTIONAL_TESTING
+    layer = NUPLONE_INTEGRATION_TESTING
 
     def setUp(self):
         self.portal = self.layer["portal"]
@@ -58,25 +57,6 @@ class SiteMenuTests(unittest.TestCase):
         # We cannot paste the object in the site root
         v = zope.component.getMultiAdapter((self.portal, self.request), name="sitemenu")
         self.assertIsNone(v.organise())
-        # XXX it seems we have no actions here
-        return
-        # We can however paste the object in each of the folders
-        for folder in [self.source_folder, self.dest_folder]:
-            v = zope.component.getMultiAdapter((folder, self.request), name="sitemenu")
-            menu = v.organise()
-            self.assertIsNotNone(menu)
-            children_titles = [i["title"] for i in menu["children"]]
-            self.assertTrue("menu_paste" in children_titles)
-
-        # Now when we give the user the Viewer role, they cannot paste anymore
-        # so we should not see "Paste" as an available action.
-        setRoles(self.portal, TEST_USER_ID, ("Viewer",))
-        for folder in [self.source_folder, self.dest_folder]:
-            v = zope.component.getMultiAdapter((folder, self.request), name="sitemenu")
-            menu = v.organise()
-            self.assertIsNotNone(menu)
-            children_titles = [i["title"] for i in menu["children"]]
-            self.assertFalse("menu_paste" in children_titles)
 
     def test_adding_to_same_category(self):
         from plonetheme.nuplone.skin.sitemenu import Sitemenu
