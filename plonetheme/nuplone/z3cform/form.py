@@ -11,7 +11,7 @@ def FieldWidgetFactory(factory, **kw):
 
     def wrapper(field, request):
         widget = factory(field, request)
-        for (key, value) in kw.items():
+        for key, value in kw.items():
             setattr(widget, key, value)
         return widget
 

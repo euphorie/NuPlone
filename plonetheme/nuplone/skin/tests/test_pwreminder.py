@@ -1,4 +1,3 @@
-from plone import api
 from plone.testing.zope import Browser
 from plonetheme.nuplone.testing import NUPLONE_FUNCTIONAL_TESTING
 
@@ -22,13 +21,9 @@ class PasswordResetTests(unittest.TestCase):
         # browser = Browser(self.layer["app"])
         # browser.handleErrors = False
         # url = "%s/reset-password/bogus" % self.layer["portal"].absolute_url()
-
-        portal = self.layer["portal"]
-
         with self.assertRaises(NotFound):
             self.layer["portal"].restrictedTraverse("reset-password/bogus")
             # browser.open(url)
-
 
     def testDoubleKeys(self):
         from zExceptions import NotFound
