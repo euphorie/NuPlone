@@ -96,7 +96,6 @@ class Sitemenu(BrowserView):
         children = menu["children"] = []
         for a in actions:
             if a["visible"] and a["allowed"] and a["available"] and not is_root:
-
                 if a["id"] == "copy" and context.cb_isCopyable():
                     children.append(
                         {

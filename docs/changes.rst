@@ -1,10 +1,11 @@
 Changelog
 =========
 
-2.1.5 (unreleased)
+2.2.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Support Plone 6
+  [ale-rt]
 
 
 2.1.4 (2023-01-04)

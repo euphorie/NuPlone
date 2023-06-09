@@ -71,7 +71,7 @@ class FormDependencyExtender:
             group = todo.pop()
             if hasattr(group, "groups"):
                 todo.extendleft(group.groups)
-            for (name, field) in group.fields.items():
+            for name, field in group.fields.items():
                 depends = dependencies.get(name, None)
                 if depends is None:
                     continue

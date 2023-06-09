@@ -15,7 +15,7 @@ class UpdateOrder(BrowserView):
             return
 
         orderer = IExplicitOrdering(aq_inner(self.context))
-        for (pos, id) in enumerate(order):
+        for pos, id in enumerate(order):
             if id == "" or "-" not in id:
                 continue
             id = id.split("-", 1)[1]
