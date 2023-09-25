@@ -11,44 +11,17 @@
     },
     "license": "GPL 2.0",
     "dependencies": {
-        "@patternslib/pat-redactor": "^6.0.1",
-        "@patternslib/patternslib": "^7.4.0",
-        "jquery-ui-dist": "^1.13.1",
+        "@patternslib/pat-redactor": "^7.0.0",
+        "@patternslib/patternslib": "^9.9.5",
+        "jquery-ui-dist": "^1.13.2",
         "redactor": "git+ssh://git@github.com/syslabcom/redactor.git#master"
     },
     "devDependencies": {
-        "@babel/core": "^7.17.8",
-        "@babel/eslint-parser": "^7.17.0",
-        "@babel/plugin-proposal-optional-chaining": "^7.16.7",
-        "@babel/preset-env": "^7.16.11",
-        "babel-loader": "^8.2.4",
-        "copy-webpack-plugin": "^10.2.4",
-        "core-js": "3.21.1",
-        "css-loader": "^6.7.1",
-        "eslint": "^8.11.0",
-        "eslint-config-prettier": "^8.5.0",
-        "expose-loader": "^3.0.0",
-        "identity-obj-proxy": "^3.0.0",
-        "imports-loader": "^3.1.0",
-        "inspectpack": "^4.7.1",
-        "prettier": "^2.6.1",
-        "regenerator-runtime": "^0.13.9",
-        "sass": "^1.49.9",
-        "sass-loader": "^12.6.0",
-        "style-loader": "^3.3.0",
-        "terser-webpack-plugin": "^5.3.1",
-        "webpack": "^5.76.0",
-        "webpack-bundle-analyzer": "^4.4.2",
-        "webpack-cli": "^4.9.2",
-        "webpack-dev-server": "^4.7.4",
-        "webpack-modernizr-loader": "^5.0.0",
-        "whybundled": "^2.0.0",
-        "yarn": "^1.22.18"
+        "@patternslib/dev": "<4"
     },
     "resolutions": {
-        "@patternslib/patternslib": "7.4.0",
-        "jquery": "3.6.0",
-        "regenerator-runtime": "0.13.9"
+        "@patternslib/patternslib": "9.9.5",
+        "jquery": "3.7.1"
     },
     "scripts": {
         "watch": "NODE_ENV=development webpack --config webpack.config.js --watch",
