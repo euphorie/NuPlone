@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="../style/main/base.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../style/euphorie/base.css" />
     <link rel="icon" type="image/png" href="../media/favicon.png" />
-    <script type="text/javascript" src="oira.cms.js"> </script>
+    <script type="text/javascript" src="bundle/oira.cms.min.js"> </script>
     <!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
   </head>
   <body>

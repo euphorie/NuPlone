@@ -1,8 +1,3 @@
-/* Patterns bundle configuration. */
-import "@patternslib/patternslib/src/public_path"; // first import
-
-// Core
-import jquery from "jquery";
 import registry from "@patternslib/patternslib/src/core/registry";
 
 // Pattern imports
@@ -21,5 +16,4 @@ import "./src/nuplone_components/editlink";
 import "./src/nuplone_components/ordering";
 import "./src/nuplone_components/z3cform";
 
-window.jQuery = jquery;
 registry.init();

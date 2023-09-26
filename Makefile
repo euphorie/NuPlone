@@ -40,6 +40,7 @@ bundle: stamp-yarn
 	-$(YARN) unlink @patternslib/patternslib
 	$(YARN) install --force
 	$(YARN) build
+	cp -R ./plonetheme/nuplone/static/bundle ./Prototype
 
 
 .PHONY: bundledev
