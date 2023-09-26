@@ -4,7 +4,10 @@ Changelog
 2.2.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Upgrade jQuery UI to 1.13.2.
+- Update Redactor to 3.5.2.
+- Update the whole JavaScript build infrastructure to work with latest Patternslib 9.
+  [thet]
 
 
 2.2.0 (2023-06-14)
