@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.2.1 (unreleased)
+2.2.1 (2023-09-27)
 ------------------
 
 - Upgrade jQuery UI to 1.13.2.
