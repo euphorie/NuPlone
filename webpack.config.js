@@ -19,7 +19,7 @@ module.exports = () => {
     });
     config.output.path = path.resolve(
         __dirname,
-        "plonetheme/nuplone/static/bundle",
+        "plonetheme/nuplone/static/bundle"
     );
 
     config.plugins.push(
@@ -30,7 +30,15 @@ module.exports = () => {
                 ...package_json_patternslib.dependencies,
                 ...package_json.dependencies,
             },
-        }),
+            shared: {
+                jquery: {
+                    singleton: true,
+                    requiredVersion:
+                        package_json_patternslib.dependencies["jquery"],
+                    eager: true,
+                },
+            },
+        })
     );
 
     if (process.env.NODE_ENV === "development") {
