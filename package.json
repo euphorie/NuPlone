@@ -12,7 +12,7 @@
     "license": "GPL 2.0",
     "dependencies": {
         "@patternslib/pat-redactor": "^7.0.0",
-        "@patternslib/patternslib": "^9.9.5",
+        "@patternslib/patternslib": "^9.9.9",
         "jquery-ui-dist": "^1.13.2",
         "redactor": "git+ssh://git@github.com/syslabcom/redactor.git#master"
     },
