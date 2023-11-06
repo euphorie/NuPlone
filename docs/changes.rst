@@ -4,7 +4,9 @@ Changelog
 2.2.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix missing jQuery library due to incorrect webpack configuration.
+- Update to Patternslib 9.9.9.
+  [thet]
 
 
 2.2.1 (2023-09-27)
