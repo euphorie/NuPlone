@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.2.2 (unreleased)
+2.2.2 (2023-11-06)
 ------------------
 
 - Fix missing jQuery library due to incorrect webpack configuration.
