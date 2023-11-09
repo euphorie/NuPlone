@@ -1860,7 +1860,7 @@
     spectrum-colorpicker "^1.8.0"
     tippy.js "^6.3.7"
 
-"@patternslib/patternslib@^9.9.9":
+"@patternslib/patternslib@^9.9.5":
   version "9.9.9"
   resolved "https://registry.yarnpkg.com/@patternslib/patternslib/-/patternslib-9.9.9.tgz#8392598b95bd5284b51d15b6460401612d7584e9"
   integrity sha512-L4VsGMJ6QxTUOCJBlKfWchN/FbLmMvH79+eF/bVXZleiOUM3g9XI7VI1AkfzFcGk9/4lXhf5w2VIqBMwcaViCA==
