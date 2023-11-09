@@ -4,7 +4,8 @@ Changelog
 2.2.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Revert to Patternslib 9.9.5 until 9.9.10 is released to prevent potential issues with pat-inject.
+  [thet]
 
 
 2.2.2 (2023-11-06)
