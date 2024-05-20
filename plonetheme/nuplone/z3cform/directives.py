@@ -85,8 +85,41 @@ class WidgetDependencyView:
         self.widget = widget
         self.request = request
 
+    @property
+    def dependencies(self):
+        return getattr(self.widget.field, "_dependencies", None)
+
+    @property
+    def ploneintranet_classes(self):
+        return "pat-depends" if self.dependencies else ""
+
+    @property
+    def data_pat_depends(self):
+        dependencies = self.dependencies
+        if not dependencies:
+            return
+
+        parts = []
+        widgets = self.widget.__parent__
+        for dependency in dependencies:
+            widget = widgets[dependency.field]
+            name = widget.name
+            if isinstance(widget, CheckBoxWidget):
+                name = "%s::list" % name
+
+            if dependency.op == "on":
+                parts.append(f"condition: {name}; action: show")
+            elif dependency.op == "off":
+                parts.append(f"condition: {name}; action: hide")
+            elif dependency.op == "==":
+                parts.append(f"condition: {name}={dependency.value}; action: show")
+            elif dependency.op == "!=":
+                parts.append(f"condition: {name}={dependency.value}; action: hide")
+
+        return "; ".join(parts) if parts else None
+
     def __call__(self):
-        dependencies = getattr(self.widget.field, "_dependencies", None)
+        dependencies = self.dependencies
         if not dependencies:
             return None
 

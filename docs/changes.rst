@@ -4,6 +4,10 @@ Changelog
 2.2.3 (unreleased)
 ------------------
 
+- Provide helper methods for the widgets that can be used to render
+  patternslib specific markup
+  [ale-rt]
+
 - The radio widgets supports rendering extended help for each option
   [ale-rt]
 
