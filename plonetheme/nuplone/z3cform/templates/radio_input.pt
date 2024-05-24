@@ -1,13 +1,55 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      tal:omit-tag=""
       i18n:domain="nuplone"
-      tal:omit-tag="">
+>
   <fieldset class="comprehensive radioList ${view/@@dependencies}${python:' error' if view.error is not None else ''}">
-    <legend>${view/label} <sup tal:condition="view/required" class="required">*</sup></legend> <dfn class="infoPanel" i18n:attributes="title" title="Information" tal:define="description view/field/description" tal:condition="description">${description}</dfn>
-    <label tal:repeat="item view/items"><input type="radio" tal:define="checked item/checked" id="${item/id}" name="${item/name}" value="${item/value}" disabled="${view/disabled}" readonly="${view/readonly}" checked="${python:'checked' if checked else None}"/><tal:label i18n:domain="plone" i18n:translate="" replace="item/label"/></label> <tal:error condition="view/error" replace="structure view/error/render|nothing"/>
-    <input type="hidden" value="1" name="${view/name}-empty-marker" />
+    <legend>${view/label}
+      <sup class="required"
+           tal:condition="view/required"
+      >*</sup></legend>
+    <dfn class="infoPanel"
+         title="Information"
+         tal:define="
+           description view/field/description;
+         "
+         tal:condition="description"
+         i18n:attributes="title"
+    >${description}</dfn>
+    <tal:items repeat="item view/items">
+      <tal:item define="term python: view.terms.getTermByToken(item['value'])">
+        <div class="secondInfoPanel" tal:condition="term/extra_help|nothing">
+          <dfn class="infoPanel"
+               title="Information" i18n:attributes="title">
+               ${term/extra_help}
+          </dfn>
+        </div>
+        <label>
+          <input id="${item/id}"
+                 checked="${python:'checked' if checked else None}"
+                 disabled="${view/disabled}"
+                 name="${item/name}"
+                 readonly="${view/readonly}"
+                 type="radio"
+                 value="${item/value}"
+                 tal:define="
+                   checked item/checked;
+                 "
+          /><tal:label replace="item/label"
+                     i18n:domain="plone"
+                     i18n:translate=""
+          /><span class="discrete"
+                  tal:condition="term/description|nothing"
+          >${term/description}</span></label>
+      </tal:item>
+    </tal:items>
+    <tal:error condition="view/error"
+               replace="structure view/error/render|nothing"
+    />
+    <input name="${view/name}-empty-marker"
+           type="hidden"
+           value="1"
+    />
   </fieldset>
 </html>
-
-

@@ -4,6 +4,9 @@ Changelog
 2.2.3 (unreleased)
 ------------------
 
+- The radio widgets supports rendering extended help for each option
+  [ale-rt]
+
 - Revert to Patternslib 9.9.5 until 9.9.10 is released to prevent potential issues with pat-inject.
   [thet]
 
