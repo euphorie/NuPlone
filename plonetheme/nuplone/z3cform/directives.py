@@ -105,7 +105,7 @@ class WidgetDependencyView:
             widget = widgets[dependency.field]
             name = widget.name
             if isinstance(widget, CheckBoxWidget):
-                name = "%s::list" % name
+                name = "%s:list" % name
 
             if dependency.op == "on":
                 parts.append(f"condition: {name}; action: show")
