@@ -4,6 +4,17 @@ Changelog
 2.2.3 (unreleased)
 ------------------
 
+- Remove the action parameter from the pat-depends config for z3c.form widgets.
+  It was only switching between "show" and "hide", where "show" is the default
+  and "hide" doesn't exist. Having the action option set for pat-depends on
+  this level for no good reason prevents it from being overridable from a
+  parent element. Specifically we want to override the action default "show"
+  with "both" which shows/hides and enables/disables inputs. Input fields not
+  shown via pat-depends should also be disabled, so they are not submitted and
+  do not participate in form validation.
+  Ref: scrum-2615.
+  [thet]
+
 - Provide helper methods for the widgets that can be used to render
   patternslib specific markup
   [ale-rt]

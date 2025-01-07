@@ -107,14 +107,10 @@ class WidgetDependencyView:
             if isinstance(widget, CheckBoxWidget):
                 name = "%s:list" % name
 
-            if dependency.op == "on":
-                parts.append(f"condition: {name}; action: show")
-            elif dependency.op == "off":
-                parts.append(f"condition: {name}; action: hide")
-            elif dependency.op == "==":
-                parts.append(f"condition: {name}={dependency.value}; action: show")
-            elif dependency.op == "!=":
-                parts.append(f"condition: {name}={dependency.value}; action: hide")
+            if dependency.op in ("on", "off"):
+                parts.append(f"condition: {name}")
+            elif dependency.op in ("==", "!="):
+                parts.append(f"condition: {name}={dependency.value}")
 
         return "; ".join(parts) if parts else None
 
