@@ -110,11 +110,11 @@ class WidgetDependencyView:
             if dependency.op == "on":
                 parts.append(f"condition: {name}; action: both")
             elif dependency.op == "off":
-                parts.append(f"condition: {name}; action: both")
+                parts.append(f"condition: not {name}; action: both")
             elif dependency.op == "==":
                 parts.append(f"condition: {name}={dependency.value}; action: both")
             elif dependency.op == "!=":
-                parts.append(f"condition: {name}={dependency.value}; action: both")
+                parts.append(f"condition: not {name}={dependency.value}; action: both")
 
         return "; ".join(parts) if parts else None
 

@@ -4,6 +4,9 @@ Changelog
 2.2.3 (unreleased)
 ------------------
 
+- Fix the pat-depends condition for unequal-comparisons.
+  [thet, ale-rt]
+
 - Set the pat-depends action parameter for z3c.form widgets to "both" to also
   disable the input fields if they are hidden by pat-depends.
   Ref: scrum-2615.
