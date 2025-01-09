@@ -108,7 +108,7 @@ class WidgetDependencyView:
                 name = "%s:list" % name
 
             if dependency.op in ("on", "off"):
-                parts.append(f"condition: {name}")
+                parts.append(f"condition: {name}; action: both")
             elif dependency.op in ("==", "!="):
                 parts.append(f"condition: {name}={dependency.value}")
 
