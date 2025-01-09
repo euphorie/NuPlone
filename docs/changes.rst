@@ -4,6 +4,11 @@ Changelog
 2.2.3 (unreleased)
 ------------------
 
+- Set the pat-depends action parameter for z3c.form widgets to "both" to also
+  disable the input fields if they are hidden by pat-depends.
+  Ref: scrum-2615.
+  [thet]
+
 - Provide helper methods for the widgets that can be used to render
   patternslib specific markup
   [ale-rt]
