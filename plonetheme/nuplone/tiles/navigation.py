@@ -181,9 +181,11 @@ class NavigationTile(Tile):
                     filter(
                         None,
                         [
-                            "active"
-                            if node["current"] or node["currentParent"]
-                            else None,
+                            (
+                                "active"
+                                if node["current"] or node["currentParent"]
+                                else None
+                            ),
                             "current" if node["current"] else None,
                         ],
                     )

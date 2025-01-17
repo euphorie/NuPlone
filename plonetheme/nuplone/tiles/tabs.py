@@ -31,9 +31,11 @@ class TabsTile(Tile):
             {
                 "id": brain.id,
                 "title": brain.Title,
-                "url": "%s/view" % brain.getURL()
-                if brain.portal_type in use_view_types
-                else brain.getURL(),
+                "url": (
+                    "%s/view" % brain.getURL()
+                    if brain.portal_type in use_view_types
+                    else brain.getURL()
+                ),
                 "class": None,
             }
             for brain in catalog.searchResults(query)
