@@ -22,6 +22,9 @@ Changelog
 - Revert to Patternslib 9.9.5 until 9.9.10 is released to prevent potential issues with pat-inject.
   [thet]
 
+- Update supported Python versions to match the ones supported by the latest Plone 5.2 and Plone 6.0
+  [ale-rt]
+
 
 2.2.2 (2023-11-06)
 ------------------
@@ -552,4 +555,3 @@ This version is built for Plone 5.1 and higher!
 
 - First release.
   [wichert, cornae]
-
