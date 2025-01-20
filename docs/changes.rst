@@ -4,6 +4,9 @@ Changelog
 2.2.3 (unreleased)
 ------------------
 
+- Fix an issue when we are looking up context aware vocabularies
+  [ale-rt]
+
 - Fix the pat-depends condition for unequal-comparisons.
   [thet, ale-rt]
 
