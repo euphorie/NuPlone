@@ -1,4 +1,5 @@
 """StatusMessage adapter tests."""
+
 from plonetheme.nuplone.testing import NUPLONE_INTEGRATION_TESTING
 from Products.statusmessages.interfaces import IStatusMessage
 from unittest import TestCase
