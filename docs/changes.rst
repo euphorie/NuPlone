@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.2.3 (unreleased)
+3.0.0 (2025-02-25)
 ------------------
 
 - Fix an issue when we are looking up context aware vocabularies
