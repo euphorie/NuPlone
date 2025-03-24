@@ -1,10 +1,10 @@
 Changelog
 =========
 
-3.0.1 (unreleased)
+4.0.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Support Plone >= 6.0 and Python >= 3.9.
 
 
 3.0.0 (2025-02-25)
