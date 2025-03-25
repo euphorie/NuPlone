@@ -4,7 +4,10 @@ Changelog
 4.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Copy the the WysiwygWidget from plone.app.widgets 4.3 branch to NuPlone.
+  The widget has been deprecated since a long time and since plone.app.z3cform 4.4
+  it is an alias of the plone.app.z3cform.widgets.richtext.RichTextWidget.
+  [ale-rt]
 
 
 4.0.0 (2025-03-25)
