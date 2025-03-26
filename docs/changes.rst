@@ -1,7 +1,7 @@
 Changelog
 =========
 
-4.0.1 (unreleased)
+4.0.1 (2025-03-26)
 ------------------
 
 - Copy the the WysiwygWidget from plone.app.widgets 4.3 branch to NuPlone.
