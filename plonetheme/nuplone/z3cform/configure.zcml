@@ -102,12 +102,26 @@
     template="templates/object_input.pt"
     />
 
+  <class class=".widget.WysiwygWidget">
+    <require
+        permission="zope.Public"
+        interface=".widget.IWysiwygWidget"
+        />
+  </class>
+
   <z3c:widgetTemplate
     mode="input"
-    widget="plone.app.z3cform.wysiwyg.widget.IWysiwygWidget"
+    widget=".widget.IWysiwygWidget"
     layer=".interfaces.INuPloneFormLayer"
     template="templates/wysiwyg_input.pt"
     />
+
+  <z3c:widgetTemplate
+      widget=".widget.IWysiwygWidget"
+      template="templates/wysiwyg_display.pt"
+      layer="z3c.form.interfaces.IFormLayer"
+      mode="display"
+      />
 
   <configure zcml:condition="installed collective.z3cform.datetimewidget">
     <z3c:widgetTemplate
