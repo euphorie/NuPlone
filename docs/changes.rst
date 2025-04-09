@@ -4,7 +4,8 @@ Changelog
 4.0.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Modernize imports.
+  [ale-rt]
 
 
 4.0.1 (2025-03-26)

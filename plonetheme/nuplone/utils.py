@@ -3,7 +3,7 @@ from Acquisition import aq_chain
 from Acquisition import aq_inner
 from email.header import Header
 from email.mime.text import MIMEText
-from plone.app.layout.navigation.interfaces import INavigationRoot
+from plone.base.interfaces.siteroot import INavigationRoot
 from plonetheme.nuplone import MessageFactory as _
 from Products.CMFCore.ActionInformation import ActionInfo
 from Products.CMFCore.utils import getToolByName
