@@ -102,22 +102,22 @@
     template="templates/object_input.pt"
     />
 
-  <class class=".widget.WysiwygWidget">
+  <class class=".wysiwyg.WysiwygWidget">
     <require
         permission="zope.Public"
-        interface=".widget.IWysiwygWidget"
+        interface=".wysiwyg.IWysiwygWidget"
         />
   </class>
 
   <z3c:widgetTemplate
     mode="input"
-    widget=".widget.IWysiwygWidget"
+    widget=".wysiwyg.IWysiwygWidget"
     layer=".interfaces.INuPloneFormLayer"
     template="templates/wysiwyg_input.pt"
     />
 
   <z3c:widgetTemplate
-      widget=".widget.IWysiwygWidget"
+      widget=".wysiwyg.IWysiwygWidget"
       template="templates/wysiwyg_display.pt"
       layer="z3c.form.interfaces.IFormLayer"
       mode="display"

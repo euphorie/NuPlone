@@ -4,6 +4,13 @@ Changelog
 4.0.2 (unreleased)
 ------------------
 
+- Fix a problem with the WYSIWYG widget registration.
+  Allow to check for a zcml:condition if the new WYSIWYG display widget is
+  available. This can then be used to conditionally register a more specific
+  widget implementation, e.g. in osha.oira.nuplone.
+  Ref: scrum-3433.
+  [thet]
+
 - Modernize imports.
   [ale-rt]
 
