@@ -4,7 +4,9 @@ from zope.interface import implementer
 from zope.interface import implementer_only
 
 import Acquisition
-import z3c.form
+import z3c.form.browser.textarea
+import z3c.form.interfaces
+import z3c.form.widget
 import zope.schema
 
 
