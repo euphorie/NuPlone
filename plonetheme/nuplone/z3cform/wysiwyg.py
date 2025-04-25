@@ -32,7 +32,6 @@ class WysiwygWidget(z3c.form.browser.textarea.TextAreaWidget):
     value = ""
 
     def update(self):
-        breakpoint()
         super(z3c.form.browser.textarea.TextAreaWidget, self).update()
         z3c.form.browser.widget.addFieldClass(self)
         # We'll wrap context in the current site *if* it's not already
