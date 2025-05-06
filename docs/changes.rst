@@ -4,6 +4,9 @@ Changelog
 4.0.2 (unreleased)
 ------------------
 
+- Fix the multi input widget to not break when in a fieldset.
+  [ale-rt]
+
 - Modernize imports.
   [ale-rt]
 
