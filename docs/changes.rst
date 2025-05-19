@@ -1,7 +1,7 @@
 Changelog
 =========
 
-4.0.2 (unreleased)
+4.0.2 (2025-05-19)
 ------------------
 
 - Fix the multi input widget to not break when in a fieldset.
