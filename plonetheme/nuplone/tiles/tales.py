@@ -1,4 +1,5 @@
 from chameleon.utils import Markup
+from plonetheme.nuplone import MessageFactory as _
 from plonetheme.nuplone.tiles.tile import getTile
 from Products.PageTemplates.Expressions import getTrustedEngine
 from zope.tales.expressions import StringExpr
@@ -19,7 +20,16 @@ class TileExpression(StringExpr):
         if tile is None:  # XXX Use custom exception?
             log.warning("Request for unknown tile %s", name)
             return ""
-        return Markup(tile())
+
+        try:
+            return Markup(tile())
+        except Exception:
+            log.exception("Error rendering tile: %r", name)
+            return _(
+                "tile_render_error_message",
+                mapping={"name": name},
+                default="Error rendering tile ${name}",
+            )
 
 
 engine = getTrustedEngine()
