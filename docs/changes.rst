@@ -1,14 +1,11 @@
 Changelog
 =========
 
-4.0.3 (unreleased)
+5.0.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
-
-4.0.2 (2025-05-19)
-------------------
+- Do not break anymore if an error happens while rendering a tile
+  [ale-rt]
 
 - Fix the multi input widget to not break when in a fieldset.
   [ale-rt]
