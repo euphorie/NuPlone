@@ -1,7 +1,7 @@
 Changelog
 =========
 
-5.0.0 (unreleased)
+4.0.3 (2025-07-15)
 ------------------
 
 - Do not break anymore if an error happens while rendering a tile
