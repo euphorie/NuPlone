@@ -4,7 +4,9 @@ Changelog
 5.0.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Do not depend on pkg_resources to extract the package version. @ale-rt
+
+- Support Plone 6.2. @ale-rt
 
 
 5.0.1 (2026-04-15)

@@ -1,4 +1,4 @@
-from pkg_resources import get_distribution
+from importlib.metadata import version
 from plone.memoize import forever
 from Products.Five import BrowserView
 
@@ -12,4 +12,4 @@ class NuPloneVersionView(BrowserView):
 
     @forever.memoize
     def __call__(self):
-        return get_distribution("NuPlone").version
+        return version("nuplone")
