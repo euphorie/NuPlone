@@ -4,7 +4,8 @@ Changelog
 4.0.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Support Plone 6.2
+  [ale-rt]
 
 
 4.0.3 (2025-07-15)
