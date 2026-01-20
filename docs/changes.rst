@@ -4,6 +4,12 @@ Changelog
 4.1.0 (unreleased)
 ------------------
 
+- Do not suppress standard z3c.form validation errors.
+  Instead show all individual widget errors, including @invariant errors which
+  were previously preventing submission without notice.
+  Ref: https://github.com/syslabcom/scrum/issues/4425
+  [thet]
+
 - Move JavaScript components to the resources/scripts subdirectory, following
   Classic UI Plone standards.
   [thet]
