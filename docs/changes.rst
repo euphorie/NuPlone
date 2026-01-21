@@ -1,8 +1,12 @@
 Changelog
 =========
 
-4.0.4 (unreleased)
+4.1.0 (unreleased)
 ------------------
+
+- Move JavaScript components to the resources/scripts subdirectory, following
+  Classic UI Plone standards.
+  [thet]
 
 - Move ``plonetheme`` to ``src/plonetheme``.
   Fixes problem with development checkout using ``setuptools`` 80+.
