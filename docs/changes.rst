@@ -4,7 +4,9 @@ Changelog
 4.0.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Move ``plonetheme`` to ``src/plonetheme``.
+  Fixes problem with development checkout using ``setuptools`` 80+.
+  [maurits]
 
 
 4.0.3 (2025-07-15)
