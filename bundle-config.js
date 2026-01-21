@@ -11,9 +11,9 @@ import "jquery-ui-dist/jquery-ui.css";
 import "jquery-ui-dist/jquery-ui.theme.css";
 
 // Other dependencies
-import "./src/nuplone_components/behaviour";
-import "./src/nuplone_components/editlink";
-import "./src/nuplone_components/ordering";
-import "./src/nuplone_components/z3cform";
+import "./resources/scripts/behaviour";
+import "./resources/scripts/editlink";
+import "./resources/scripts/ordering";
+import "./resources/scripts/z3cform";
 
 registry.init();
