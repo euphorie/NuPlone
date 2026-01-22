@@ -3,6 +3,7 @@ prune Prototype
 recursive-include plonetheme *
 recursive-include docs *
 recursive-include resources *
+recursive-include src *
 include *.rst
 include MANIFEST.in
 include pyproject.toml
