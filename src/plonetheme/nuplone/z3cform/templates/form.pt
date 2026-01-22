@@ -16,8 +16,6 @@
          status view/status;
        "
        tal:condition="status"
-       i18n:domain="plone"
-       i18n:translate=""
     >${status}</p>
     <tal:errors define="
                   errors view/widgets/errors;
@@ -27,9 +25,6 @@
       <tal:error repeat="error errors">
         <p class="message field error"
            tal:condition="not:nocall:error/widget"
-           tal:content="structure error/message"
-           i18n:domain="plone"
-           i18n:translate=""
         >
         ${structure: error/message}
         </p>
