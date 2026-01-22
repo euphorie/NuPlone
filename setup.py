@@ -20,7 +20,6 @@ setup(
         "Framework :: Plone :: 6.0",
         "Framework :: Plone :: 6.1",
         "Framework :: Zope",
-        "Framework :: Zope :: 4",
         "Framework :: Zope :: 5",
         "License :: OSI Approved :: GNU General Public License (GPL)",
         "Operating System :: OS Independent",
@@ -45,7 +44,7 @@ setup(
     python_requires=">=3.9",
     install_requires=[
         "setuptools",
-        "Plone >=5.2",
+        "Plone >=6.0.14",
         "Products.statusmessages",
         "plone.api",
         "plone.app.z3cform",
