@@ -1,7 +1,7 @@
 Changelog
 =========
 
-4.1.0 (unreleased)
+4.1.0 (2026-01-22)
 ------------------
 
 - Do not suppress standard z3c.form validation errors.
