@@ -4,7 +4,8 @@ Changelog
 4.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Support Plone 6.2
+  [ale-rt]
 
 
 4.1.0 (2026-01-22)
