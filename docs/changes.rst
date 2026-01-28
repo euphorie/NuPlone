@@ -1,7 +1,7 @@
 Changelog
 =========
 
-4.1.1 (unreleased)
+4.1.1 (2026-01-28)
 ------------------
 
 - Fix the wrapped form template factory to use a base class that will use Chameleon.
