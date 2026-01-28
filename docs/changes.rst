@@ -6,6 +6,9 @@ Changelog
 
 - Support Plone >= 6.1 and Python >= 3.10.
 
+- Fix the wrapped form template factory to use a base class that will use Chameleon.
+  [ale-rt]
+
 
 4.1.0 (2026-01-22)
 ------------------
