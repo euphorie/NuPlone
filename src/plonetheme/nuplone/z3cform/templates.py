@@ -1,6 +1,5 @@
 from plone.z3cform.interfaces import IFormWrapper
 from plone.z3cform.interfaces import IWrappedForm
-from plone.z3cform.templates import FormTemplateFactory
 from plone.z3cform.templates import ZopeTwoFormTemplateFactory
 from plonetheme.nuplone.z3cform.interfaces import INuPloneFormLayer
 from z3c.form.error import ErrorViewTemplateFactory
@@ -17,7 +16,7 @@ layout_factory = ZopeTwoFormTemplateFactory(
     request=INuPloneFormLayer,
 )
 
-wrapped_form_factory = FormTemplateFactory(
+wrapped_form_factory = ZopeTwoFormTemplateFactory(
     os.path.join(TEMPLATE_DIR, "wrappedform.pt"),
     form=IWrappedForm,
     request=INuPloneFormLayer,

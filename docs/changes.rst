@@ -4,7 +4,8 @@ Changelog
 4.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix the wrapped form template factory to use a base class that will use Chameleon.
+  [ale-rt]
 
 
 4.1.0 (2026-01-22)
