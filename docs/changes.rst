@@ -4,7 +4,8 @@ Changelog
 5.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix symlink for the style folder.
+  [cirosilvano]
 
 
 5.0.0 (2026-01-28)
