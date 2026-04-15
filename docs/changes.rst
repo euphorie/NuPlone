@@ -1,7 +1,7 @@
 Changelog
 =========
 
-5.0.1 (unreleased)
+5.0.1 (2026-04-15)
 ------------------
 
 - Fix symlink for the style folder.

@@ -9,6 +9,8 @@ BINDIR      ?= .bundle/bin
 BUNDLE      ?= $(BINDIR)/bundle
 YARN		?= npx yarn
 
+TWINE_REPOSITORY ?= pypi
+
 all: ${TARGETS}
 
 bundle bundle.js bundles/oira.cms.js: stamp-yarn
@@ -105,3 +107,13 @@ $(PO_FILES): $(POT)
 .PHONY: all docs jenkins pot
 .SUFFIXES:
 .SUFFIXES: .po .mo .css .min.css
+
+.PHONY: release
+release:
+	@echo "Releasing to repository: $(TWINE_REPOSITORY)"
+	@echo "To release to a different repository, run \`make release TWINE_REPOSITORY=<repository>\`"
+	TWINE_REPOSITORY="$(TWINE_REPOSITORY)" uvx \
+		--from zest-releaser \
+		--with zest-releaser\[recommended\] \
+		--with zestreleaser-towncrier \
+		fullrelease
