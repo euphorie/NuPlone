@@ -3,7 +3,7 @@ from setuptools import setup
 import os
 
 
-version = "6.0.0.dev0"
+version = "6.0.0"
 
 setup(
     name="NuPlone",
@@ -18,13 +18,11 @@ setup(
         "Framework :: Plone",
         "Framework :: Plone :: 6.2",
         "Framework :: Zope",
-        "Framework :: Zope :: 5",
         "Framework :: Zope :: 6",
         "License :: OSI Approved :: GNU General Public License (GPL)",
         "Operating System :: OS Independent",
         "Programming Language :: JavaScript",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3.13",
@@ -37,7 +35,7 @@ setup(
     license="GPL",
     include_package_data=True,
     zip_safe=False,
-    python_requires=">=3.10",
+    python_requires=">=3.11",
     install_requires=[
         "Plone",
         "Products.statusmessages",

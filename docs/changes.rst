@@ -1,7 +1,7 @@
 Changelog
 =========
 
-6.0.0 (unreleased)
+6.0.0 (2026-11-03)
 ------------------
 
 - Do not depend on pkg_resources to extract the package version. @ale-rt

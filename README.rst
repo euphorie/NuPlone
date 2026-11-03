@@ -40,6 +40,8 @@ between this package and the old `NuPlone <http://pypi.python.org/pypi/Products.
 Compatibility
 =============
 
+NuPlone 6.x is meant to be used with Plone 6.2 and Python >= 3.11. In this release the package switched to use **native namespaces** (PEP 420).
+
 NuPlone 5.x is meant to be used with Plone 6.1 and Python >= 3.10.
 
 NuPlone 4.x is meant to be used with Plone 6.0 or Plone 6.1 and Python >= 3.9.
