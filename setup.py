@@ -1,10 +1,9 @@
-from setuptools import find_packages
 from setuptools import setup
 
 import os
 
 
-version = "5.0.2.dev0"
+version = "6.0.0.dev0"
 
 setup(
     name="NuPlone",
@@ -17,7 +16,6 @@ setup(
         "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",
         "Framework :: Plone",
-        "Framework :: Plone :: 6.1",
         "Framework :: Plone :: 6.2",
         "Framework :: Zope",
         "Framework :: Zope :: 5",
@@ -37,14 +35,10 @@ setup(
     author_email="info@syslab.com",
     url="https://github.com/euphorie/NuPlone",
     license="GPL",
-    packages=find_packages("src"),
-    namespace_packages=["plonetheme"],
-    package_dir={"": "src"},
     include_package_data=True,
     zip_safe=False,
     python_requires=">=3.10",
     install_requires=[
-        "setuptools",
         "Plone",
         "Products.statusmessages",
         "plone.api",
