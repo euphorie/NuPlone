@@ -1,10 +1,12 @@
 Changelog
 =========
 
-5.0.2 (unreleased)
+6.0.0 (unreleased)
 ------------------
 
 - Do not depend on pkg_resources to extract the package version. @ale-rt
+
+- Adopt PEP 420 (namespace packages). @ale-rt
 
 - Support Plone 6.2. @ale-rt
 
