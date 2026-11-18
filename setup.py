@@ -17,6 +17,7 @@ setup(
         "Environment :: Web Environment",
         "Framework :: Plone",
         "Framework :: Plone :: 6.2",
+        "Framework :: Plone :: 6.3",
         "Framework :: Zope",
         "Framework :: Zope :: 6",
         "License :: OSI Approved :: GNU General Public License (GPL)",
