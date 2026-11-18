@@ -4,10 +4,10 @@ from Acquisition import aq_inner
 from email.header import Header
 from email.mime.text import MIMEText
 from plone.base.interfaces.siteroot import INavigationRoot
+from plone.base.interfaces.siteroot import IPloneSiteRoot
 from plonetheme.nuplone import MessageFactory as _
 from Products.CMFCore.ActionInformation import ActionInfo
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.interfaces import IPloneSiteRoot
 from z3c.form.interfaces import IAddForm
 from z3c.form.interfaces import IEditForm
 
